@@ -2,10 +2,10 @@ import "./../styles/globals.css";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Handcrafted Haven",
+  title: "Handcrafted Haven G6",
   description: "Marketplace for unique handmade items",
   icons: { icon: "/favicon.ico" }
-};
+}; 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
         <header className="border-b">
           <nav className="container flex h-14 items-center justify-between">
-            <Link href="/" className="font-semibold">Handcrafted Haven</Link>
+            <Link href="/" className="font-semibold">Handcrafted Haven G6</Link>
             <div className="flex gap-4">
               <Link href="/products">Products</Link>
               <Link href="/dashboard">Dashboard</Link>
