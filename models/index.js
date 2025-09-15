@@ -1,20 +1,33 @@
 // models/index.js
 import { sequelize } from '../lib/sequelize.js';
-import { User } from './User.js';
-import { Product } from './Product.js';
-import { Order } from './Order.js';
-import { OrderItem } from './OrderItem.js';
+import createUser from './User.js';
+import createProduct from './Product.js';
+import createOrder from './Order.js';
+import createOrderItem from './OrderItem.js';
 
-// Order belongs to a Buyer (User)
-User.hasMany(Order, { foreignKey: 'buyer_id', as: 'orders' });
-Order.belongsTo(User, { foreignKey: 'buyer_id', as: 'buyer' });
+let db = globalThis.__db; 
 
-// Order has many Items
-Order.hasMany(OrderItem, { foreignKey: 'order_id', as: 'items', onDelete: 'CASCADE' });
-OrderItem.belongsTo(Order, { foreignKey: 'order_id', as: 'order' });
+if (!db) {
+  const User = createUser(sequelize);
+  const Product = createProduct(sequelize);
+  const Order = createOrder(sequelize);
+  const OrderItem = createOrderItem(sequelize);
 
-// Optional: link order_items to products
-Product.hasMany(OrderItem, { foreignKey: 'product_id', as: 'lineItems' });
-OrderItem.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+  // Associations
+  User.hasMany(Order, { foreignKey: 'buyer_id', as: 'orders' });
+  Order.belongsTo(User, { foreignKey: 'buyer_id', as: 'buyer' });
 
-export { sequelize, User, Product, Order, OrderItem };
+  Order.hasMany(OrderItem, { foreignKey: 'order_id', as: 'items', onDelete: 'CASCADE' });
+  OrderItem.belongsTo(Order, { foreignKey: 'order_id', as: 'order' });
+
+  Product.hasMany(OrderItem, { foreignKey: 'product_id', as: 'lineItems' });
+  OrderItem.belongsTo(Product, { foreignKey: 'product_id', as: 'product' });
+
+  db = { sequelize, User, Product, Order, OrderItem };
+
+  if (process.env.NODE_ENV !== 'production') {
+    globalThis.__db = db;
+  }
+}
+
+export default db;
