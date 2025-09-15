@@ -1,0 +1,42 @@
+// services/orderService.js
+import { sequelize, Order, OrderItem } from '../models/index.js';
+
+/**
+ * createOrder({
+ *   buyerId,
+ *   currency: "USD",
+ *   items: [{ productId, title, price, qty }],
+ *   stripeSessionId
+ * })
+ */
+export async function createOrder(payload) {
+  return sequelize.transaction(async (t) => {
+    const amount = payload.items.reduce(
+      (sum, it) => sum + Number(it.price) * Number(it.qty),
+      0
+    );
+
+    const order = await Order.create(
+      {
+        buyer_id: payload.buyerId,
+        amount,
+        currency: payload.currency,
+        stripeSessionId: payload.stripeSessionId ?? null,
+        status: 'pending',
+      },
+      { transaction: t }
+    );
+
+    const rows = payload.items.map((it) => ({
+      order_id: order.id,
+      product_id: it.productId ?? null,
+      title: it.title,
+      price: it.price,
+      qty: it.qty,
+    }));
+
+    await OrderItem.bulkCreate(rows, { transaction: t });
+
+    return order;
+  });
+}
