@@ -1,0 +1,51 @@
+const products = [
+  { id:1,
+    imageUrl: "/handcrafted_wooden_bowl.png",
+    description: "Handcrafted Wooden Bowl - Perfect for Serving and Decor",
+    price: 45.99},
+  { id:2,
+    imageUrl: "/scented_candle_in_ceramic_jar.png",
+    description: "Scented Candle in Ceramic Jar - Handmade candle with lavender scent, molded in a hand-painted ceramic jar. Ideal for relaxation, decoration, and aromatherapy.",
+    price: 25.99},
+  { id:3,
+  imageUrl: "/handwoven_macrame_wall_hanging.png",
+  description: "Handwoven Macramé Wall Hanging -  A beautiful handwoven macramé wall hanging made with natural cotton rope. Perfect for adding a bohemian touch to your living space or bedroom.",
+  price: 74.90},
+  
+{ id: 4,
+  imageUrl: "/handmade_ceramic_planter.png",
+  description: "Handmade Ceramic Planter - Ideal for indoor plants and modern decor",
+  price: 32.50 },
+ 
+{ id: 5,
+  imageUrl: "/recycled_glass_vase.png",
+  description: "Recycled Glass Vase - Eco-friendly vase crafted from repurposed glass",
+  price: 41.75 },
+ 
+{ id: 6,
+  imageUrl: "/bamboo_serving_tray.png",
+  description: "Bamboo Serving Tray - Lightweight and durable tray for snacks and drinks",
+  price: 27.90 },
+ 
+{ id: 7,
+  imageUrl: "/cotton_throw_blanket.png",
+  description: "Cotton Throw Blanket - Soft and breathable blanket for cozy evenings",
+  price: 59.99 },
+ 
+{ id: 8,
+  imageUrl: "/leather_journal.png",
+  description: "Leather Journal - Hand-stitched journal with recycled paper pages",
+  price: 38.00 },
+ 
+{ id: 9,
+  imageUrl: "/aroma_diffuser_set.png",
+  description: "Aroma Diffuser Set - Includes ceramic diffuser and essential oils",
+  price: 49.95 },
+ 
+{ id: 10,
+  imageUrl: "/woven_lamp_shade.png",
+  description: "Woven Lamp Shade - Natural fiber lamp shade for warm ambient lighting",
+  price: 66.80 }
+ 
+]
+ 
