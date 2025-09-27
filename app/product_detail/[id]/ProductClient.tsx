@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
-import SimilarProducts from '@/src/components/SimilarProducts/SimilarProducts';
+import SimilarProducts from '@/components/SimilarProducts/SimilarProducts';
 
 // Definimos uma nova interface para os reviews
 interface Review {
@@ -95,6 +95,8 @@ export default function ProductClient({ product, similarProducts }: ProductClien
           <div className="absolute bottom-4 left-4 flex gap-2">
             {product.imageUrls.slice(0, 3).map((url, index) => (
               <button
+                type="button"
+                aria-label={`Select image ${index + 1} of ${product.name}`}
                 key={index}
                 onClick={() => setMainImage(url)}
                 className={`relative w-[80px] h-[80px] rounded-lg overflow-hidden border-2 transition ${

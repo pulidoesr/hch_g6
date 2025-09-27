@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import HandcraftedIcon from "../../../src/components/Icons/HandcraftedIcon"
+import HandcraftedIcon from "../Icons/HandcraftedIcon"
 
 // Importe os ícones que você precisa.
 // Ex: para instalar o heroicons: npm install @heroicons/react

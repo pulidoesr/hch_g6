@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ImageGallery from "@/src/components/ImageGallery/ImageGallery";
-import CuratedCollection from "@/src/components/CuratedCollections/CuratedCollections";
-import ProductCard from "@/src/components/ProductCard/ProductCard";
+import ImageGallery from "@/components/ImageGallery/ImageGallery";
+import CuratedCollection from "@/components/CuratedCollections/CuratedCollections";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import Link from "next/link";
 
 // Definindo as interfaces do JSON original
