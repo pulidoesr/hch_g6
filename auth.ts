@@ -2,7 +2,12 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const { handlers, signIn, signOut, auth } = NextAuth({
+export const {
+  auth,
+  signIn,
+  signOut,
+  handlers: { GET, POST },  // <-- destructure these
+} = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -11,7 +16,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // TODO: replace with your user lookup logic
         if (
           credentials?.email === "demo@example.com" &&
           credentials?.password === "pass123"
