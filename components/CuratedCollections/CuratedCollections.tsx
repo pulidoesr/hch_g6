@@ -1,4 +1,4 @@
-// src/components/CuratedCollection.jsx
+// app/components/CuratedCollection.jsx
 import React from 'react';
 import Image from 'next/image'
 

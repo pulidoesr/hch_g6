@@ -1,4 +1,4 @@
-import CollectionsClient from '@/src/components/CollectionClient/CollectionClient';
+import CollectionsClient from '@/components/CollectionClient/CollectionClient';
 import productsData from '@/data/products.json';
 
 export default async function CollectionsPage() {

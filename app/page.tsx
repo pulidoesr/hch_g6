@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from 'next/link';
-import ProductCard from "@/src/components/ProductCard/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import productsData from '@/data/products.json';
 
 interface Product {

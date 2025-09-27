@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import HandcraftedIcon from "@/src/components/Icons/HandcraftedIcon"
+import HandcraftedIcon from "@/components/Icons/HandcraftedIcon"
 
 // Importe os ícones que você precisar.
 // Se você estiver usando @heroicons/react:
