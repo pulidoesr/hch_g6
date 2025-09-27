@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link';
 import ProductCard from "@/src/components/ProductCard/ProductCard";
+import productsData from '@/data/products.json';
 
 interface Product {
   id: string; // O ID do produto no JSON é uma string
@@ -16,11 +17,9 @@ interface Collection {
   isFeatured: boolean;
   productIds: string[];
 }
-
+const data = productsData;
 export default async function Page() {
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-  const res = await fetch(`${BASE_URL}/api/products`);
-  const data = await res.json();
+  
   const products: Product[] = data.products;
   const collections: Collection[] = data.collections;
 

@@ -36,21 +36,10 @@ export default async function ProductPage(props: PageProps<'/product_detail/[id]
 
   let products: Product[] = [];
   let collections: Collection[] = [];
-
-  // Detecta ambiente de build/prerender
-  const isBuild = typeof window === 'undefined' && process.env.NODE_ENV === 'production';
-  if (isBuild) {
-    // Usa dados mockados do arquivo JSON
-    products = productsData.products as Product[];
-    collections = productsData.collections as Collection[];
-  } else {
-    // Busca os dados da API normalmente
-    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-    const res = await fetch(`${BASE_URL}/api/products`);
-    const data = await res.json();
-    products = data.products;
-    collections = data.collections;
-  }
+  
+  products = productsData.products as Product[];
+  collections = productsData.collections as Collection[];
+  
 
   // Encontra o produto específico pelo ID
   const product = products.find(p => p.id === id);
