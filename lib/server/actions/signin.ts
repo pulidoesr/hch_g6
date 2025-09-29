@@ -1,3 +1,4 @@
+// lib/server/actions/signin.ts)
 "use server";
 
 import { signIn } from "@/auth";
@@ -6,8 +7,8 @@ import { z } from "zod";
 import type { SignInResult } from "@/lib/types/auth";
 
 const LoginSchema = z.object({
-  email: z.string().trim().toLowerCase().email("Enter a valid email."),
-  password: z.string().min(1, "Password is required."),
+  email: z.string().trim().toLowerCase().email(),
+  password: z.string().min(1),
 });
 
 export async function signInAction(
@@ -36,13 +37,19 @@ export async function signInAction(
       password: parsed.data.password,
       redirectTo: "/profile",
     });
-    return { ok: true, redirect: "/profile" };
+
+    return { ok: true };
   } catch (err) {
-    const msg =
-      err instanceof AuthError && err.type === "CredentialsSignin"
-        ? "Invalid email or password."
-        : "Sign-in failed. Please try again.";
-    console.error("[signin]", err);
-    return { ok: false, formError: msg };
+  
+    if ((err as any)?.digest?.startsWith("NEXT_REDIRECT")) {
+      throw err; 
+    }
+
+    if (err instanceof AuthError && err.type === "CredentialsSignin") {
+      return { ok: false, formError: "Invalid email or password." };
+    }
+
+    console.error("[signin] unexpected", err);
+    return { ok: false, formError: "Sign-in failed. Please try again." };
   }
 }

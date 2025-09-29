@@ -45,7 +45,7 @@ export const {
           name: user.name ?? user.email,
           email: user.email,
           image: user.image ?? undefined,
-          role: user.role ?? "customer",
+          role: user.role ?? "buyer",
         };
       },
     }),
