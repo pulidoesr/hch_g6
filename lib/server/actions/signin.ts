@@ -1,4 +1,4 @@
-// lib/server/actions/signin.ts)
+// lib/server/actions/signin.ts (or app/actions/signin.ts)
 "use server";
 
 import { signIn } from "@/auth";
@@ -10,6 +10,13 @@ const LoginSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
   password: z.string().min(1),
 });
+
+// 🔒 Type-safe guard for NEXT_REDIRECT
+function isNextRedirectError(e: unknown): e is { digest: string } {
+  if (typeof e !== "object" || e === null) return false;
+  const digest = (e as { digest?: unknown }).digest;
+  return typeof digest === "string" && digest.startsWith("NEXT_REDIRECT");
+}
 
 export async function signInAction(
   _prev: SignInResult,
@@ -37,13 +44,10 @@ export async function signInAction(
       password: parsed.data.password,
       redirectTo: "/profile",
     });
-
     return { ok: true };
   } catch (err) {
-  
-    if ((err as any)?.digest?.startsWith("NEXT_REDIRECT")) {
-      throw err; 
-    }
+    // ✅ Properly detect Next.js redirect without `any`
+    if (isNextRedirectError(err)) throw err;
 
     if (err instanceof AuthError && err.type === "CredentialsSignin") {
       return { ok: false, formError: "Invalid email or password." };
