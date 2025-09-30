@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star, ShoppingCart } from "lucide-react"; // Importando ShoppingCart
 import SimilarProducts from '@/components/SimilarProducts/SimilarProducts';
 
-// Definimos uma nova interface para os reviews
+// Importa o hook e o tipo de produto a ser adicionado
+// NOTA: Ajuste o caminho se seu hook não estiver em '@/hooks/useCart'
+import { useCart, ProductToAdd } from '@/hooks/useCart'; 
+
+// --- TIPAGENS (Mantidas) ---
+
 interface Review {
   customerName: string;
   customerImage: string;
@@ -14,7 +19,6 @@ interface Review {
   comment: string;
 }
 
-// Atualizamos a interface do produto para incluir o array de reviews
 interface Product {
   id: string;
   imageUrl: string;
@@ -23,7 +27,7 @@ interface Product {
   name: string;
   price: number;
   rating: number;
-  reviews: Review[]; // Adicionamos o novo campo
+  reviews: Review[];
 }
 
 interface ProductClientProps {
@@ -32,6 +36,29 @@ interface ProductClientProps {
 }
 
 export default function ProductClient({ product, similarProducts }: ProductClientProps) {
+  // --- Lógica do Carrinho ---
+  // Obtém a função de adicionar item do hook de persistência
+  const { addItem } = useCart();
+
+  const handleAddToCart = () => {
+    // Mapeia os dados completos do produto para o formato ProductToAdd (necessário para o Local Storage)
+    const itemToAdd: ProductToAdd = {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      unitPrice: product.price, // Usa 'price' como 'unitPrice'
+      imageSrc: product.imageUrl,
+      // A quantidade é tratada internamente pelo addItem, começando em 1 ou incrementando
+    };
+
+    addItem(itemToAdd);
+    // Feedback simples para o usuário
+    console.log(`Produto ${product.name} adicionado/atualizado no carrinho.`);
+    alert(`"${product.name}" adicionado ao carrinho!`);
+  };
+  // --- Fim da Lógica do Carrinho ---
+
+  
   const [mainImage, setMainImage] = useState(
     product.imageUrls.length > 0 ? product.imageUrls[0] : product.imageUrl
   );
@@ -41,6 +68,7 @@ export default function ProductClient({ product, similarProducts }: ProductClien
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating - fullStars >= 0.5;
 
+    // ... (Lógica de renderização de estrelas permanece a mesma) ...
     for (let i = 0; i < fullStars; i++) {
       stars.push(
         <Star key={`full-${i}`} className="w-6 h-6 text-yellow-400 fill-yellow-400" />
@@ -137,8 +165,19 @@ export default function ProductClient({ product, similarProducts }: ProductClien
           {/* Descrição */}
           <p className="mt-2 text-lg text-gray-700">{product.description}</p>
 
-          <button className="mt-8 w-full px-8 py-3 font-bold rounded-lg shadow-lg bg-red-600 text-white hover:bg-red-700 transition-colors duration-300">
-            Add to Cart
+          {/* Botão Add to Cart AJUSTADO */}
+          <button 
+            onClick={handleAddToCart} // CHAMA A LÓGICA DO CARRINHO
+            className="
+              mt-8 w-full px-8 py-3 
+              font-bold rounded-lg shadow-lg 
+              bg-[#7B3F00] text-white hover:bg-[#633300] 
+              transition-colors duration-300 
+              flex items-center justify-center space-x-2
+            "
+          >
+            <ShoppingCart className="w-5 h-5" />
+            <span>Adicionar ao Carrinho</span>
           </button>
         </div>
       </div>
