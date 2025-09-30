@@ -1,14 +1,19 @@
+// Main Checkout Page Component (UPDATED AND TRANSLATED)
 'use client'; 
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { Minus, Plus, ShoppingCart, Truck, CreditCard } from 'lucide-react';
+import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
 
-// --- SIMULAÇÃO DO HOOK PERSISTENTE (Substitua pela importação real) ---
+// Assuming these imports are correct based on your file structure
+import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab'; 
+import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; // <-- NEW IMPORT
+
+// --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
-// NOTA: Em seu projeto real, você importaria: import { useCart, CartItem } from '../hooks/useCart';
-// Para fins de demonstração, o hook é definido aqui:
+// NOTE: In your actual project, you would import: import { useCart, CartItem } from '../hooks/useCart';
+// For demonstration purposes, the hook is defined here:
 
 interface CartItem {
   id: number;
@@ -27,7 +32,7 @@ const useCart = () => {
             try {
                 return storedCart ? JSON.parse(storedCart) : [];
             } catch (error) {
-                console.error("Erro ao carregar o carrinho:", error);
+                console.error("Error loading cart:", error);
                 return [];
             }
         }
@@ -44,7 +49,7 @@ const useCart = () => {
 };
 // *************************************************************************
 
-// --- Constantes e Tipagens ---
+// --- Constants and Types ---
 
 type Tab = 'cart' | 'shipping' | 'payment';
 
@@ -52,7 +57,7 @@ const TAXES = 13.00;
 const FREE_SHIPPING_THRESHOLD = 200.00;
 const SHIPPING_COST = 20.00;
 
-// --- Utilitários de Cálculo ---
+// --- Calculation Utilities ---
 const calculateSummary = (items: CartItem[]) => {
   const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
   const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
@@ -62,10 +67,10 @@ const calculateSummary = (items: CartItem[]) => {
   return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
 };
 
-// --- Componentes de Layout ---
+// --- Layout Components ---
 
 /**
- * Componente de controle de quantidade com botões de incremento/decremento (CORRIGIDO).
+ * Quantity control component with increment/decrement buttons.
  */
 interface QuantityControlProps {
   quantity: number;
@@ -104,13 +109,8 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange })
   );
 };
 
-
-
-
-
-
 /**
- * Componente que exibe um único item na lista do carrinho.
+ * Component that displays a single item in the cart list.
  */
 interface CartItemRowProps {
     item: CartItem;
@@ -120,7 +120,7 @@ interface CartItemRowProps {
 const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => {
     return (
         <div className="flex py-6 border-b border-gray-200">
-            {/* Foto (Thumbnail) */}
+            {/* Thumbnail Image */}
             <div className="w-40 h-40 flex-shrink-0 relative border">
                 <Image
                     src={item.imageSrc}
@@ -131,7 +131,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
                 />
             </div>
             
-            {/* Detalhes do Produto (Nome, Descrição, Preço) */}
+            {/* Product Details (Name, Description, Price) */}
             <div className="flex-grow px-4 md:px-8">
                 <p className="font-semibold text-gray-800 text-lg">{item.name}</p>
                 <p className="text-gray-500 text-sm mt-1">{item.description}</p>
@@ -140,7 +140,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
                 </p>
             </div>
             
-            {/* Controle de Quantidade */}
+            {/* Quantity Control */}
             <div className="flex items-center justify-end">
                 <QuantityControl 
                     quantity={item.quantity} 
@@ -151,7 +151,7 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
     );
 };
 
-// --- Componente de Resumo (Summary) ---
+// --- Summary Component ---
 interface SummaryProps {
     summary: ReturnType<typeof calculateSummary>;
 }
@@ -193,7 +193,7 @@ const Summary: React.FC<SummaryProps> = ({ summary }) => {
     );
 };
 
-// --- Componente da Aba Shopping Cart ---
+// --- Shopping Cart Tab Component ---
 
 interface ShoppingCartTabProps {
     cartItems: CartItem[];
@@ -260,13 +260,13 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
     );
 };
 
-// --- Componente Principal da Página de Checkout (ATUALIZADO) ---
+// --- Main Checkout Page Component (UPDATED) ---
 
 const CheckoutPage: React.FC = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('cart');
   
-  // AQUI: Usa o hook para carregar o carrinho do Local Storage
+  // HERE: Uses the hook to load the cart from Local Storage
   const { cartItems, setCartItems } = useCart();
 
   const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
@@ -278,6 +278,12 @@ const CheckoutPage: React.FC = () => {
   const handleNext = () => {
     if (activeTab === 'cart') setActiveTab('shipping');
     else if (activeTab === 'shipping') setActiveTab('payment');
+    // Add transition to confirmation (review/confirmation) if needed
+  };
+  
+  const handleBack = () => {
+    if (activeTab === 'shipping') setActiveTab('cart');
+    else if (activeTab === 'payment') setActiveTab('shipping');
   };
 
   const handleCancel = () => {
@@ -291,9 +297,9 @@ const CheckoutPage: React.FC = () => {
         className={`text-lg font-normal cursor-pointer transition duration-200 ${
           isActive ? 'text-gray-900 border-b border-gray-600 pb-2' : 'text-gray-500'
         }`}
-        onClick={() => setActiveTab(tab)}
+        // Allows clicking only on previous tabs
+        onClick={() => index < tabs.findIndex(t => t.id === activeTab) && setActiveTab(tab)}
       >
-        Teste
         <span className="font-semibold mr-1">{index + 1}.</span> {tabs.find(t => t.id === tab)?.name}
       </div>
     );
@@ -303,14 +309,14 @@ const CheckoutPage: React.FC = () => {
     <div className="min-h-screen bg-white">
       <div className="max-w-7xl mx-auto p-4 sm:p-10">
         
-        {/* --- Abas de Navegação --- */}
+        {/* --- Navigation Tabs --- */}
         <div className="flex justify-between sm:justify-start sm:space-x-12 mb-12 border-b border-gray-300">
           {tabs.map((tab, index) => (
             <TabHeader key={tab.id} tab={tab.id} index={index} />
           ))}
         </div>
 
-        {/* --- Conteúdo das Abas --- */}
+        {/* --- Tab Content --- */}
         <div>
           {activeTab === 'cart' && (
             <ShoppingCartTab 
@@ -321,21 +327,18 @@ const CheckoutPage: React.FC = () => {
           )}
           
           {activeTab === 'shipping' && (
-            <div className="py-20 text-center">
-              <h2 className="text-3xl font-bold">2. Shipping Details</h2>
-              <p className="mt-4 text-gray-600">Shipping address form here.</p>
-              <div className="mt-8 flex justify-center space-x-4">
-                  <button onClick={() => setActiveTab('cart')} className="bg-gray-200 text-gray-700 py-2 px-6 rounded-sm">Back</button>
-                  <button onClick={handleNext} className="bg-amber-800 text-white py-2 px-6 rounded-sm">Next</button>
-              </div>
-            </div>
+              <ShippingDetailsTab 
+                  onNext={handleNext} 
+                  onBack={handleBack} 
+              />
           )}
           
           {activeTab === 'payment' && (
-            <div className="py-20 text-center">
-              <h2 className="text-3xl font-bold">3. Payment Options</h2>
-              <p className="mt-4 text-gray-600">Payment options and checkout here.</p>
-            </div>
+            // USING THE PaymentOptionsTab component here
+            <PaymentOptionsTab 
+                onNext={handleNext} 
+                onBack={handleBack} 
+            />
           )}
         </div>
       </div>
