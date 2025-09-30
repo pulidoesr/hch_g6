@@ -38,3 +38,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Generate a random long string
 node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
 
+## Postgres Types
+## Payment Status
+   payment_status AS ENUM ('authorized', 'captured', 'voided', 'refunded', 'failed');
+
+## Roles
+   user_role AS ENUM ('buyer', 'seller', 'admin');
+
+## Order Status
+order_status AS ENUM ('pending', 'paid', 'shipped', 'delivered', 'cancelled', 'refunded');
