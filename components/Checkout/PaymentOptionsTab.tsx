@@ -5,7 +5,7 @@ import React, { useState, useMemo } from 'react';
 import { CreditCard, Truck, DollarSign } from 'lucide-react';
 
 // Imports logic and hooks from checkout-utils
-import { useCart, calculateSummary, FREE_SHIPPING_THRESHOLD, SHIPPING_COST_PAID } from '@/lib/checkout-utils'; 
+import { useCart, calculateSummary, FREE_SHIPPING_THRESHOLD, SHIPPING_COST_PAID, useShippingAddress, ShippingAddress } from '@/lib/checkout-utils'; 
 // Imports types
 import { CreditCardData, PaymentMethod } from '@/lib/types/checkout'; 
 
@@ -27,6 +27,8 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
   
   // 1. Load cart items
   const { cartItems } = useCart();
+
+  const { shippingAddress } = useShippingAddress();
   
   // 2. Calculate shipping cost
   const shippingValue = cartItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0) >= FREE_SHIPPING_THRESHOLD 
@@ -35,6 +37,16 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
   
   // 3. Calculate final summary using the utility function
   const summary = useMemo(() => calculateSummary(cartItems, shippingValue), [cartItems, shippingValue]);
+  const formattedAddress = useMemo(() => {
+    // Garantido que shippingAddress não é undefined e tem as propriedades (graças ao hook robusto)
+    const { street, city, zipCode, country } = shippingAddress; 
+    
+    // Retorna uma string formatada, ou um placeholder se os dados ainda estiverem vazios
+    if (street && city && zipCode) {
+        return `${street}, ${city}, ${country} ${zipCode}`;
+    }
+    return 'Not specified (Please go back to Shipping)';
+  }, [shippingAddress]);
 
   const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -140,7 +152,7 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
             <div className="flex items-center text-sm mb-4 border-b pb-4">
                 <Truck className="w-5 h-5 mr-2 text-gray-500" />
                 <span className='font-medium'>Shipping to:</span> 
-                <span className='ml-2 text-gray-600'>[Shipping Address...]</span>
+                <span className='ml-2 text-gray-600'>{formattedAddress}</span>
             </div>
 
             {/* Totals Component */}

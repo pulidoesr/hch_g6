@@ -10,12 +10,11 @@ import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
 // Assuming these imports are correct based on your file structure
 import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab'; 
 import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; 
+// Importamos useShippingAddress aqui, mas o CartItem mock é mantido para este arquivo
 import { useShippingAddress } from '@/lib/checkout-utils'; 
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
-// NOTE: In your actual project, you would import: import { useCart, CartItem } from '../hooks/useCart';
-// For demonstration purposes, the hook is defined here:
 
 interface CartItem {
   id: number;
@@ -201,9 +200,11 @@ interface ShoppingCartTabProps {
     cartItems: CartItem[];
     setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
     onNext: () => void;
+    onCancel: () => void; // A prop onCancel está na interface
 }
 
-const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext }) => {
+// ✅ CORREÇÃO AQUI: Desestruturar 'onCancel' das props
+const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
     
     const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
 
@@ -248,7 +249,8 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </button>
                 
                 <button
-                    onClick={() => console.log('Cancel clicked')} 
+                    // ✅ CORREÇÃO AQUI: Chamar a prop onCancel (que contém handleCancel)
+                    onClick={onCancel} 
                     className="
                         bg-gray-200 text-gray-700 py-3 px-8 
                         font-medium rounded-sm shadow-md
@@ -268,7 +270,7 @@ const CheckoutPage: React.FC = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('cart');
   
-  // HERE: Uses the hook to load the cart from Local Storage
+  // Uses the hook to load the cart from Local Storage
   const { cartItems, setCartItems } = useCart();
   const { shippingAddress, setShippingAddress } = useShippingAddress(); 
 
@@ -281,7 +283,6 @@ const CheckoutPage: React.FC = () => {
   const handleNext = () => {
     if (activeTab === 'cart') setActiveTab('shipping');
     else if (activeTab === 'shipping') setActiveTab('payment');
-    // Add transition to confirmation (review/confirmation) if needed
   };
   
   const handleBack = () => {
@@ -326,6 +327,7 @@ const CheckoutPage: React.FC = () => {
               cartItems={cartItems} 
               setCartItems={setCartItems}
               onNext={handleNext} 
+              onCancel={handleCancel} // ✅ Prop passada corretamente
             />
           )}
           
@@ -333,16 +335,19 @@ const CheckoutPage: React.FC = () => {
               <ShippingDetailsTab 
                   onNext={handleNext} 
                   onBack={handleBack} 
-                  initialAddress={shippingAddress} // Passa o objeto completo (garantido pelo hook)
+                  initialAddress={shippingAddress} 
                   onSaveAddress={setShippingAddress} 
+                  // Você também precisará passar onCancel para ShippingDetailsTab quando for implementá-lo
+                  // onCancel={handleCancel} 
               />
           )}
           
           {activeTab === 'payment' && (
-            // USING THE PaymentOptionsTab component here
             <PaymentOptionsTab 
                 onNext={handleNext} 
                 onBack={handleBack} 
+                // Você também precisará passar onCancel para PaymentOptionsTab quando for implementá-lo
+                // onCancel={handleCancel}
             />
           )}
         </div>
