@@ -1,17 +1,35 @@
 // lib/checkout-utils.ts
 'use client'; 
 
-// Adiciona useEffect para persistência
+// Adds useEffect for persistence
 import React, { useState, useEffect } from 'react'; 
-// Supondo que você tenha CartItem e SummaryCalculation definidos em './types/checkout'
+// Assuming you have CartItem and SummaryCalculation defined in './types/checkout'
 import { CartItem, SummaryCalculation } from './types/checkout'; 
 
-// Constants (TODOS EXPORTADOS)
+// =========================================================================
+// 1. SHIPPING ADDRESS INTERFACE (Exported for use in all components)
+// This interface defines the persistent structure for shipping details.
+export interface ShippingAddress {
+  firstName: string;
+  lastName: string;
+  street: string; // Corresponds to 'address' in the shipping tab form
+  address2: string;
+  country: string; // Corresponds to 'country'/'state' in the shipping tab form
+  city: string;
+  zipCode: string;
+  phoneNumber: string;
+}
+// =========================================================================
+
+// Constants (ALL EXPORTED)
 export const TAXES_RATE = 0.13; // 13% tax rate
-export const SHIPPING_COST_PAID = 15.00; // Valor do frete
-export const FREE_SHIPPING_THRESHOLD = 200.00; // Limite para frete grátis
+export const SHIPPING_COST_PAID = 15.00; // Shipping cost value
+export const FREE_SHIPPING_THRESHOLD = 200.00; // Free shipping threshold
+export const EXPRESS_SHIPPING_COST = 15.00;
 
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
+const SHIPPING_ADDRESS_KEY = 'handcrafted_heaven_shipping_address';
+
 
 /**
  * Calculates the order summary based on cart items and shipping cost.
@@ -28,7 +46,7 @@ export const calculateSummary = (items: CartItem[], shippingValue: number): Summ
 };
 
 /**
- * Hook to manage persistent cart state using Local Storage (Agora funcional).
+ * Hook to manage persistent cart state using Local Storage.
  */
 export const useCart = () => {
     
@@ -54,4 +72,55 @@ export const useCart = () => {
     }, [cartItems]);
     
     return { cartItems, setCartItems };
+};
+
+// =========================================================================
+// SHIPPING ADDRESS LOGIC WITH ROBUST INITIALIZATION (Implemented Recommendation)
+// This prevents 'Cannot read properties of undefined' errors.
+// =========================================================================
+
+/**
+ * Returns a complete and empty ShippingAddress object for safe initialization.
+ */
+const getEmptyShippingAddress = (): ShippingAddress => ({
+    firstName: '',
+    lastName: '',
+    street: '',
+    address2: '',
+    country: '',
+    city: '',
+    zipCode: '',
+    phoneNumber: '',
+});
+
+/**
+ * Hook to manage the persistent shipping address state using Local Storage.
+ * It ensures the state is always initialized with a valid object.
+ */
+export const useShippingAddress = () => {
+    
+    const [address, setAddress] = useState<ShippingAddress>(() => {
+        if (typeof window !== 'undefined') {
+            const storedAddress = localStorage.getItem(SHIPPING_ADDRESS_KEY);
+            try {
+                // Robust fallback: if no data exists or JSON is invalid, return a complete empty object.
+                return storedAddress ? JSON.parse(storedAddress) : getEmptyShippingAddress();
+            } catch (error) {
+                console.error("Error loading shipping address from Local Storage:", error);
+                // In case of a parsing error (invalid JSON), return fallback
+                return getEmptyShippingAddress();
+            }
+        }
+        // Fallback for Server Side Rendering (SSR)
+        return getEmptyShippingAddress();
+    });
+
+    // Effect to save the address to Local Storage whenever it changes
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(SHIPPING_ADDRESS_KEY, JSON.stringify(address));
+        }
+    }, [address]);
+    
+    return { shippingAddress: address, setShippingAddress: setAddress };
 };

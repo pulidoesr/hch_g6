@@ -6,9 +6,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
 
+
 // Assuming these imports are correct based on your file structure
 import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab'; 
-import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; // <-- NEW IMPORT
+import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; 
+import { useShippingAddress } from '@/lib/checkout-utils'; 
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
@@ -268,6 +270,7 @@ const CheckoutPage: React.FC = () => {
   
   // HERE: Uses the hook to load the cart from Local Storage
   const { cartItems, setCartItems } = useCart();
+  const { shippingAddress, setShippingAddress } = useShippingAddress(); 
 
   const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
     { id: 'cart', name: 'Shopping Cart', icon: ShoppingCart },
@@ -330,6 +333,8 @@ const CheckoutPage: React.FC = () => {
               <ShippingDetailsTab 
                   onNext={handleNext} 
                   onBack={handleBack} 
+                  initialAddress={shippingAddress} // Passa o objeto completo (garantido pelo hook)
+                  onSaveAddress={setShippingAddress} 
               />
           )}
           

@@ -29,3 +29,14 @@ export interface SummaryProps {
     summary: SummaryCalculation;
     shippingDisplay: string;
 }
+
+export interface ShippingAddress {
+  firstName: string;
+  lastName: string;
+  address: string;
+  address2: string;
+  country: string;
+  city: string;
+  zipCode: string;
+  phoneNumber: string;
+}

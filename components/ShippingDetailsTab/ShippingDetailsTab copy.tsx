@@ -1,32 +1,56 @@
-// src/components/checkout/ShippingDetailsTab.tsx
 'use client';
 
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import { ChevronDown, Check, Truck, CreditCard } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { CartItem } from '@/lib/types/checkout';
 
-// =================================================================================
-// ✅ ATENÇÃO: SUBSTITUA OS MOCKS PELAS IMPORTAÇÕES REAIS!
-// =================================================================================
+// --- Reutilizaçãos de Tipos e Hooks da Interação Anterior ---
 
-// 1. TIPOS E CONSTANTES: Importe de lib/checkout-utils.ts (ou onde você definiu)
-// Aqui, importamos a interface ShippingAddress e os utilitários
-// Ajuste os caminhos de importação conforme sua estrutura de pastas.
-import { 
-  useCart, 
-  calculateSummary, 
-  FREE_SHIPPING_THRESHOLD, 
-  SHIPPING_COST_PAID,
-  EXPRESS_SHIPPING_COST,
-  TAXES_RATE,
-  ShippingAddress // Interface completa importada
-} from '@/lib/checkout-utils'; 
+// NOTE: Certifique-se de que CartItem, useCart, calculateSummary e os Hooks
+// de Navegação (onNext, onBack) estão acessíveis ou definidos globalmente.
 
+interface CartItem {
+  id: number;
+  name: string;
+  description: string;
+  unitPrice: number;
+  quantity: number;
+  imageSrc: string;
+}
 
-// 3. TIPAGEM DE FORMULÁRIO (Usamos 'address' e 'country' para inputs)
-// Mantenha o FormData para o estado local, mas ele é estruturalmente idêntico ao ShippingAddress.
+// Simulação do useCart (Substitua pela sua importação real)
+const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
+const useCart = () => {
+    // ... (Definição completa do useCart com useEffect e useState lendo do localStorage)
+    if (typeof window === 'undefined') return { cartItems: [] as CartItem[], setCartItems: () => {} };
+    // Para simplificar, retorna apenas a leitura inicial
+    const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
+    const cartItems = storedCart ? JSON.parse(storedCart) : [];
+    return { cartItems: cartItems as CartItem[], setCartItems: () => {} };
+};
+
+// Constantes
+const TAXES = 13.00;
+const FREE_SHIPPING_THRESHOLD = 200.00;
+const SHIPPING_COST = 20.00;
+const EXPRESS_SHIPPING_COST = 15.00; // Custo de Next Day Delivery
+
+const calculateSummary = (items: CartItem[], shippingValue: number) => {
+  const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  
+  // As taxas são calculadas sobre o subtotal
+  const calculatedTaxes = subtotal * (TAXES / 100); 
+
+  const total = subtotal + shippingValue + calculatedTaxes;
+  
+  return { subtotal, shippingValue, taxes: calculatedTaxes, total };
+};
+
+const COUNTRIES = ['Brazil', 'United States', 'Canada', 'United Kingdom', 'Germany'];
+
+// --- Tipagens do Formulário ---
+
 interface FormData {
   firstName: string;
   lastName: string;
@@ -38,58 +62,14 @@ interface FormData {
   phoneNumber: string;
 }
 
-
-
-const COUNTRIES = ['Brazil', 'United States', 'Canada', 'United Kingdom', 'Germany'];
 type ShippingOption = 'free' | 'express';
 
-// =================================================================================
+// --- Subcomponentes ---
 
-// --- Subcomponentes (mantidos como estavam) ---
-
-// ... (FormField e SummaryProductItem omitidos por brevidade) ...
-
-// --- Componente Principal ---
-
-interface ShippingDetailsTabProps {
-  onNext: () => void;
-  onBack: () => void;
-  onSaveAddress: (addressData: ShippingAddress) => void; 
-  initialAddress: ShippingAddress; // GARANTIDO como objeto completo
-}
-
-export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, initialAddress }: ShippingDetailsTabProps) {
-  const router = useRouter();
-  const { cartItems } = useCart();
-  
- 
-  const [formData, setFormData] = useState<FormData>(() => ({
-    // Mapeamento: initialAddress.campo -> formData.campo
-    firstName: initialAddress.firstName,
-    lastName: initialAddress.lastName,
-    address: initialAddress.street, // Mapeado de street
-    address2: initialAddress.address2,
-    country: initialAddress.country, // Mapeado de state
-    city: initialAddress.city,
-    zipCode: initialAddress.zipCode,
-    phoneNumber: initialAddress.phoneNumber
-  }));
-  
-  const [shippingOption, setShippingOption] = useState<ShippingOption>('free');
-  const [showVoucher, setShowVoucher] = useState(false);
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
-  
-  const selectedShippingValue = useMemo(() => {
-    const subtotal = cartItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
-
-    if (shippingOption === 'free') {
-      return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST_PAID; 
-    } else {
-      return EXPRESS_SHIPPING_COST;
-    }
-  }, [shippingOption, cartItems]);
-
-  const FormField: React.FC<{
+/**
+ * Componente Reutilizável de Input com Label obrigatório e placeholder
+ */
+const FormField: React.FC<{
   id: keyof FormData;
   label: string;
   type?: string;
@@ -106,7 +86,7 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
   return (
     <div className={`flex flex-col mb-4 ${colSpan}`}>
       <label htmlFor={id} className="text-sm font-medium text-gray-700 mb-1">
-        {label} {id !== 'address2' && <span className="text-red-500">*</span>}
+        {label} <span className="text-red-500">*</span>
       </label>
       
       {isSelect ? (
@@ -115,7 +95,7 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
           name={id}
           value={value}
           onChange={onChange}
-          required={id !== 'address2'}
+          required
           className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'}`}
         >
           <option value="" disabled>{placeholder}</option>
@@ -131,7 +111,7 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          required={id !== 'address2'}
+          required
           className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'}`}
         />
       )}
@@ -140,6 +120,10 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
   );
 };
 
+
+/**
+ * Item de Produto no Summary
+ */
 const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   const itemTotal = item.unitPrice * item.quantity;
   return (
@@ -165,29 +149,65 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
       </div>
     </div>
   );
-};  
+};
 
+
+// --- Componente Principal ---
+
+interface ShippingDetailsTabProps {
+  onNext: () => void;
+  onBack: () => void;
+}
+
+export default function ShippingDetailsTab({ onNext, onBack }: ShippingDetailsTabProps) {
+  const router = useRouter();
+  const { cartItems } = useCart();
+  
+  const [formData, setFormData] = useState<FormData>({
+    firstName: '', lastName: '', address: '', address2: '',
+    country: '', city: '', zipCode: '', phoneNumber: ''
+  });
+  
+  const [shippingOption, setShippingOption] = useState<ShippingOption>('free');
+  const [showVoucher, setShowVoucher] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+
+  const selectedShippingValue = useMemo(() => {
+    // Calcula o subtotal do carrinho para verificar o frete grátis
+    const subtotal = cartItems.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+
+    if (shippingOption === 'free') {
+      // Free Shipping padrão: grátis se acima do limite, senão usa o custo padrão
+      return subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+    } else {
+      // Next Day Delivery
+      return EXPRESS_SHIPPING_COST;
+    }
+  }, [shippingOption, cartItems]);
+  
   const summary = useMemo(() => calculateSummary(cartItems, selectedShippingValue), [cartItems, selectedShippingValue]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Limpar o erro ao digitar
     setErrors(prev => ({ ...prev, [name]: undefined }));
   };
 
+  // Validação de Frontend (Simples)
   const validateForm = (): boolean => {
-    // ... (Validação mantida) ...
     const newErrors: typeof errors = {};
     let isValid = true;
-    const phoneRegex = /^\+?(\d[\d\s-()]{6,15})?$/; 
+    const phoneRegex = /^\+?(\d[\d\s-()]{6,15})?$/; // Regex simples para número de telefone
 
-    // Validação de campos obrigatórios (exceto address2)
-    const requiredFields: (keyof FormData)[] = ['firstName', 'lastName', 'address', 'country', 'city', 'zipCode', 'phoneNumber'];
-    requiredFields.forEach(field => {
-        if (!formData[field]) {
-            newErrors[field] = 'Este campo é obrigatório.';
-            isValid = false;
-        }
+    // Validação de campos obrigatórios
+    Object.keys(formData).forEach(key => {
+      const field = key as keyof FormData;
+      if (!formData[field] && field !== 'address2') {
+        newErrors[field] = 'Este campo é obrigatório.';
+        isValid = false;
+      }
     });
 
     // Validação de telefone
@@ -203,19 +223,8 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      
-      const addressToSave: ShippingAddress = {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        street: formData.address,
-        address2: formData.address2,
-        city: formData.city,
-        country: formData.country, 
-        zipCode: formData.zipCode,
-        phoneNumber: formData.phoneNumber,
-      };
-      
-      onSaveAddress(addressToSave);
+      // Simulação de envio para o Backend / Próxima etapa
+      console.log('Dados de envio validados:', formData);
       onNext();
     } else {
       alert('Por favor, preencha todos os campos obrigatórios corretamente.');
@@ -259,9 +268,9 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
                 value={formData.address2} onChange={handleChange}
               />
               
-              {/* Linha 4: Country (State/Region) e City */}
+              {/* Linha 4: Country e City */}
               <FormField 
-                id="country" label="Country / Region" placeholder="Select a region" type="select" options={COUNTRIES}
+                id="country" label="Country" placeholder="Country" type="select" options={COUNTRIES}
                 value={formData.country} onChange={handleChange} validationError={errors.country}
               />
               <FormField 
@@ -397,7 +406,7 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
 
               {/* Taxes */}
               <div className="flex justify-between">
-                <span className="text-gray-600">Taxes ({TAXES_RATE * 100}%)</span>
+                <span className="text-gray-600">Taxes ({TAXES}%)</span>
                 <span className="font-medium">${summary.taxes.toFixed(2)}</span>
               </div>
 
@@ -439,7 +448,7 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
                     Cancel
                 </button>
                 <button
-                    type="submit" 
+                    type="submit" // Usar type="submit" para que a validação frontend seja acionada
                     className="
                         bg-[#7B3F00] text-white py-3 px-8 
                         font-medium rounded-sm shadow-md
