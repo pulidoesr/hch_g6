@@ -10,7 +10,6 @@ import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
 // Assuming these imports are correct based on your file structure
 import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab'; 
 import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; 
-// Importamos useShippingAddress aqui, mas o CartItem mock é mantido para este arquivo
 import { useShippingAddress } from '@/lib/checkout-utils'; 
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
@@ -26,20 +25,27 @@ interface CartItem {
 }
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
 
+// --- PERSISTENT HOOK SIMULATION (FIXED FOR HYDRATION) ---
+// *************************************************************************
+
 const useCart = () => {
-    const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    // 1. Initialize state as EMPTY. Same state on Server and Client to prevent hydration errors.
+    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+    // 2. Load localStorage ONLY after component mounts (Client-side).
+    useEffect(() => {
         if (typeof window !== 'undefined') {
             const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
             try {
-                return storedCart ? JSON.parse(storedCart) : [];
+                const initialCart = storedCart ? JSON.parse(storedCart) : [];
+                setCartItems(initialCart); // Set state after mounting is safe
             } catch (error) {
                 console.error("Error loading cart:", error);
-                return [];
             }
         }
-        return [];
-    });
+    }, []); // Empty dependency array: runs only once on client mount
 
+    // 3. Keep useEffect to save the state.
     useEffect(() => {
         if (typeof window !== 'undefined') {
             localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
@@ -200,10 +206,9 @@ interface ShoppingCartTabProps {
     cartItems: CartItem[];
     setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
     onNext: () => void;
-    onCancel: () => void; // A prop onCancel está na interface
+    onCancel: () => void; // The onCancel prop is in the interface
 }
 
-// ✅ CORREÇÃO AQUI: Desestruturar 'onCancel' das props
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
     
     const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
@@ -224,7 +229,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                     
                     {cartItems.map(item => (
                         <CartItemRow 
-                            key={item.id} 
+                            key={String(item.id)} // Fixed key to string to aid hydration
                             item={item} 
                             onUpdateQuantity={handleUpdateQuantity} 
                         />
@@ -249,8 +254,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </button>
                 
                 <button
-                    // ✅ CORREÇÃO AQUI: Chamar a prop onCancel (que contém handleCancel)
-                    onClick={onCancel} 
+                    onClick={onCancel} // Correctly calls the onCancel prop
                     className="
                         bg-gray-200 text-gray-700 py-3 px-8 
                         font-medium rounded-sm shadow-md
@@ -272,6 +276,7 @@ const CheckoutPage: React.FC = () => {
   
   // Uses the hook to load the cart from Local Storage
   const { cartItems, setCartItems } = useCart();
+  // Assume useShippingAddress also uses a hydration-safe pattern
   const { shippingAddress, setShippingAddress } = useShippingAddress(); 
 
   const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
@@ -283,6 +288,7 @@ const CheckoutPage: React.FC = () => {
   const handleNext = () => {
     if (activeTab === 'cart') setActiveTab('shipping');
     else if (activeTab === 'shipping') setActiveTab('payment');
+    // Add transition to confirmation (review/confirmation) if needed
   };
   
   const handleBack = () => {
@@ -301,7 +307,7 @@ const CheckoutPage: React.FC = () => {
         className={`text-lg font-normal cursor-pointer transition duration-200 ${
           isActive ? 'text-gray-900 border-b border-gray-600 pb-2' : 'text-gray-500'
         }`}
-        // Allows clicking only on previous tabs
+        // Allows clicking only on previous tabs (Standard checkout flow safety)
         onClick={() => index < tabs.findIndex(t => t.id === activeTab) && setActiveTab(tab)}
       >
         <span className="font-semibold mr-1">{index + 1}.</span> {tabs.find(t => t.id === tab)?.name}
@@ -327,7 +333,7 @@ const CheckoutPage: React.FC = () => {
               cartItems={cartItems} 
               setCartItems={setCartItems}
               onNext={handleNext} 
-              onCancel={handleCancel} // ✅ Prop passada corretamente
+              onCancel={handleCancel} // Prop passed correctly
             />
           )}
           
@@ -337,7 +343,7 @@ const CheckoutPage: React.FC = () => {
                   onBack={handleBack} 
                   initialAddress={shippingAddress} 
                   onSaveAddress={setShippingAddress} 
-                  // Você também precisará passar onCancel para ShippingDetailsTab quando for implementá-lo
+                  // You should pass onCancel to ShippingDetailsTab when implementing its buttons
                   // onCancel={handleCancel} 
               />
           )}
@@ -346,7 +352,7 @@ const CheckoutPage: React.FC = () => {
             <PaymentOptionsTab 
                 onNext={handleNext} 
                 onBack={handleBack} 
-                // Você também precisará passar onCancel para PaymentOptionsTab quando for implementá-lo
+                // You should pass onCancel to PaymentOptionsTab when implementing its buttons
                 // onCancel={handleCancel}
             />
           )}
