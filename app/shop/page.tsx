@@ -6,6 +6,7 @@ export default async function CollectionsPage() {
   return (
     <div>
       <RandomCategoryGalleryServer />
+      <hr />
       <OfferCards />
     </div>
   );
