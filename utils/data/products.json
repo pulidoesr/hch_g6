@@ -1,0 +1,4381 @@
+{
+  "collections": [
+    {
+      "id": 1,
+      "name": "Clay & Glaze",
+      "isFeatured": true,
+      "story": "Our Clay & Glaze studio is dedicated to the art of pottery, where each piece is handcrafted from natural clay and finished with unique, durable glazes. We believe in creating functional art that brings warmth to your home.",
+      "imagePath": "/collections/images/clay_&_glaze/institutional_image/clay_glaze.png",
+      "productIds": [
+        "1a",
+        "1b",
+        "1c",
+        "1d",
+        "1e",
+        "1f"
+      ],
+      "recommendedProductIds": [
+        "1g",
+        "1h",
+        "1i"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ethereal Glassworks",
+      "isFeatured": true,
+      "story": "At Ethereal Glassworks, we capture light and color in every piece of blown glass. Our artisans use traditional techniques to create whimsical ornaments and sculptures that look like they belong in a fairytale.",
+      "imagePath": "/collections/images/ethereal_glassworks/institutional_image/ethereal_glassworks.png",
+      "productIds": [
+        "2a",
+        "2b",
+        "2c",
+        "2d",
+        "2e",
+        "2f"
+      ],
+      "recommendedProductIds": [
+        "2g",
+        "2h",
+        "2i"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Glimmerstone Jewels",
+      "isFeatured": true,
+      "story": "Glimmerstone Jewels specializes in handmade, beaded jewelry. Our designers draw inspiration from vibrant cultures and the natural world, selecting each bead for its unique shape, color, and story.",
+      "imagePath": "/collections/images/glimmerstone_jewels/institutional_image/glimmerstone_jewels.png",
+      "productIds": [
+        "3a",
+        "3b",
+        "3c",
+        "3d",
+        "3e",
+        "3f"
+      ],
+      "recommendedProductIds": [
+        "3g",
+        "3h",
+        "3i"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Heritage Leathers",
+      "isFeatured": true,
+      "story": "Heritage Leathers Co. is committed to the timeless craft of leatherwork. We use full-grain leather to create wallets, bags, and accessories that are designed to last a lifetime and develop a beautiful patina over time.",
+      "imagePath": "/collections/images/heritage_leathers/institutional_image/heritage_leathers.png",
+      "productIds": [
+        "4a",
+        "4b",
+        "4c",
+        "4d",
+        "4e",
+        "4f"
+      ],
+      "recommendedProductIds": [
+        "4g",
+        "4h",
+        "4i"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Timbercraft Artisans",
+      "isFeatured": true,
+      "story": "Timbercraft Artisans transforms raw wood into elegant, hand-carved sculptures. Each piece celebrates the natural grain and beauty of the wood, with a focus on intricate detail and organic, flowing forms.",
+      "imagePath": "/collections/images/timbercraft_artisans/institutional_image/timbercraft_artisans.png",
+      "productIds": [
+        "5a",
+        "5b",
+        "5c",
+        "5d",
+        "5e",
+        "5f"
+      ],
+      "recommendedProductIds": [
+        "5g",
+        "5h",
+        "5i"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Wool & Whimsy",
+      "isFeatured": true,
+      "story": "Wool & Whimsy crafts cozy, hand-knitted accessories. We use only the finest natural wool to create warm, soft pieces that are as beautiful as they are comfortable, perfect for cold weather.",
+      "imagePath": "/collections/images/wool_&_whimsy/institutional_image/whool_whimsy.png",
+      "productIds": [
+        "6a",
+        "6b",
+        "6c",
+        "6d",
+        "6e",
+        "6f"
+      ],
+      "recommendedProductIds": [
+        "6g",
+        "6h",
+        "6i"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Paper & Ink",
+      "isFeatured": false,
+      "story": "Paper & Ink is a collective of illustrators and printmakers. We specialize in creating custom stationery, hand-bound journals, and limited-edition prints that celebrate the art of writing and design.",
+      "imagePath": "/collections/images/paper_&_ink/institutional_image/paper_ink.png",
+      "productIds": [
+        "7a",
+        "7b",
+        "7c",
+        "7d",
+        "7e",
+        "7f"
+      ],
+      "recommendedProductIds": [
+        "7g",
+        "7h",
+        "7i"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Stitch & Thread",
+      "isFeatured": false,
+      "story": "The Stitch & Thread workshop focuses on bespoke embroidery and textile art. Every piece is a unique tapestry of intricate patterns and vibrant colors, bringing a touch of personalized elegance to any space.",
+      "imagePath": "/collections/images/stitch_&_thread/institutional_image/stitch_thread.png",
+      "productIds": [
+        "8a",
+        "8b",
+        "8c",
+        "8d",
+        "8e",
+        "8f"
+      ],
+      "recommendedProductIds": [
+        "8g",
+        "8h",
+        "8i"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Wicker & Weave",
+      "isFeatured": false,
+      "story": "Wicker & Weave creates beautiful, handcrafted furniture and decor from natural fibers. Our artisans use traditional weaving techniques to produce durable and elegant pieces that blend seamlessly with any rustic or modern design.",
+      "imagePath": "/collections/images/wicker_&_weave/institutional_image/wicker_weave.png",
+      "productIds": [
+        "9a",
+        "9b",
+        "9c",
+        "9d",
+        "9e",
+        "9f"
+      ],
+      "recommendedProductIds": [
+        "9g",
+        "9h",
+        "9i"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Forged Metals",
+      "isFeatured": false,
+      "story": "Forged Metals is a studio dedicated to the ancient craft of blacksmithing. Our artisans forge unique iron and steel sculptures, tools, and home goods that combine raw strength with refined artistry.",
+      "imagePath": "/collections/images/forged_metals/institutional_image/forged_metals.png",
+      "productIds": [
+        "10a",
+        "10b",
+        "10c",
+        "10d",
+        "10e",
+        "10f"
+      ],
+      "recommendedProductIds": [
+        "10g",
+        "10h",
+        "10i"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Canvas & Brush",
+      "isFeatured": false,
+      "story": "Canvas & Brush is an artist-led studio where every painting tells a story. We specialize in a variety of mediums, from vivid oil paintings to subtle watercolors, capturing landscapes and portraits with deep emotion.",
+      "imagePath": "/collections/images/canvas_&_brush/institutional_image/canvas_brush.png",
+      "productIds": [
+        "11a",
+        "11b",
+        "11c",
+        "11d",
+        "11e",
+        "11f"
+      ],
+      "recommendedProductIds": [
+        "11g",
+        "11h",
+        "11i"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "1a",
+      "name": "Ceramic Vase",
+      "imageUrl": "/collections/images/clay_&_glaze/ceramic_vase.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/ceramic_vase.png",
+        "/collections/images/clay_&_glaze/ceramic_vase_top.png",
+        "/collections/images/clay_&_glaze/ceramic_vase_styled.png"
+      ],
+      "price": 55.0,
+      "description": "Elegant ceramic vase, hand-painted with a smooth, durable finish. Perfect for fresh or dried flowers.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-18",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-09-06",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-08",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-07-29",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-21",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "1b",
+      "name": "Glazed Bowl",
+      "imageUrl": "/collections/images/clay_&_glaze/glased_bowl.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/glased_bowl.png",
+        "/collections/images/clay_&_glaze/glased_bowl.png",
+        "/collections/images/clay_&_glaze/glased_bowl.png"
+      ],
+      "price": 35.0,
+      "description": "Hand-thrown glazed bowl with a unique speckled pattern. Ideal for serving salads or as a decorative piece.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-21",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-07",
+          "comment": "Not bad, but I expected better packaging."
+        }
+      ]
+    },
+    {
+      "id": "1c",
+      "name": "Hand-thrown Mug",
+      "imageUrl": "/collections/images/clay_&_glaze/hand_thrown_mug.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/hand_thrown_mug.png",
+        "/collections/images/clay_&_glaze/hand_thrown_mug.png",
+        "/collections/images/clay_&_glaze/hand_thrown_mug.png"
+      ],
+      "price": 22.5,
+      "description": "A sturdy hand-thrown mug with an ergonomic handle. Keeps your morning coffee or tea warm.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.4,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-07-30",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-04",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-24",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-06",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-04",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "1d",
+      "name": "Terracotta Jar",
+      "imageUrl": "/collections/images/clay_&_glaze/terracotta_jar.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/terracotta_jar.png",
+        "/collections/images/clay_&_glaze/terracotta_jar.png",
+        "/collections/images/clay_&_glaze/terracotta_jar.png"
+      ],
+      "price": 45.0,
+      "description": "A classic terracotta jar for storage or decoration, perfect for adding a rustic touch to your kitchen.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-09-11",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-14",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-21",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-07-29",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-04",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "1e",
+      "name": "Clay Plate",
+      "imageUrl": "/collections/images/clay_&_glaze/clay_plate.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/clay_plate.png",
+        "/collections/images/clay_&_glaze/clay_plate.png",
+        "/collections/images/clay_&_glaze/clay_plate.png"
+      ],
+      "price": 28.0,
+      "description": "A minimalist clay plate with a natural, unglazed finish. Great for everyday use or special occasions.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.4,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-07-27",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-08",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-21",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-14",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "1f",
+      "name": "Figurine Sculpture",
+      "imageUrl": "/collections/images/clay_&_glaze/figurine_sculpture.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/figurine_sculpture.png",
+        "/collections/images/clay_&_glaze/figurine_sculpture.png",
+        "/collections/images/clay_&_glaze/figurine_sculpture.png"
+      ],
+      "price": 75.0,
+      "description": "A delicate figurine sculpture, hand-carved from clay. Adds an artistic element to any shelf or table.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-08-03",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-04",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-19",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-08-24",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-04",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "1g",
+      "name": "Ceramic Coasters",
+      "imageUrl": "/collections/images/clay_&_glaze/ceramic_coasters.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/ceramic_coasters.png",
+        "/collections/images/clay_&_glaze/ceramic_coasters.png",
+        "/collections/images/clay_&_glaze/ceramic_coasters.png"
+      ],
+      "price": 25.99,
+      "description": "Handcrafted ceramic coasters with a unique glaze finish, perfect for protecting your surfaces.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.4,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-08-05",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-02",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-23",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-16",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-24",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "1h",
+      "name": "Pottery Mixing Bowl Set",
+      "imageUrl": "/collections/images/clay_&_glaze/pottery_mixing_bowl_set.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/pottery_mixing_bowl_set.png",
+        "/collections/images/clay_&_glaze/pottery_mixing_bowl_set.png",
+        "/collections/images/clay_&_glaze/pottery_mixing_bowl_set.png"
+      ],
+      "price": 65.5,
+      "description": "A set of durable pottery mixing bowls, ideal for baking and meal prep.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.5,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-14",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "1i",
+      "name": "Sake Cup Set",
+      "imageUrl": "/collections/images/clay_&_glaze/sake_cup_set.png",
+      "imageUrls": [
+        "/collections/images/clay_&_glaze/sake_cup_set.png",
+        "/collections/images/clay_&_glaze/sake_cup_set.png",
+        "/collections/images/clay_&_glaze/sake_cup_set.png"
+      ],
+      "price": 32.75,
+      "description": "A traditional set of hand-thrown sake cups, perfect for enjoying your favorite beverages.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 5.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-19",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-09-16",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "2a",
+      "name": "Blown Glass Vase",
+      "imageUrl": "/collections/images/ethereal_glassworks/blown_glass_vase.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/blown_glass_vase.png",
+        "/collections/images/ethereal_glassworks/blown_glass_vase.png",
+        "/collections/images/ethereal_glassworks/blown_glass_vase.png"
+      ],
+      "price": 85.0,
+      "description": "An elegant, hand-blown glass vase that captures light and color beautifully. A true centerpiece for your home.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-20",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-09",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-29",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-09-05",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-17",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "2b",
+      "name": "Glass Paperweight",
+      "imageUrl": "/collections/images/ethereal_glassworks/glass_paperweight.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/glass_paperweight.png",
+        "/collections/images/ethereal_glassworks/glass_paperweight.png",
+        "/collections/images/ethereal_glassworks/glass_paperweight.png"
+      ],
+      "price": 25.0,
+      "description": "A vibrant glass paperweight with a swirling inner design. Adds a pop of color to any desk.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-19",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-10",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-07-25",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-16",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-19",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "2c",
+      "name": "Crystal Orb",
+      "imageUrl": "/collections/images/ethereal_glassworks/crystal_orb.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/crystal_orb.png",
+        "/collections/images/ethereal_glassworks/crystal_orb.png",
+        "/collections/images/ethereal_glassworks/crystal_orb.png"
+      ],
+      "price": 45.0,
+      "description": "A perfectly smooth crystal orb, ideal for display or meditation. Captures and refracts light in a magical way.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-09-11",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-11",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-27",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "2d",
+      "name": "Stained Glass Panel",
+      "imageUrl": "/collections/images/ethereal_glassworks/stained_glass_panel.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/stained_glass_panel.png",
+        "/collections/images/ethereal_glassworks/stained_glass_panel.png",
+        "/collections/images/ethereal_glassworks/stained_glass_panel.png"
+      ],
+      "price": 120.0,
+      "description": "A handcrafted stained glass panel with intricate patterns. Perfect for a window or as wall decor.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-03",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-14",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-16",
+          "comment": "Not bad, but I expected better packaging."
+        }
+      ]
+    },
+    {
+      "id": "2e",
+      "name": "Glass Bell",
+      "imageUrl": "/collections/images/ethereal_glassworks/glass_bell.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/glass_bell.png",
+        "/collections/images/ethereal_glassworks/glass_bell.png",
+        "/collections/images/ethereal_glassworks/glass_bell.png"
+      ],
+      "price": 30.0,
+      "description": "A delicate glass bell that produces a clear, beautiful chime. A charming addition to any collection.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-08-14",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-09-04",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-09-10",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "2f",
+      "name": "Blown Glass Ornament",
+      "imageUrl": "/collections/images/ethereal_glassworks/blown_glass_ornament.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/blown_glass_ornament.png",
+        "/collections/images/ethereal_glassworks/blown_glass_ornament.png",
+        "/collections/images/ethereal_glassworks/blown_glass_ornament.png"
+      ],
+      "price": 18.0,
+      "description": "A whimsical blown glass ornament, each one unique. Adds a festive or decorative touch all year round.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-09-09",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-14",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-07-27",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-24",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-01",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "2g",
+      "name": "Glass Tumbler Set",
+      "imageUrl": "/collections/images/ethereal_glassworks/glass_tumbler_set.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/glass_tumbler_set.png",
+        "/collections/images/ethereal_glassworks/glass_tumbler_set.png",
+        "/collections/images/ethereal_glassworks/glass_tumbler_set.png"
+      ],
+      "price": 49.9,
+      "description": "A set of beautifully crafted glass tumblers, perfect for daily use or special occasions.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-07-28",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-07-29",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-08",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "2h",
+      "name": "Glass Decanter",
+      "imageUrl": "/collections/images/ethereal_glassworks/glass_decanter.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/glass_decanter.png",
+        "/collections/images/ethereal_glassworks/glass_decanter.png",
+        "/collections/images/ethereal_glassworks/glass_decanter.png"
+      ],
+      "price": 89.99,
+      "description": "An elegant glass decanter designed to aerate your favorite wines.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.4,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-11",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-30",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-05",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "2i",
+      "name": "Glass Coasters",
+      "imageUrl": "/collections/images/ethereal_glassworks/glass_coasters.png",
+      "imageUrls": [
+        "/collections/images/ethereal_glassworks/glass_coasters.png",
+        "/collections/images/ethereal_glassworks/glass_coasters.png",
+        "/collections/images/ethereal_glassworks/glass_coasters.png"
+      ],
+      "price": 28.0,
+      "description": "Hand-blown glass coasters that add a touch of color and whimsy to your home decor.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-09-14",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-16",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-05",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-17",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-06",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "3a",
+      "name": "Beaded Necklace",
+      "imageUrl": "/collections/images/glimmerstone_jewels/beaded_necklace.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/beaded_necklace.png",
+        "/collections/images/glimmerstone_jewels/beaded_necklace.png",
+        "/collections/images/glimmerstone_jewels/beaded_necklace.png"
+      ],
+      "price": 42.0,
+      "description": "A vibrant beaded necklace, handcrafted with a unique mix of colors and shapes. A perfect accessory for any outfit.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-20",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-09",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-09-02",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-20",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-11",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "3b",
+      "name": "Gemstone Bracelet",
+      "imageUrl": "/collections/images/glimmerstone_jewels/gemstone_bracelet.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/gemstone_bracelet.png",
+        "/collections/images/glimmerstone_jewels/gemstone_bracelet.png",
+        "/collections/images/glimmerstone_jewels/gemstone_bracelet.png"
+      ],
+      "price": 65.0,
+      "description": "A beautiful bracelet featuring a selection of natural gemstones. Each stone is chosen for its unique properties and beauty.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-08",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-08-18",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-09-11",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "3c",
+      "name": "Crystal Earrings",
+      "imageUrl": "/collections/images/glimmerstone_jewels/crystal_earrings.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/crystal_earrings.png",
+        "/collections/images/glimmerstone_jewels/crystal_earrings.png",
+        "/collections/images/glimmerstone_jewels/crystal_earrings.png"
+      ],
+      "price": 50.0,
+      "description": "Delicate crystal earrings that catch the light with every movement. A subtle yet elegant addition to your jewelry box.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.6,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-09-05",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-08-14",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-10",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-29",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-15",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "3d",
+      "name": "Pendant Charm",
+      "imageUrl": "/collections/images/glimmerstone_jewels/pendant_charm.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/pendant_charm.png",
+        "/collections/images/glimmerstone_jewels/pendant_charm.png",
+        "/collections/images/glimmerstone_jewels/pendant_charm.png"
+      ],
+      "price": 25.0,
+      "description": "A unique pendant charm, intricately designed. Can be added to a necklace or bracelet for a personal touch.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-09-03",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-18",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-02",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "3e",
+      "name": "Silver Ring",
+      "imageUrl": "/collections/images/glimmerstone_jewels/silver_ring.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/silver_ring.png",
+        "/collections/images/glimmerstone_jewels/silver_ring.png",
+        "/collections/images/glimmerstone_jewels/silver_ring.png"
+      ],
+      "price": 75.0,
+      "description": "A handcrafted silver ring with a polished finish. Simple and classic, perfect for daily wear.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-11",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-08-16",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-23",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "3f",
+      "name": "Pearl Brooch",
+      "imageUrl": "/collections/images/glimmerstone_jewels/pearl_brooch.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/pearl_brooch.png",
+        "/collections/images/glimmerstone_jewels/pearl_brooch.png",
+        "/collections/images/glimmerstone_jewels/pearl_brooch.png"
+      ],
+      "price": 90.0,
+      "description": "An elegant pearl brooch, set in a delicate frame. A timeless accessory for jackets, scarves, or hats.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-24",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-09-20",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-09-01",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "3g",
+      "name": "Garnet Pendant",
+      "imageUrl": "/collections/images/glimmerstone_jewels/garnet_pendant.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/garnet_pendant.png",
+        "/collections/images/glimmerstone_jewels/garnet_pendant.png",
+        "/collections/images/glimmerstone_jewels/garnet_pendant.png"
+      ],
+      "price": 120.0,
+      "description": "A stunning garnet pendant set in a delicate silver frame, symbolizing passion and strength.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-27",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-08-26",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "3h",
+      "name": "Turquoise Ring",
+      "imageUrl": "/collections/images/glimmerstone_jewels/turquoise_ring.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/turquoise_ring.png",
+        "/collections/images/glimmerstone_jewels/turquoise_ring.png",
+        "/collections/images/glimmerstone_jewels/turquoise_ring.png"
+      ],
+      "price": 95.5,
+      "description": "A handcrafted silver ring featuring a vibrant turquoise gemstone, perfect for a pop of color.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-09-05",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-03",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-26",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "3i",
+      "name": "Amethyst Earrings",
+      "imageUrl": "/collections/images/glimmerstone_jewels/amethyst_earrings.png",
+      "imageUrls": [
+        "/collections/images/glimmerstone_jewels/amethyst_earrings.png",
+        "/collections/images/glimmerstone_jewels/amethyst_earrings.png",
+        "/collections/images/glimmerstone_jewels/amethyst_earrings.png"
+      ],
+      "price": 78.99,
+      "description": "Elegant amethyst earrings that capture light and add a touch of royalty to any outfit.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.5,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-19",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-07",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "4a",
+      "name": "Leather Wallet",
+      "imageUrl": "/collections/images/heritage_leathers/leather_wallet.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_wallet.png",
+        "/collections/images/heritage_leathers/leather_wallet.png",
+        "/collections/images/heritage_leathers/leather_wallet.png"
+      ],
+      "price": 55.0,
+      "description": "A classic bi-fold leather wallet, hand-stitched for durability. Designed to age beautifully with use.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-09-22",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-07-27",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-04",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "4b",
+      "name": "Satchel Bag",
+      "imageUrl": "/collections/images/heritage_leathers/satchel_bag.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/satchel_bag.png",
+        "/collections/images/heritage_leathers/satchel_bag.png",
+        "/collections/images/heritage_leathers/satchel_bag.png"
+      ],
+      "price": 150.0,
+      "description": "A timeless leather satchel bag with multiple compartments. Perfect for work or travel.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-31",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-07-29",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-08-28",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-25",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "4c",
+      "name": "Leather Belt",
+      "imageUrl": "/collections/images/heritage_leathers/leather_belt.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_belt.png",
+        "/collections/images/heritage_leathers/leather_belt.png",
+        "/collections/images/heritage_leathers/leather_belt.png"
+      ],
+      "price": 40.0,
+      "description": "A full-grain leather belt with a solid brass buckle. A sturdy and stylish accessory that lasts a lifetime.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-14",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-07-25",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-09",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "4d",
+      "name": "Key Fob",
+      "imageUrl": "/collections/images/heritage_leathers/key_fob.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/key_fob.png",
+        "/collections/images/heritage_leathers/key_fob.png",
+        "/collections/images/heritage_leathers/key_fob.png"
+      ],
+      "price": 15.0,
+      "description": "A simple and elegant leather key fob. Keeps your keys organized and adds a touch of class.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-15",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-07-25",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-15",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-09-21",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "4e",
+      "name": "Journal Cover",
+      "imageUrl": "/collections/images/heritage_leathers/journal_cover.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/journal_cover.png",
+        "/collections/images/heritage_leathers/journal_cover.png",
+        "/collections/images/heritage_leathers/journal_cover.png"
+      ],
+      "price": 60.0,
+      "description": "A rugged leather cover for your journal or notebook. Protects your thoughts and memories in style.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-07-25",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-07-29",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "4f",
+      "name": "Leather Card Holder",
+      "imageUrl": "/collections/images/heritage_leathers/leather_card_holder.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_card_holder.png",
+        "/collections/images/heritage_leathers/leather_card_holder.png",
+        "/collections/images/heritage_leathers/leather_card_holder.png"
+      ],
+      "price": 25.0,
+      "description": "A slim leather card holder, perfect for carrying essentials. Minimalist and functional.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-07-25",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-29",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-09-11",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-14",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "4g",
+      "name": "Leather Passport Holder",
+      "imageUrl": "/collections/images/heritage_leathers/leather_passport_holder.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_passport_holder.png",
+        "/collections/images/heritage_leathers/leather_passport_holder.png",
+        "/collections/images/heritage_leathers/leather_passport_holder.png"
+      ],
+      "price": 55.0,
+      "description": "Keep your passport safe and stylish with this handcrafted full-grain leather holder.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-08-18",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-08",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-25",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "4h",
+      "name": "Leather Laptop Sleeve",
+      "imageUrl": "/collections/images/heritage_leathers/leather_laptop_sleeve.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_laptop_sleeve.png",
+        "/collections/images/heritage_leathers/leather_laptop_sleeve.png",
+        "/collections/images/heritage_leathers/leather_laptop_sleeve.png"
+      ],
+      "price": 115.0,
+      "description": "A sleek and protective leather sleeve for your laptop, designed for durability and elegance.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.0,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-22",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-09-06",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "4i",
+      "name": "Leather Cord Organizer",
+      "imageUrl": "/collections/images/heritage_leathers/leather_cord_organizer.png",
+      "imageUrls": [
+        "/collections/images/heritage_leathers/leather_cord_organizer.png",
+        "/collections/images/heritage_leathers/leather_cord_organizer.png",
+        "/collections/images/heritage_leathers/leather_cord_organizer.png"
+      ],
+      "price": 18.5,
+      "description": "A small but essential accessory to keep your headphones and charging cords organized.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-12",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-09-09",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-09-15",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "5a",
+      "name": "Carved Wood Statue",
+      "imageUrl": "/collections/images/timbercraft_artisans/carved_wood_statue.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/carved_wood_statue.png",
+        "/collections/images/timbercraft_artisans/carved_wood_statue.png",
+        "/collections/images/timbercraft_artisans/carved_wood_statue.png"
+      ],
+      "price": 95.0,
+      "description": "An intricate hand-carved wood statue, showcasing the natural grain and organic forms of the wood.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-23",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-09-08",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "5b",
+      "name": "Wooden Bowl",
+      "imageUrl": "/collections/images/timbercraft_artisans/wooden_bowl.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/wooden_bowl.png",
+        "/collections/images/timbercraft_artisans/wooden_bowl.png",
+        "/collections/images/timbercraft_artisans/wooden_bowl.png"
+      ],
+      "price": 45.0,
+      "description": "A beautiful wooden bowl, perfect for serving or as a decorative piece. Highlights the natural beauty of the timber.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-07",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-07-31",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "5c",
+      "name": "Hand-carved Spoon",
+      "imageUrl": "/collections/images/timbercraft_artisans/hand_carved_spoon.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/hand_carved_spoon.png",
+        "/collections/images/timbercraft_artisans/hand_carved_spoon.png",
+        "/collections/images/timbercraft_artisans/hand_carved_spoon.png"
+      ],
+      "price": 20.0,
+      "description": "A unique hand-carved wooden spoon, ideal for a rustic kitchen or as a collector's item.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-09-07",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-08",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-20",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "5d",
+      "name": "Wooden Tray",
+      "imageUrl": "/collections/images/timbercraft_artisans/wooden_tray.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/wooden_tray.png",
+        "/collections/images/timbercraft_artisans/wooden_tray.png",
+        "/collections/images/timbercraft_artisans/wooden_tray.png"
+      ],
+      "price": 60.0,
+      "description": "A versatile wooden tray, perfect for serving snacks or as a stylish catch-all for your entryway.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-09",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-09-21",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "5e",
+      "name": "Decorative Box",
+      "imageUrl": "/collections/images/timbercraft_artisans/decorative_box.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/decorative_box.png",
+        "/collections/images/timbercraft_artisans/decorative_box.png",
+        "/collections/images/timbercraft_artisans/decorative_box.png"
+      ],
+      "price": 35.0,
+      "description": "A small decorative wooden box with a carved lid. Ideal for storing jewelry, keepsakes, or other small treasures.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-09-10",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-22",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-28",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-28",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "5f",
+      "name": "Coasters",
+      "imageUrl": "/collections/images/timbercraft_artisans/coasters.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/coasters.png",
+        "/collections/images/timbercraft_artisans/coasters.png",
+        "/collections/images/timbercraft_artisans/coasters.png"
+      ],
+      "price": 25.0,
+      "description": "A set of hand-carved wooden coasters. Protects your furniture with a rustic and elegant touch.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-11",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-21",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-21",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-23",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "5g",
+      "name": "Wooden Cutting Board",
+      "imageUrl": "/collections/images/timbercraft_artisans/wooden_cutting_board.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/wooden_cutting_board.png",
+        "/collections/images/timbercraft_artisans/wooden_cutting_board.png",
+        "/collections/images/timbercraft_artisans/wooden_cutting_board.png"
+      ],
+      "price": 45.0,
+      "description": "A robust and beautiful wooden cutting board, ideal for food preparation or serving.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-07-27",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-09-01",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-09-15",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "5h",
+      "name": "Wood-turned Salt Cellar",
+      "imageUrl": "/collections/images/timbercraft_artisans/wood_turned_salt_cellar.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/wood_turned_salt_cellar.png",
+        "/collections/images/timbercraft_artisans/wood_turned_salt_cellar.png",
+        "/collections/images/timbercraft_artisans/wood_turned_salt_cellar.png"
+      ],
+      "price": 29.99,
+      "description": "A classic wood-turned salt cellar to keep your favorite salts close at hand while cooking.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-24",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-27",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "5i",
+      "name": "Hand-carved Whistle",
+      "imageUrl": "/collections/images/timbercraft_artisans/hand_carved_whistle.png",
+      "imageUrls": [
+        "/collections/images/timbercraft_artisans/hand_carved_whistle.png",
+        "/collections/images/timbercraft_artisans/hand_carved_whistle.png",
+        "/collections/images/timbercraft_artisans/hand_carved_whistle.png"
+      ],
+      "price": 15.0,
+      "description": "A small, intricately hand-carved wooden whistle, perfect as a unique gift or collector's item.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-01",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-27",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "6a",
+      "name": "Knitted Scarf",
+      "imageUrl": "/collections/images/wool_&_whimsy/knitted_scarf.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/knitted_scarf.png",
+        "/collections/images/wool_&_whimsy/knitted_scarf.png",
+        "/collections/images/wool_&_whimsy/knitted_scarf.png"
+      ],
+      "price": 50.0,
+      "description": "A soft, hand-knitted scarf made from natural wool. Provides warmth and style on cold days.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-09-09",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-12",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-14",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-12",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "6b",
+      "name": "Wool Beanie",
+      "imageUrl": "/collections/images/wool_&_whimsy/wool_beanie.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/wool_beanie.png",
+        "/collections/images/wool_&_whimsy/wool_beanie.png",
+        "/collections/images/wool_&_whimsy/wool_beanie.png"
+      ],
+      "price": 30.0,
+      "description": "A cozy wool beanie, hand-knitted for a snug fit. Keeps you warm during winter adventures.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-07-29",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-08-31",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-09-15",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-09-17",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-01",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "6c",
+      "name": "Hand-knit Gloves",
+      "imageUrl": "/collections/images/wool_&_whimsy/hand-knit_gloves.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/hand-knit_gloves.png",
+        "/collections/images/wool_&_whimsy/hand-knit_gloves.png",
+        "/collections/images/wool_&_whimsy/hand-knit_gloves.png"
+      ],
+      "price": 25.0,
+      "description": "Warm and comfortable hand-knit gloves, perfect for keeping your hands toasty on chilly mornings.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-05",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-08-11",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-07-29",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "6d",
+      "name": "Wool Blanket",
+      "imageUrl": "/collections/images/wool_&_whimsy/wool_blanket.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/wool_blanket.png",
+        "/collections/images/wool_&_whimsy/wool_blanket.png",
+        "/collections/images/wool_&_whimsy/wool_blanket.png"
+      ],
+      "price": 150.0,
+      "description": "A luxurious wool blanket, hand-knitted with a chunky stitch. Ideal for cozying up on the sofa or as a bed throw.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.0,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-16",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-12",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-16",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "6e",
+      "name": "Woolen Socks",
+      "imageUrl": "/collections/images/wool_&_whimsy/woolen_socks.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/woolen_socks.png",
+        "/collections/images/wool_&_whimsy/woolen_socks.png",
+        "/collections/images/wool_&_whimsy/woolen_socks.png"
+      ],
+      "price": 18.0,
+      "description": "Super soft woolen socks, hand-knitted for ultimate comfort. Keeps your feet warm and dry.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-09",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-09-11",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-15",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "6f",
+      "name": "Knitted Sweater",
+      "imageUrl": "/collections/images/wool_&_whimsy/knitted_sweater.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/knitted_sweater.png",
+        "/collections/images/wool_&_whimsy/knitted_sweater.png",
+        "/collections/images/wool_&_whimsy/knitted_sweater.png"
+      ],
+      "price": 85.0,
+      "description": "A classic knitted sweater, made from fine natural wool. Combines comfort, warmth, and timeless style.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-28",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-17",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-13",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-23",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "6g",
+      "name": "Wool Headband",
+      "imageUrl": "/collections/images/wool_&_whimsy/wool_headband.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/wool_headband.png",
+        "/collections/images/wool_&_whimsy/wool_headband.png",
+        "/collections/images/wool_&_whimsy/wool_headband.png"
+      ],
+      "price": 12.99,
+      "description": "A cozy, hand-knitted wool headband to keep your ears warm in style.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-09-12",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-17",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "6h",
+      "name": "Felted Slippers",
+      "imageUrl": "/collections/images/wool_&_whimsy/felted_slippers.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/felted_slippers.png",
+        "/collections/images/wool_&_whimsy/felted_slippers.png",
+        "/collections/images/wool_&_whimsy/felted_slippers.png"
+      ],
+      "price": 38.0,
+      "description": "Soft and warm felted slippers, handcrafted for ultimate comfort at home.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-05",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-08-08",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-07-29",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "6i",
+      "name": "Knitted Dog Sweater",
+      "imageUrl": "/collections/images/wool_&_whimsy/knitted_dog_sweater.png",
+      "imageUrls": [
+        "/collections/images/wool_&_whimsy/knitted_dog_sweater.png",
+        "/collections/images/wool_&_whimsy/knitted_dog_sweater.png",
+        "/collections/images/wool_&_whimsy/knitted_dog_sweater.png"
+      ],
+      "price": 24.5,
+      "description": "A charming knitted sweater to keep your furry friend cozy during cold days.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-07-30",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-24",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "7a",
+      "name": "Hand-bound Journal",
+      "imageUrl": "/collections/images/paper_&_ink/hand_bound_journal.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/hand_bound_journal.png",
+        "/collections/images/paper_&_ink/hand_bound_journal.png",
+        "/collections/images/paper_&_ink/hand_bound_journal.png"
+      ],
+      "price": 45.0,
+      "description": "A beautifully hand-bound journal with high-quality paper. Perfect for writing, sketching, or journaling.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-17",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-22",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-28",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "7b",
+      "name": "Letterpress Prints",
+      "imageUrl": "/collections/images/paper_&_ink/letterpress_prints.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/letterpress_prints.png",
+        "/collections/images/paper_&_ink/letterpress_prints.png",
+        "/collections/images/paper_&_ink/letterpress_prints.png"
+      ],
+      "price": 25.0,
+      "description": "Limited-edition letterpress prints with unique designs. Each print is a piece of art in itself.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-08-19",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "7c",
+      "name": "Custom Stationery",
+      "imageUrl": "/collections/images/paper_&_ink/custom_stationery.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/custom_stationery.png",
+        "/collections/images/paper_&_ink/custom_stationery.png",
+        "/collections/images/paper_&_ink/custom_stationery.png"
+      ],
+      "price": 50.0,
+      "description": "Personalized stationery sets with your name or custom design. Perfect for elegant correspondence.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-24",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-04",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-16",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "7d",
+      "name": "Artistic Note Cards",
+      "imageUrl": "/collections/images/paper_&_ink/artistic_note_cards.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/artistic_note_cards.png",
+        "/collections/images/paper_&_ink/artistic_note_cards.png",
+        "/collections/images/paper_&_ink/artistic_note_cards.png"
+      ],
+      "price": 18.0,
+      "description": "A set of note cards featuring original artistic designs. Ideal for short messages and personal notes.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-21",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-07-29",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-19",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-25",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "7e",
+      "name": "Sketchbook",
+      "imageUrl": "/collections/images/paper_&_ink/sketchbook.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/sketchbook.png",
+        "/collections/images/paper_&_ink/sketchbook.png",
+        "/collections/images/paper_&_ink/sketchbook.png"
+      ],
+      "price": 22.0,
+      "description": "A high-quality sketchbook with thick, durable paper. Perfect for artists of all levels.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-09",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-15",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-09",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "7f",
+      "name": "Ink Pen Set",
+      "imageUrl": "/collections/images/paper_&_ink/ink_pen_set.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/ink_pen_set.png",
+        "/collections/images/paper_&_ink/ink_pen_set.png",
+        "/collections/images/paper_&_ink/ink_pen_set.png"
+      ],
+      "price": 35.0,
+      "description": "A complete set of ink pens with various tips and colors. Ideal for drawing, calligraphy, and writing.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-08-19",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-07-30",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-23",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-07-31",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "7g",
+      "name": "Handmade Envelopes",
+      "imageUrl": "/collections/images/paper_&_ink/handmade_envelopes.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/handmade_envelopes.png",
+        "/collections/images/paper_&_ink/handmade_envelopes.png",
+        "/collections/images/paper_&_ink/handmade_envelopes.png"
+      ],
+      "price": 15.0,
+      "description": "Handmade envelopes crafted with care, perfect for sending personalized letters and cards.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.3,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-28",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-09-15",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-03",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "7h",
+      "name": "Calligraphy Set",
+      "imageUrl": "/collections/images/paper_&_ink/calligraphy_set.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/calligraphy_set.png",
+        "/collections/images/paper_&_ink/calligraphy_set.png",
+        "/collections/images/paper_&_ink/calligraphy_set.png"
+      ],
+      "price": 35.99,
+      "description": "A complete calligraphy set for beginners and enthusiasts to master the art of elegant writing.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-07-27",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-07-27",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-09-07",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "7i",
+      "name": "Personalized Wax Seal",
+      "imageUrl": "/collections/images/paper_&_ink/personalized_wax_seal.png",
+      "imageUrls": [
+        "/collections/images/paper_&_ink/personalized_wax_seal.png",
+        "/collections/images/paper_&_ink/personalized_wax_seal.png",
+        "/collections/images/paper_&_ink/personalized_wax_seal.png"
+      ],
+      "price": 28.5,
+      "description": "Add a touch of vintage elegance to your correspondence with a personalized wax seal.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-09-12",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-15",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "8a",
+      "name": "Embroidered Patch",
+      "imageUrl": "/collections/images/stitch_&_thread/embroidered_patch.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/embroidered_patch.png",
+        "/collections/images/stitch_&_thread/embroidered_patch.png",
+        "/collections/images/stitch_&_thread/embroidered_patch.png"
+      ],
+      "price": 15.0,
+      "description": "A hand-embroidered patch with a unique design. Perfect for adding a personalized touch to jackets or bags.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-21",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-08-30",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "8b",
+      "name": "Textile Art",
+      "imageUrl": "/collections/images/stitch_&_thread/textile_art.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/textile_art.png",
+        "/collections/images/stitch_&_thread/textile_art.png",
+        "/collections/images/stitch_&_thread/textile_art.png"
+      ],
+      "price": 75.0,
+      "description": "A unique piece of textile art, hand-stitched with intricate patterns and vibrant colors. A beautiful wall decoration.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-16",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-08-25",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-09",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "8c",
+      "name": "Hand-stitched Tapestry",
+      "imageUrl": "/collections/images/stitch_&_thread/hand_stitched_tapestry.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/hand_stitched_tapestry.png",
+        "/collections/images/stitch_&_thread/hand_stitched_tapestry.png",
+        "/collections/images/stitch_&_thread/hand_stitched_tapestry.png"
+      ],
+      "price": 120.0,
+      "description": "A large hand-stitched tapestry, perfect for a statement piece in any room. A true work of art.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-18",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-30",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-11",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "8d",
+      "name": "Patterned Cushion",
+      "imageUrl": "/collections/images/stitch_&_thread/patterned_cushion.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/patterned_cushion.png",
+        "/collections/images/stitch_&_thread/patterned_cushion.png",
+        "/collections/images/stitch_&_thread/patterned_cushion.png"
+      ],
+      "price": 35.0,
+      "description": "A decorative cushion with a hand-embroidered pattern. Adds a touch of elegance to your sofa or bed.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 4,
+          "date": "2025-09-01",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-15",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "8e",
+      "name": "Silk Ribbon Art",
+      "imageUrl": "/collections/images/stitch_&_thread/silk_ribbon_art.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/silk_ribbon_art.png",
+        "/collections/images/stitch_&_thread/silk_ribbon_art.png",
+        "/collections/images/stitch_&_thread/silk_ribbon_art.png"
+      ],
+      "price": 60.0,
+      "description": "A delicate piece of art created with hand-embroidered silk ribbons. Features floral and nature-inspired designs.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.5,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-22",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-07-29",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "8f",
+      "name": "Custom Embroidered Bag",
+      "imageUrl": "/collections/images/stitch_&_thread/custom_embroined_bag.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/custom_embroined_bag.png",
+        "/collections/images/stitch_&_thread/custom_embroined_bag.png",
+        "/collections/images/stitch_&_thread/custom_embroined_bag.png"
+      ],
+      "price": 85.0,
+      "description": "A custom-embroidered canvas bag, perfect for personal gifts or everyday use.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-09-01",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "8g",
+      "name": "Embroidered Wall Hoop",
+      "imageUrl": "/collections/images/stitch_&_thread/embroidered_wall_hoop.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/embroidered_wall_hoop.png",
+        "/collections/images/stitch_&_thread/embroidered_wall_hoop.png",
+        "/collections/images/stitch_&_thread/embroidered_wall_hoop.png"
+      ],
+      "price": 45.0,
+      "description": "A decorative embroidered wall hoop, perfect for adding a touch of personalized elegance to any space.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-18",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-05",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-18",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-09-04",
+          "comment": "Not bad, but I expected better packaging."
+        }
+      ]
+    },
+    {
+      "id": "8h",
+      "name": "Quilted Blanket",
+      "imageUrl": "/collections/images/stitch_&_thread/quilted_blanket.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/quilted_blanket.png",
+        "/collections/images/stitch_&_thread/quilted_blanket.png",
+        "/collections/images/stitch_&_thread/quilted_blanket.png"
+      ],
+      "price": 120.0,
+      "description": "A cozy, handmade quilted blanket with intricate patterns, ideal for snuggling up on the sofa.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-25",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-24",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-31",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-09-19",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "8i",
+      "name": "Handmade Fabric Coasters",
+      "imageUrl": "/collections/images/stitch_&_thread/handmade_fabric_coasters.png",
+      "imageUrls": [
+        "/collections/images/stitch_&_thread/handmade_fabric_coasters.png",
+        "/collections/images/stitch_&_thread/handmade_fabric_coasters.png",
+        "/collections/images/stitch_&_thread/handmade_fabric_coasters.png"
+      ],
+      "price": 22.99,
+      "description": "A set of four handmade fabric coasters, designed to protect your furniture with a touch of style.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.6,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-16",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-04",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-08-07",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-02",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-09-11",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "9a",
+      "name": "Wicker Basket",
+      "imageUrl": "/collections/images/wicker_&_weave/wicker_basket.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/wicker_basket.png",
+        "/collections/images/wicker_&_weave/wicker_basket.png",
+        "/collections/images/wicker_&_weave/wicker_basket.png"
+      ],
+      "price": 38.0,
+      "description": "A beautifully woven wicker basket with sturdy handles. Ideal for storage, laundry, or as a decorative piece.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-07-27",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-07",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-09-08",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-20",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "9b",
+      "name": "Woven Chair",
+      "imageUrl": "/collections/images/wicker_&_weave/woven_chair.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/woven_chair.png",
+        "/collections/images/wicker_&_weave/woven_chair.png",
+        "/collections/images/wicker_&_weave/woven_chair.png"
+      ],
+      "price": 180.0,
+      "description": "A hand-woven rattan chair with an elegant design. Perfect for adding a rustic feel to your living space.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-03",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-08",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "9c",
+      "name": "Rattan Lamp",
+      "imageUrl": "/collections/images/wicker_&_weave/rattan_lamp.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/rattan_lamp.png",
+        "/collections/images/wicker_&_weave/rattan_lamp.png",
+        "/collections/images/wicker_&_weave/rattan_lamp.png"
+      ],
+      "price": 75.0,
+      "description": "A rattan lamp shade that provides warm, ambient lighting. Adds a natural and cozy feel to any room.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-25",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-08-10",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-06",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-08-21",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "9d",
+      "name": "Decorative Tray",
+      "imageUrl": "/collections/images/wicker_&_weave/decorative_tray.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/decorative_tray.png",
+        "/collections/images/wicker_&_weave/decorative_tray.png",
+        "/collections/images/wicker_&_weave/decorative_tray.png"
+      ],
+      "price": 25.0,
+      "description": "A hand-woven decorative tray, perfect for displaying candles, small plants, or other decorative items.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-07-26",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-08-10",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-14",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 4,
+          "date": "2025-08-27",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "9e",
+      "name": "Woven Wall Decor",
+      "imageUrl": "/collections/images/wicker_&_weave/woven_wall_decor.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/woven_wall_decor.png",
+        "/collections/images/wicker_&_weave/woven_wall_decor.png",
+        "/collections/images/wicker_&_weave/woven_wall_decor.png"
+      ],
+      "price": 40.0,
+      "description": "An intricate woven wall decor piece, perfect for adding texture and a bohemian touch to your walls.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-21",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-08-30",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-07-29",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "9f",
+      "name": "Rope Planter",
+      "imageUrl": "/collections/images/wicker_&_weave/rope_planter.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/rope_planter.png",
+        "/collections/images/wicker_&_weave/rope_planter.png",
+        "/collections/images/wicker_&_weave/rope_planter.png"
+      ],
+      "price": 30.0,
+      "description": "A stylish rope planter, hand-woven and perfect for hanging plants indoors or outdoors.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.2,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-15",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-22",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-21",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-09-15",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-24",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "9g",
+      "name": "Woven Storage Box",
+      "imageUrl": "/collections/images/wicker_&_weave/woven_storage_box.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/woven_storage_box.png",
+        "/collections/images/wicker_&_weave/woven_storage_box.png",
+        "/collections/images/wicker_&_weave/woven_storage_box.png"
+      ],
+      "price": 55.5,
+      "description": "A stylish woven storage box, perfect for decluttering and organizing any room with a natural touch.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-11",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-30",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "9h",
+      "name": "Rattan Coasters",
+      "imageUrl": "/collections/images/wicker_&_weave/rattan_coasters.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/rattan_coasters.png",
+        "/collections/images/wicker_&_weave/rattan_coasters.png",
+        "/collections/images/wicker_&_weave/rattan_coasters.png"
+      ],
+      "price": 19.99,
+      "description": "A set of woven rattan coasters that bring a rustic and elegant feel to your tabletops.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-17",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-07-25",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "9i",
+      "name": "Seagrass Mat",
+      "imageUrl": "/collections/images/wicker_&_weave/seagrass_mat.png",
+      "imageUrls": [
+        "/collections/images/wicker_&_weave/seagrass_mat.png",
+        "/collections/images/wicker_&_weave/seagrass_mat.png",
+        "/collections/images/wicker_&_weave/seagrass_mat.png"
+      ],
+      "price": 75.0,
+      "description": "A hand-woven seagrass mat, ideal for adding a natural, textured element to your living space.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.3,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-27",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-17",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-16",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "10a",
+      "name": "Wrought Iron Candlestick",
+      "imageUrl": "/collections/images/forged_metals/wrought_iron_candlestick.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/wrought_iron_candlestick.png",
+        "/collections/images/forged_metals/wrought_iron_candlestick.png",
+        "/collections/images/forged_metals/wrought_iron_candlestick.png"
+      ],
+      "price": 40.0,
+      "description": "A classic wrought iron candlestick, hand-forged for a rustic and timeless look. Perfect for adding a touch of elegance to any table.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-03",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-13",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "10b",
+      "name": "Steel Bottle Opener",
+      "imageUrl": "/collections/images/forged_metals/steel_bottle_opener.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/steel_bottle_opener.png",
+        "/collections/images/forged_metals/steel_bottle_opener.png",
+        "/collections/images/forged_metals/steel_bottle_opener.png"
+      ],
+      "price": 20.0,
+      "description": "A durable and rustic steel bottle opener, hand-forged for a unique and functional design.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.0,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-08-14",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-01",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-04",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "10c",
+      "name": "Hand-forged Sculpture",
+      "imageUrl": "/collections/images/forged_metals/hand_forged_sculpture.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/hand_forged_sculpture.png",
+        "/collections/images/forged_metals/hand_forged_sculpture.png",
+        "/collections/images/forged_metals/hand_forged_sculpture.png"
+      ],
+      "price": 150.0,
+      "description": "A unique hand-forged sculpture, combining raw metal with refined artistry. A striking piece for any art collection.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.4,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-09-05",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 5,
+          "date": "2025-08-27",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-09-19",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 5,
+          "date": "2025-08-10",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-09-10",
+          "comment": "Perfect for my needs, stylish and functional."
+        }
+      ]
+    },
+    {
+      "id": "10d",
+      "name": "Iron Grill",
+      "imageUrl": "/collections/images/forged_metals/iron_grill.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/iron_grill.png",
+        "/collections/images/forged_metals/iron_grill.png",
+        "/collections/images/forged_metals/iron_grill.png"
+      ],
+      "price": 95.0,
+      "description": "A sturdy hand-forged iron grill, perfect for use over an open fire or as a decorative element in your fireplace.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.4,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-01",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-28",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-03",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-09-13",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 4,
+          "date": "2025-09-19",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "10e",
+      "name": "Decorative Steel Hook",
+      "imageUrl": "/collections/images/forged_metals/decorative_steel_hook.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/decorative_steel_hook.png",
+        "/collections/images/forged_metals/decorative_steel_hook.png",
+        "/collections/images/forged_metals/decorative_steel_hook.png"
+      ],
+      "price": 12.0,
+      "description": "A small but strong decorative steel hook, hand-forged with a rustic design. Perfect for hanging coats, hats, or towels.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-07-30",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 5,
+          "date": "2025-08-02",
+          "comment": "Very satisfied, I will buy again from this collection."
+        }
+      ]
+    },
+    {
+      "id": "10f",
+      "name": "Metal Art Piece",
+      "imageUrl": "/collections/images/forged_metals/metal_art_piece.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/metal_art_piece.png",
+        "/collections/images/forged_metals/metal_art_piece.png",
+        "/collections/images/forged_metals/metal_art_piece.png"
+      ],
+      "price": 80.0,
+      "description": "An abstract metal art piece, forged from recycled steel. Adds a modern and industrial touch to any space.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.5,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-09-13",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-08-16",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "10g",
+      "name": "Hand-forged Fire Poker",
+      "imageUrl": "/collections/images/forged_metals/hand_forged_fire_poker.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/hand_forged_fire_poker.png",
+        "/collections/images/forged_metals/hand_forged_fire_poker.png",
+        "/collections/images/forged_metals/hand_forged_fire_poker.png"
+      ],
+      "price": 85.0,
+      "description": "A robust, hand-forged fire poker designed for durability and a classic look by the fireplace.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-09-22",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-07",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "10h",
+      "name": "Wrought Iron Coasters",
+      "imageUrl": "/collections/images/forged_metals/wrought_iron_coasters.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/wrought_iron_coasters.png",
+        "/collections/images/forged_metals/wrought_iron_coasters.png",
+        "/collections/images/forged_metals/wrought_iron_coasters.png"
+      ],
+      "price": 30.0,
+      "description": "A set of four heavy-duty wrought iron coasters that are as functional as they are decorative.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-22",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-19",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 3,
+          "date": "2025-09-22",
+          "comment": "Perfect for my needs, stylish and functional."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-08-20",
+          "comment": "High-quality materials and great finish."
+        }
+      ]
+    },
+    {
+      "id": "10i",
+      "name": "Forged Metal Bottle Rack",
+      "imageUrl": "/collections/images/forged_metals/forged_metal_bottle_rack.png",
+      "imageUrls": [
+        "/collections/images/forged_metals/forged_metal_bottle_rack.png",
+        "/collections/images/forged_metals/forged_metal_bottle_rack.png",
+        "/collections/images/forged_metals/forged_metal_bottle_rack.png"
+      ],
+      "price": 60.0,
+      "description": "An artistic and practical forged metal bottle rack, perfect for displaying your favorite wines.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-09",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-08-21",
+          "comment": "Good value for the price, but could be a bit more durable."
+        }
+      ]
+    },
+    {
+      "id": "11a",
+      "name": "Oil Painting",
+      "imageUrl": "/collections/images/canvas_&_brush/oil_painting.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/oil_painting.png",
+        "/collections/images/canvas_&_brush/oil_painting.png",
+        "/collections/images/canvas_&_brush/oil_painting.png"
+      ],
+      "price": 250.0,
+      "description": "A vivid oil painting on canvas, featuring a rich palette and expressive brushstrokes. A one-of-a-kind art piece.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": true,
+      "rating": 3.7,
+      "reviews": [
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-15",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 4,
+          "date": "2025-09-22",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-21",
+          "comment": "Not bad, but I expected better packaging."
+        }
+      ]
+    },
+    {
+      "id": "11b",
+      "name": "Watercolor Portrait",
+      "imageUrl": "/collections/images/canvas_&_brush/watercolor_portrait.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/watercolor_portrait.png",
+        "/collections/images/canvas_&_brush/watercolor_portrait.png",
+        "/collections/images/canvas_&_brush/watercolor_portrait.png"
+      ],
+      "price": 180.0,
+      "description": "A delicate watercolor portrait with soft lines and subtle colors. Perfect for a quiet, contemplative space.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.0,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-22",
+          "comment": "Very satisfied, I will buy again from this collection."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-02",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-09-11",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 4,
+          "date": "2025-09-04",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 3,
+          "date": "2025-07-29",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "11c",
+      "name": "Abstract Art",
+      "imageUrl": "/collections/images/canvas_&_brush/abstract_art.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/abstract_art.png",
+        "/collections/images/canvas_&_brush/abstract_art.png",
+        "/collections/images/canvas_&_brush/abstract_art.png"
+      ],
+      "price": 200.0,
+      "description": "An abstract art piece with bold shapes and a vibrant color scheme. Adds a modern and energetic feel to any wall.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.4,
+      "reviews": [
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-16",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-11",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-09-09",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 4,
+          "date": "2025-07-28",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 3,
+          "date": "2025-08-17",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        }
+      ]
+    },
+    {
+      "id": "11d",
+      "name": "Landscape Painting",
+      "imageUrl": "/collections/images/canvas_&_brush/landscape_painting.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/landscape_painting.png",
+        "/collections/images/canvas_&_brush/landscape_painting.png",
+        "/collections/images/canvas_&_brush/landscape_painting.png"
+      ],
+      "price": 190.0,
+      "description": "A serene landscape painting that captures a beautiful natural scene. Brings a sense of calm and tranquility to your home.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.0,
+      "reviews": [
+        {
+          "customerName": "James Taylor",
+          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "rating": 3,
+          "date": "2025-09-22",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-10",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "11e",
+      "name": "Acrylic Canvas",
+      "imageUrl": "/collections/images/canvas_&_brush/acrylic_canvas.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/acrylic_canvas.png",
+        "/collections/images/canvas_&_brush/acrylic_canvas.png",
+        "/collections/images/canvas_&_brush/acrylic_canvas.png"
+      ],
+      "price": 160.0,
+      "description": "An acrylic painting on canvas with a dynamic and colorful composition. A perfect statement piece for modern decor.",
+      "url_external": "#",
+      "isAvailable": false,
+      "isFeatured": false,
+      "rating": 5.0,
+      "reviews": [
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 5,
+          "date": "2025-08-12",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 5,
+          "date": "2025-08-21",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-21",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        }
+      ]
+    },
+    {
+      "id": "11f",
+      "name": "Mixed Media",
+      "imageUrl": "/collections/images/canvas_&_brush/mixed_media.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/mixed_media.png",
+        "/collections/images/canvas_&_brush/mixed_media.png",
+        "/collections/images/canvas_&_brush/mixed_media.png"
+      ],
+      "price": 175.0,
+      "description": "A mixed media piece combining different textures and elements. A unique and complex work of art.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.8,
+      "reviews": [
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-10",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "Olivia Miller",
+          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "rating": 3,
+          "date": "2025-08-31",
+          "comment": "Nice product, but shipping took longer than expected."
+        },
+        {
+          "customerName": "Emily Johnson",
+          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "rating": 4,
+          "date": "2025-08-31",
+          "comment": "High-quality materials and great finish."
+        },
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-09-04",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-08-24",
+          "comment": "Absolutely love it! Will definitely recommend to friends."
+        }
+      ]
+    },
+    {
+      "id": "11g",
+      "name": "Sketchbook with Leather Cover",
+      "imageUrl": "/collections/images/canvas_&_brush/sketchbook_with_leather_cover.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/sketchbook_with_leather_cover.png",
+        "/collections/images/canvas_&_brush/sketchbook_with_leather_cover.png",
+        "/collections/images/canvas_&_brush/sketchbook_with_leather_cover.png"
+      ],
+      "price": 32.99,
+      "description": "A high-quality sketchbook with a durable leather cover, perfect for artists on the go.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 4.5,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-14",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 4,
+          "date": "2025-08-03",
+          "comment": "It’s okay, but not exactly what I was looking for."
+        }
+      ]
+    },
+    {
+      "id": "11h",
+      "name": "Custom Pet Portrait",
+      "imageUrl": "/collections/images/canvas_&_brush/custom_pet_portrait.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/custom_pet_portrait.png",
+        "/collections/images/canvas_&_brush/custom_pet_portrait.png",
+        "/collections/images/canvas_&_brush/custom_pet_portrait.png"
+      ],
+      "price": 150.0,
+      "description": "A unique, hand-painted custom portrait of your beloved pet, created with care and detail.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 3.5,
+      "reviews": [
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 5,
+          "date": "2025-08-04",
+          "comment": "Beautiful craftsmanship, looks even better in person."
+        },
+        {
+          "customerName": "Daniel Wilson",
+          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "rating": 3,
+          "date": "2025-08-03",
+          "comment": "Amazing quality and design, exceeded my expectations."
+        },
+        {
+          "customerName": "Michael Brown",
+          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "rating": 3,
+          "date": "2025-08-23",
+          "comment": "Not bad, but I expected better packaging."
+        },
+        {
+          "customerName": "John Smith",
+          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "rating": 3,
+          "date": "2025-09-03",
+          "comment": "Nice product, but shipping took longer than expected."
+        }
+      ]
+    },
+    {
+      "id": "11i",
+      "name": "Acrylic Paint Set",
+      "imageUrl": "/collections/images/canvas_&_brush/acrylic_paint_set.png",
+      "imageUrls": [
+        "/collections/images/canvas_&_brush/acrylic_paint_set.png",
+        "/collections/images/canvas_&_brush/acrylic_paint_set.png",
+        "/collections/images/canvas_&_brush/acrylic_paint_set.png"
+      ],
+      "price": 45.0,
+      "description": "A versatile set of acrylic paints, offering a wide range of vivid colors for all your projects.",
+      "url_external": "#",
+      "isAvailable": true,
+      "isFeatured": false,
+      "rating": 5.0,
+      "reviews": [
+        {
+          "customerName": "Sophia Davis",
+          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "rating": 5,
+          "date": "2025-08-25",
+          "comment": "Good value for the price, but could be a bit more durable."
+        },
+        {
+          "customerName": "Isabella Moore",
+          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "rating": 5,
+          "date": "2025-08-31",
+          "comment": "Not bad, but I expected better packaging."
+        }
+      ]
+    }
+  ]
+}

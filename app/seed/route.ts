@@ -1,19 +1,51 @@
-// app/seed/route.ts (remove/protect in prod)
+// app/seed/route.ts
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { sql } from "@/lib/db";
 
-export async function GET() {
-  const email = "g6@wdd430.edu";
-  const name = "hch g6";
-  const plain = "pass123";
-  const hash = await bcrypt.hash(plain, 10);
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const runtime = "nodejs";
 
-  await sql/* sql */`
-    INSERT INTO public.users (id, name, email, password_hash, image, role)
-    VALUES (${crypto.randomUUID()}, ${name}, ${email}, ${hash}, NULL, 'buyer')
-    ON CONFLICT (email) DO UPDATE SET password_hash = EXCLUDED.password_hash
+async function seedOnce() {
+  const email = "seller@wdd430.edu";
+  const name = "Seller Group6";
+  const hash = await bcrypt.hash("pass123", 10);
+
+  // ensure unique email (do once in DB if not already)
+  // CREATE UNIQUE INDEX IF NOT EXISTS users_email_key ON public.users(email);
+
+  const rows = await sql/* sql */`
+    INSERT INTO public.users (name, email, password_hash, image, role)
+    VALUES (${name}, ${email}, ${hash}, NULL, 'seller')
+    ON CONFLICT (email) DO UPDATE
+      SET password_hash = EXCLUDED.password_hash,
+          name = EXCLUDED.name
+    RETURNING id, email, name, role;
   `;
 
-  return NextResponse.json({ ok: true });
+  const diag = await sql/* sql */`
+    SELECT current_database() AS db, current_user AS usr, current_schema AS sch;
+  `;
+
+  return { user: rows[0], diag: diag[0] };
+}
+
+export async function POST() {
+  try {
+    const data = await seedOnce();
+    return NextResponse.json({ ok: true, ...data });
+  } catch (e:any) {
+    return NextResponse.json({ ok: false, error: e.message }, { status: 500 });
+  }
+}
+
+// TEMP for local browser click; remove in prod
+export async function GET() {
+  try {
+    const data = await seedOnce();
+    return NextResponse.json({ ok: true, ...data });
+  } catch (e:any) {
+    return NextResponse.json({ ok: false, error: e.message }, { status: 500 });
+  }
 }
