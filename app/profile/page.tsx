@@ -8,7 +8,7 @@ export default async function ProfilePage() {
 
   if (!session) {
     // Not logged in → send user to signin
-    redirect("/signin");
+    redirect("../signin");
   }
 
   return (
