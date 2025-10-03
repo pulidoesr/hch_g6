@@ -29,30 +29,29 @@ const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
 // *************************************************************************
 
 const useCart = () => {
-    // 1. Initialize state as EMPTY. Same state on Server and Client to prevent hydration errors.
-    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
 
-    // 2. Load localStorage ONLY after component mounts (Client-side).
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
-            try {
-                const initialCart = storedCart ? JSON.parse(storedCart) : [];
-                setCartItems(initialCart); // Set state after mounting is safe
-            } catch (error) {
-                console.error("Error loading cart:", error);
-            }
-        }
-    }, []); // Empty dependency array: runs only once on client mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
+      try {
+        const initialCart = storedCart ? JSON.parse(storedCart) : [];
+        setCartItems(initialCart);
+        setIsInitialized(true); // Só ativa após leitura
+      } catch (error) {
+        console.error("Error loading cart:", error);
+      }
+    }
+  }, []);
 
-    // 3. Keep useEffect to save the state.
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
-        }
-    }, [cartItems]);
-    
-    return { cartItems, setCartItems };
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isInitialized) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
+    }
+  }, [cartItems, isInitialized]);
+
+  return { cartItems, setCartItems };
 };
 // *************************************************************************
 
@@ -206,7 +205,7 @@ interface ShoppingCartTabProps {
     cartItems: CartItem[];
     setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
     onNext: () => void;
-    onCancel: () => void; // The onCancel prop is in the interface
+    onCancel: () => void; 
 }
 
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
@@ -229,7 +228,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                     
                     {cartItems.map(item => (
                         <CartItemRow 
-                            key={String(item.id)} // Fixed key to string to aid hydration
+                            key={String(item.id)} 
                             item={item} 
                             onUpdateQuantity={handleUpdateQuantity} 
                         />
@@ -254,7 +253,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </button>
                 
                 <button
-                    onClick={onCancel} // Correctly calls the onCancel prop
+                    onClick={onCancel}
                     className="
                         bg-gray-200 text-gray-700 py-3 px-8 
                         font-medium rounded-sm shadow-md
@@ -276,7 +275,7 @@ const CheckoutPage: React.FC = () => {
   
   // Uses the hook to load the cart from Local Storage
   const { cartItems, setCartItems } = useCart();
-  // Assume useShippingAddress also uses a hydration-safe pattern
+
   const { shippingAddress, setShippingAddress } = useShippingAddress(); 
 
   const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
@@ -288,7 +287,7 @@ const CheckoutPage: React.FC = () => {
   const handleNext = () => {
     if (activeTab === 'cart') setActiveTab('shipping');
     else if (activeTab === 'shipping') setActiveTab('payment');
-    // Add transition to confirmation (review/confirmation) if needed
+
   };
   
   const handleBack = () => {
@@ -327,36 +326,54 @@ const CheckoutPage: React.FC = () => {
         </div>
 
         {/* --- Tab Content --- */}
-        <div>
-          {activeTab === 'cart' && (
-            <ShoppingCartTab 
-              cartItems={cartItems} 
-              setCartItems={setCartItems}
-              onNext={handleNext} 
-              onCancel={handleCancel} // Prop passed correctly
-            />
-          )}
-          
-          {activeTab === 'shipping' && (
-              <ShippingDetailsTab 
+        {cartItems.length > 0 ? (
+          <>
+            <div>
+              {activeTab === 'cart' && (
+                <ShoppingCartTab 
+                  cartItems={cartItems} 
+                  setCartItems={setCartItems}
                   onNext={handleNext} 
-                  onBack={handleBack} 
-                  initialAddress={shippingAddress} 
-                  onSaveAddress={setShippingAddress} 
-                  // You should pass onCancel to ShippingDetailsTab when implementing its buttons
-                  // onCancel={handleCancel} 
-              />
-          )}
-          
-          {activeTab === 'payment' && (
-            <PaymentOptionsTab 
-                onNext={handleNext} 
-                onBack={handleBack} 
-                // You should pass onCancel to PaymentOptionsTab when implementing its buttons
-                // onCancel={handleCancel}
-            />
-          )}
-        </div>
+                  onCancel={handleCancel} // Prop passed correctly
+                />
+              )}
+              
+              {activeTab === 'shipping' && (
+                  <ShippingDetailsTab 
+                      onNext={handleNext} 
+                      onBack={handleBack} 
+                      initialAddress={shippingAddress} 
+                      onSaveAddress={setShippingAddress} 
+                      // You should pass onCancel to ShippingDetailsTab when implementing its buttons
+                      // onCancel={handleCancel} 
+                  />
+              )}
+              
+              {activeTab === 'payment' && (
+                <PaymentOptionsTab 
+                    onNext={handleNext} 
+                    onBack={handleBack} 
+                    // You should pass onCancel to PaymentOptionsTab when implementing its buttons
+                    // onCancel={handleCancel}
+                />
+              )}
+            </div>
+          </>
+        ) : (
+           <div className="text-center py-20 w-full">
+                <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <h2 className="text-2xl font-bold text-gray-900 mt-4">Your Cart is Empty</h2>
+                <p className="mt-2 text-gray-500">Add products to your cart to start shopping.</p>
+                <button 
+                    className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={() => window.location.href = '/'} 
+                >
+                    Go to Store
+                </button>
+            </div> 
+        )}
       </div>
     </div>
   );

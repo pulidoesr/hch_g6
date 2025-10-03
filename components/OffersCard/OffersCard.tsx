@@ -52,7 +52,7 @@ const Card = ({ children, className, title, bgImageUrl }: CardProps) => (
 // Main Component for Next.js
 const OfferCards = () => {
     return (
-        <div className="min-h-screen bg-gray-50 p-4 sm:p-8 font-inter">
+        <div className="px-4 sm:px-8 pt-4 sm:pt-8 pb-6 font-inter">
             {/* Adjusted main title to be in English for consistency */}
             <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
                 Highlights and Offers of the Week

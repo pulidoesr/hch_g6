@@ -1,6 +1,7 @@
 
 import RandomCategoryGalleryServer from "@/components/RandomCategoryGallery/RandonCategoryGalleryServer";
 import OfferCards from "@/components/OffersCard/OffersCard";
+import InspirationSectionWrapper from "@/components/InspirationSection/InspirationSectionWrapper";
 
 export default async function CollectionsPage() {
   return (
@@ -8,6 +9,8 @@ export default async function CollectionsPage() {
       <RandomCategoryGalleryServer />
       <hr />
       <OfferCards />
+      <hr />
+      <InspirationSectionWrapper />
     </div>
   );
 }
