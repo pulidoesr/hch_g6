@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { Star, Heart } from 'lucide-react';
 
 // Import Product interface from the Server Wrapper to ensure consistent typing
@@ -13,7 +13,7 @@ interface InspirationSectionProps {
 // Auxiliary component for rendering a single product card
 const ProductCard = ({ product }: { product: Product }) => {
     // Placeholder URL for navigation (simulating a link with ID)
-    const productDetailUrl = `/product-detail?id=${product.id}`;
+    const productDetailUrl = `/product_detail/${product.id}`;
     
     return (
         <a href={productDetailUrl} className="block group rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 bg-white">
@@ -49,28 +49,37 @@ const ProductCard = ({ product }: { product: Product }) => {
 // --- MAIN COMPONENT: Inspiration Section (Client Component) ---
 const InspirationSection = ({ productsData }: InspirationSectionProps) => {
 
-    // 1. Logic to filter and select 6 featured products randomly
-    const selectedProducts = useMemo(() => {
-        // Ensuring 'productsData' has been loaded
-        if (!productsData || productsData.length === 0) return [];
+    // 1. Novo estado para armazenar os produtos selecionados (inicia vazio para SSR)
+    const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+    const PRODUCTS_COUNT = 6;
+
+    // 2. O useEffect executa a lógica de randomização SOMENTE no cliente após a montagem
+    useEffect(() => {
+        // Garantindo que os dados base existam
+        if (!productsData || productsData.length === 0) return;
         
-        // Filter: isFeatured = true AND rating >= 4.0
+        // --- Lógica de Randomização REPETIDA AQUI ---
+        
+        // 1. Filtragem: isFeatured = true AND rating >= 4.0
         const filtered = productsData.filter(p => p.isFeatured && p.rating && p.rating >= 4.0);
 
-        // Random Selection Logic (Fisher-Yates shuffle variant)
+        // 2. Lógica de Seleção Aleatória (agora no lado do cliente)
         const shuffled = [...filtered];
         for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
+            // O uso de Math.random() agora está dentro do useEffect, 
+            // evitando a falha de hidratação
+            const j = Math.floor(Math.random() * (i + 1)); 
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         
-        // Take the first 6 elements
-        return shuffled.slice(0, 6);
-    }, [productsData]); // Dependency on productsData to recalculate after initial load
+        // 3. Define o estado com os produtos aleatórios
+        setSelectedProducts(shuffled.slice(0, PRODUCTS_COUNT));
+
+    }, [productsData]); // Roda no mount e se productsData mudar
 
     const inspirationText = "The highest rated creations are made by those who dare to dream. Explore our featured collection and find the perfect spark for your next masterpiece.";
 
-    // No loading state needed, as data is provided by the Server Component
+    // O componente renderiza o estado (inicialmente vazio, depois preenchido aleatoriamente)
     
     return (
         <section className="mt-4 py-10 bg-white rounded-2xl shadow-xl max-w-6xl mx-auto">
@@ -92,7 +101,11 @@ const InspirationSection = ({ productsData }: InspirationSectionProps) => {
                         ))}
                     </div>
                 ) : (
-                    <p className="text-center text-gray-500 p-8">No featured products currently available or loaded.</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 animate-pulse">
+                        {[...Array(PRODUCTS_COUNT)].map((_, index) => (
+                             <div key={index} className="h-64 bg-gray-200 rounded-xl"></div>
+                        ))}
+                    </div>
                 )}
             </div>
         </section>

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link'; // Importante para navegação
+import HandcraftedIcon from "@/components/Icons/HandcraftedIcon"
+// Replacement for 'next/link' to ensure execution in the environment (uses standard <a> tag)
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import HandcraftedIcon from "../Icons/HandcraftedIcon"
 
 import {
   Bars3Icon,
@@ -11,6 +11,21 @@ import {
   ShoppingBagIcon,
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
+
+
+
+// Simplified Link component to replace next/link. Added optional props (?) to fix TypeScript error.
+const Link = ({ href, children, className, onClick }: {
+    href: string;
+    children: any;
+    className?: string; // Made optional
+    onClick?: () => void; // Made optional
+}) => (
+  <a href={href} className={className} onClick={onClick}>
+    {children}
+  </a>
+);
+
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -31,12 +46,12 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <HandcraftedIcon/>
-              <span className="text-2xl font-bold text-white">Handcrafted Heaven</span>
+              <span className="text-base lg:text-2xl font-bold text-white">Handcrafted Heaven</span>
             </Link>
           </div>
 
-          {/* Input de busca (Desktop) */}
-          <div className="flex-1 max-w-[576px] ml-4 hidden md:block relative">
+          {/* Search Input (Desktop) */}
+          {/* <div className="flex-1 max-w-[576px] ml-4 hidden md:block relative">
             <input
               type="search"
               placeholder="Search..."
@@ -45,9 +60,9 @@ export default function Header() {
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <MagnifyingGlassIcon className="h-[1.25rem] w-[1.25rem] text-gray-500" />
             </div>
-          </div>
+          </div> */}
 
-          {/* Menu principal (desktop) */}
+          {/* Main Menu (Desktop) */}
           <div className="hidden md:flex items-center ml-[2rem] space-x-[2rem]">
             {navItems.map((item) => (
               <Link key={item.name} href={item.href} className="text-white hover:text-gray-300 transition-colors duration-200">
@@ -56,12 +71,12 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Botões do lado direito (visível em desktop) */}
+          {/* Right-side Buttons (Visible on desktop) */}
           <div className="ml-[2rem] hidden md:flex items-center space-x-[1.5rem]">
             
-            {/* 1. My Cart (Desktop) - AGORA USANDO LINK PARA NAVEGAR */}
+            {/* 1. My Cart (Desktop) */}
             <Link 
-              href="/cart" // <-- DESTINO: Página do carrinho
+              href="/cart"
               className="flex items-center bg-[#8B4513] text-white px-[16px] py-[8px] rounded-md hover:bg-[#A0522D] transition-colors duration-200"
             >
               <ShoppingBagIcon className="h-[1.25rem] w-[1.25rem] mr-2" />
@@ -73,10 +88,10 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* 2. Ícone de menu (mobile) - ABRE O MENU LATERAL */}
+          {/* 2. Menu Icon (Mobile) - OPENS THE SIDE MENU */}
           <div className="md:hidden flex items-center ml-auto">
             <button
-              onClick={() => setIsMobileMenuOpen(true)} // <-- CORRETO: Abre o menu mobile
+              onClick={() => setIsMobileMenuOpen(true)}
               className="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#8B4513] rounded-md p-2"
             >
               <span className="sr-only">Open main menu</span>
@@ -86,7 +101,7 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Menu responsivo para mobile (o slide-in) */}
+      {/* Responsive Menu for Mobile (Slide-in) */}
       <div
         className={`fixed inset-0 z-40 transform transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
@@ -100,23 +115,48 @@ export default function Header() {
               <XMarkIcon className="h-[2rem] w-[2rem]" />
             </button>
           </div>
-          <div className="flex flex-col items-start px-8 py-4 space-y-4">
-            {/* ... Conteúdo do Menu (Search, NavItems) ... */}
+          <div className="flex flex-col items-start px-8 py-4 space-y-4 w-full"> {/* Added w-full */}
             
-            <div className="w-full flex justify-between items-center pt-4">
+            {/* NEW: Search Input (Mobile) */}
+            {/* <div className="w-full relative mb-4">
+                <input
+                    type="search"
+                    placeholder="Search..."
+                    className="w-full rounded-md border border-gray-600 px-[16px] py-[8px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B4513] pl-10 bg-gray-700 text-white placeholder-gray-400"
+                />
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <MagnifyingGlassIcon className="h-[1.25rem] w-[1.25rem] text-gray-400" />
+                </div>
+            </div> */}
+
+            {/* NEW: Navigation Links (Mobile) */}
+            {navItems.map((item) => (
+                <Link
+                    key={item.name}
+                    href={item.href}
+                    // Added to close the menu upon navigation
+                    onClick={() => setIsMobileMenuOpen(false)} 
+                    className="text-2xl font-semibold text-white hover:text-[#A0522D] transition-colors duration-200 w-full py-2 border-b border-gray-700"
+                >
+                    {item.name}
+                </Link>
+            ))}
+
+            {/* Cart and Profile Links (Moved to bottom and adjusted) */}
+            <div className="w-full flex justify-between items-center pt-4 border-t border-gray-700">
               
-              {/* 3. My Cart (Mobile) - AGORA USA LINK E FECHA O MENU */}
+              {/* 3. My Cart (Mobile) */}
               <Link
-                href="/cart" // <-- DESTINO: Página do carrinho
+                href="/cart"
                 className="flex items-center bg-[#8B4513] text-white px-[16px] py-[8px] rounded-md hover:bg-[#A0522D] transition-colors duration-200"
-                onClick={() => setIsMobileMenuOpen(false)} // <-- Fecha o menu ao clicar
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 <ShoppingBagIcon className="h-[1.25rem] w-[1.25rem] mr-2" />
                 My Cart
               </Link>
               
               <Link href="/profile" onClick={() => setIsMobileMenuOpen(false)}>
-                <UserCircleIcon className="h-[2rem] w-[2rem] text-white hover:text-gray-300" />
+                <UserCircleIcon className="h-[2.5rem] w-[2.5rem] text-white hover:text-gray-300" /> {/* Increased icon size */}
               </Link>
             </div>
           </div>

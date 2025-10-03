@@ -85,7 +85,7 @@ interface QuantityControlProps {
 
 const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange }) => {
   return (
-    <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[120px] bg-[#8B4513] px-2">
+    <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[80px] sm:h-[44px] sm:w-[120px] bg-[#8B4513] px-2">
       <input
         type="number"
         value={quantity}
@@ -127,12 +127,14 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
     return (
         <div className="flex py-6 border-b border-gray-200">
             {/* Thumbnail Image */}
-            <div className="w-40 h-40 flex-shrink-0 relative border">
+            <div className="w-24 h-24 md:w-40 md:h-40 flex-shrink-0 relative border">
                 <Image
                     src={item.imageSrc}
                     alt={item.name}
                     fill
-                    sizes="96px"
+                    // O atributo sizes no Image component também deve ser ajustado para ser mais responsivo,
+                    // mas w-24 equivale a 96px, o que se alinha bem com o valor original de 96px
+                    sizes="(max-width: 768px) 96px, 160px" 
                     className="object-cover"
                 />
             </div>

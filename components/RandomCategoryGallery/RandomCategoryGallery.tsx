@@ -10,7 +10,7 @@ interface CategoryItem {
 
 /**
  * Utility function to select 'count' random and unique items from an array.
- * The logic is kept on the client side to change on every screen load (browser refresh).
+ * This function MUST run only on the client because it uses Math.random().
  */
 function getRandomItems<T>(arr: T[], count: number): T[] {
   const shuffled = arr.slice();
@@ -23,11 +23,17 @@ function getRandomItems<T>(arr: T[], count: number): T[] {
   return shuffled.slice(0, Math.min(count, arr.length));
 }
 
-export default function RandomCategoryGallery({ allCategories }: { allCategories: CategoryItem[] }) {
+// 💡 AJUSTE 1: A prop allCategories agora é opcional ({ allCategories?: CategoryItem[] })
+export default function RandomCategoryGallery({ allCategories }: { allCategories?: CategoryItem[] }) {
+  
+  // 💡 AJUSTE 2: Garantia defensiva. Se allCategories for undefined, use um array vazio.
+  const safeCategories = allCategories || [];
   
 // ----------------------------------------------------
 // HOOKS (ALL AT THE TOP AND ALWAYS IN THE SAME ORDER)
 // ----------------------------------------------------
+  
+  // O estado inicial é [], garantindo que Servidor e Cliente concordem.
   const [randomCategories, setRandomCategories] = useState<CategoryItem[]>([]);
   
   // Combobox States: Initializing searchTerm to an empty string to avoid pre-filtering.
@@ -40,13 +46,14 @@ export default function RandomCategoryGallery({ allCategories }: { allCategories
 
   const COUNT = 6;
 
-  // Uses useEffect to randomize the list on mount
+  // 💡 AJUSTE 3: O useEffect agora usa safeCategories e continua sendo o ponto de randomização.
+  // Ele só roda no cliente, após a hidratação.
   useEffect(() => {
-    if (allCategories && allCategories.length > 0) {
-        const selected = getRandomItems(allCategories, COUNT);
+    if (safeCategories.length > 0) {
+        const selected = getRandomItems(safeCategories, COUNT);
         setRandomCategories(selected);
     }
-  }, [allCategories]); 
+  }, [safeCategories]); // Dependência atualizada para safeCategories
   
   // Effect to close the dropdown when clicking outside
   useEffect(() => {
@@ -57,28 +64,39 @@ export default function RandomCategoryGallery({ allCategories }: { allCategories
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      // 🐛 CORREÇÃO: Falta de parênteses e erro de digitação no nome da função removida.
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [comboboxRef]);
 
-  // Filtering Logic (useMemo MUST be called before the conditional return)
-  // Filtering now happens only when searchTerm is not empty.
+  // Filtering Logic (useMemo MUST be called before theç conditional return)
+  // 💡 AJUSTE 4: Usa safeCategories para a lógica de filtragem, evitando o TypeError.
   const filteredCategories = useMemo(() => {
-    if (!searchTerm) return allCategories;
+    if (!searchTerm) return safeCategories;
     
     const term = searchTerm.toLowerCase();
     
-    return allCategories.filter(category => 
+    return safeCategories.filter(category => 
         category.name.toLowerCase().includes(term)
     );
-  }, [searchTerm, allCategories]);
+  }, [searchTerm, safeCategories]); // Dependência atualizada
 
-
+  // Renderização condicional
   if (randomCategories.length === 0) {
-    if (allCategories.length < COUNT) {
-        return <div className="text-center p-4 text-red-600">Error: Only {allCategories.length} categories found. A minimum of {COUNT} is required.</div>
+    // 💡 AJUSTE 5: Usa safeCategories para o bloco de carregamento, evitando o TypeError.
+    if (safeCategories.length < COUNT) {
+        return <div className="text-center p-4 text-red-600">Error: Only {safeCategories.length} categories found. A minimum of {COUNT} is required.</div>
     }
-    return <div className="text-center p-4">Loading categories...</div>;
+    return (
+        <div className="mx-auto max-w-7xl px-4 py-8">
+            <h2 className="text-3xl font-extrabold text-center mb-10 text-gray-900">
+                Explore Our Categories
+            </h2>
+            <div className="text-center p-8 bg-gray-50 rounded-lg shadow-inner animate-pulse">
+                <div className="text-gray-600 font-medium">Carregando categorias aleatórias...</div>
+            </div>
+        </div>
+    );
   }
   
   // Function to handle category selection
@@ -158,8 +176,9 @@ export default function RandomCategoryGallery({ allCategories }: { allCategories
             <div className="absolute z-10 w-full bg-white shadow-lg mt-1 rounded-md max-h-60 overflow-auto ring-1 ring-black ring-opacity-5">
                 <ul className="py-1">
                     {/* Show all categories if search is empty, otherwise show filtered */}
-                    {(searchTerm ? filteredCategories : allCategories).length > 0 ? (
-                        (searchTerm ? filteredCategories : allCategories).map((category) => (
+                    {/* 💡 AJUSTE 6: Usa safeCategories para a renderização da lista */}
+                    {(searchTerm ? filteredCategories : safeCategories).length > 0 ? (
+                        (searchTerm ? filteredCategories : safeCategories).map((category) => (
                             <li
                                 key={category.name}
                                 onClick={() => handleSelectCategory(category.name)}
