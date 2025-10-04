@@ -4,7 +4,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 
 interface CategoryItem { 
-  id: string;          
+  id: number;          
   name: string;
   imagePath: string;
 }
@@ -53,7 +53,7 @@ export default function RandomCategoryGallery({ allCategories }: { allCategories
   }, [searchTerm, safeCategories]);
 
   // ✅ Agora passa o ID da categoria
-  const handleSelectCategory = (categoryId: string, categoryName: string) => {
+  const handleSelectCategory = (categoryId: number, categoryName: string) => {
     setSearchTerm(categoryName);
     setIsOpen(false);
     router.push(`/products?categoryId=${encodeURIComponent(categoryId)}`);

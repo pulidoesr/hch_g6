@@ -92,6 +92,11 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({ allProd
                               isFeatured={product.isFeatured} // Including all Product props
                               id={product.id}
                               rating={product.rating}
+                              description= {product.description}
+                              isNew={product.isNew}
+                              isBestSeller={product.isBestSeller}
+                              isOnSale={product.isOnSale}
+
                           />
                       ))}
                   </div>

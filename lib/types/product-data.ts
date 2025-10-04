@@ -9,8 +9,6 @@ export interface Product {
     isOnSale: boolean;
     isBestSeller: boolean;
     rating: number;
-    productIds: string[];
-    recommendedProductIds: string[];
 }
 
 export interface Collection {
