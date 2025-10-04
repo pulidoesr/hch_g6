@@ -1,16 +1,40 @@
 export interface Product {
     id: string;
     name: string; // Used as description on the card
+    description: string;
     imageUrl: string;
     price: number;
     isFeatured: boolean;
+    isNew: boolean;
+    isOnSale: boolean;
+    isBestSeller: boolean;
     rating: number;
+    productIds: string[];
+    recommendedProductIds: string[];
 }
 
-export interface CategoryData { 
-  name: string;
-  imagePath: string;
+export interface Collection {
+    id: number;
+    name: string;
+    isFeatured: boolean;
+    story: string;
+    imagePath: string;
+    productIds: string[];         // Necessário para o filtro
+    recommendedProductIds: string[]; // Necessário para o filtro
 }
+
+
+
+export interface CategoryData { 
+    id: number;
+    name: string;
+    isFeatured: boolean;
+    story: string;
+    imagePath: string;
+    productIds: string[];         // Necessário para o filtro
+    recommendedProductIds: string[]; // Necessário para o filtro
+}
+
 
 /**
  * Interface defining the structure of a single shipping option
@@ -24,6 +48,8 @@ export interface ShippingOption {
     description: string; 
     estimatedDays: string;
 }
+
+
 
 /**
  * Interface defining the COMPLETE structure of the main JSON data source (products.json).

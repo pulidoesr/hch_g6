@@ -1,10 +1,19 @@
 import Products from '@/data/products.json';
 
-// Import individual types, ensuring ShippingOption is included.
+// Import individual types
 import { Product, CategoryData, ShippingOption, FullDataSource } from '@/lib/types/product-data';
 
-// This ensures 'rawData' has the expected structure.
-const rawData = Products as FullDataSource;
+// --- CORREÇÃO DA IMPORTAÇÃO JSON ---
+// 1. Criamos um candidato a rawData.
+// 2. Usamos (Products as any).default se for definido (lidando com o embrulho do bundler),
+//    caso contrário, usamos o próprio Products.
+const rawDataCandidate = (Products as any).default || Products;
+
+// 3. Tipamos o candidato a rawData com a estrutura FullDataSource.
+// Isso garante que 'rawData' é o conteúdo real do seu JSON.
+const rawData = rawDataCandidate as FullDataSource;
+// ------------------------------------
+
 
 /**
  * Returns all products ('products' section of the JSON).

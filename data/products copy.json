@@ -273,10 +273,7 @@
           "date": "2025-08-21",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "1b",
@@ -308,10 +305,7 @@
           "date": "2025-08-07",
           "comment": "Not bad, but I expected better packaging."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "1c",
@@ -364,10 +358,7 @@
           "date": "2025-08-04",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "1d",
@@ -420,10 +411,7 @@
           "date": "2025-09-04",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "1e",
@@ -476,10 +464,7 @@
           "date": "2025-08-31",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "1f",
@@ -532,10 +517,7 @@
           "date": "2025-08-04",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "1g",
@@ -588,10 +570,7 @@
           "date": "2025-08-24",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "1h",
@@ -623,10 +602,7 @@
           "date": "2025-09-14",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "1i",
@@ -658,10 +634,7 @@
           "date": "2025-09-16",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2a",
@@ -714,10 +687,7 @@
           "date": "2025-08-17",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2b",
@@ -770,10 +740,7 @@
           "date": "2025-09-19",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "2c",
@@ -819,10 +786,7 @@
           "date": "2025-08-27",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2d",
@@ -861,10 +825,7 @@
           "date": "2025-09-16",
           "comment": "Not bad, but I expected better packaging."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2e",
@@ -903,10 +864,7 @@
           "date": "2025-09-10",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2f",
@@ -959,10 +917,7 @@
           "date": "2025-08-01",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2g",
@@ -1008,10 +963,7 @@
           "date": "2025-08-08",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2h",
@@ -1064,10 +1016,7 @@
           "date": "2025-08-05",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "2i",
@@ -1120,10 +1069,7 @@
           "date": "2025-08-06",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3a",
@@ -1176,10 +1122,7 @@
           "date": "2025-09-11",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3b",
@@ -1225,10 +1168,7 @@
           "date": "2025-09-11",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3c",
@@ -1281,10 +1221,7 @@
           "date": "2025-08-15",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3d",
@@ -1323,10 +1260,7 @@
           "date": "2025-08-02",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "3e",
@@ -1365,10 +1299,7 @@
           "date": "2025-08-23",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3f",
@@ -1407,10 +1338,7 @@
           "date": "2025-09-01",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "3g",
@@ -1442,10 +1370,7 @@
           "date": "2025-08-26",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "3h",
@@ -1491,10 +1416,7 @@
           "date": "2025-08-26",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "3i",
@@ -1526,10 +1448,7 @@
           "date": "2025-09-07",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "4a",
@@ -1568,10 +1487,7 @@
           "date": "2025-08-04",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "4b",
@@ -1617,10 +1533,7 @@
           "date": "2025-08-25",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "4c",
@@ -1659,10 +1572,7 @@
           "date": "2025-09-09",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "4d",
@@ -1708,10 +1618,7 @@
           "date": "2025-09-21",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "4e",
@@ -1750,10 +1657,7 @@
           "date": "2025-09-10",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "4f",
@@ -1799,10 +1703,7 @@
           "date": "2025-08-14",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "4g",
@@ -1841,10 +1742,7 @@
           "date": "2025-08-25",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "4h",
@@ -1876,10 +1774,7 @@
           "date": "2025-09-06",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "4i",
@@ -1925,10 +1820,7 @@
           "date": "2025-09-15",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "5a",
@@ -1960,10 +1852,7 @@
           "date": "2025-09-08",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "5b",
@@ -1995,10 +1884,7 @@
           "date": "2025-07-31",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "5c",
@@ -2037,10 +1923,7 @@
           "date": "2025-09-20",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "5d",
@@ -2072,10 +1955,7 @@
           "date": "2025-09-21",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "5e",
@@ -2121,10 +2001,7 @@
           "date": "2025-08-28",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "5f",
@@ -2177,10 +2054,7 @@
           "date": "2025-08-23",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "5g",
@@ -2219,10 +2093,7 @@
           "date": "2025-09-15",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "5h",
@@ -2254,10 +2125,7 @@
           "date": "2025-08-27",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "5i",
@@ -2296,10 +2164,7 @@
           "date": "2025-08-27",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "6a",
@@ -2352,10 +2217,7 @@
           "date": "2025-08-12",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6b",
@@ -2408,10 +2270,7 @@
           "date": "2025-08-01",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6c",
@@ -2450,10 +2309,7 @@
           "date": "2025-07-29",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "6d",
@@ -2492,10 +2348,7 @@
           "date": "2025-09-16",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6e",
@@ -2548,10 +2401,7 @@
           "date": "2025-07-26",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6f",
@@ -2597,10 +2447,7 @@
           "date": "2025-08-23",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6g",
@@ -2632,10 +2479,7 @@
           "date": "2025-09-17",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "6h",
@@ -2674,10 +2518,7 @@
           "date": "2025-07-29",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "6i",
@@ -2709,10 +2550,7 @@
           "date": "2025-08-24",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "7a",
@@ -2751,10 +2589,7 @@
           "date": "2025-08-28",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "7b",
@@ -2800,10 +2635,7 @@
           "date": "2025-09-08",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "7c",
@@ -2842,10 +2674,7 @@
           "date": "2025-08-16",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "7d",
@@ -2891,10 +2720,7 @@
           "date": "2025-08-25",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "7e",
@@ -2933,10 +2759,7 @@
           "date": "2025-08-09",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "7f",
@@ -2982,10 +2805,7 @@
           "date": "2025-07-31",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "7g",
@@ -3024,10 +2844,7 @@
           "date": "2025-08-03",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "7h",
@@ -3066,10 +2883,7 @@
           "date": "2025-09-07",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "7i",
@@ -3101,10 +2915,7 @@
           "date": "2025-08-15",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8a",
@@ -3136,10 +2947,7 @@
           "date": "2025-08-30",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8b",
@@ -3185,10 +2993,7 @@
           "date": "2025-07-26",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8c",
@@ -3227,10 +3032,7 @@
           "date": "2025-08-11",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "8d",
@@ -3262,10 +3064,7 @@
           "date": "2025-09-15",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "8e",
@@ -3297,10 +3096,7 @@
           "date": "2025-07-29",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "8f",
@@ -3332,10 +3128,7 @@
           "date": "2025-09-01",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8g",
@@ -3381,10 +3174,7 @@
           "date": "2025-09-04",
           "comment": "Not bad, but I expected better packaging."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8h",
@@ -3430,10 +3220,7 @@
           "date": "2025-09-19",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "8i",
@@ -3486,10 +3273,7 @@
           "date": "2025-09-11",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9a",
@@ -3535,10 +3319,7 @@
           "date": "2025-09-20",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "9b",
@@ -3577,10 +3358,7 @@
           "date": "2025-09-08",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9c",
@@ -3626,10 +3404,7 @@
           "date": "2025-08-21",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9d",
@@ -3675,10 +3450,7 @@
           "date": "2025-08-27",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9e",
@@ -3717,10 +3489,7 @@
           "date": "2025-07-29",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "9f",
@@ -3773,10 +3542,7 @@
           "date": "2025-08-24",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9g",
@@ -3808,10 +3574,7 @@
           "date": "2025-08-30",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "9h",
@@ -3843,10 +3606,7 @@
           "date": "2025-07-25",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "9i",
@@ -3885,10 +3645,7 @@
           "date": "2025-08-16",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "10a",
@@ -3920,10 +3677,7 @@
           "date": "2025-08-13",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "10b",
@@ -3962,10 +3716,7 @@
           "date": "2025-09-04",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "10c",
@@ -4018,10 +3769,7 @@
           "date": "2025-09-10",
           "comment": "Perfect for my needs, stylish and functional."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "10d",
@@ -4074,10 +3822,7 @@
           "date": "2025-09-19",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "10e",
@@ -4109,10 +3854,7 @@
           "date": "2025-08-02",
           "comment": "Very satisfied, I will buy again from this collection."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "10f",
@@ -4144,10 +3886,7 @@
           "date": "2025-08-16",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "10g",
@@ -4179,10 +3918,7 @@
           "date": "2025-09-07",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "10h",
@@ -4228,10 +3964,7 @@
           "date": "2025-08-20",
           "comment": "High-quality materials and great finish."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "10i",
@@ -4263,10 +3996,7 @@
           "date": "2025-08-21",
           "comment": "Good value for the price, but could be a bit more durable."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "11a",
@@ -4305,10 +4035,7 @@
           "date": "2025-09-21",
           "comment": "Not bad, but I expected better packaging."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "11b",
@@ -4361,10 +4088,7 @@
           "date": "2025-07-29",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "11c",
@@ -4417,10 +4141,7 @@
           "date": "2025-08-17",
           "comment": "Amazing quality and design, exceeded my expectations."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "11d",
@@ -4452,10 +4173,7 @@
           "date": "2025-08-10",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": true,
-      "isOnSale": true
+      ]
     },
     {
       "id": "11e",
@@ -4494,10 +4212,7 @@
           "date": "2025-08-21",
           "comment": "Beautiful craftsmanship, looks even better in person."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     },
     {
       "id": "11f",
@@ -4550,10 +4265,7 @@
           "date": "2025-08-24",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "11g",
@@ -4585,10 +4297,7 @@
           "date": "2025-08-03",
           "comment": "It’s okay, but not exactly what I was looking for."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": true
+      ]
     },
     {
       "id": "11h",
@@ -4634,10 +4343,7 @@
           "date": "2025-09-03",
           "comment": "Nice product, but shipping took longer than expected."
         }
-      ],
-      "isBestSeller": true,
-      "isNew": false,
-      "isOnSale": false
+      ]
     },
     {
       "id": "11i",
@@ -4669,42 +4375,41 @@
           "date": "2025-08-31",
           "comment": "Not bad, but I expected better packaging."
         }
-      ],
-      "isBestSeller": false,
-      "isNew": true,
-      "isOnSale": false
+      ]
     }
   ],
-  "countries": [
-    "Brazil",
-    "Peru",
-    "United States",
-    "Canada",
-    "United Kingdom",
-    "Australia",
-    "Germany",
-    "France",
-    "Italy",
-    "Spain",
-    "Netherlands",
-    "Sweden"
-  ],
+  "countries":
+      [
+      "Brazil",
+      "Peru",
+      "United States",
+      "Canada",
+      "United Kingdom",
+      "Australia",
+      "Germany",
+      "France",
+      "Italy",
+      "Spain",
+      "Netherlands",
+      "Sweden"
+      ],
   "shipping_options": [
-    {
+    { 
       "id": 1,
       "name": "Standard Shipping",
       "type": "free",
-      "cost": 5.0,
+      "cost": 5.00,
       "description": "Delivery in 5-7 business days. Free Shipping on orders over $50.00.",
       "estimatedDays": "5-7"
     },
-    {
+    { 
       "id": 2,
       "name": "Express Shipping",
       "type": "express",
-      "cost": 25.0,
+      "cost": 25.00,
       "description": "Guaranteed delivery within 1-2 business days.",
       "estimatedDays": "1-2"
     }
-  ]
+]
+
 }
