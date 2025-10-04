@@ -1,4 +1,5 @@
 
+import SiteHeader from '@/components/SiteHeader/Header';
 
 export const metadata = {
   title: "Handcrafted Haven",
@@ -8,6 +9,9 @@ export const metadata = {
 
 export default function Cart({ children }: { children: React.ReactNode }) {
   return (
-    <div id="main" className="flex justify-center py-6 bg-[#F7FAFC]">{children}</div>
+    <>
+      <SiteHeader />
+      <div id="main" className="flex justify-center py-6 bg-[#F7FAFC]">{children}</div>
+    </>
   );
 }
