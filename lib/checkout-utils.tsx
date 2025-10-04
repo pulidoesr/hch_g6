@@ -4,7 +4,7 @@
 // Adds useEffect for persistence
 import React, { useState, useEffect } from 'react'; 
 // Assuming you have CartItem and SummaryCalculation defined in './types/checkout'
-import { CartItem, SummaryCalculation } from './types/checkout'; 
+import { CartItem, SummaryCalculation} from './types/checkout'; 
 
 // =========================================================================
 // 1. SHIPPING ADDRESS INTERFACE (Exported for use in all components)
@@ -12,7 +12,7 @@ import { CartItem, SummaryCalculation } from './types/checkout';
 export interface ShippingAddress {
   firstName: string;
   lastName: string;
-  street: string; // Corresponds to 'address' in the shipping tab form
+  address: string; // Corresponds to 'address' in the shipping tab form
   address2: string;
   country: string; // Corresponds to 'country'/'state' in the shipping tab form
   city: string;
@@ -85,7 +85,7 @@ export const useCart = () => {
 const getEmptyShippingAddress = (): ShippingAddress => ({
     firstName: '',
     lastName: '',
-    street: '',
+    address: '',
     address2: '',
     country: '',
     city: '',

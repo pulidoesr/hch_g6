@@ -4377,5 +4377,39 @@
         }
       ]
     }
-  ]
+  ],
+  "countries":
+      [
+      "Brazil",
+      "Peru",
+      "United States",
+      "Canada",
+      "United Kingdom",
+      "Australia",
+      "Germany",
+      "France",
+      "Italy",
+      "Spain",
+      "Netherlands",
+      "Sweden"
+      ],
+  "shipping_options": [
+    { 
+      "id": 1,
+      "name": "Standard Shipping",
+      "type": "free",
+      "cost": 5.00,
+      "description": "Delivery in 5-7 business days. Free Shipping on orders over $50.00.",
+      "estimatedDays": "5-7"
+    },
+    { 
+      "id": 2,
+      "name": "Express Shipping",
+      "type": "express",
+      "cost": 25.00,
+      "description": "Guaranteed delivery within 1-2 business days.",
+      "estimatedDays": "1-2"
+    }
+]
+
 }

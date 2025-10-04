@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react'; 
 import { Star, Heart } from 'lucide-react';
 
-// Import Product interface from the Server Wrapper to ensure consistent typing
-import { Product } from "./InspirationSectionWrapper";
+import { Product } from "@/lib/types/product-data"; 
 
 // Define the expected props for this Client Component
 interface InspirationSectionProps {

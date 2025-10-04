@@ -30,7 +30,9 @@ export interface SummaryProps {
     shippingDisplay: string;
 }
 
-export interface ShippingAddress {
+
+
+export interface FormData {
   firstName: string;
   lastName: string;
   address: string;

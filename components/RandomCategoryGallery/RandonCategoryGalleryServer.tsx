@@ -1,49 +1,28 @@
-import path from 'path';
-import { promises as fs } from 'fs';
-
-// CORREÇÃO AQUI: Assumindo que o nome do arquivo é RandomCategoryGallery.tsx
 import RandomCategoryGallery from '@/components/RandomCategoryGallery/RandomCategoryGallery'; 
 
-interface CategoryData { 
-  name: string;
-  imagePath: string;
-}
+// 1. Imports the data loading function from our Data Bridge
+import { getCategoriesData } from '@/lib/server/actions/data_bridge';
+// 2. Imports the CategoryData type from the types file, which is used by the imported function
+import { CategoryData } from '@/lib/types/product-data';
 
-interface JsonData {
-    // Note: The key in the source JSON remains 'collections'; only the internal type name changes
-    collections: CategoryData[]; 
-}
+// The CategoryData interface and the local loading function were removed,
+// because the logic is now centralized in the data-bridge.
 
 /**
- * Function to fetch category data (formerly collections) from the local JSON file.
+ * Server component responsible for fetching category data 
+ * and passing it to the client component.
  */
-async function getCategoriesData(): Promise<CategoryData[]> { 
-  try {
-    // Defines the file path from the project root (process.cwd())
-    const filePath = path.join(process.cwd(), 'data', 'products.json');
-    
-    // Reads the file content
-    const fileContents = await fs.readFile(filePath, 'utf8');
-    
-    // Parses the JSON
-    const data: JsonData = JSON.parse(fileContents);
-    
-    // Returns the list of categories (which are 'collections' in the JSON)
-    return data.collections;
-  } catch (error) {
-    console.error("Error loading data from products.json:", error);
-    // In case of error, returns an empty array to prevent failure
-    return [];
-  }
-}
-
 export default async function RandomCategoryGalleryServer() { 
-    // 1. Fetches the data on the server during build or request
-    const categories = await getCategoriesData(); 
+    
+    // Calls the centralized function. 
+    // Since the getCategoriesData function is no longer asynchronous (it reads from memory after import),
+    // technically we wouldn't need 'await' anymore if it were typed to return CategoryData[],
+    // but keeping it is safe, in case the data-bridge becomes asynchronous in the future.
+    // In this case, if it is synchronous, 'await' does no harm.
+    const categories: CategoryData[] = getCategoriesData(); 
     
     // 2. Passes the data to the Client Component
     return (
         <RandomCategoryGallery allCategories={categories} /> 
-        
     );
 }
