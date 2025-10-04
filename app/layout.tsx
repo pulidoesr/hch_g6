@@ -1,6 +1,6 @@
 // app/layout.tsx
 import "@/styles/globals.css";
-import Header from "@/components/Header/Header";
+import Header from "@/components/SiteHeader/Header";
 import Footer from "@/components/Footer/Footer";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
