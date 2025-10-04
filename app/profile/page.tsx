@@ -2,13 +2,17 @@
 import { auth, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 
+
+// or: export const revalidate = 0;
+export const dynamic = 'force-dynamic'; 
+
 export default async function ProfilePage() {
   // Check session on server
   const session = await auth();
-  if (!session) {
-    // Not logged in → send user to signin
-    redirect("/signin");
-  }
+if (!session) {
+  redirect('/signin?callbackUrl=/profile');
+}
+
 
   return (
     <main className="p-8 space-y-6">
