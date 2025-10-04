@@ -17,6 +17,7 @@ const SimpleProductCard: React.FC<Product> = ({
   name,
   price,
   id,
+  rating,
 }) => {
   return (
     <a
@@ -48,10 +49,7 @@ const SimpleProductCard: React.FC<Product> = ({
 };
 
 
-/**
- * Utility function to select random items (CLIENT-SIDE ONLY).
- * 🛑 Adding typing for parameters.
- */
+
 const getRandomItems = (arr: Product[], count: number): Product[] => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
@@ -93,6 +91,7 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({ allProd
                               price={product.price}
                               isFeatured={product.isFeatured} // Including all Product props
                               id={product.id}
+                              rating={product.rating}
                           />
                       ))}
                   </div>

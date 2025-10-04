@@ -39,11 +39,11 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
   const summary = useMemo(() => calculateSummary(cartItems, shippingValue), [cartItems, shippingValue]);
   const formattedAddress = useMemo(() => {
     // Garantido que shippingAddress não é undefined e tem as propriedades (graças ao hook robusto)
-    const { street, city, zipCode, country } = shippingAddress; 
+    const { address, city, zipCode, country } = shippingAddress; 
     
     // Retorna uma string formatada, ou um placeholder se os dados ainda estiverem vazios
-    if (street && city && zipCode) {
-        return `${street}, ${city}, ${country} ${zipCode}`;
+    if (address && city && zipCode) {
+        return `${address}, ${city}, ${country} ${zipCode}`;
     }
     return 'Not specified (Please go back to Shipping)';
   }, [shippingAddress]);
