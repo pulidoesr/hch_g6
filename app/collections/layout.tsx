@@ -1,4 +1,4 @@
-
+import SiteHeader from '@/components/SiteHeader/Header';
 
 export const metadata = {
   title: "Handcrafted Haven",
@@ -8,6 +8,9 @@ export const metadata = {
 
 export default function CollectionsLayout({ children }: { children: React.ReactNode }) {
   return (
+    <>
+    <SiteHeader/>
     <div id="main" className="flex justify-center py-6 bg-[#F7FAFC]">{children}</div>
+    </>
   );
 }
