@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import HandcraftedIcon from "../Icons/HandcraftedIcon"
+import { useSession } from 'next-auth/react';
 
 // Importe os ícones que você precisa.
 // Ex: para instalar o heroicons: npm install @heroicons/react

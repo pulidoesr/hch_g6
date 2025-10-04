@@ -12,7 +12,10 @@ export default async function ProfilePage() {
 if (!session) {
   redirect('/signin?callbackUrl=/profile');
 }
-
+async function doSignOut() {
+    "use server";
+    await signOut({ redirectTo: "/" });   // clears NextAuth cookie + redirects
+  }
 
   return (
     <main className="p-8 space-y-6">
@@ -27,16 +30,8 @@ if (!session) {
       </div>
 
       {/* Logout form (server action) */}
-      <form
-        action={async () => {
-          "use server";
-          await signOut({ redirectTo: "/" });
-        }}
-      >
-        <button
-          type="submit"
-          className="rounded bg-black px-4 py-2 text-white hover:bg-gray-800 transition"
-        >
+      <form action={doSignOut}>
+        <button type="submit" className="rounded bg-black px-4 py-2 text-white hover:bg-gray-800">
           Sign out
         </button>
       </form>
