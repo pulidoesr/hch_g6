@@ -12,9 +12,6 @@ async function seedOnce() {
   const name = "Seller Group6";
   const hash = await bcrypt.hash("pass123", 10);
 
-  // ensure unique email (do once in DB if not already)
-  // CREATE UNIQUE INDEX IF NOT EXISTS users_email_key ON public.users(email);
-
   const rows = await sql/* sql */`
     INSERT INTO public.users (name, email, password_hash, image, role)
     VALUES (${name}, ${email}, ${hash}, NULL, 'seller')
@@ -31,12 +28,16 @@ async function seedOnce() {
   return { user: rows[0], diag: diag[0] };
 }
 
+function errorMessage(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
 export async function POST() {
   try {
     const data = await seedOnce();
     return NextResponse.json({ ok: true, ...data });
-  } catch (e:any) {
-    return NextResponse.json({ ok: false, error: e.message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ ok: false, error: errorMessage(e) }, { status: 500 });
   }
 }
 
@@ -45,7 +46,7 @@ export async function GET() {
   try {
     const data = await seedOnce();
     return NextResponse.json({ ok: true, ...data });
-  } catch (e:any) {
-    return NextResponse.json({ ok: false, error: e.message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ ok: false, error: errorMessage(e) }, { status: 500 });
   }
 }

@@ -1,19 +1,30 @@
 // app/signin/page.tsx
-export const metadata = { title: "Sign in" };
-import SignInForm from "./SignInForm";
+'use client';
+import SignInForm, { SignInValues } from './SignInForm';
+import { signIn } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 export default function SignInPage() {
-  return (
-    <main className="mx-auto max-w-sm py-12">
-      <h1 className="text-2xl font-semibold mb-6">Sign in</h1>
-      <SignInForm />
-      <p className="text-sm mt-4">
-         Don’t have an account?{" "}
-          <a href="/register" className="text-blue-600 underline">
-          Register here
-        </a>
-      </p>
+  const router = useRouter();
+  const sp = useSearchParams();
+  const callbackUrl = sp.get('callbackUrl') ?? '/profile';
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
 
-    </main>
+  const handleSubmit = async ({ email, password }: SignInValues) => {
+    setErr(null); setLoading(true);
+    const res = await signIn('credentials', { redirect: false, email, password, callbackUrl });
+    setLoading(false);
+    if (res?.error) return setErr(res.error || 'Invalid credentials');
+    router.replace(callbackUrl);
+    router.refresh();
+  };
+
+  // The <main> from layout centers this box
+  return (
+    <div className="w-full max-w-md">
+      <SignInForm onSubmit={handleSubmit} loading={loading} error={err} />
+    </div>
   );
 }

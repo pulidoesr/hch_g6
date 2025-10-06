@@ -2,19 +2,20 @@ import "@/styles/globals.css"
 import Header from "@/components/SiteHeader/Header"
 import Footer from "@/components/Footer/Footer"
 
-export const metadata = {
-  title: "Handcrafted Haven",
-  description: "Marketplace for unique handmade items",
-  icons: { icon: "/favicon.ico" }
-};
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await auth();
+
   return (
     <html lang="en">
-      <body className="min-h-screen">
-        <Header/>
-        <main id="main" className="flex justify-center py-6 bg-[#F7FAFC]">{children}</main>
-        <Footer/>
+      <body className="min-h-dvh flex flex-col bg-[#E9E7F6]">
+        <SessionProvider session={session}>
+          <Header />
+          <PageFrame>{children}</PageFrame>
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   );

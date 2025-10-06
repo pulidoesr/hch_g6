@@ -6,3 +6,10 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// next.config.js
+module.exports = {
+  async redirects() {
+    return [{ source: '/Profiles', destination: '/profile', permanent: false }];
+  },
+};
