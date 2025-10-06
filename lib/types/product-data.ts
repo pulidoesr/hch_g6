@@ -9,6 +9,7 @@ export interface Product {
     isOnSale: boolean;
     isBestSeller: boolean;
     rating: number;
+    displayOnMarketplace: boolean;
 }
 
 export interface Collection {
@@ -55,6 +56,28 @@ export interface ShippingOption {
 export interface FullDataSource {
     products: Product[];
     collections: CategoryData[];
+    sellerProfiles: RawSellerProfile[];
     countries: string[]; 
     shipping_options: ShippingOption[]; // Correctly typed as an array of ShippingOption objects
+}
+
+export interface RawSellerProfile {
+    sellerId: number;
+    name: string;
+    photoUrl: string;
+    aboutMe: string;
+    collectionIds: number[];
+}
+
+export type Seller = {
+  name: string;
+  collectionName: string;
+  photoUrl: string;
+  aboutMeText: string;
+};
+
+export type ButtonVariant = 'primary' | 'secondary' | 'delete';
+
+export interface AdminProductCardProps {
+    product: Product; // Usa o tipo Product completo fornecido
 }
