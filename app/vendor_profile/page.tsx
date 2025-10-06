@@ -38,7 +38,7 @@ export default async function SellerDashboard() {
               src={seller.photoUrl} 
               alt={`Foto de perfil de ${seller.name}`}
               fill={true}
-              objectFit="cover"
+              sizes="(min-width: 768px) 160px, 128px"
               className="rounded-full border-4 border-white shadow-xl object-cover" 
             />
           </div>

@@ -20,9 +20,9 @@ export default function AdminProductCard({ product }: AdminProductCardProps) {
         <Image
           src={product.imageUrl}
           alt={product.name}
-          layout="fill"
-          objectFit="contain" // Melhor para produtos, evitando cortes
-          className="rounded-lg"
+          fill={true}
+          sizes="(min-width: 1280px) 16vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="rounded-lg object-contain"
         />
       </div>
 
