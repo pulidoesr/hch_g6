@@ -1,8 +1,9 @@
-// components/AdminProductCard.tsx
+// components/AdminProductCard/AdminProductCard.tsx
+'use client'
 
 import Image from 'next/image';
-import { Product } from '@/lib/types/product-data'; // Tipagem do objeto completo
-import Button from '@/components/Button/Button'; // Reutilizamos o componente Button
+import { Product } from '@/lib/types/product-data';
+import Button from '@/components/Button/Button';
 
 interface AdminProductCardProps {
   product: Product;
@@ -42,7 +43,7 @@ export default function AdminProductCard({ product }: AdminProductCardProps) {
             type="checkbox"
             checked={product.displayOnMarketplace}
             className="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-            onChange={() => console.log('Toggle display')} // Em um app real, isso mudaria o estado
+            onChange={() => console.log('Toggle display')}
           />
           <label htmlFor={`checkbox-${product.id}`} className="ml-2 block text-sm text-gray-700 select-none">
             Display on market place
@@ -55,13 +56,14 @@ export default function AdminProductCard({ product }: AdminProductCardProps) {
         </p>
       </div>
       
-      {/* Botões de Ação (Apenas para demonstração, já que o requisito foi movido para o topo da seção My Collection) */}
-      {/*
-      <div className="mt-auto flex justify-between gap-2">
-          <Button variant="secondary" className="text-xs px-2 py-1">Edit</Button>
-          <Button variant="delete" className="text-xs px-2 py-1">Delete</Button>
+      {/* 🟢 BOTÕES DE AÇÃO (REATIVADOS E CORRIGIDOS) 🟢 */}
+      <div className="mt-4 flex gap-2"> 
+        {/* Usamos flex e gap-2 no pai para espaçamento */}
+          
+        {/* Adicionamos w-full para garantir que cada botão ocupe 100% do espaço disponível em sua coluna flex */}
+        <Button variant="secondary" className="text-xs w-full px-2 py-1">Edit</Button> 
+        <Button variant="delete" className="text-xs w-full px-2 py-1">Delete</Button>
       </div>
-      */}
     </div>
   );
 }
