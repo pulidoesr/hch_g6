@@ -82,7 +82,13 @@
       ]
     },
     {
-      c
+      "sellerId": 10,
+      "name": "Ivan Steel (Blacksmith)",
+      "photoUrl": "/profiles/ivan_steel.png",
+      "aboutMe": "A modern blacksmith focused on forging functional and decorative metal pieces. I combine raw iron and steel with refined artistic design, celebrating the strength of the material.",
+      "collectionIds": [
+        10
+      ]
     },
     {
       "sellerId": 11,
