@@ -12,7 +12,7 @@
     {
       "sellerId": 2,
       "name": "Victor Glass (Blown Glass Artist)",
-      "photoUrl": "/profiles/victor_glass.jpg",
+      "photoUrl": "/profiles/victor_glass.png",
       "aboutMe": "Master in the art of blown glass. I create sculptures and objects that capture light in a singular way. Ethereal Glassworks is where the magic of fire meets the transparency of matter, resulting in truly ethereal pieces.",
       "collectionIds": [
         2
@@ -21,7 +21,7 @@
     {
       "sellerId": 3,
       "name": "Sofia Taylor (Jewelry Designer)",
-      "photoUrl": "/profiles/sofia_tecela.jpg",
+      "photoUrl": "/profiles/sofia_tecela.png",
       "aboutMe": "I design and handcraft intricate beaded jewelry, drawing inspiration from nature and global cultures. Each Glimmerstone piece is a vibrant expression of color and individuality.",
       "collectionIds": [
         3
@@ -30,7 +30,7 @@
     {
       "sellerId": 4,
       "name": "Marcus Reed (Leather Craftsman)",
-      "photoUrl": "/profiles/marcus_reed.jpg",
+      "photoUrl": "/profiles/marcus_reed.png",
       "aboutMe": "Dedicated to creating timeless leather goods. I use traditional methods and high-quality full-grain leather for accessories that are made to last and tell a story through their patina.",
       "collectionIds": [
         4
@@ -39,7 +39,7 @@
     {
       "sellerId": 5,
       "name": "Lena Woods (Wood Carver)",
-      "photoUrl": "/profiles/lena_woods.jpg",
+      "photoUrl": "/profiles/lena_woods.png",
       "aboutMe": "My focus is on hand-carved wood sculptures and functional objects. I highlight the natural grain and forms of the wood, bringing a piece of the forest into modern living.",
       "collectionIds": [
         5
@@ -48,7 +48,7 @@
     {
       "sellerId": 6,
       "name": "Anna Knot (Knitwear Specialist)",
-      "photoUrl": "/profiles/anna_knot.jpg",
+      "photoUrl": "/profiles/anna_knot.png",
       "aboutMe": "Creating cozy and colorful hand-knitted items using only the finest natural wools. Each accessory from Wool & Whimsy is designed for comfort, warmth, and a touch of playful charm.",
       "collectionIds": [
         6
@@ -57,7 +57,7 @@
     {
       "sellerId": 7,
       "name": "Elias Vance (Printmaker)",
-      "photoUrl": "/profiles/elias_vance.jpg",
+      "photoUrl": "/profiles/elias_vance.png",
       "aboutMe": "As a printmaker and illustrator, I specialize in unique custom stationery, journals, and fine art prints. I celebrate the tactile beauty of paper and the lasting impression of ink.",
       "collectionIds": [
         7
@@ -66,7 +66,7 @@
     {
       "sellerId": 8,
       "name": "Maya Loom (Textile Artist)",
-      "photoUrl": "/profiles/maya_loom.jpg",
+      "photoUrl": "/profiles/maya_loom.png",
       "aboutMe": "Specializing in bespoke embroidery and intricate textile art. I transform simple threads into complex, vibrant patterns, adding personalized elegance to home decor.",
       "collectionIds": [
         8
@@ -75,25 +75,19 @@
     {
       "sellerId": 9,
       "name": "Ben Rattan (Wicker Weaver)",
-      "photoUrl": "/profiles/ben_rattan.jpg",
+      "photoUrl": "/profiles/ben_rattan.png",
       "aboutMe": "I craft durable and elegant furniture and decor from natural fibers. My work honors traditional weaving methods, blending rustic charm with modern functionality.",
       "collectionIds": [
         9
       ]
     },
     {
-      "sellerId": 10,
-      "name": "Ivan Steel (Blacksmith)",
-      "photoUrl": "/profiles/ivan_steel.jpg",
-      "aboutMe": "A modern blacksmith focused on forging functional and decorative metal pieces. I combine raw iron and steel with refined artistic design, celebrating the strength of the material.",
-      "collectionIds": [
-        10
-      ]
+      c
     },
     {
       "sellerId": 11,
       "name": "Alex Fine (Painter)",
-      "photoUrl": "/profiles/alex_fine.jpg",
+      "photoUrl": "/profiles/alex_fine.png",
       "aboutMe": "An artist dedicated to oil and watercolor painting. My work captures the emotional depth of landscapes and portraits, turning plain canvas into expressive, visual stories.",
       "collectionIds": [
         11
