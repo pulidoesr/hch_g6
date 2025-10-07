@@ -1,19 +1,35 @@
+// app/profile/page.tsx
 import { auth, signOut } from "@/auth";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
+import AuthCard from "@/components/auth/AuthCard";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function ProfilePage() {
+type SP = { callbackUrl?: string; tab?: "signin" | "signup" };
+
+export default async function ProfilePage({ searchParams }: { searchParams: SP }) {
   const session = await auth();
-  if (!session) redirect('/signin?callbackUrl=/profile');
 
+  // If no session, render the unified AuthCard (Sign In / Sign Up)
+  if (!session) {
+    return (
+      <div className="w-full max-w-lg mx-auto p-6">
+        <AuthCard
+          initialTab={searchParams?.tab ?? "signin"}
+          callbackUrl={searchParams?.callbackUrl ?? "/profile"}
+        />
+      </div>
+    );
+  }
+
+  // Signed-in view
   async function doSignOut() {
     "use server";
     await signOut({ redirectTo: "/" });
   }
 
   return (
-    <section className="w-full max-w-lg p-8 space-y-6 rounded-lg bg-white/5 shadow">
+    <section className="w-full max-w-lg mx-auto p-8 space-y-6 rounded-lg bg-white/5 shadow">
       <h1 className="text-2xl font-bold text-gray-800">
         Welcome, {session.user?.name ?? session.user?.email}
       </h1>
