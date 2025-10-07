@@ -1,6 +1,10 @@
 import "@/styles/globals.css"
 import Header from "@/components/SiteHeader/Header"
 import Footer from "@/components/Footer/Footer"
+import PageFrame from "@/components/PageFrame"
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
+
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
