@@ -1,7 +1,7 @@
 // Main Checkout Page Component (UPDATED AND TRANSLATED)
 'use client'; 
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
@@ -15,7 +15,6 @@ import { useShippingAddress } from '@/lib/checkout-utils';
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
 
-// ---------- Types ----------
 interface CartItem {
   id: number;
   name: string;
@@ -24,18 +23,6 @@ interface CartItem {
   quantity: number;
   imageSrc: string;
 }
-
-type Tab = 'cart' | 'shipping' | 'payment';
-
-type SummaryData = {
-  subtotal: number;
-  shippingValue: number;
-  shippingDisplay: string;
-  taxes: number;
-  total: number;
-};
-
-// ---------- Local storage cart (demo) ----------
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
 
 // --- PERSISTENT HOOK SIMULATION (FIXED FOR HYDRATION) ---
@@ -70,10 +57,7 @@ const useCart = () => {
 
 // --- Constants and Types ---
 
-// ---------- Constants ----------
-const TAXES = 13.0;
-const FREE_SHIPPING_THRESHOLD = 200.0;
-const SHIPPING_COST = 20.0;
+type Tab = 'cart' | 'shipping' | 'payment';
 
 const TAXES = 13.00;
 const FREE_SHIPPING_THRESHOLD = 200.00;
@@ -85,6 +69,7 @@ const calculateSummary = (items: CartItem[]) => {
   const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
   const total = subtotal + shippingValue + TAXES;
+  
   return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
 };
 
@@ -134,15 +119,9 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange })
  * Component that displays a single item in the cart list.
  */
 interface CartItemRowProps {
-  item: CartItem;
-  onUpdateQuantity: (id: number, newQuantity: number) => void;
+    item: CartItem;
+    onUpdateQuantity: (id: number, newQuantity: number) => void;
 }
-const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => (
-  <div className="flex py-6 border-b border-gray-200">
-    {/* Image */}
-    <div className="w-40 h-40 flex-shrink-0 relative border">
-      <Image src={item.imageSrc} alt={item.name} fill sizes="160px" className="object-cover" />
-    </div>
 
 const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => {
     return (
@@ -182,43 +161,44 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
 
 // --- Summary Component ---
 interface SummaryProps {
-  summary: SummaryData;
+    summary: ReturnType<typeof calculateSummary>;
 }
+
 const Summary: React.FC<SummaryProps> = ({ summary }) => {
-  const { subtotal, shippingDisplay, taxes, total } = summary;
+    const { subtotal, shippingDisplay, taxes, total } = summary;
 
-  const Row: React.FC<{ label: string; value: string | number; valueClass?: string }> = ({
-    label,
-    value,
-    valueClass = '',
-  }) => (
-    <div className="flex justify-between mb-2">
-      <span className="text-gray-600 uppercase text-sm">{label}</span>
-      <span className={`font-medium ${valueClass}`}>
-        {typeof value === 'number' ? `$${value.toFixed(2)}` : value}
-      </span>
-    </div>
-  );
-
-  return (
-    <div className="p-4 md:p-0">
-      <h2 className="text-2xl font-normal tracking-wide mb-6">Summary</h2>
-      <p className="text-sm text-gray-500 mb-6 border-b pb-4">
-        <a href="#" className="underline">
-          ENTER COUPON CODE
-        </a>
-      </p>
-      <Row label="SUBTOTAL" value={subtotal} />
-      <Row label="SHIPPING" value={shippingDisplay} valueClass={shippingDisplay === 'FREE' ? 'text-green-600' : ''} />
-      <Row label="TAXES" value={taxes} />
-      <div className="my-6 border-t pt-6">
-        <div className="flex justify-between">
-          <span className="text-xl font-medium tracking-wide">TOTAL</span>
-          <span className="text-2xl font-semibold text-gray-900">${total.toFixed(2)}</span>
+    const SummaryRow: React.FC<{ label: string; value: string | number; valueClass?: string }> = ({ label, value, valueClass = '' }) => (
+        <div className="flex justify-between mb-2">
+            <span className="text-gray-600 uppercase text-sm">{label}</span>
+            <span className={`font-medium ${valueClass}`}>
+                {typeof value === 'number' ? `$${value.toFixed(2)}` : value}
+            </span>
         </div>
-      </div>
-    </div>
-  );
+    );
+
+    return (
+        <div className="p-4 md:p-0">
+            <h2 className="text-2xl font-normal tracking-wide mb-6">Summary</h2>
+            <p className="text-sm text-gray-500 mb-6 border-b pb-4">
+                <a href="#" className="underline">ENTER COUPON CODE</a>
+            </p>
+            <SummaryRow label="SUBTOTAL" value={subtotal} />
+            <SummaryRow 
+                label="SHIPPING" 
+                value={shippingDisplay} 
+                valueClass={shippingDisplay === 'FREE' ? 'text-green-600' : ''}
+            />
+            <SummaryRow label="TAXES" value={taxes} />
+            <div className="my-6 border-t pt-6">
+                <div className="flex justify-between">
+                    <span className="text-xl font-medium tracking-wide">TOTAL</span>
+                    <span className="text-2xl font-semibold text-gray-900">
+                        ${total.toFixed(2)}
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 // --- Shopping Cart Tab Component ---
@@ -229,22 +209,18 @@ interface ShoppingCartTabProps {
     onNext: () => void;
     onCancel: () => void; 
 }
-const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
-  const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
 
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
     
     const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
 
-  return (
-    <div>
-      <div className="flex flex-col lg:flex-row gap-10">
-        <section className="lg:w-2/3">
-          <h2 className="text-2xl font-normal tracking-wide mb-6">Shopping Cart</h2>
-          {cartItems.map((item) => (
-            <CartItemRow key={item.id} item={item} onUpdateQuantity={handleUpdateQuantity} />
-          ))}
-        </section>
+    const handleUpdateQuantity = (id: number, newQuantity: number) => {
+        setCartItems(prevItems => 
+            prevItems.map(item => 
+                item.id === id ? { ...item, quantity: newQuantity } : item
+            )
+        );
+    };
 
     return (
         <div>
@@ -295,7 +271,6 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
 
 // --- Main Checkout Page Component (UPDATED) ---
 
-// ---------- Page ----------
 const CheckoutPage: React.FC = () => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<Tab>('cart');
@@ -310,7 +285,7 @@ const CheckoutPage: React.FC = () => {
     { id: 'shipping', name: 'Shipping Details', icon: Truck },
     { id: 'payment', name: 'Payment Options', icon: CreditCard },
   ];
-
+  
   const handleNext = () => {
     if (activeTab === 'cart') setActiveTab('shipping');
     else if (activeTab === 'shipping') setActiveTab('payment');
@@ -322,18 +297,15 @@ const CheckoutPage: React.FC = () => {
     else if (activeTab === 'payment') setActiveTab('shipping');
   };
 
-  const handleCancel = () => router.push('/');
-
-  const TabHeader: React.FC<{ tab: Tab; index: number }> = ({ tab, index }) => {
+  const handleCancel = () => {
+    router.push('/'); 
+  };
+  
+  const TabHeader: React.FC<{ tab: Tab, index: number }> = ({ tab, index }) => {
     const isActive = activeTab === tab;
-    const info = tabs.find((t) => t.id === tab)!;
-    const Icon = info.icon;
-
     return (
-      <button
-        type="button"
-        onClick={() => setActiveTab(tab)}
-        className={`text-lg font-normal transition duration-200 flex items-center gap-2 ${
+      <div 
+        className={`text-lg font-normal cursor-pointer transition duration-200 ${
           isActive ? 'text-gray-900 border-b border-gray-600 pb-2' : 'text-gray-500'
         }`}
         // Allows clicking only on previous tabs (Standard checkout flow safety)
@@ -350,8 +322,8 @@ const CheckoutPage: React.FC = () => {
         
         {/* --- Navigation Tabs --- */}
         <div className="flex justify-between sm:justify-start sm:space-x-12 mb-12 border-b border-gray-300">
-          {tabs.map((t, i) => (
-            <TabHeader key={t.id} tab={t.id} index={i} />
+          {tabs.map((tab, index) => (
+            <TabHeader key={tab.id} tab={tab.id} index={index} />
           ))}
         </div>
 
