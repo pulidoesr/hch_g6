@@ -341,35 +341,35 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-08-18",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-06",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 3,
           "date": "2025-08-21",
           "comment": "High-quality materials and great finish."
@@ -398,14 +398,14 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-21",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-07",
           "comment": "Not bad, but I expected better packaging."
@@ -434,35 +434,28 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-07-30",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
-          "rating": 4,
-          "date": "2025-08-04",
-          "comment": "Amazing quality and design, exceeded my expectations."
-        },
-        {
-          "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-24",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-06",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -491,35 +484,35 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-14",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-21",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-07-29",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 3,
           "date": "2025-09-04",
           "comment": "Perfect for my needs, stylish and functional."
@@ -548,35 +541,35 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-07-27",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-21",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-14",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-31",
           "comment": "Perfect for my needs, stylish and functional."
@@ -605,35 +598,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 3,
           "date": "2025-08-03",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-04",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-19",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-24",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-08-04",
           "comment": "It’s okay, but not exactly what I was looking for."
@@ -662,35 +655,35 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-05",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-02",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-23",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-16",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-24",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -719,14 +712,14 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 3,
           "date": "2025-09-10",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-09-14",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -755,14 +748,14 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-19",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-09-16",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -791,35 +784,35 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-20",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-08-09",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-29",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-09-05",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-17",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -848,35 +841,35 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-19",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-10",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-07-25",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 3,
           "date": "2025-09-16",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-09-19",
           "comment": "It’s okay, but not exactly what I was looking for."
@@ -905,28 +898,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-11",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 3,
           "date": "2025-09-08",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 3,
           "date": "2025-08-11",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "High-quality materials and great finish."
@@ -955,21 +948,21 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-03",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-14",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-16",
           "comment": "Not bad, but I expected better packaging."
@@ -998,21 +991,21 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-08-14",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-10",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -1041,35 +1034,35 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-09",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-14",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-07-27",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-24",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "It’s okay, but not exactly what I was looking for."
@@ -1098,28 +1091,28 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-08-08",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -1148,35 +1141,35 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-09-10",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-31",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 3,
           "date": "2025-08-30",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-08-05",
           "comment": "Nice product, but shipping took longer than expected."
@@ -1205,35 +1198,35 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-14",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 3,
           "date": "2025-08-16",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-05",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-17",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-06",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -1262,35 +1255,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-20",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-09",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-09-02",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-20",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-09-11",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -1319,35 +1312,35 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-04",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-28",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-04",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -1376,35 +1369,35 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-04",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-09-03",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-02",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Nice product, but shipping took longer than expected."
@@ -1433,35 +1426,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-07-27",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-31",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -1490,21 +1483,21 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -1533,21 +1526,21 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 3,
           "date": "2025-08-01",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-06",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-04",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -1576,14 +1569,14 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -1612,21 +1605,21 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-09-02",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-13",
           "comment": "Not bad, but I expected better packaging."
@@ -1655,21 +1648,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-07-26",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-13",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-07-27",
           "comment": "Perfect for my needs, stylish and functional."
@@ -1698,35 +1691,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-27",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-06",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "High-quality materials and great finish."
@@ -1755,35 +1748,35 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-08-23",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-29",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-01",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -1812,28 +1805,28 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-08-26",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-24",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -1862,35 +1855,35 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-14",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-31",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-22",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -1919,21 +1912,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-09-09",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-02",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-15",
           "comment": "Nice product, but shipping took longer than expected."
@@ -1962,35 +1955,35 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-16",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-15",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-05",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -2019,14 +2012,14 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -2055,21 +2048,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-17",
           "comment": "High-quality materials and great finish."
@@ -2098,21 +2091,21 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-27",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -2141,35 +2134,35 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-28",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 3,
           "date": "2025-08-16",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -2198,35 +2191,35 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 3,
           "date": "2025-09-03",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 3,
           "date": "2025-08-08",
           "comment": "Nice product, but shipping took longer than expected."
@@ -2255,35 +2248,35 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-07-27",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-08",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -2312,35 +2305,35 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-02",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-03",
           "comment": "Not bad, but I expected better packaging."
@@ -2369,35 +2362,35 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 3,
           "date": "2025-08-20",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-09",
           "comment": "Nice product, but shipping took longer than expected."
@@ -2426,35 +2419,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-10",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-09-16",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Not bad, but I expected better packaging."
@@ -2483,21 +2476,21 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-15",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-30",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 3,
           "date": "2025-09-04",
           "comment": "Perfect for my needs, stylish and functional."
@@ -2526,21 +2519,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-05",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -2569,21 +2562,21 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-14",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Perfect for my needs, stylish and functional."
@@ -2612,35 +2605,35 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-16",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-07-26",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
@@ -2669,35 +2662,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-28",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-16",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-09",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "High-quality materials and great finish."
@@ -2726,28 +2719,28 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-06",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -2776,28 +2769,28 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-01",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -2826,21 +2819,21 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 3,
           "date": "2025-08-04",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -2869,28 +2862,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-09",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -2919,14 +2912,14 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-15",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -2955,21 +2948,21 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-04",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -2998,14 +2991,14 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "High-quality materials and great finish."
@@ -3034,35 +3027,35 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
@@ -3091,28 +3084,28 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 3,
           "date": "2025-08-20",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Perfect for my needs, stylish and functional."
@@ -3141,35 +3134,35 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-14",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-09-10",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-27",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-22",
           "comment": "Not bad, but I expected better packaging."
@@ -3198,28 +3191,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Perfect for my needs, stylish and functional."
@@ -3248,21 +3241,21 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-09",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -3291,35 +3284,35 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-07-27",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -3348,21 +3341,21 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -3391,28 +3384,28 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-08-04",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "High-quality materials and great finish."
@@ -3441,14 +3434,14 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-09",
           "comment": "Perfect for my needs, stylish and functional."
@@ -3477,35 +3470,35 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-11",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
@@ -3534,28 +3527,28 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-29",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-10",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Not bad, but I expected better packaging."
@@ -3584,35 +3577,35 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-15",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -3641,28 +3634,28 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Not bad, but I expected better packaging."
@@ -3691,21 +3684,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-09",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -3734,35 +3727,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-25",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 3,
           "date": "2025-09-02",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
@@ -3791,21 +3784,21 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-09-10",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -3834,21 +3827,21 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -3877,14 +3870,14 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Nice product, but shipping took longer than expected."
@@ -3913,35 +3906,35 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -3970,28 +3963,28 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 3,
           "date": "2025-08-27",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-09",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-04",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-15",
           "comment": "High-quality materials and great finish."
@@ -4020,28 +4013,28 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -4070,28 +4063,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-08-25",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-27",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -4120,21 +4113,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-08",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Perfect for my needs, stylish and functional."
@@ -4163,28 +4156,28 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-20",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-07-28",
           "comment": "Nice product, but shipping took longer than expected."
@@ -4213,14 +4206,14 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-25",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -4249,21 +4242,21 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-16",
           "comment": "Perfect for my needs, stylish and functional."
@@ -4292,14 +4285,14 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-07-26",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -4328,35 +4321,35 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-08",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-25",
           "comment": "High-quality materials and great finish."
@@ -4385,28 +4378,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-08-16",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -4435,35 +4428,35 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-08-08",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-11",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-09-08",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -4492,28 +4485,28 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-11",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 3,
           "date": "2025-08-04",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-09-17",
           "comment": "Beautiful craftsmanship, looks even better in person."
@@ -4542,21 +4535,21 @@
       "reviews": [
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-16",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-07-26",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -4585,35 +4578,35 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-08-25",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-08",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -4642,21 +4635,21 @@
       "reviews": [
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-09-11",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Nice product, but shipping took longer than expected."
@@ -4685,21 +4678,21 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-09-15",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "High-quality materials and great finish."
@@ -4728,21 +4721,21 @@
       "reviews": [
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-01",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -4771,35 +4764,35 @@
       "reviews": [
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-20",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-07-26",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -4828,35 +4821,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-10",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-08-04",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 4,
           "date": "2025-07-29",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "High-quality materials and great finish."
@@ -4885,28 +4878,28 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "Amazing quality and design, exceeded my expectations."
@@ -4935,28 +4928,28 @@
       "reviews": [
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 4,
           "date": "2025-09-04",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 5,
           "date": "2025-07-28",
           "comment": "Nice product, but shipping took longer than expected."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-08-25",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 5,
           "date": "2025-09-15",
           "comment": "Very satisfied, I will buy again from this collection."
@@ -4985,21 +4978,21 @@
       "reviews": [
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 5,
           "date": "2025-08-11",
           "comment": "High-quality materials and great finish."
         },
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "It’s okay, but not exactly what I was looking for."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-07-27",
           "comment": "Good value for the price, but could be a bit more durable."
@@ -5028,35 +5021,35 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 4,
           "date": "2025-08-01",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 5,
           "date": "2025-09-02",
           "comment": "Absolutely love it! Will definitely recommend to friends."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-08-27",
           "comment": "Amazing quality and design, exceeded my expectations."
         },
         {
           "customerName": "James Taylor",
-          "customerImage": "/path/to/customer_photos/james_taylor.jpg",
+          "customerImage": "/customers/james_taylor.png",
           "rating": 4,
           "date": "2025-08-16",
           "comment": "Beautiful craftsmanship, looks even better in person."
         },
         {
           "customerName": "John Smith",
-          "customerImage": "/path/to/customer_photos/john_smith.jpg",
+          "customerImage": "/customers/john_smith.png",
           "rating": 3,
           "date": "2025-09-08",
           "comment": "Nice product, but shipping took longer than expected."
@@ -5085,21 +5078,21 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-09-04",
           "comment": "Not bad, but I expected better packaging."
         },
         {
           "customerName": "Daniel Wilson",
-          "customerImage": "/path/to/customer_photos/daniel_wilson.jpg",
+          "customerImage": "/customers/daniel_wilson.png",
           "rating": 4,
           "date": "2025-07-28",
           "comment": "Very satisfied, I will buy again from this collection."
         },
         {
           "customerName": "Emily Johnson",
-          "customerImage": "/path/to/customer_photos/emily_johnson.jpg",
+          "customerImage": "/customers/emily_johnson.png",
           "rating": 5,
           "date": "2025-08-08",
           "comment": "High-quality materials and great finish."
@@ -5128,21 +5121,21 @@
       "reviews": [
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Olivia Miller",
-          "customerImage": "/path/to/customer_photos/olivia_miller.jpg",
+          "customerImage": "/customers/olivia_miller.png",
           "rating": 5,
           "date": "2025-09-17",
           "comment": "Perfect for my needs, stylish and functional."
         },
         {
           "customerName": "Michael Brown",
-          "customerImage": "/path/to/customer_photos/michael_brown.jpg",
+          "customerImage": "/customers/michael_brown.png",
           "rating": 4,
           "date": "2025-09-02",
           "comment": "Absolutely love it! Will definitely recommend to friends."
@@ -5169,14 +5162,14 @@
       "reviews": [
         {
           "customerName": "Sophia Davis",
-          "customerImage": "/path/to/customer_photos/sophia_davis.jpg",
+          "customerImage": "/customers/sophia_davis.jpg",
           "rating": 5,
           "date": "2025-08-25",
           "comment": "Good value for the price, but could be a bit more durable."
         },
         {
           "customerName": "Isabella Moore",
-          "customerImage": "/path/to/customer_photos/isabella_moore.jpg",
+          "customerImage": "/customers/isabella_moore.png",
           "rating": 5,
           "date": "2025-08-31",
           "comment": "Not bad, but I expected better packaging."
