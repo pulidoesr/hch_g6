@@ -6,16 +6,14 @@ import { sql, DbUser, getUserRoles } from "@/lib/db";
 
 const roles = await getUserRoles();
 
-console.log('Roles:' + roles)
-
-
 export const {
   auth,
   signIn,
   signOut,
   handlers: { GET, POST },
 } = NextAuth({
-  // debug: true,              // optional
+  trustHost: true, // <-- important on Vercel
+
   providers: [
     Credentials({
       name: "Credentials",
@@ -50,6 +48,7 @@ export const {
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
       if (user) token.role = (user as any).role ?? "customer";
@@ -58,6 +57,16 @@ export const {
     async session({ session, token }) {
       if (session.user) (session.user as any).role = token.role ?? "customer";
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // Force same-origin redirects (prevents bouncing to preview domains)
+      const u = new URL(url, baseUrl);
+      if (u.origin !== baseUrl) return baseUrl;
+
+      // Normalize any old/plural path
+      if (u.pathname === "/profiles") u.pathname = "/profile";
+
+      return u.toString();
     },
   },
 });
