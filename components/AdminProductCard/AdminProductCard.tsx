@@ -1,7 +1,7 @@
-// components/AdminProductCard/AdminProductCard.tsx
 'use client'
 
 import Image from 'next/image';
+import Link from 'next/link'; // 👈 Importação necessária
 import { Product } from '@/lib/types/product-data';
 import Button from '@/components/Button/Button';
 
@@ -10,7 +10,10 @@ interface AdminProductCardProps {
 }
 
 export default function AdminProductCard({ product }: AdminProductCardProps) {
-  // Ajuste de classes para garantir que o card caiba no grid
+  
+  // 🎯 Define a URL de destino dinâmica
+  const editUrl = `/seller/products/${product.id}`;
+  
   return (
     <div
       className="flex flex-col border border-gray-200 rounded-xl shadow-lg overflow-hidden p-4 bg-white"
@@ -56,13 +59,20 @@ export default function AdminProductCard({ product }: AdminProductCardProps) {
         </p>
       </div>
       
-      {/* 🟢 BOTÕES DE AÇÃO (REATIVADOS E CORRIGIDOS) 🟢 */}
+      {/* 🟢 BOTÕES DE AÇÃO 🟢 */}
       <div className="mt-4 flex gap-2"> 
-        {/* Usamos flex e gap-2 no pai para espaçamento */}
-          
-        {/* Adicionamos w-full para garantir que cada botão ocupe 100% do espaço disponível em sua coluna flex */}
-        <Button variant="secondary" className="text-xs w-full px-2 py-1">Edit</Button> 
-        <Button variant="delete" className="text-xs w-full px-2 py-1">Delete</Button>
+        
+        {/* CORREÇÃO: Envolvemos o botão "Edit" com Link */}
+        <Link href={editUrl}>
+          <Button variant="secondary" className="text-xs w-40 px-2 py-1">
+            Edit
+          </Button> 
+        </Link>
+        
+        {/* O botão Delete permanece como um Button simples (para uma ação sem navegação) */}
+        <Button variant="delete" className="text-xs w-640 px-2 py-1">
+          Delete
+        </Button>
       </div>
     </div>
   );
