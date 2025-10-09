@@ -31,6 +31,7 @@ const navItems = [
   { name: 'Home', href: '/' },
   { name: 'Collections', href: '/collections' },
   { name: 'Shop', href: '/shop' },
+  {name: 'Seller', href: '/seller'},
   { name: 'Profile', href: '/profile' },
 ];
 
@@ -49,18 +50,6 @@ export default function Header() {
               <span className="text-base lg:text-2xl font-bold text-white">Handcrafted Heaven</span>
             </Link>
           </div>
-
-          {/* Search Input (Desktop) */}
-          {/* <div className="flex-1 max-w-[576px] ml-4 hidden md:block relative">
-            <input
-              type="search"
-              placeholder="Search..."
-              className="w-full rounded-md border border-gray-300 px-[16px] py-[8px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B4513] pl-10"
-            />
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MagnifyingGlassIcon className="h-[1.25rem] w-[1.25rem] text-gray-500" />
-            </div>
-          </div> */}
 
           {/* Main Menu (Desktop) */}
           <div className="hidden md:flex items-center ml-[2rem] space-x-[2rem]">
@@ -116,18 +105,7 @@ export default function Header() {
             </button>
           </div>
           <div className="flex flex-col items-start px-8 py-4 space-y-4 w-full"> {/* Added w-full */}
-            
-            {/* NEW: Search Input (Mobile) */}
-            {/* <div className="w-full relative mb-4">
-                <input
-                    type="search"
-                    placeholder="Search..."
-                    className="w-full rounded-md border border-gray-600 px-[16px] py-[8px] text-sm focus:outline-none focus:ring-2 focus:ring-[#8B4513] pl-10 bg-gray-700 text-white placeholder-gray-400"
-                />
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <MagnifyingGlassIcon className="h-[1.25rem] w-[1.25rem] text-gray-400" />
-                </div>
-            </div> */}
+        
 
             {/* NEW: Navigation Links (Mobile) */}
             {navItems.map((item) => (
