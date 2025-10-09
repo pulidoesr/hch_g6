@@ -1,15 +1,29 @@
 // components/Button.tsx
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent, FormEvent } from 'react';
+// Importe React para usar os tipos HTMLAttributes
+import React from 'react'; 
 
-type ButtonProps = {
+// 🟢 CORREÇÃO AQUI: Estende os atributos nativos de um botão HTML
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  // Mantém as props personalizadas
   children: ReactNode;
   variant?: 'primary' | 'secondary' | 'delete';
   className?: string;
-  onClick?: () => void;
+  
+  // Mantém a assinatura flexível do onClick (solução anterior)
+  onClick?: (e?: MouseEvent<HTMLButtonElement> | FormEvent) => void | Promise<void>;
 };
 
 // Componente de botão simples para consistência visual
-export default function Button({ children, variant = 'primary', className = '', onClick }: ButtonProps) {
+export default function Button({ 
+    children, 
+    variant = 'primary', 
+    className = '', 
+    onClick,
+    // 🟢 CAPTURA as props nativas (type, disabled, etc.) com o spread operator
+    ...rest 
+}: ButtonProps) {
+  
   let baseStyle = 'px-4 py-2 font-semibold text-sm rounded-lg shadow-md transition duration-150 ease-in-out ';
   
   if (variant === 'primary') {
@@ -21,7 +35,12 @@ export default function Button({ children, variant = 'primary', className = '', 
   }
 
   return (
-    <button className={`${baseStyle} ${className}`} onClick={onClick}>
+    <button 
+        className={`${baseStyle} ${className}`} 
+        onClick={onClick as any}
+        // 🟢 APLICA TODAS as props nativas, incluindo 'type', 'disabled', etc.
+        {...rest} 
+    >
       {children}
     </button>
   );

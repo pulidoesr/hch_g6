@@ -1,8 +1,10 @@
 export interface Product {
     id: string;
+    sellerId: number;
     name: string; // Used as description on the card
     description: string;
     imageUrl: string;
+    imageUrls:string[];
     price: number;
     isFeatured: boolean;
     isNew: boolean;

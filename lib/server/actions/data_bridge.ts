@@ -1,25 +1,25 @@
-// /lib/server/actions/data_bridge.ts (ou data-bridge.tsx)
+// /lib/server/actions/data_bridge.ts (or data-bridge.tsx)
 
 import Products from '@/data/products.json';
 
-// Importa todos os tipos necessários
+// Imports all necessary types
 import { 
     Product, 
     CategoryData, 
     ShippingOption, 
     FullDataSource, 
-    RawSellerProfile, // Interface do perfil bruto
-    Seller // Tipo do perfil transformado
+    RawSellerProfile, // Raw profile interface
+    Seller // Transformed profile type
 } from '@/lib/types/product-data'; 
 
-// --- CORREÇÃO DA IMPORTAÇÃO JSON ---
+// --- JSON IMPORT CORRECTION ---
 const rawDataCandidate = (Products as any).default || Products;
 const rawData = rawDataCandidate as FullDataSource;
 // ------------------------------------
 
 
 // ------------------------------------
-// FUNÇÕES DE BUSCA GERAL (EXISTENTES)
+// GENERAL FETCH FUNCTIONS (EXISTING)
 // ------------------------------------
 
 /**
@@ -56,20 +56,20 @@ export function getShippingOptions(): ShippingOption[] {
 
 
 // ------------------------------------
-// FUNÇÃO DE TRANSFORMAÇÃO PARA O VENDEDOR (loadSellerData)
+// SELLER TRANSFORMATION FUNCTION (loadSellerData)
 // ------------------------------------
 
 /**
- * Carrega e processa os dados de um vendedor e seus produtos a partir do JSON completo.
- * @param sellerIdToLoad O ID do vendedor a ser carregado.
- * @returns Um objeto contendo o perfil do Seller (Seller) e a lista de Products (Product[]) da sua coleção principal.
+ * Loads and processes a seller's data and their products from the complete JSON.
+ * @param sellerIdToLoad The ID of the seller to be loaded.
+ * @returns An object containing the Seller profile (Seller) and the list of Products (Product[]) from their main collection.
  */
 export function loadSellerData(sellerIdToLoad: number = 1): { seller: Seller; products: Product[]; } {
   const sellerProfiles: RawSellerProfile[] = rawData.sellerProfiles;
   const collections: CategoryData[] = rawData.collections;
   const rawProducts: Product[] = rawData.products;
 
-  // 1. Encontrar o Perfil do Vendedor
+  // 1. Find the Seller Profile
   const sellerData = sellerProfiles.find(s => s.sellerId === sellerIdToLoad);
   
   if (!sellerData) {
@@ -85,19 +85,19 @@ export function loadSellerData(sellerIdToLoad: number = 1): { seller: Seller; pr
     }
   }
 
-  // 2. Encontrar a(s) Coleção(ões) do Vendedor
-  // Foca na primeira collectionId do vendedor
+  // 2. Find the Seller's Collection(s)
+  // Focuses on the seller's first collectionId
   const collectionId = sellerData.collectionIds[0]; 
   const collectionData = collections.find(c => c.id === collectionId);
   
-  const collectionName = collectionData?.name || "Coleção Não Categorizada";
+  const collectionName = collectionData?.name || "Uncategorized Collection";
   const productIds = collectionData?.productIds || [];
 
-  // 3. Filtrar os Produtos (Aproveitando a interface Product existente)
+  // 3. Filter the Products (Leveraging the existing Product interface)
   const sellerProducts: Product[] = rawProducts
     .filter(p => productIds.includes(p.id));
 
-  // 4. Mapear para o tipo Seller final (limpo)
+  // 4. Map to the final Seller type (clean)
   const sellerProfile: Seller = {
     name: sellerData.name,
     collectionName: collectionName,
@@ -106,4 +106,18 @@ export function loadSellerData(sellerIdToLoad: number = 1): { seller: Seller; pr
   };
 
   return { seller: sellerProfile, products: sellerProducts };
+}
+
+// ------------------------------------
+// FUNCTION TO FETCH A SINGLE PRODUCT 
+// ------------------------------------
+/**
+ * Fetches a single product by ID.
+ * @param productId The ID of the product to be loaded.
+ * @returns The Product object or undefined if not found.
+ */
+export function getProductById(productId: string): Product | undefined {
+    // Reuses the getAllProducts function (or uses rawData.products directly)
+    const allProducts = rawData.products; 
+    return allProducts.find(p => p.id === productId);
 }

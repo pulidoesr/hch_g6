@@ -1,6 +1,7 @@
 // app/page.tsx
 
 import Image from 'next/image';
+import Link from 'next/link'; // 👈 Importação necessária
 import { loadSellerData } from '@/lib/server/actions/data_bridge'; 
 import { Seller, Product } from '@/lib/types/product-data'; 
 import AdminProductCard from '@/components/AdminProductCard/AdminProductCard';
@@ -8,18 +9,13 @@ import Button from '@/components/Button/Button';
 
 const TARGET_SELLER_ID = 1; 
 
-// 🎯 SOLUÇÃO: Torne a função de exportação padrão explicitamente 'async'
 export default async function SellerDashboard() {
   
-  // Como a função loadSellerData é síncrona, você não precisa de 'await' aqui,
-  // mas o 'async' na definição da função principal resolve o erro de exportação
-  // em muitos ambientes Next.js quando há carregamento de dados.
   const { seller, products }: { seller: Seller; products: Product[]; } = 
     loadSellerData(TARGET_SELLER_ID);
 
   return (
     <div className="min-h-screen bg-gray-50 p-4 md:p-8">
-      {/* ... o restante do seu código JSX ... */}
       <div className="max-w-7xl mx-auto">
         
         {/* 1. SEÇÃO DO VENDEDOR (TOPO) */}
@@ -73,9 +69,12 @@ export default async function SellerDashboard() {
             </h2>
             
             <div className="flex flex-wrap justify-center md:justify-end gap-3 mt-4 md:mt-0">
-              <Button variant="secondary" className="text-xs px-2 py-1 flex-1">Edit Product</Button>
-              <Button variant="delete" className="text-xs px-2 py-1 flex-1">Delete Product</Button>
-              <Button variant="primary" className="text-xs px-2 py-1 flex-1">Add Product</Button>
+              {/* 🎯 CORREÇÃO: Envolver o Button com Link e definir o href */}
+              <Link href="/seller/create_product">
+                <Button variant="primary" className="text-xs px-2 py-1 flex-1 w-40">
+                  Add Product
+                </Button>
+              </Link>
             </div>
           </div>
           
