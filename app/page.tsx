@@ -126,8 +126,8 @@ export default async function Page() {
           src="/hero_handcrafted_heaven.png"
           alt="Hero background image with handmade products"
           fill
-          style={{ objectFit: 'cover' }}
-          className="absolute inset-0 z-0 opacity-90"
+          priority={true}
+          className="absolute inset-0 z-0 opacity-90 object-cover"
         />
         <div className="relative z-10 flex flex-col items-center justify-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight [-webkit-text-stroke:2px_black]">
@@ -198,9 +198,9 @@ export default async function Page() {
             <Image
               src="/handcrafted_about_us.png"
               alt="Hands of a person crafting a ceramic mug on a pottery wheel"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg shadow-lg"
+              fill
+              className="rounded-lg shadow-lg object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
             />
           </div>
         </div>
