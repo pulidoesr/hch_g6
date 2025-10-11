@@ -1,67 +1,28 @@
-// src/app/product_detail/[id]/page.tsx
-import ProductClient from './ProductClient';
-import productsData from '@/data/products.json';
+// app/product_detail/[id]/page.tsx
+import { notFound } from "next/navigation";
+import ProductClient from "./ProductClient";
+import {
+  getProductByIdWithDetails,
+  getTopRatedSimilarProducts,
+} from "@/lib/repositories/products";
 
-// Importa o tipo PageProps do global
-// (O tipo é global, não precisa importar, mas pode ser referenciado)
+export const revalidate = 60;
 
-interface Review {
-  customerName: string;
-  customerImage: string;
-  rating: number;
-  date: string;
-  comment: string;
+type Params = { id: string };
+type MaybePromise<T> = T | Promise<T>;
+type PageProps = { params: MaybePromise<Params> };
+
+export default async function ProductPage({ params }: PageProps) {
+  // ✅ Works on Next 14 (sync params) and Next 15 (async params)
+  const { id } = await Promise.resolve(params);
+
+  const [product, similarProducts] = await Promise.all([
+    getProductByIdWithDetails(id),
+    getTopRatedSimilarProducts(id, 6),
+  ]);
+
+  if (!product) return notFound();
+
+  return <ProductClient product={product} similarProducts={similarProducts} />;
 }
 
-interface Product {
-  id: string;
-  imageUrl: string;
-  imageUrls: string[];
-  description: string;
-  name: string;
-  price: number;
-  rating: number;
-  reviews: Review[];
-}
-
-interface Collection {
-  id: number;
-  isFeatured: boolean;
-  productIds: string[];
-}
-
-// Corrige para usar PageProps conforme o arquivo gerado
-export default async function ProductPage(props: PageProps<'/product_detail/[id]'>) {
-  const { id } = await props.params;
-
-  let products: Product[] = [];
-  let collections: Collection[] = [];
-  
-  products = productsData.products as Product[];
-  collections = productsData.collections as Collection[];
-  
-
-  // Encontra o produto específico pelo ID
-  const product = products.find(p => p.id === id);
-
-  if (!product) {
-    return <div>Product not found.</div>;
-  }
-
-  // Encontra a coleção do produto atual
-  const currentCollection = collections.find(c => c.productIds.includes(product.id));
-  
-  // Filtra os produtos da mesma coleção (excluindo o produto atual)
-  const similarProducts = products.filter(p => 
-    currentCollection?.productIds.includes(p.id) && p.id !== product.id
-  );
-
-  // Classifica os produtos por avaliação (rating) em ordem decrescente e pega os 6 primeiros
-  const topRatedSimilarProducts = similarProducts
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 6);
-
-  return (
-    <ProductClient product={product} similarProducts={topRatedSimilarProducts} />
-  );
-}

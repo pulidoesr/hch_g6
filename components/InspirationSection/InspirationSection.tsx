@@ -59,8 +59,8 @@ const InspirationSection = ({ productsData }: InspirationSectionProps) => {
         
         // --- Lógica de Randomização REPETIDA AQUI ---
         
-        // 1. Filtragem: isFeatured = true AND rating >= 4.0
-        const filtered = productsData.filter(p => p.isFeatured && p.rating && p.rating >= 4.0);
+        // 1. Filtragem: isFeatured = true 
+        const filtered = productsData.filter(p => p.isFeatured );
 
         // 2. Lógica de Seleção Aleatória (agora no lado do cliente)
         const shuffled = [...filtered];
