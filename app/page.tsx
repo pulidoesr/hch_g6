@@ -1,13 +1,15 @@
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getHomeFeaturedProducts } from "@/lib/repositories/products";
+import InspirationSection from "@/components/InspirationSection/InspirationSection";
+import { getAllProducts } from "@/lib/server/actions/data_bridge";
 
-// Optional ISR so home doesn’t hit DB on every request
-export const revalidate = 60; // seconds
+export const revalidate = 60;
 
 export default async function Page() {
   const featuredProducts = await getHomeFeaturedProducts(10);
+  const products = await getAllProducts(); // <-- this is an array you’ll pass down
 
   const primaryProducts = featuredProducts.slice(0, 3);
   const secondaryProducts = featuredProducts.slice(3, 10);
@@ -84,8 +86,11 @@ export default async function Page() {
       </div>
 
       <hr className="my-8 border-brand-900" />
-      {/* About Us unchanged */}
-      {/* ... */}
+
+      {/* 🔽 Use the products array here */}
+      <InspirationSection products={products} />
+
+      {/* About Us … */}
     </div>
   );
 }
