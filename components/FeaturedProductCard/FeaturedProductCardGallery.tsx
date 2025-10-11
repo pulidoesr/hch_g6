@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Product } from "@/lib/types/product-data";
+import Link from "next/link";
+import type { Product } from "@/lib/types/product-data";
 
 /* ---------------------------------------------
-   1) Narrow props for the card (no full Product)
+   1) Narrow props for the card (only what's used)
 ---------------------------------------------- */
 type SimpleProductCardProps = {
   id: string;
@@ -13,10 +14,6 @@ type SimpleProductCardProps = {
   price: number;
   rating?: number;
   description?: string;
-  isFeatured?: boolean;
-  isNew?: boolean;
-  isBestSeller?: boolean;
-  isOnSale?: boolean;
 };
 
 /* ---------------------------------------------
@@ -29,10 +26,18 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
   id,
   rating,
 }) => {
+  // optional little star row if rating is provided
+  const stars =
+    typeof rating === "number"
+      ? "★".repeat(Math.round(Math.min(5, Math.max(0, rating)))) +
+        "☆".repeat(5 - Math.round(Math.min(5, Math.max(0, rating))))
+      : null;
+
   return (
-    <a
+    <Link
       href={`/product_detail/${id}`}
       className="block w-full h-full bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 overflow-hidden group border border-gray-100"
+      aria-label={`View details for ${name}`}
     >
       {/* Product Image */}
       <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -44,6 +49,7 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
             e.currentTarget.src =
               "https://placehold.co/400x300/333333/ffffff?text=Product";
           }}
+          loading="lazy"
         />
       </div>
 
@@ -52,11 +58,18 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
         <p className="text-gray-800 text-sm font-medium truncate w-full" title={name}>
           {name}
         </p>
+
+        {stars && (
+          <p className="mt-1 text-yellow-500 text-sm" aria-label={`Rating ${rating} out of 5`}>
+            {stars}
+          </p>
+        )}
+
         <p className="text-2xl font-extrabold text-gray-900 mt-2">
-          R$ {price ? price.toFixed(2) : "N/A"}
+          R$ {Number.isFinite(price) ? Number(price).toFixed(2) : "N/A"}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
@@ -64,8 +77,12 @@ const SimpleProductCard: React.FC<SimpleProductCardProps> = ({
    Helpers
 ---------------------------------------------- */
 const getRandomItems = <T,>(arr: T[], count: number): T[] => {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+  const copy = arr.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, Math.min(count, copy.length));
 };
 
 /* ---------------------------------------------
@@ -82,10 +99,12 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({
   const CARD_COUNT = 4;
 
   useEffect(() => {
-    if (allProducts && allProducts.length > 0) {
+    if (Array.isArray(allProducts) && allProducts.length > 0) {
       const featured = allProducts.filter((p) => p.isFeatured);
       const selected = getRandomItems(featured, CARD_COUNT);
       setRandomFeatured(selected);
+    } else {
+      setRandomFeatured([]);
     }
   }, [allProducts]);
 
@@ -106,15 +125,11 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({
               price={product.price}
               rating={product.rating}
               description={product.description}
-              isFeatured={product.isFeatured}
-              isNew={product.isNew}
-              isBestSeller={product.isBestSeller}
-              isOnSale={product.isOnSale}
             />
           ))}
         </div>
       ) : (
-        <p className="text-center text-gray-500 p-8">Loading featured products...</p>
+        <p className="text-center text-gray-500 p-8">No featured products available.</p>
       )}
     </div>
   );

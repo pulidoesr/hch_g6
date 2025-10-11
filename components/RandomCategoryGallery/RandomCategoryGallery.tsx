@@ -51,7 +51,7 @@ export default function RandomCategoryGallery({
       setRandomCategories([]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [catsSig]); // <-- not `safeCategories` reference
+  }, [catsSig]); 
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -81,7 +81,6 @@ export default function RandomCategoryGallery({
         Explore Our Categories
       </h2>
 
-      {/* Grid */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6 lg:gap-8 mb-12">
         {randomCategories.map((category) => (
           <button
@@ -106,12 +105,11 @@ export default function RandomCategoryGallery({
         ))}
       </div>
 
-      {/* Combobox */}
+      
       <div className="my-8 relative" ref={comboboxRef}>
         <label htmlFor="category-input" className="block text-lg font-medium text-gray-700 mb-2">
           Select or Search for a Category:
         </label>
-
         <div className="relative">
           <input
             id="category-input"
@@ -156,7 +154,7 @@ export default function RandomCategoryGallery({
             className="absolute z-10 w-full bg-white shadow-lg mt-1 rounded-md max-h-60 overflow-auto ring-1 ring-black ring-opacity-5"
             // role is intentionally omitted on this wrapper
           >
-            {/* role on the UL so LI are direct options */}
+      
             <ul id="category-combobox-list" role="listbox" className="py-1">
               {(searchTerm ? filteredCategories : safeCategories).map((category) => {
                 const selected = category.name === searchTerm;
@@ -171,7 +169,7 @@ export default function RandomCategoryGallery({
                       }
                     }}
                     role="option"
-                    // aria-selected={selected}
+                    // aria-selected={selected} 
                     tabIndex={-1}
                     className={`cursor-pointer select-none relative py-2 pl-4 pr-9 ${
                       selected ? "bg-blue-500 text-white" : "text-gray-900 hover:bg-gray-100"
@@ -180,7 +178,7 @@ export default function RandomCategoryGallery({
                     {category.name}
                   </li>
                 );
-              })}
+             })}
             </ul>
           </div>
         )}

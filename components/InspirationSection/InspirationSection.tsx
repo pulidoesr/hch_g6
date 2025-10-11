@@ -14,14 +14,15 @@ export default function InspirationSection({
   products,
   productsData,
 }: InspirationSectionProps) {
-  // pick the first populated array and guard for non-arrays
-  const source: Product[] = Array.isArray(products)
-    ? products
-    : Array.isArray(productsData)
-    ? productsData
-    : [];
-
-  const ideas = useMemo(() => source.slice(0, 6), [source]);
+  // Compute ideas in a single memo using only stable props as deps
+  const ideas = useMemo(() => {
+    const src = Array.isArray(products)
+      ? products
+      : Array.isArray(productsData)
+      ? productsData
+      : [];
+    return src.slice(0, 6);
+  }, [products, productsData]);
 
   if (ideas.length === 0) return null;
 
@@ -32,12 +33,15 @@ export default function InspirationSection({
         {ideas.map((p) => (
           <div key={p.id} className="border rounded-lg p-4 bg-white shadow-sm">
             <img
-              src={p.imageUrl}
+              src={p.imageUrl || '/placeholder.png'}
               alt={p.name}
               className="w-full h-40 object-cover rounded"
+              loading="lazy"
             />
             <div className="mt-2 font-semibold">{p.name}</div>
-            <div className="text-sm text-gray-600">${p.price.toFixed(2)}</div>
+            <div className="text-sm text-gray-600">
+              ${Number(p.price ?? 0).toFixed(2)}
+            </div>
           </div>
         ))}
       </div>
