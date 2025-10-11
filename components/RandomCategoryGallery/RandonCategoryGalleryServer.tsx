@@ -13,12 +13,7 @@ import { CategoryData } from '@/lib/types/product-data';
  * and passing it to the client component.
  */
 export default async function RandomCategoryGalleryServer() { 
-    
-    // Calls the centralized function. 
-    // Since the getCategoriesData function is no longer asynchronous (it reads from memory after import),
-    // technically we wouldn't need 'await' anymore if it were typed to return CategoryData[],
-    // but keeping it is safe, in case the data-bridge becomes asynchronous in the future.
-    // In this case, if it is synchronous, 'await' does no harm.
+
     const categories: CategoryData[] = getCategoriesData(); 
     
     // 2. Passes the data to the Client Component

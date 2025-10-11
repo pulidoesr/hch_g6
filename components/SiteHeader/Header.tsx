@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import HandcraftedIcon from "@/components/Icons/HandcraftedIcon"
-// Replacement for 'next/link' to ensure execution in the environment (uses standard <a> tag)
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
 
 import {
   Bars3Icon,

@@ -3,7 +3,7 @@
 
 import React, { useState, useMemo, useEffect } from 'react'; 
 import Image from 'next/image';
-import { ChevronDown, Check, Truck, CreditCard } from 'lucide-react';
+import { ChevronDown,} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
 

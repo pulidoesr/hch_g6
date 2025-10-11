@@ -1,7 +1,6 @@
 // components/ProductEditor/ProductEditor.tsx
 "use client";
-import React, { useState, useRef, useCallback, MouseEvent, FormEvent } from 'react';
-// IMPORTANTE: Esta função precisa ser uma Server Action real ou um call de API
+import React, { useState, useRef, useCallback,FormEvent } from 'react';
 import { updateProduct } from '@/lib/server/actions/data-loader'; 
 import Button from '@/components/Button/Button';
 
@@ -184,7 +183,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
           {/* IMAGE GALLERY */}
           <div className="flex flex-wrap gap-4">
             {images.length === 0 ? (
-              <p className="text-gray-500">No images added yet. Click 'Insert Image' to upload.</p>
+              <p className="text-gray-500">No images added yet. Click &aposInsert Image&apos to upload.</p>
             ) : (
               images.map((url, index) => (
                 <div

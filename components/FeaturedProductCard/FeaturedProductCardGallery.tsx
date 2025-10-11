@@ -86,7 +86,9 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({ allProd
                           // Here we pass the typed props to the SimpleProductCard
                           <SimpleProductCard 
                               key={product.id} 
+                              sellerId={product.sellerId}
                               imageUrl={product.imageUrl} 
+                              imageUrls={product.imageUrls}
                               name={product.name} 
                               price={product.price}
                               isFeatured={product.isFeatured} // Including all Product props
@@ -96,6 +98,7 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({ allProd
                               isNew={product.isNew}
                               isBestSeller={product.isBestSeller}
                               isOnSale={product.isOnSale}
+                              displayOnMarketplace = {product.displayOnMarketplace}
 
                           />
                       ))}

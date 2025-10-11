@@ -20,7 +20,7 @@ function getRandomItems<T>(arr: T[], count: number): T[] {
 
 export default function RandomCategoryGallery({ allCategories }: { allCategories?: CategoryItem[] }) {
   const router = useRouter();
-  const safeCategories = allCategories || [];
+  const safeCategories = useMemo(() => allCategories || [], [allCategories]);
   const [randomCategories, setRandomCategories] = useState<CategoryItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +52,6 @@ export default function RandomCategoryGallery({ allCategories }: { allCategories
     );
   }, [searchTerm, safeCategories]);
 
-  // ✅ Agora passa o ID da categoria
   const handleSelectCategory = (categoryId: number, categoryName: string) => {
     setSearchTerm(categoryName);
     setIsOpen(false);
