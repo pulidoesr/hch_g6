@@ -1,123 +1,150 @@
-// /lib/server/actions/data_bridge.ts (or data-bridge.tsx)
+// /lib/server/actions/data_bridge.ts
+'use server';
 
-import Products from '@/data/products.json';
+import {
+  fetchProductCards,
+  fetchSellerProducts,
+} from '@/lib/db';
 
-// Imports all necessary types
-import { 
-    Product, 
-    CategoryData, 
-    ShippingOption, 
-    FullDataSource, 
-    RawSellerProfile, // Raw profile interface
-    Seller // Transformed profile type
-} from '@/lib/types/product-data'; 
+import {
+  getHomeFeaturedProducts,
+  getProductById as repoGetProductById,
+  getProductByIdWithDetails,
+  getTopRatedSimilarProducts,
+} from '@/lib/repositories/products';
 
-// --- JSON IMPORT CORRECTION ---
-const rawDataCandidate = (Products as any).default || Products;
-const rawData = rawDataCandidate as FullDataSource;
-// ------------------------------------
+// Keep your existing JSON-facing types for compatibility with callers.
+// We'll coerce DB results into these shapes.
+import type {
+  Product as JsonProduct,
+  CategoryData,
+  ShippingOption,
+  RawSellerProfile,
+  Seller,
+} from '@/lib/types/product-data';
 
+/* -------------------------------------------------------
+   Helpers: DB → JSONish Product mapping
+   (Your v_product_card view has: id, title, price_cents, primary_image)
+--------------------------------------------------------*/
+const centsToDollars = (cents?: number | null) =>
+  Math.round((cents ?? 0)) / 100;
 
-// ------------------------------------
-// GENERAL FETCH FUNCTIONS (EXISTING)
-// ------------------------------------
-
-/**
- * Returns all products ('products' section of the JSON).
- * @returns {Product[]} A list of products.
- */
-export function getAllProducts(): Product[] {
-    return rawData.products;
+function cardToJsonProduct(card: {
+  id: string;
+  title: string;
+  price_cents: number;
+  primary_image: string | null;
+}): JsonProduct {
+  return {
+    id: card.id,
+    name: card.title,
+    description: '',           // v_product_card doesn’t include description
+    price: centsToDollars(card.price_cents),
+    imageUrl: card.primary_image ?? '',
+    // The JSON schema often had these in some places:
+    imageUrls: [],             // not available from the card view
+    rating: 0,                 // aggregate rating isn’t on the card view
+  } as unknown as JsonProduct; // coerce to caller’s expected shape
 }
 
-/**
- * Returns collections/categories data ('collections' section of the JSON).
- * @returns {CategoryData[]} A list of category data.
- */
-export function getCategoriesData(): CategoryData[] {
-    return rawData.collections;
+/* -------------------------------------------------------
+   Replacements for the old JSON bridge
+--------------------------------------------------------*/
+
+/** Returns products for general listing (shop grid). */
+export async function getAllProducts(): Promise<JsonProduct[]> {
+  const cards = await fetchProductCards(48, 0);
+  return cards.map(cardToJsonProduct);
 }
 
-/**
- * Returns the list of countries ('countries' section of the JSON).
- * @returns {string[]} A list of country names.
- */
-export function getCountriesList(): string[] {
-    return rawData.countries;
+/** Returns featured products for the home section. */
+export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
+  const rows = await getHomeFeaturedProducts(limit);
+  // rows have: id, imageUrl, description, price, isFeatured
+  return rows.map(r => ({
+    id: r.id,
+    name: r.description || 'Untitled',
+    description: r.description,
+    price: r.price,
+    imageUrl: r.imageUrl,
+    imageUrls: [],
+    rating: 0,
+  } as unknown as JsonProduct));
 }
 
-/**
- * Returns the available shipping options, now as an array of detailed objects.
- * @returns {ShippingOption[]} A list of detailed shipping option objects.
- */
-export function getShippingOptions(): ShippingOption[] {
-    return rawData.shipping_options;
+/** Loads a single product by ID with gallery, rating, reviews. */
+export async function getProductById(productId: string): Promise<JsonProduct | undefined> {
+  const p = await getProductByIdWithDetails(productId);
+  if (!p) return undefined;
+
+  return {
+    id: p.id,
+    name: p.name,
+    description: p.description,
+    price: p.price,
+    imageUrl: p.imageUrl,
+    imageUrls: p.imageUrls ?? [],
+    rating: p.rating ?? 0,
+    // If your JSON Product type does not include reviews, callers will ignore this.
+    // If it does, it will be present here from the DB:
+    reviews: p.reviews as any,
+  } as unknown as JsonProduct;
 }
 
+/** Returns “similar” products (same collections, top rated). */
+export async function getSimilarProducts(productId: string, limit = 6): Promise<JsonProduct[]> {
+  const recos = await getTopRatedSimilarProducts(productId, limit);
+  return recos.map(r => ({
+    id: r.id,
+    name: r.name,
+    description: r.description,
+    price: r.price,
+    imageUrl: r.imageUrl,
+    imageUrls: r.imageUrls ?? [],
+    rating: r.rating ?? 0,
+    reviews: [],
+  } as unknown as JsonProduct));
+}
 
-// ------------------------------------
-// SELLER TRANSFORMATION FUNCTION (loadSellerData)
-// ------------------------------------
+/* -------------------------------------------------------
+   Categories / Countries / Shipping
+   (If you don’t have these in DB yet, return safe fallbacks)
+--------------------------------------------------------*/
 
-/**
- * Loads and processes a seller's data and their products from the complete JSON.
- * @param sellerIdToLoad The ID of the seller to be loaded.
- * @returns An object containing the Seller profile (Seller) and the list of Products (Product[]) from their main collection.
+/** If you have collections in DB and need full JSON CategoryData,
+ *  we can add a proper query here later. For now, return empty to avoid build errors.
  */
-export function loadSellerData(sellerIdToLoad: number = 1): { seller: Seller; products: Product[]; } {
-  const sellerProfiles: RawSellerProfile[] = rawData.sellerProfiles;
-  const collections: CategoryData[] = rawData.collections;
-  const rawProducts: Product[] = rawData.products;
+export async function getCategoriesData(): Promise<CategoryData[]> {
+  return [];
+}
 
-  // 1. Find the Seller Profile
-  const sellerData = sellerProfiles.find(s => s.sellerId === sellerIdToLoad);
-  
-  if (!sellerData) {
-    console.error(`Seller with ID ${sellerIdToLoad} not found.`);
-    return {
-        seller: { 
-            name: "Seller Not Found", 
-            collectionName: "N/A", 
-            photoUrl: "/default.jpg", 
-            aboutMeText: "Profile data missing." 
-        },
-        products: []
-    }
-  }
+export async function getCountriesList(): Promise<string[]> {
+  return [];
+}
 
-  // 2. Find the Seller's Collection(s)
-  // Focuses on the seller's first collectionId
-  const collectionId = sellerData.collectionIds[0]; 
-  const collectionData = collections.find(c => c.id === collectionId);
-  
-  const collectionName = collectionData?.name || "Uncategorized Collection";
-  const productIds = collectionData?.productIds || [];
+export async function getShippingOptions(): Promise<ShippingOption[]> {
+  return [];
+}
 
-  // 3. Filter the Products (Leveraging the existing Product interface)
-  const sellerProducts: Product[] = rawProducts
-    .filter(p => productIds.includes(p.id));
+/* -------------------------------------------------------
+   Seller data
+   Map to your Seller + products using seller_id on products
+--------------------------------------------------------*/
+export async function loadSellerData(
+  sellerIdToLoad: number | string = 1
+): Promise<{ seller: Seller; products: JsonProduct[] }> {
+  // Products for this seller
+  const cards = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
 
-  // 4. Map to the final Seller type (clean)
-  const sellerProfile: Seller = {
-    name: sellerData.name,
-    collectionName: collectionName,
-    photoUrl: sellerData.photoUrl,
-    aboutMeText: sellerData.aboutMe,
+  // Minimal seller profile 
+  const seller: Seller = {
+    name: `Seller ${sellerIdToLoad}`,
+    collectionName: 'Featured',
+    photoUrl: '/default.jpg',
+    aboutMeText: 'Profile data not provided.',
   };
 
-  return { seller: sellerProfile, products: sellerProducts };
-}
-
-// ------------------------------------
-// FUNCTION TO FETCH A SINGLE PRODUCT 
-// ------------------------------------
-/**
- * Fetches a single product by ID.
- * @param productId The ID of the product to be loaded.
- * @returns The Product object or undefined if not found.
- */
-export function getProductById(productId: string): Product | undefined {
-    // Reuses the getAllProducts function (or uses rawData.products directly)
-    const allProducts = rawData.products; 
-    return allProducts.find(p => p.id === productId);
+  const products = cards.map(cardToJsonProduct);
+  return { seller, products };
 }
