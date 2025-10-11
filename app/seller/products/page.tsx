@@ -1,22 +1,19 @@
-// app/seller/products/[id]/page.tsx
+import { notFound } from "next/navigation";
 import ProductEditor from "@/components/ProductEditor/ProductEditor";
 import { getProductById } from "@/lib/server/actions/data_bridge";
-import { notFound } from "next/navigation";
 
+// Next 15: params is a Promise
 type PageProps = { params: Promise<{ id: string }> };
 
 export default async function SellerProductPage({ params }: PageProps) {
-  // Next 15 dynamic params are a Promise
-  const { id } = await params;
-
-  // ⬇️ this was missing
-  const product = await getProductById(id);
+  const { id } = await params;                  // ✅ await params
+  const product = await getProductById(id);     // ✅ await the product
 
   if (!product) return notFound();
 
   return (
     <ProductEditor
-      key={product.id}           // now product is the resolved object
+      key={id}               // ✅ use the param as key (not product.id)
       initialProduct={product}
       isNew={false}
     />
