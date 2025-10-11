@@ -1,90 +1,69 @@
 import ProductList from "@/components/ProductList/ProductList";
-import { Product, CategoryData } from "@/lib/types/product-data";
-import { 
-    getAllProducts, 
-    getCategoriesData,
-} from '@/lib/server/actions/data_bridge';
-
-// 1. Carregamento de dados SÍNCRONO no Server Component
-const allProducts: Product[] = getAllProducts();
-const allCategories: CategoryData[] = getCategoriesData(); 
+import type { Product, CategoryData } from "@/lib/types/product-data";
+import { getAllProducts, getCategoriesData } from "@/lib/server/actions/data_bridge";
 
 interface SearchParams {
-  // ----------------------------------------------------
-  // CORREÇÃO 1: Mudar a interface para esperar 'categoryId'
-  // ----------------------------------------------------
-  categoryId?: string; // AGORA EX: '3' (ID da categoria)
-  filter?: string;     // Ex: 'sale', 'new', 'bestseller' (filtro de estado)
-  query?: string;      // Pesquisa de texto livre (opcional)
+  categoryId?: string;
+  filter?: string;
+  query?: string;
 }
+
+export const revalidate = 60; // optional
 
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  // ✅ Next 15: searchParams is a Promise
+  searchParams: Promise<SearchParams>;
 }) {
-  // ----------------------------------------------------
-  // CORREÇÃO 2: Desestruturar 'categoryId'
-  // ----------------------------------------------------
-  const { categoryId, filter, query } = searchParams;
+  // ✅ await the params
+  const { categoryId, filter, query } = await searchParams;
 
-  // Inicia com a lista completa de produtos
-  let products: Product[] = allProducts;
+  // ✅ await your data (or use Promise.all)
+  const [allProducts, allCategories] = await Promise.all([
+    getAllProducts(),     // Product[]
+    getCategoriesData(),  // CategoryData[]
+  ]);
 
-  // 2. FILTRO POR CATEGORIA (usando categoryId)
-  console.log("Filtering by category ID:", categoryId);
-  
-  // ----------------------------------------------------
-  // CORREÇÃO 3: Usar 'categoryId' na lógica de filtragem
-  // ----------------------------------------------------
+  let products = allProducts;
+
+  // Category filter
   if (categoryId) {
-    const targetCollection = allCategories.find(c => 
-      // Compara o ID da coleção (string) com o ID da URL (string)
-      c.id.toString() === categoryId
+    const target = allCategories.find(
+      (c: CategoryData) => String(c.id) === String(categoryId)
     );
-    console.log("Target Collection:", targetCollection);
 
-    if (targetCollection) {
-      const categoryProductIds = [
-        ...targetCollection.productIds,
-        ...targetCollection.recommendedProductIds
-      ];
-      const uniqueCategoryProductIds = Array.from(new Set(categoryProductIds));
-
-      products = products.filter(product => uniqueCategoryProductIds.includes(product.id));
-    } else {
-        products = [];
-    }
-  }
-
-  // 3. FILTRO POR ESTADO (mantido)
-  if (filter) {
-    switch (filter.toLowerCase()) {
-      case 'sale':
-        products = products.filter(product => product.isOnSale === true);
-        break;
-      case 'new':
-        products = products.filter(product => product.isNew === true);
-        break;
-      case 'bestseller':
-        products = products.filter(product => product.isBestSeller === true);
-        break;
-    }
-  }
-
-  // 4. PESQUISA DE TEXTO LIVRE (mantido)
-  if (query) {
-      products = products.filter(product =>
-          product.name.toLowerCase().includes(query.toLowerCase()) ||
-          product.description.toLowerCase().includes(query.toLowerCase())
+    if (target) {
+      const ids = Array.from(
+        new Set([...(target.productIds ?? []), ...(target.recommendedProductIds ?? [])])
       );
+      products = products.filter((p) => ids.includes(p.id));
+    } else {
+      products = [];
+    }
+  }
+
+  // State filter (if your Product type doesn’t include these flags, cast or extend types)
+  if (filter) {
+    const f = filter.toLowerCase();
+    if (f === "sale") products = products.filter((p: any) => p.isOnSale === true);
+    if (f === "new") products = products.filter((p: any) => p.isNew === true);
+    if (f === "bestseller") products = products.filter((p: any) => p.isBestSeller === true);
+  }
+
+  // Text search
+  if (query) {
+    const q = query.toLowerCase();
+    products = products.filter(
+      (p) =>
+        (p.name || "").toLowerCase().includes(q) ||
+        (p.description || "").toLowerCase().includes(q)
+    );
   }
 
   return (
     <div className="mx-auto max-w-6xl px-4 mt-10">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">
-        Product Offers
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Product Offers</h1>
       <ProductList products={products} />
     </div>
   );
