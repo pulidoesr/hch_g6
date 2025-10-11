@@ -104,17 +104,24 @@ type ProductClientProps = {
 };
 
 export default function ProductClient({ product, similarProducts }: ProductClientProps) {
-  if (!product) {
-    return <div className="text-center py-20 text-xl text-gray-500">Loading product details...</div>;
-  }
-
+  /* ✅ Hooks must be called unconditionally, before any early returns */
   const { addItem } = useCart();
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const [mainImage, setMainImage] = useState(
-    product.imageUrls && product.imageUrls.length > 0 ? product.imageUrls[0] : product.imageUrl
-  );
+  // derive initial image safely even if product is momentarily undefined
+  const initialMainImage = product?.imageUrls?.[0] ?? product?.imageUrl ?? "";
+  const [mainImage, setMainImage] = useState(initialMainImage);
+
+  // keep state in sync if product changes (e.g., on client nav)
+  useEffect(() => {
+    setMainImage(initialMainImage);
+  }, [initialMainImage]);
+
+  /* Early return AFTER hooks */
+  if (!product) {
+    return <div className="text-center py-20 text-xl text-gray-500">Loading product details...</div>;
+  }
 
   const handleAddToCart = () => {
     const itemToAdd: ProductToAdd = {
@@ -236,10 +243,7 @@ export default function ProductClient({ product, similarProducts }: ProductClien
               const avatar = review.customerImage ?? "";
 
               return (
-                <div
-                  key={index}
-                  className="flex gap-4 items-start p-4 border rounded-lg shadow-sm bg-white"
-                >
+                <div key={index} className="flex gap-4 items-start p-4 border rounded-lg shadow-sm bg-white">
                   {/* Avatar (fallback to icon) */}
                   <div className="w-16 h-16 flex-shrink-0 rounded-full bg-gray-100 border-2 border-gray-200 overflow-hidden flex items-center justify-center">
                     {avatar ? (
@@ -272,12 +276,7 @@ export default function ProductClient({ product, similarProducts }: ProductClien
       {/* Toast */}
       {showToast && (
         <div
-          className="
-            fixed top-40 left-0 w-full z-50 p-4
-            bg-green-600 text-white shadow-2xl
-            transition-opacity duration-500 ease-out opacity-100
-            flex justify-center
-          "
+          className="fixed top-40 left-0 w-full z-50 p-4 bg-green-600 text-white shadow-2xl transition-opacity duration-500 ease-out opacity-100 flex justify-center"
           role="alert"
         >
           <div className="flex items-center justify-between w-full max-w-7xl px-4">
