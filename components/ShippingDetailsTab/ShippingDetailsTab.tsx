@@ -7,11 +7,8 @@ import { ChevronDown,} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
 
-
-
 // 1. FUNÇÃO DE DADOS: Importa a função getCountriesList
 import { getCountriesList } from '@/lib/server/actions/data_bridge';
-
 
 import { 
   useCart, 
@@ -20,17 +17,16 @@ import {
   SHIPPING_COST_PAID,
   EXPRESS_SHIPPING_COST,
   TAXES_RATE,
-  ShippingAddress // Interface completa importada
+  ShippingAddress 
 } from '@/lib/checkout-utils'; 
-
-
 
 type ShippingOption = 'free' | 'express';
 
-// =================================================================================
 
-// --- Subcomponentes (manter FormField dentro do componente principal para visibilidade
-// e ajuste de `disabled` e `placeholder` para UX de carregamento) ---
+
+// =================================================================================
+// --- COMPONENTES AUXILIARES (MOVIDOS PARA FORA DO COMPONENTE PRINCIPAL) ---
+// =================================================================================
 
 const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   const itemTotal = item.unitPrice * item.quantity;
@@ -59,13 +55,74 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   );
 };  
 
+// Interface para o FormField (ajustada para ser usada fora)
+interface FormFieldProps {
+    id: keyof FormData;
+    label: string;
+    type?: string;
+    placeholder: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    options?: string[];
+    fullWidth?: boolean;
+    validationError?: string;
+    disabled?: boolean;
+}
+
+// O COMPONENTE FormField FOI MOVIDO PARA CÁ
+const FormField: React.FC<FormFieldProps> = ({ id, label, type = 'text', placeholder, value, onChange, options, fullWidth = false, validationError, disabled = false }) => {
+    const isSelect = type === 'select' && options;
+    const colSpan = fullWidth ? 'col-span-full' : 'col-span-1';
+    
+    return (
+      <div className={`flex flex-col mb-4 ${colSpan}`}>
+        <label htmlFor={id} className="text-sm font-medium text-gray-700 mb-1">
+          {label} {id !== 'address2' && <span className="text-red-500">*</span>}
+        </label>
+        
+        {isSelect ? (
+          <select
+            id={id}
+            name={id}
+            value={value}
+            onChange={onChange}
+            required={id !== 'address2'}
+            disabled={disabled}
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'} ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+          >
+            <option value="" disabled>{placeholder}</option>
+            {options.map(option => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        ) : (
+          <input
+            type={type}
+            id={id}
+            name={id}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            required={id !== 'address2'}
+            disabled={disabled}
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'}`}
+          />
+        )}
+        {validationError && <p className="text-red-500 text-xs mt-1">{validationError}</p>}
+      </div>
+    );
+  };
+
+
+// =================================================================================
 // --- Componente Principal ---
+// =================================================================================
 
 interface ShippingDetailsTabProps {
   onNext: () => void;
   onBack: () => void;
   onSaveAddress: (addressData: ShippingAddress) => void; 
-  initialAddress: ShippingAddress; // GARANTIDO como objeto completo
+  initialAddress: ShippingAddress;
 }
 
 export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, initialAddress }: ShippingDetailsTabProps) {
@@ -92,12 +149,11 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
   }, []); // Executa apenas uma vez na montagem
 
   const [formData, setFormData] = useState<FormData>(() => ({
-    // Mapeamento: initialAddress.campo -> formData.campo
     firstName: initialAddress.firstName,
     lastName: initialAddress.lastName,
-    address: initialAddress.address, // Mapeado de street
+    address: initialAddress.address, 
     address2: initialAddress.address2,
-    country: initialAddress.country, // Mapeado de state
+    country: initialAddress.country, 
     city: initialAddress.city,
     zipCode: initialAddress.zipCode,
     phoneNumber: initialAddress.phoneNumber
@@ -116,60 +172,6 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
       return EXPRESS_SHIPPING_COST;
     }
   }, [shippingOption, cartItems]);
-
-  const FormField: React.FC<{
-    id: keyof FormData;
-    label: string;
-    type?: string;
-    placeholder: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    options?: string[];
-    fullWidth?: boolean;
-    validationError?: string;
-    disabled?: boolean; // Adicionado para lidar com o estado de carregamento
-  }> = ({ id, label, type = 'text', placeholder, value, onChange, options, fullWidth = false, validationError, disabled = false }) => {
-    const isSelect = type === 'select' && options;
-    const colSpan = fullWidth ? 'col-span-full' : 'col-span-1';
-    
-    return (
-      <div className={`flex flex-col mb-4 ${colSpan}`}>
-        <label htmlFor={id} className="text-sm font-medium text-gray-700 mb-1">
-          {label} {id !== 'address2' && <span className="text-red-500">*</span>}
-        </label>
-        
-        {isSelect ? (
-          <select
-            id={id}
-            name={id}
-            value={value}
-            onChange={onChange}
-            required={id !== 'address2'}
-            disabled={disabled} // Desabilita enquanto carrega
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'} ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-          >
-            <option value="" disabled>{placeholder}</option>
-            {options.map(option => (
-              <option key={option} value={option}>{option}</option>
-            ))}
-          </select>
-        ) : (
-          <input
-            type={type}
-            id={id}
-            name={id}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            required={id !== 'address2'}
-            disabled={disabled}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${validationError ? 'border-red-500' : 'border-gray-300'}`}
-          />
-        )}
-        {validationError && <p className="text-red-500 text-xs mt-1">{validationError}</p>}
-      </div>
-    );
-  };
   
 
   const summary = useMemo(() => calculateSummary(cartItems, selectedShippingValue), [cartItems, selectedShippingValue]);
@@ -181,7 +183,6 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
   };
 
   const validateForm = (): boolean => {
-    // ... (Validação mantida) ...
     const newErrors: typeof errors = {};
     let isValid = true;
     const phoneRegex = /^\+?(\d[\d\s-()]{6,15})?$/; 
@@ -207,8 +208,8 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    alert(`teste forma data ${formData.lastName}`)
     if (validateForm()) {
-      
       const addressToSave: ShippingAddress = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -219,11 +220,10 @@ export default function ShippingDetailsTab({ onNext, onBack, onSaveAddress, init
         zipCode: formData.zipCode,
         phoneNumber: formData.phoneNumber,
       };
-      
+      alert(`Teste do endereço ${addressToSave}`)
       onSaveAddress(addressToSave);
       onNext();
     } else {
-      // NOTE: Substituído alert() por console.error() conforme instrução
       console.error('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   };

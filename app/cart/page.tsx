@@ -377,8 +377,6 @@ const CheckoutPage: React.FC = () => {
                                 <PaymentOptionsTab
                                     onNext={handleNext}
                                     onBack={handleBack}
-                                    // You should pass onCancel to PaymentOptionsTab when implementing its buttons
-                                    // onCancel={handleCancel}
                                 />
                             )}
                         </div>
