@@ -6,14 +6,14 @@ import { getProductById } from "@/lib/server/actions/data_bridge";
 type PageProps = { params: Promise<{ id: string }> };
 
 export default async function SellerProductPage({ params }: PageProps) {
-  const { id } = await params;                  // ✅ await params
-  const product = await getProductById(id);     // ✅ await the product
+  const { id } = await params;              // ✅ await params
+  const product = await getProductById(id); // ✅ await the product
 
   if (!product) return notFound();
 
   return (
     <ProductEditor
-      key={id}               // ✅ use the param as key (not product.id)
+      key={id}                 // ✅ use the route param, not product.id
       initialProduct={product}
       isNew={false}
     />
