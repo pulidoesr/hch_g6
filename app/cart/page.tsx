@@ -1,27 +1,25 @@
-// Main Checkout Page Component (UPDATED AND TRANSLATED)
-'use client'; 
+'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { ShoppingCart, Truck, CreditCard } from 'lucide-react';
-
+import { ShoppingCart, Truck, CreditCard, X } from 'lucide-react';
 
 // Assuming these imports are correct based on your file structure
-import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab'; 
-import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab'; 
-import { useShippingAddress } from '@/lib/checkout-utils'; 
+import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab';
+import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab';
+import { useShippingAddress } from '@/lib/checkout-utils';
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
 
 interface CartItem {
-  id: number;
-  name: string;
-  description: string;
-  unitPrice: number;
-  quantity: number;
-  imageSrc: string;
+    id: number;
+    name: string;
+    description: string;
+    unitPrice: number;
+    quantity: number;
+    imageSrc: string;
 }
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
 
@@ -29,29 +27,29 @@ const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
 // *************************************************************************
 
 const useCart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isInitialized, setIsInitialized] = useState(false);
+    const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [isInitialized, setIsInitialized] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
-      try {
-        const initialCart = storedCart ? JSON.parse(storedCart) : [];
-        setCartItems(initialCart);
-        setIsInitialized(true); // Só ativa após leitura
-      } catch (error) {
-        console.error("Error loading cart:", error);
-      }
-    }
-  }, []);
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
+            try {
+                const initialCart = storedCart ? JSON.parse(storedCart) : [];
+                setCartItems(initialCart);
+                setIsInitialized(true); // Só ativa após leitura
+            } catch (error) {
+                console.error("Error loading cart:", error);
+            }
+        }
+    }, []);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && isInitialized) {
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
-    }
-  }, [cartItems, isInitialized]);
+    useEffect(() => {
+        if (typeof window !== 'undefined' && isInitialized) {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(cartItems));
+        }
+    }, [cartItems, isInitialized]);
 
-  return { cartItems, setCartItems };
+    return { cartItems, setCartItems };
 };
 // *************************************************************************
 
@@ -65,65 +63,66 @@ const SHIPPING_COST = 20.00;
 
 // --- Calculation Utilities ---
 const calculateSummary = (items: CartItem[]) => {
-  const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
-  const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
-  const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
-  const total = subtotal + shippingValue + TAXES;
-  
-  return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
+    const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+    const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+    const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
+    const total = subtotal + shippingValue + TAXES;
+
+    return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
 };
 
 // --- Layout Components ---
 
 /**
- * Quantity control component with increment/decrement buttons.
- */
+* Quantity control component with increment/decrement buttons.
+*/
 interface QuantityControlProps {
-  quantity: number;
-  onChange: (newQuantity: number) => void;
+    quantity: number;
+    onChange: (newQuantity: number) => void;
 }
 
 const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange }) => {
-  return (
-    <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[80px] sm:h-[44px] sm:w-[120px] bg-[#8B4513] px-2">
-      <input
-        type="number"
-        value={quantity}
-        min={1}
-        onChange={(e) => onChange(Math.max(1, Number(e.target.value)))}
-        className="w-full text-center text-base font-semibold bg-transparent text-white focus:outline-none"
-      />
-      <div className="flex flex-col ml-2">
-        <div
-          onClick={() => onChange(quantity + 1)}
-          className="cursor-pointer text-white"
-          role="button"
-          tabIndex={0}
-        >
-          ▲
+    return (
+        <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[80px] sm:h-[44px] sm:w-[120px] bg-[#8B4513] px-2">
+            <input
+                type="number"
+                value={quantity}
+                min={1}
+                onChange={(e) => onChange(Math.max(1, Number(e.target.value)))}
+                className="w-full text-center text-base font-semibold bg-transparent text-white focus:outline-none"
+            />
+            <div className="flex flex-col ml-2">
+                <div
+                    onClick={() => onChange(quantity + 1)}
+                    className="cursor-pointer text-white"
+                    role="button"
+                    tabIndex={0}
+                >
+                    ▲
+                </div>
+                <div
+                    onClick={() => onChange(Math.max(1, quantity - 1))}
+                    className="cursor-pointer text-white"
+                    role="button"
+                    tabIndex={0}
+                >
+                    ▼
+                </div>
+            </div>
         </div>
-        <div
-          onClick={() => onChange(Math.max(1, quantity - 1))}
-          className="cursor-pointer text-white"
-          role="button"
-          tabIndex={0}
-        >
-          ▼
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 /**
- * Component that displays a single item in the cart list.
- */
+* Component that displays a single item in the cart list.
+*/
 interface CartItemRowProps {
     item: CartItem;
     onUpdateQuantity: (id: number, newQuantity: number) => void;
+    onRemoveItem: (id: number) => void; 
 }
 
-const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => {
+const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRemoveItem })=> {
     return (
         <div className="flex py-6 border-b border-gray-200">
             {/* Thumbnail Image */}
@@ -134,24 +133,33 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity }) => 
                     fill
                     // O atributo sizes no Image component também deve ser ajustado para ser mais responsivo,
                     // mas w-24 equivale a 96px, o que se alinha bem com o valor original de 96px
-                    sizes="(max-width: 768px) 96px, 160px" 
+                    sizes="(max-width: 768px) 96px, 160px"
                     className="object-cover"
                 />
             </div>
-            
+
+
             {/* Product Details (Name, Description, Price) */}
             <div className="flex-grow px-4 md:px-8">
                 <p className="font-semibold text-gray-800 text-lg">{item.name}</p>
                 <p className="text-gray-500 text-sm mt-1">{item.description}</p>
+
                 <p className="font-medium text-gray-900 mt-2 text-xl">
                     ${item.unitPrice.toFixed(2)}
                 </p>
             </div>
             
             {/* Quantity Control */}
-            <div className="flex items-center justify-end">
-                <QuantityControl 
-                    quantity={item.quantity} 
+            <div className="flex flex-col gap-6 items-center justify-end">
+                <button 
+                    onClick={() => onRemoveItem(item.id)}
+                    className="text-gray-400 hover:text-red-600 transition duration-150 p-1 rounded-full bg-white z-10"
+                    aria-label={`Remove ${item.name} from cart`}
+                >
+                    <X className="w-22 h-5" />
+                </button>
+                <QuantityControl
+                    quantity={item.quantity}
                     onChange={(q) => onUpdateQuantity(item.id, q)}
                 />
             </div>
@@ -183,9 +191,9 @@ const Summary: React.FC<SummaryProps> = ({ summary }) => {
                 <a href="#" className="underline">ENTER COUPON CODE</a>
             </p>
             <SummaryRow label="SUBTOTAL" value={subtotal} />
-            <SummaryRow 
-                label="SHIPPING" 
-                value={shippingDisplay} 
+            <SummaryRow
+                label="SHIPPING"
+                value={shippingDisplay}
                 valueClass={shippingDisplay === 'FREE' ? 'text-green-600' : ''}
             />
             <SummaryRow label="TAXES" value={taxes} />
@@ -207,19 +215,22 @@ interface ShoppingCartTabProps {
     cartItems: CartItem[];
     setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
     onNext: () => void;
-    onCancel: () => void; 
+    onCancel: () => void;
 }
 
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
-    
+
     const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
 
     const handleUpdateQuantity = (id: number, newQuantity: number) => {
-        setCartItems(prevItems => 
-            prevItems.map(item => 
+        setCartItems(prevItems =>
+            prevItems.map(item =>
                 item.id === id ? { ...item, quantity: newQuantity } : item
             )
         );
+    };
+    const handleRemoveItem = (id: number) => {
+        setCartItems(prevItems => prevItems.filter(item => item.id !== id));
     };
 
     return (
@@ -227,12 +238,13 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
             <div className="flex flex-col lg:flex-row gap-10">
                 <section className="lg:w-2/3">
                     <h2 className="text-2xl font-normal tracking-wide mb-6">Shopping Cart</h2>
-                    
+
                     {cartItems.map(item => (
                         <CartItemRow 
                             key={String(item.id)} 
                             item={item} 
                             onUpdateQuantity={handleUpdateQuantity} 
+                            onRemoveItem={handleRemoveItem} 
                         />
                     ))}
                 </section>
@@ -246,20 +258,21 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 <button
                     onClick={onNext}
                     className="
-                        bg-[#7B3F00] text-white py-3 px-8 
+                        bg-[#7B3F00] text-white py-3 px-8
                         font-medium rounded-sm shadow-md
                         hover:bg-[#633300] transition duration-200
                     "
                 >
                     Next
                 </button>
-                
+
+
                 <button
                     onClick={onCancel}
                     className="
-                        bg-gray-200 text-gray-700 py-3 px-8 
+                        bg-gray-200 text-gray-700 py-3 px-8
                         font-medium rounded-sm shadow-md
-                        hover:bg-gray-300 transition duration-200
+                        hover:bg-[#633300] transition duration-200
                     "
                 >
                     Cancel
@@ -272,113 +285,120 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
 // --- Main Checkout Page Component (UPDATED) ---
 
 const CheckoutPage: React.FC = () => {
-  const router = useRouter();
-  const [activeTab, setActiveTab] = useState<Tab>('cart');
-  
-  // Uses the hook to load the cart from Local Storage
-  const { cartItems, setCartItems } = useCart();
+    const router = useRouter();
+    const [activeTab, setActiveTab] = useState<Tab>('cart');
 
-  const { shippingAddress, setShippingAddress } = useShippingAddress(); 
+    // Uses the hook to load the cart from Local Storage
+    const { cartItems, setCartItems } = useCart();
 
-  const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
-    { id: 'cart', name: 'Shopping Cart', icon: ShoppingCart },
-    { id: 'shipping', name: 'Shipping Details', icon: Truck },
-    { id: 'payment', name: 'Payment Options', icon: CreditCard },
-  ];
-  
-  const handleNext = () => {
-    if (activeTab === 'cart') setActiveTab('shipping');
-    else if (activeTab === 'shipping') setActiveTab('payment');
+    const { shippingAddress, setShippingAddress } = useShippingAddress();
 
-  };
-  
-  const handleBack = () => {
-    if (activeTab === 'shipping') setActiveTab('cart');
-    else if (activeTab === 'payment') setActiveTab('shipping');
-  };
+    const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
+        { id: 'cart', name: 'Shopping Cart', icon: ShoppingCart },
+        { id: 'shipping', name: 'Shipping Details', icon: Truck },
+        { id: 'payment', name: 'Payment Options', icon: CreditCard },
+    ];
 
-  const handleCancel = () => {
-    router.push('/'); 
-  };
-  
-  const TabHeader: React.FC<{ tab: Tab, index: number }> = ({ tab, index }) => {
-    const isActive = activeTab === tab;
-    return (
-      <div 
-        className={`text-lg font-normal cursor-pointer transition duration-200 ${
-          isActive ? 'text-gray-900 border-b border-gray-600 pb-2' : 'text-gray-500'
-        }`}
-        // Allows clicking only on previous tabs (Standard checkout flow safety)
-        onClick={() => index < tabs.findIndex(t => t.id === activeTab) && setActiveTab(tab)}
-      >
-        <span className="font-semibold mr-1">{index + 1}.</span> {tabs.find(t => t.id === tab)?.name}
-      </div>
-    );
-  };
 
-  return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto p-4 sm:p-10">
-        
-        {/* --- Navigation Tabs --- */}
-        <div className="flex justify-between sm:justify-start sm:space-x-12 mb-12 border-b border-gray-300">
-          {tabs.map((tab, index) => (
-            <TabHeader key={tab.id} tab={tab.id} index={index} />
-          ))}
-        </div>
+    const handleNext = () => {
+        if (activeTab === 'cart') setActiveTab('shipping');
+        else if (activeTab === 'shipping') setActiveTab('payment');
 
-        {/* --- Tab Content --- */}
-        {cartItems.length > 0 ? (
-          <>
-            <div>
-              {activeTab === 'cart' && (
-                <ShoppingCartTab 
-                  cartItems={cartItems} 
-                  setCartItems={setCartItems}
-                  onNext={handleNext} 
-                  onCancel={handleCancel} // Prop passed correctly
-                />
-              )}
-              
-              {activeTab === 'shipping' && (
-                  <ShippingDetailsTab 
-                      onNext={handleNext} 
-                      onBack={handleBack} 
-                      initialAddress={shippingAddress} 
-                      onSaveAddress={setShippingAddress} 
-                      // You should pass onCancel to ShippingDetailsTab when implementing its buttons
-                      // onCancel={handleCancel} 
-                  />
-              )}
-              
-              {activeTab === 'payment' && (
-                <PaymentOptionsTab 
-                    onNext={handleNext} 
-                    onBack={handleBack} 
-                    // You should pass onCancel to PaymentOptionsTab when implementing its buttons
-                    // onCancel={handleCancel}
-                />
-              )}
+    };
+
+
+    const handleBack = () => {
+        if (activeTab === 'shipping') setActiveTab('cart');
+        else if (activeTab === 'payment') setActiveTab('shipping');
+    };
+
+
+    const handleCancel = () => {
+        router.push('/');
+    };
+
+
+    const TabHeader: React.FC<{ tab: Tab, index: number }> = ({ tab, index }) => {
+        const isActive = activeTab === tab;
+        return (
+            <div
+                className={`text-lg font-normal cursor-pointer transition duration-200 ${
+                    isActive ? 'text-gray-900 border-b border-gray-600 pb-2' : 'text-gray-500'
+                }`}
+                // Allows clicking only on previous tabs (Standard checkout flow safety)
+                onClick={() => index < tabs.findIndex(t => t.id === activeTab) && setActiveTab(tab)}
+            >
+                <span className="font-semibold mr-1">{index + 1}.</span> {tabs.find(t => t.id === tab)?.name}
             </div>
-          </>
-        ) : (
-           <div className="text-center py-20 w-full">
-                <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <h2 className="text-2xl font-bold text-gray-900 mt-4">Your Cart is Empty</h2>
-                <p className="mt-2 text-gray-500">Add products to your cart to start shopping.</p>
-                <button 
-                    className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={() => window.location.href = '/'} 
-                >
-                    Go to Store
-                </button>
-            </div> 
-        )}
-      </div>
-    </div>
-  );
+        );
+    };
+
+
+    return (
+        <div className="min-h-screen bg-white">
+            <div className="max-w-7xl mx-auto p-4 sm:p-10">
+
+
+                {/* --- Navigation Tabs --- */}
+                <div className="flex justify-between sm:justify-start sm:space-x-12 mb-12 border-b border-gray-300">
+                    {tabs.map((tab, index) => (
+                        <TabHeader key={tab.id} tab={tab.id} index={index} />
+                    ))}
+                </div>
+
+
+                {/* --- Tab Content --- */}
+                {cartItems.length > 0 ? (
+                    <>
+                        <div>
+                            {activeTab === 'cart' && (
+                                <ShoppingCartTab
+                                    cartItems={cartItems}
+                                    setCartItems={setCartItems}
+                                    onNext={handleNext}
+                                    onCancel={handleCancel} // Prop passed correctly
+                                />
+                            )}
+
+
+                            {activeTab === 'shipping' && (
+                                <ShippingDetailsTab
+                                    onNext={handleNext}
+                                    onBack={handleBack}
+                                    initialAddress={shippingAddress}
+                                    onSaveAddress={setShippingAddress}
+                                    // You should pass onCancel to ShippingDetailsTab when implementing its buttons
+                                    // onCancel={handleCancel}
+                                />
+                            )}
+
+
+                            {activeTab === 'payment' && (
+                                <PaymentOptionsTab
+                                    onNext={handleNext}
+                                    onBack={handleBack}
+                                />
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <div className="text-center py-20 w-full">
+                        <svg className="mx-auto h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <h2 className="text-2xl font-bold text-gray-900 mt-4">Your Cart is Empty</h2>
+                        <p className="mt-2 text-gray-500">Add products to your cart to start shopping.</p>
+                        <button
+                            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            onClick={() => window.location.href = '/'}
+                        >
+                            Go to Store
+                        </button>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default CheckoutPage;

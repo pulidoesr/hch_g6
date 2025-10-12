@@ -20,7 +20,6 @@ import {
   ShippingAddress,
 } from '@/lib/checkout-utils';
 
-type ShippingOption = 'free' | 'express';
 
 const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   const itemTotal = item.unitPrice * item.quantity;
@@ -227,6 +226,7 @@ export default function ShippingDetailsTab({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    alert(`teste forma data ${formData.lastName}`)
     if (validateForm()) {
       const addressToSave: ShippingAddress = {
         firstName: formData.firstName,
