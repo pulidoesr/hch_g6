@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
+type ShippingOption = 'free' | 'express';
 
 // async function (returns Promise<string[]>)
 import { getCountriesList } from '@/lib/server/actions/data_bridge';
