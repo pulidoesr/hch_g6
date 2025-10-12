@@ -19,6 +19,7 @@ export interface ShippingAddress {
   zipCode: string;
   phoneNumber: string;
 }
+
 // =========================================================================
 
 // Constants (ALL EXPORTED)
@@ -100,6 +101,7 @@ const getEmptyShippingAddress = (): ShippingAddress => ({
 export const useShippingAddress = () => {
     
     const [address, setAddress] = useState<ShippingAddress>(() => {
+        
         if (typeof window !== 'undefined') {
             const storedAddress = localStorage.getItem(SHIPPING_ADDRESS_KEY);
             try {
