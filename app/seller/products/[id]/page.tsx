@@ -1,34 +1,21 @@
-// app/seller/products/[id]/page.tsx
-// Server Component - Carrega um único produto por ID.
+import { notFound } from "next/navigation";
+import ProductEditor from "@/components/ProductEditor/ProductEditor";
+import { getProductById } from "@/lib/server/actions/data_bridge";
 
-import { getProductById } from '@/lib/server/actions/data_bridge'; 
-import ProductEditor from '@/components/ProductEditor/ProductEditor'; 
-import { notFound } from 'next/navigation';
+// Next 15: params is a Promise
+type PageProps = { params: Promise<{ id: string }> };
 
-interface ProductEditPageProps {
-    params: {
-        id: string; // ID do produto vindo da URL
-    };
-}
+export default async function SellerProductPage({ params }: PageProps) {
+  const { id } = await params;              // ✅ await params
+  const product = await getProductById(id); // ✅ await the product
 
-export default async function ProductEditPage({ params }: ProductEditPageProps) {
-    
-    const productId = params.id;
-    
-    // 🟢 Usa a função centralizada getProductById
-    const product = getProductById(productId);
+  if (!product) return notFound();
 
-    if (!product) {
-        // Se o produto não for encontrado, exibe a página 404
-        notFound(); 
-    }
-
-    // Passa o produto completo para o Client Component
-    return (
-        <ProductEditor 
-            key={product.id} // Força o re-mount se o ID mudar
-            initialProduct={product} 
-            isNew={false} 
-        />
-    );
+  return (
+    <ProductEditor
+      key={id}                 // ✅ use the route param, not product.id
+      initialProduct={product}
+      isNew={false}
+    />
+  );
 }

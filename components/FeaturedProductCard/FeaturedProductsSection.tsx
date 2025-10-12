@@ -1,20 +1,13 @@
-import React from 'react';
-import FeaturedProductGallery from './FeaturedProductCardGallery';
+import React from "react";
+import FeaturedProductGallery from "./FeaturedProductCardGallery";
+import { getAllProducts } from "@/lib/server/actions/data_bridge";
 
-import { getAllProducts } from '@/lib/server/actions/data_bridge';
+// (optional) cache this section for 60s
+export const revalidate = 60;
 
-/**
- * Server Component responsible for loading the complete product data
- * and passing it to the Client Component for randomization.
- */
 export default async function FeaturedProductsSection() {
-    
-    // Loads all data
-    const allProducts = getAllProducts();
+  // ✅ Await the Promise so we pass Product[] to the client component
+  const allProducts = await getAllProducts();
 
-    // Passes the COMPLETE product list. Thanks to the typing in the Client,
-
-    return (
-        <FeaturedProductGallery allProducts={allProducts} />
-    );
+  return <FeaturedProductGallery allProducts={allProducts} />;
 }
