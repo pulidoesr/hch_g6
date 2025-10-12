@@ -136,6 +136,7 @@ export default function ShippingDetailsTab({
   }) => {
     const isSelect = type === 'select' && options;
     const colSpan = fullWidth ? 'col-span-full' : 'col-span-1';
+    const describedById = validationError ? `${id}-error` : undefined;
 
     return (
       <div className={`flex flex-col mb-4 ${colSpan}`}>
@@ -151,9 +152,11 @@ export default function ShippingDetailsTab({
             onChange={onChange}
             required={id !== 'address2'}
             disabled={disabled}
+            aria-describedby={describedById}
             className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
               validationError ? 'border-red-500' : 'border-gray-300'
             } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+            title={placeholder}
           >
             <option value="" disabled>
               {placeholder}
@@ -172,14 +175,20 @@ export default function ShippingDetailsTab({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            title={placeholder}
             required={id !== 'address2'}
             disabled={disabled}
+            aria-describedby={describedById}
             className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
               validationError ? 'border-red-500' : 'border-gray-300'
             }`}
           />
         )}
-        {validationError && <p className="text-red-500 text-xs mt-1">{validationError}</p>}
+        {validationError && (
+          <p id={describedById} className="text-red-500 text-xs mt-1">
+            {validationError}
+          </p>
+        )}
       </div>
     );
   };
@@ -245,10 +254,6 @@ export default function ShippingDetailsTab({
     }
   };
 
-  const handleCancel = () => {
-    router.push('/');
-  };
-
   return (
     <div className="max-w-7xl mx-auto py-8">
       <form onSubmit={handleSubmit}>
@@ -304,7 +309,7 @@ export default function ShippingDetailsTab({
                 onChange={handleChange}
                 validationError={errors.country}
                 disabled={isLoadingCountries}
-              />
+  />
               <FormField
                 id="city"
                 label="City"
@@ -407,6 +412,8 @@ export default function ShippingDetailsTab({
                 type="button"
                 onClick={() => setShowVoucher(!showVoucher)}
                 className="flex justify-between items-center w-full text-gray-700 hover:text-gray-900 font-medium py-2"
+                // aria-expanded={showVoucher}
+                aria-controls="voucher-panel"
               >
                 <span>Have a Voucher?</span>
                 <ChevronDown
@@ -416,7 +423,7 @@ export default function ShippingDetailsTab({
                 />
               </button>
               {showVoucher && (
-                <div className="mt-3">
+                <div id="voucher-panel" className="mt-3">
                   <label htmlFor="voucher-code" className="sr-only">
                     Voucher Code
                   </label>
@@ -425,6 +432,7 @@ export default function ShippingDetailsTab({
                     type="text"
                     placeholder="Enter Voucher Code"
                     aria-label="Voucher Code"
+                    title="Voucher Code"
                     className="w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 border-gray-300"
                   />
                 </div>
