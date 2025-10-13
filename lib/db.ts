@@ -340,3 +340,31 @@ export async function fetchCollectionsSummary(): Promise<CollectionSummary[]> {
   }));
 }
 
+// O tipo de linha que a consulta vai retornar
+type CountryRow = {
+  id: number;
+  name: string;
+};
+
+// O tipo de objeto que a função irá devolver (Correto para { id, name })
+export type Country = {
+  id: number;
+  name: string;
+};
+
+// CORREÇÃO: Altera o tipo de retorno para Promise<Country[]>
+export async function fetchCountriesList(): Promise<Country[]> {
+  const rows = await q<CountryRow>`
+    -- CORREÇÃO: Seleciona tanto o ID quanto o NAME
+    SELECT id, name
+    FROM public.countries
+    ORDER BY name;
+  `;
+  
+  // Mapeia o resultado para devolver o array de objetos 'Country'.
+  // O tipo 'rows' já é CountryRow[], então basta retornar os dados.
+  return rows.map(r => ({
+    id: r.id,
+    name: r.name,
+  } as Country));
+}

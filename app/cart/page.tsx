@@ -31,7 +31,7 @@ const useCart = () => {
     const [isInitialized, setIsInitialized] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== 'undefined' ) {
             const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
             try {
                 const initialCart = storedCart ? JSON.parse(storedCart) : [];

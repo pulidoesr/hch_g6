@@ -9,7 +9,7 @@ import { CartItem, FormData } from '@/lib/types/checkout';
 type ShippingOption = 'free' | 'express';
 
 // async function (returns Promise<string[]>)
-import { getCountriesList } from '@/lib/server/actions/data_bridge';
+import { getCountriesList, JsonCountry } from '@/lib/server/actions/data_bridge';
 
 import {
   useCart,
@@ -63,9 +63,8 @@ export default function ShippingDetailsTab({
   const { cartItems } = useCart();
 
   // Countries state
-  const [countriesList, setCountriesList] = useState<string[]>([]);
+  const [countriesList, setCountriesList] = useState<JsonCountry[]>([]);
   const [isLoadingCountries, setIsLoadingCountries] = useState(true);
-
   // Await the Promise<string[]> and guard unmount
   useEffect(() => {
     let isMounted = true;
@@ -76,8 +75,10 @@ export default function ShippingDetailsTab({
         const countries = await getCountriesList();
         if (isMounted) setCountriesList(countries ?? []);
       } catch (error) {
-        console.error('Failed to load countries list:', error);
-        if (isMounted) setCountriesList(['Brazil', 'United States']); // fallback
+        if (isMounted) setCountriesList([
+          { id: 1, name: 'Brazil' },
+          { id: 2, name: 'United States' }
+        ]);
       } finally {
         if (isMounted) setIsLoadingCountries(false);
       }
@@ -118,7 +119,7 @@ export default function ShippingDetailsTab({
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    options?: string[];
+    options?: string[] | JsonCountry[]; 
     fullWidth?: boolean;
     validationError?: string;
     disabled?: boolean;
@@ -146,27 +147,37 @@ export default function ShippingDetailsTab({
 
         {isSelect ? (
           <select
-            id={id}
-            name={id}
-            value={value}
-            onChange={onChange}
-            required={id !== 'address2'}
-            disabled={disabled}
-            aria-describedby={describedById}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
-              validationError ? 'border-red-500' : 'border-gray-300'
-            } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-            title={placeholder}
-          >
-            <option value="" disabled>
-              {placeholder}
-            </option>
-            {(options ?? []).map((option) => (
-              <option key={option} value={option}>
-                {option}
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          required={id !== 'address2'}
+          disabled={disabled}
+          aria-describedby={describedById}
+          className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
+            validationError ? 'border-red-500' : 'border-gray-300'
+          } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+          title={placeholder}
+        >
+          <option value="" disabled>
+            {placeholder}
+          </option>
+          {(options ?? []).map((option, index) => {
+            // Verifica se o item é um objeto JsonCountry (se tiver a propriedade 'name')
+            const isObject = typeof option === 'object' && option !== null && 'name' in option;
+            
+            // Se for objeto, usa id/name; se for string, usa o próprio valor.
+            const key = isObject ? (option as JsonCountry).id : (option as string || index);
+            const displayValue = isObject ? (option as JsonCountry).name : (option as string);
+            
+            return (
+              <option key={key} value={displayValue}>
+                {displayValue}
               </option>
-            ))}
-          </select>
+            );
+          })}
+          
+        </select>
         ) : (
           <input
             type={type}
@@ -236,8 +247,8 @@ export default function ShippingDetailsTab({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`teste forma data ${formData.lastName}`)
     if (validateForm()) {
+      
       const addressToSave: ShippingAddress = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -248,6 +259,7 @@ export default function ShippingDetailsTab({
         zipCode: formData.zipCode,
         phoneNumber: formData.phoneNumber,
       };
+      
       onSaveAddress(addressToSave);
       onNext();
     } else {

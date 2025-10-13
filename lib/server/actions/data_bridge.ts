@@ -4,6 +4,7 @@
 import {
   fetchProductCards,
   fetchSellerProducts,
+  fetchCountriesList
 } from '@/lib/db';
 
 import {
@@ -11,6 +12,7 @@ import {
   getProductById as repoGetProductById,
   getProductByIdWithDetails,
   getTopRatedSimilarProducts,
+
 } from '@/lib/repositories/products';
 
 import{
@@ -173,9 +175,23 @@ export async function getCategoriesData(): Promise<CategoryData[]> {
 }
 
 
+export type JsonCountry = {
+  id: number;
+  name: string;
+};
+export async function getCountriesList(): Promise<JsonCountry[]> { 
+  
+  const countries = await fetchCountriesList();
+  
+  if (!countries || countries.length === 0) {
+    return [];
+  }
+  
 
-export async function getCountriesList(): Promise<string[]> {
-  return [];
+  return countries.map(country => ({
+    id: country.id,
+    name: country.name,
+  } as JsonCountry));
 }
 
 export async function getShippingOptions(): Promise<ShippingOption[]> {
