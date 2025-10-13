@@ -92,7 +92,6 @@ export async function getAllProducts(): Promise<JsonProduct[]> {
 
 export async function getAllShopProducts(): Promise<JsonProduct[]> {
   const cards = await fetchProductCards(48, 0);
-  console.log(cards)
   return cards.map(cardToFullProduct);
 }
 

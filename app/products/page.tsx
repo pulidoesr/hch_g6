@@ -1,6 +1,6 @@
 import ProductList from "@/components/ProductList/ProductList";
 import type { Product, CategoryData } from "@/lib/types/product-data";
-import { getAllProducts, getCategoriesData } from "@/lib/server/actions/data_bridge";
+import { getAllShopProducts, getCategoriesData } from "@/lib/server/actions/data_bridge";
 
 interface SearchParams {
   categoryId?: string;
@@ -21,7 +21,7 @@ export default async function ProductsPage({
 
   // ✅ await your data (or use Promise.all)
   const [allProducts, allCategories] = await Promise.all([
-    getAllProducts(),     // Product[]
+    getAllShopProducts(),     // Product[]
     getCategoriesData(),  // CategoryData[]
   ]);
 
