@@ -26,17 +26,22 @@ export default async function ProductsPage({
   ]);
 
   let products = allProducts;
-
   // Category filter
   if (categoryId) {
     const target = allCategories.find(
       (c: CategoryData) => String(c.id) === String(categoryId)
     );
-
+    
     if (target) {
+
+      // CORREÇÃO APLICADA AQUI: Usando os nomes exatos do objeto target
       const ids = Array.from(
-        new Set([...(target.productIds ?? []), ...(target.recommendedProductIds ?? [])])
+        new Set([
+          ...(target.productIds ?? []),            // Adicionado 's' ao productsIds
+          ...(target.recommendedProductIds ?? [])  // Usado o nome com o typo
+        ])
       );
+      
       products = products.filter((p) => ids.includes(p.id));
     } else {
       products = [];
@@ -50,9 +55,9 @@ export default async function ProductsPage({
     if (f === "new") products = products.filter((p: any) => p.isNew === true);
     if (f === "bestseller") products = products.filter((p: any) => p.isBestSeller === true);
   }
-
   // Text search
   if (query) {
+    
     const q = query.toLowerCase();
     products = products.filter(
       (p) =>

@@ -166,8 +166,8 @@ export async function getCategoriesData(): Promise<CategoryData[]> {
     isFeatured: r.isFeatured,
     story: r.story,
     imagePath: r.imagePath,
-    productsIds: r.productIds,
-    recomendedProducysIds: r.recommendedProductIds
+    productIds: r.productIds,
+    recomendedProductIds: r.recommendedProductIds
 
   } as unknown as JsonCollections));
 }
