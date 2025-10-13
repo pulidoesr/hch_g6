@@ -13,10 +13,15 @@ import {
   getTopRatedSimilarProducts,
 } from '@/lib/repositories/products';
 
+import{
+  getCollections
+}  from '@/lib/repositories/collection';
+
 // Keep your existing JSON-facing types for compatibility with callers.
 // We'll coerce DB results into these shapes.
 import type {
   Product as JsonProduct,
+  Collection as JsonCollections,
   CategoryData,
   ShippingOption,
   RawSellerProfile,
@@ -116,8 +121,20 @@ export async function getSimilarProducts(productId: string, limit = 6): Promise<
  *  we can add a proper query here later. For now, return empty to avoid build errors.
  */
 export async function getCategoriesData(): Promise<CategoryData[]> {
-  return [];
+  const recos = await getCollections();
+  return recos.map(r => ({
+    id: r.id,
+    name: r.name,
+    isFeatured: r.isFeatured,
+    story: r.story,
+    imagePath: r.imagePath,
+    productsIds: r.productIds,
+    recomendedProducysIds: r.recommendedProductIds
+
+  } as unknown as JsonCollections));
 }
+
+
 
 export async function getCountriesList(): Promise<string[]> {
   return [];
