@@ -16,6 +16,7 @@ type SimpleProductCardProps = {
   description?: string;
 };
 
+
 /* ---------------------------------------------
    2) Typed Card Component
 ---------------------------------------------- */
@@ -97,9 +98,8 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({
 }) => {
   const [randomFeatured, setRandomFeatured] = useState<Product[]>([]);
   const CARD_COUNT = 4;
-
   useEffect(() => {
-    if (Array.isArray(allProducts) && allProducts.length > 0) {
+    if (allProducts.length > 0) {
       const featured = allProducts.filter((p) => p.isFeatured);
       const selected = getRandomItems(featured, CARD_COUNT);
       setRandomFeatured(selected);
@@ -113,7 +113,6 @@ const FeaturedProductGallery: React.FC<FeaturedProductGalleryProps> = ({
       <h2 className="text-4xl font-extrabold text-gray-900 text-center mb-10">
         Featured Products
       </h2>
-
       {randomFeatured.length > 0 ? (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {randomFeatured.map((product) => (
