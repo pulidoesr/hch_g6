@@ -13,10 +13,15 @@ import {
   getTopRatedSimilarProducts,
 } from '@/lib/repositories/products';
 
+import{
+  getCollections
+}  from '@/lib/repositories/collection';
+
 // Keep your existing JSON-facing types for compatibility with callers.
 // We'll coerce DB results into these shapes.
 import type {
   Product as JsonProduct,
+  Collection as JsonCollections,
   CategoryData,
   ShippingOption,
   RawSellerProfile,
@@ -48,6 +53,33 @@ function cardToJsonProduct(card: {
   } as unknown as JsonProduct; // coerce to caller’s expected shape
 }
 
+export interface ProductCardData {
+  id: string;
+  title: string;
+  price_cents: number;
+  primary_image: string | null;
+  // Assumimos que a coluna 'is_featured' foi selecionada com o alias 'isFeatured'
+  isFeatured?: boolean; 
+}
+function cardToFullProduct(card: ProductCardData): JsonProduct {
+  return {
+    id: card.id,
+    sellerId: 0, // <-- DUMMY/VALOR PADRÃO
+    name: card.title,
+    description: '', // <-- DUMMY/VALOR PADRÃO
+    price: centsToDollars(card.price_cents),
+    imageUrl: card.primary_image ?? '',
+    imageUrls: [], // <-- DUMMY/VALOR PADRÃO
+    
+    // CAMPOS BOOLEANOS E RATING
+    isFeatured: card.isFeatured ?? false, 
+    isNew: false, // <-- DUMMY/VALOR PADRÃO
+    isOnSale: false, // <-- DUMMY/VALOR PADRÃO
+    isBestSeller: false, // <-- DUMMY/VALOR PADRÃO
+    rating: 0, // <-- DUMMY/VALOR PADRÃO
+    displayOnMarketplace: true, // <-- DUMMY/VALOR PADRÃO
+  } as JsonProduct;
+}
 /* -------------------------------------------------------
    Replacements for the old JSON bridge
 --------------------------------------------------------*/
@@ -57,6 +89,14 @@ export async function getAllProducts(): Promise<JsonProduct[]> {
   const cards = await fetchProductCards(48, 0);
   return cards.map(cardToJsonProduct);
 }
+
+export async function getAllShopProducts(): Promise<JsonProduct[]> {
+  const cards = await fetchProductCards(48, 0);
+  console.log(cards)
+  return cards.map(cardToFullProduct);
+}
+
+
 
 /** Returns featured products for the home section. */
 export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
@@ -72,6 +112,10 @@ export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
     rating: 0,
   } as unknown as JsonProduct));
 }
+
+// export async function getShopProducts() : Promise<JsonProduct[]> {
+
+// }
 
 /** Loads a single product by ID with gallery, rating, reviews. */
 export async function getProductById(productId: string): Promise<JsonProduct | undefined> {
@@ -116,8 +160,20 @@ export async function getSimilarProducts(productId: string, limit = 6): Promise<
  *  we can add a proper query here later. For now, return empty to avoid build errors.
  */
 export async function getCategoriesData(): Promise<CategoryData[]> {
-  return [];
+  const recos = await getCollections();
+  return recos.map(r => ({
+    id: r.id,
+    name: r.name,
+    isFeatured: r.isFeatured,
+    story: r.story,
+    imagePath: r.imagePath,
+    productsIds: r.productIds,
+    recomendedProducysIds: r.recommendedProductIds
+
+  } as unknown as JsonCollections));
 }
+
+
 
 export async function getCountriesList(): Promise<string[]> {
   return [];
