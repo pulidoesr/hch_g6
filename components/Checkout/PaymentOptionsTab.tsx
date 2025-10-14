@@ -15,13 +15,11 @@ import { CreditCardData, PaymentMethod } from '@/lib/types/checkout';
 import SummaryTotals from './SummaryTotals';
 import CardInput from '../Common/CardInput';
 
-// IMPORTAÇÃO CORRETA:
-// Importa saveOrder e as interfaces necessárias do seu módulo de servidor/actions.
-// NOTA: Tivemos que tornar 'tax' opcional em OrderDataInput no data_bridge.ts para esta correção.
+
 import { saveOrder, SaveOrderResult, OrderDataInput } from '@/lib/server/actions/data_bridge'; 
 
 
-// --- NOVO HOOK PARA LER O LOCAL STORAGE (Mantido) ---
+// --- NEW HOOK TO READ LOCAL STORAGE (Kept) ---
 const LOCAL_STORAGE_KEY_SHIPPING = 'checkout_shipping_value';
 const DEFAULT_FALLBACK_VALUE = 0;
 
@@ -41,7 +39,8 @@ export function useShippingValueFromLocalStorage(): number {
           }
         }
       } catch (error) {
-        console.error("Erro ao ler Local Storage (Frete):", error);
+        // Translation: "Erro ao ler Local Storage (Frete):" -> "Error reading Local Storage (Shipping):"
+        console.error("Error reading Local Storage (Shipping):", error);
       }
     }
   }, []); 
@@ -59,7 +58,7 @@ interface PaymentOptionsTabProps {
 export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabProps) {
   const router = useRouter(); 
   
-  // NOVOS ESTADOS PARA MENSAGEM E PROCESSAMENTO
+ 
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
     
@@ -73,17 +72,17 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
 
   const { shippingAddress } = useShippingAddress();
 
-  // ✅ CORREÇÃO: Lê o valor FINAL do frete do Local Storage
+  // Reads the FINAL shipping value from Local Storage
   const storedShippingValue = useShippingValueFromLocalStorage(); 
   
-  // 2. Determina o valor do frete usando o valor lido
+  // 2. Determines the shipping value using the read value
   const shippingValue = storedShippingValue; 
   
-  // 3. Define a string de exibição
+  // 3. Defines the display string
   const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
   
   // 4. Calculate final summary using the utility function
-  // O tipo de 'summary' é inferido do retorno de calculateSummary (SummaryCalculation)
+  // The type of 'summary' is inferred from the return of calculateSummary (SummaryCalculation)
   const summary = useMemo(() => calculateSummary(cartItems, shippingValue), [cartItems, shippingValue]);
   
   const formattedAddress = useMemo(() => {
@@ -101,7 +100,7 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
   };
 
 
-  // --- FUNÇÃO DE SUBMISSÃO AJUSTADA ---
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -110,66 +109,65 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
         return;
     }
     
-    setIsProcessing(true); // Inicia o processamento
+    // Starts processing
+    setIsProcessing(true); 
 
     try {
-        // 1. LER DADOS DIRETAMENTE DO LOCAL STORAGE
+        // 1. READ DATA DIRECTLY FROM LOCAL STORAGE
         if (typeof window === 'undefined') {
             throw new Error("Local storage not available.");
         }
         
-        // Use OrderDataInput (importado) para tipar o objeto.
-        // Se 'tax' não está em 'summary', OrderDataInput DEVE ter 'tax' opcional no data_bridge.ts.
+        // Use OrderDataInput (imported) to type the object.
+        // If 'tax' is not in 'summary', OrderDataInput MUST have 'tax' optional in data_bridge.ts.
         const orderData: OrderDataInput = { 
             shippingValue: localStorage.getItem('checkout_shipping_value'),
             cartItems: localStorage.getItem('handcrafted_heaven_cart'),
             shippingAddress: localStorage.getItem('handcrafted_heaven_shipping_address'),
             paymentMethod: paymentMethod,
             cardData: paymentMethod === 'creditCard' ? cardData : null,
-            // O TS aqui espera que 'summary' se encaixe no summary do OrderDataInput.
-            // Isso só funcionará se 'tax' for opcional no OrderDataInput do data_bridge.ts.
-            summary: summary as any, // Usamos 'as any' como fallback temporário para o caso do tipo ser complexo
+            summary: summary as any, 
         };
 
-        // 2. CHAMAR A FUNÇÃO saveOrder DIRETAMENTE
-        console.log("Saving order data to Data Bridge...");
-        // O tipo de 'result' é SaveOrderResult
+        
+   
         const result: SaveOrderResult = await saveOrder(orderData); 
         
         if (result.success) {
-            // 3. APRESENTAR MENSAGEM ELEGANTE
-            setSuccessMessage(`Pedido #${result.orderId} realizado com sucesso! Redirecionando...`);
             
-            // Opcional: Limpar o Local Storage após a compra
+            setSuccessMessage(`Order #${result.orderId} placed successfully! Redirecting...`);
+            
+            // Clear Local Storage after purchase
             localStorage.removeItem('checkout_shipping_value');
             localStorage.removeItem('handcrafted_heaven_cart');
             localStorage.removeItem('handcrafted_heaven_shipping_address');
             
-            // 4. REDIRECIONAR APÓS 3 SEGUNDOS
+            // 4. REDIRECT AFTER 3 SECONDS
             setTimeout(() => {
                 router.push('/'); 
             }, 3000); 
         } else {
-            throw new Error("Falha no pagamento ou na gravação do pedido.");
+            // Payment failed or order recording failed.
+            throw new Error("Payment failed or order recording failed.");
         }
 
     } catch (error) {
-        console.error("Erro na submissão do pedido:", error);
-        setSuccessMessage(null); // Remove qualquer mensagem pendente
-        alert("Ocorreu um erro durante o pagamento. Tente novamente.");
-        setIsProcessing(false); // Libera o botão
+        console.error("Error in order submission:", error);
+        setSuccessMessage(null); 
+        alert("An error occurred during payment. Please try again.");
+        setIsProcessing(false); 
     }
   };
   
   const handleCancel = () => {
-    router.push('/'); // Redireciona para a Home
+    router.push('/'); 
   };
 
 
   return (
     <div className="max-w-7xl mx-auto py-8">
       
-      {/* --- MENSAGEM DE SUCESSO ELEGANTE --- */}
+      
       {successMessage && (
           <div className="fixed top-0 left-0 right-0 z-50 bg-green-600 text-white p-4 text-center shadow-lg flex items-center justify-center space-x-3">
               <CheckCircle className="w-6 h-6" />
@@ -240,7 +238,6 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
                 </div>
             )}
             
-            {/* ... other payment methods placeholder ... */}
           </section>
 
           {/* --- SUMMARY SECTION (RIGHT) --- */}
@@ -261,11 +258,11 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
                 className={`w-full mt-8 bg-green-600 text-white py-3 px-8 
                     font-medium rounded-md shadow-lg
                     hover:bg-green-700 transition duration-200 flex justify-center items-center
-                    ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''}`} // Estilo de desabilitado
+                    ${isProcessing ? 'opacity-70 cursor-not-allowed' : ''}`}
                 disabled={cartItems.length === 0 || isProcessing}
             >
                 <DollarSign className='w-5 h-5 mr-2' />
-                {isProcessing ? 'Processando...' : `Pagar $${summary.total.toFixed(2)}`}
+                {isProcessing ? 'Processing...' : `Pay $${summary.total.toFixed(2)}`}
             </button>
           </section>
         </div>
@@ -281,7 +278,7 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
                     hover:bg-gray-300 transition duration-200
                 "
             >
-                Voltar
+                Back
             </button>
             <button
                 type="button"
@@ -291,7 +288,8 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
                     font-medium rounded-sm hover:underline
                 "
             >
-                Cancelar
+                
+                Cancel
             </button>
         </div>
       </form>

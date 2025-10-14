@@ -20,9 +20,10 @@ import {
 }  from '@/lib/repositories/collection';
 
 // =======================================================
-// NOVO: Importação do Repositório de Orders (Necessário criar este arquivo)
+// NOVO: Importação do Repositório de Orders 
+// (Agora importando createOrder e createOrderItems)
 // =======================================================
-import { createOrder } from '@/lib/repositories/orders'; 
+import { createOrder, createOrderItems } from '@/lib/repositories/orders'; 
 
 // Keep your existing JSON-facing types for compatibility with callers.
 // We'll coerce DB results into these shapes.
@@ -49,7 +50,7 @@ export interface OrderDataInput {
     cardData: any | null;         
     summary: {                    
         subtotal: number;
-        tax: number;
+        tax?: number;
         total: number;
     }; 
 }
@@ -71,6 +72,27 @@ interface OrderPayloadDB {
     tax_cents: number;
     total_cents: number;
     currency: string;
+}
+
+// --- NOVO: Estrutura para os itens do pedido no DB ---
+/** Estrutura de dados esperada para cada item na tabela 'order_items' */
+interface OrderItemPayloadDB {
+    order_id: string;
+    product_id: string;
+    seller_id: string;
+    title: string;
+    quantity: number;
+    price_cents: number;
+    currency: string;
+}
+
+// --- NOVO: Estrutura dos itens crus do carrinho (Local Storage) ---
+interface CartItemRaw {
+    id: string;       // product_id
+    name: string;     // title
+    unitPrice: number;    // price in dollars
+    quantity: number;
+    sellerId?: string; // Assumindo que o Seller ID pode vir aqui
 }
 
 
@@ -96,7 +118,6 @@ function cardToJsonProduct(card: {
     description: '',           // v_product_card doesn’t include description
     price: centsToDollars(card.price_cents),
     imageUrl: card.primary_image ?? '',
-    // The JSON schema often had these in some places:
     imageUrls: [],             // not available from the card view
     rating: 0,                 // aggregate rating isn’t on the card view
   } as unknown as JsonProduct; // coerce to caller’s expected shape
@@ -198,24 +219,34 @@ export async function getSimilarProducts(productId: string, limit = 6): Promise<
   } as unknown as JsonProduct));
 }
 
-/* -------------------------------------------------------
-   NOVA FUNÇÃO: saveOrder (Ação do Servidor para criar o pedido)
---------------------------------------------------------*/
-
+// ------------------------------------------------------
+// FUNÇÃO saveOrder AJUSTADA
+// ------------------------------------------------------
 export async function saveOrder(orderDataInput: OrderDataInput): Promise<SaveOrderResult> {
-    
-    // 1. ANÁLISE E VALIDAÇÃO DOS DADOS
-    if (!orderDataInput.shippingAddress) {
+    console.log("Starting saveOrder process with input:", orderDataInput);
+
+    // 1. ANÁLISE E VALIDAÇÃO DOS DADOS (Endereço e Itens)
+    if (!orderDataInput.shippingAddress || !orderDataInput.cartItems) {
+        console.error("Missing shipping address or cart items.");
         return { success: false, orderId: "0" };
     }
     
     let shippingAddressUUID: string;
+    let rawCartItems: CartItemRaw[];
+    
     try {
         const shippingAddressData = JSON.parse(orderDataInput.shippingAddress);
-        // Assumindo que o UUID do endereço está no campo 'id' ou 'uuid' do objeto salvo.
-        shippingAddressUUID = shippingAddressData.id || shippingAddressData.uuid || 'placeholder-shipping-uuid'; 
+        // Usando um UUID válido como fallback, conforme sugerido
+        shippingAddressUUID = shippingAddressData.id || shippingAddressData.uuid || '11d4fa2c-8ad0-4945-a4bd-a09cc2155d2e'; 
+        
+        rawCartItems = JSON.parse(orderDataInput.cartItems);
+
+        if (rawCartItems.length === 0) {
+            console.error("Cart items list is empty after parsing.");
+            return { success: false, orderId: "0" };
+        }
     } catch (e) {
-        console.error("Erro ao analisar o JSON do shippingAddress:", e);
+        console.error("Error parsing input JSON (address or cart items):", e);
         return { success: false, orderId: "0" };
     }
 
@@ -224,19 +255,16 @@ export async function saveOrder(orderDataInput: OrderDataInput): Promise<SaveOrd
     // 2. CONVERSÃO DE MOEDA (Dólar para Centavos)
     const subtotalInCents = dollarsToCents(summary.subtotal);
     const shippingInCents = dollarsToCents(parseFloat(orderDataInput.shippingValue || '0'));
-    const taxInCents = dollarsToCents(summary.tax);
+    const taxInCents = dollarsToCents(summary.tax || 0);
     const totalInCents = dollarsToCents(summary.total);
     
-    // 3. CRIAÇÃO DO PAYLOAD PARA O BANCO DE DADOS
+    // 3. CRIAÇÃO DO PAYLOAD PARA A TABELA 'ORDERS'
+    const BUYER_ID_PLACEHOLDER = '84cf35f4-a81b-442e-8bb1-02a521d91c95'; 
     
-    // **IMPORTANTE:** O buyer_id DEVE ser o ID do usuário autenticado.
-    // Use seu método de autenticação para obtê-lo.
-    const BUYER_ID_PLACEHOLDER = '00000000-0000-0000-0000-000000000001'; 
-    
-    const payload: OrderPayloadDB = {
+    const orderPayload: OrderPayloadDB = {
         buyer_id: BUYER_ID_PLACEHOLDER, 
         shipping_address: shippingAddressUUID, 
-        billing_address: shippingAddressUUID, // Assumindo que billing = shipping por padrão
+        billing_address: shippingAddressUUID, 
         status: 'pending', 
         
         // Valores em centavos (integer)
@@ -248,17 +276,38 @@ export async function saveOrder(orderDataInput: OrderDataInput): Promise<SaveOrd
     };
     
     try {
-        // 4. CHAMADA AO REPOSITÓRIO PARA SALVAR NO BANCO
-        const dbResult = await createOrder(payload);
+        // 4. CHAMADA 1: SALVAR O PEDIDO PRINCIPAL (ORDERS)
+        const dbResult = await createOrder(orderPayload);
+        const orderId = dbResult.id;
+        console.log(`Order created successfully with ID: ${orderId}`);
 
-        // 5. RETORNO DE SUCESSO
+        // 5. CRIAÇÃO DO PAYLOAD PARA A TABELA 'ORDER_ITEMS'
+        const orderItemsPayload: OrderItemPayloadDB[] = rawCartItems.map(item => ({
+            order_id: orderId,
+            product_id: item.id,
+            // Use o sellerId do item ou um placeholder (assumindo que 9s é um placeholder de "unknown seller")
+            seller_id: item.sellerId || '94f5e8e2-36a0-4df6-8a75-27c91dd40972', 
+            title: item.name,
+            quantity: item.quantity,
+            price_cents: dollarsToCents(item.unitPrice), // Preço unitário em centavos
+            currency: 'USD',
+        }));
+        
+        // 6. CHAMADA 2: SALVAR OS ITENS DO PEDIDO (ORDER_ITEMS)
+        await createOrderItems(orderItemsPayload);
+        console.log(`Successfully inserted ${orderItemsPayload.length} order items.`);
+
+
+        // 7. RETORNO DE SUCESSO
         return {
             success: true,
-            orderId: dbResult.id // Retorna o ID gerado (string)
+            orderId: orderId 
         };
 
     } catch (error) {
-        console.error("Erro fatal ao inserir pedido no DB:", error);
+        // ATENÇÃO: Em um sistema real, você faria um rollback da transação aqui se a primeira parte (createOrder)
+        // tivesse sido bem-sucedida e a segunda (createOrderItems) falhasse.
+        console.error("Erro fatal ao inserir pedido e/ou itens no DB:", error);
         return {
             success: false,
             orderId: "0"
