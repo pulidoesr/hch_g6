@@ -27,9 +27,9 @@ export default function InspirationSection({
   if (ideas.length === 0) return null;
 
   return (
-    <section className="mt-12">
+    <section className="mt-12 pl-2 pr-2 pb-2">
       <h2 className="text-2xl font-bold mb-4">Inspiration</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 ">
         {ideas.map((p) => (
           <div key={p.id} className="border rounded-lg p-4 bg-white shadow-sm">
             <img

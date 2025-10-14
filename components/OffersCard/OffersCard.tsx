@@ -113,7 +113,7 @@ const OfferCards = () => {
                                     <span className="text-white font-extrabold">Other Offers</span>
                                 </h2>
                             </div>
-                            {/* 🟢 Adicionado o manipulador onClick para 'new' */}
+
                             <button 
                                 className="w-48 px-6 py-2 bg-white text-gray-800 font-medium rounded-full hover:bg-gray-100 transition duration-300 mt-4 lg:mt-0 mx-auto lg:mx-0"
                                 onClick={handleBrowseNew}
@@ -143,7 +143,6 @@ const OfferCards = () => {
                             Discover our customers' favorites and the hottest new arrivals of the month.
                         </p>
                         <div className="w-full flex justify-center">
-                            {/* Adicionado o manipulador onClick para 'bestseller' */}
                             <button 
                                 className="w-48 px-10 py-3 bg-yellow-400 text-gray-900 font-bold rounded-full shadow-xl hover:bg-yellow-500 transition duration-300"
                                 onClick={handleBrowseBestsellers}
