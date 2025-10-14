@@ -181,6 +181,7 @@ export async function loadSellerData(sellerIdToLoad: string | number) {
     photoUrl: '/default.jpg',
     aboutMeText: 'Profile data not provided.',
   };
+}
 // ... (Funções getHomeProducts, getProductById, getSimilarProducts, etc.)
 
 
@@ -375,24 +376,24 @@ export async function getShippingOptions(): Promise<ShippingOption[]> {
   return [];
 }
 
-/* -------------------------------------------------------
-   Seller data
-   Map to your Seller + products using seller_id on products
---------------------------------------------------------*/
-export async function loadSellerData(
-  sellerIdToLoad: number | string = 1
-): Promise<{ seller: Seller; products: JsonProduct[] }> {
-  // Products for this seller
-  const cards = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
+// /* -------------------------------------------------------
+//    Seller data
+//    Map to your Seller + products using seller_id on products
+// --------------------------------------------------------*/
+// export async function loadSellerData(
+//   sellerIdToLoad: number | string = 1
+// ): Promise<{ seller: Seller; products: JsonProduct[] }> {
+//   // Products for this seller
+//   const cards = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
 
-  // Minimal seller profile 
-  const seller: Seller = {
-    name: `Seller ${sellerIdToLoad}`,
-    collectionName: 'Featured',
-    photoUrl: '/default.jpg',
-    aboutMeText: 'Profile data not provided.',
-  };
+//   // Minimal seller profile 
+//   const seller: Seller = {
+//     name: `Seller ${sellerIdToLoad}`,
+//     collectionName: 'Featured',
+//     photoUrl: '/default.jpg',
+//     aboutMeText: 'Profile data not provided.',
+//   };
 
-  const products = cards.map(cardToJsonProduct);
-  return { seller, products };
-}
+//   const products = cards.map(cardToJsonProduct);
+//   return { seller, products };
+// }
