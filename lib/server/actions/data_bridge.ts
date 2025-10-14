@@ -171,7 +171,15 @@ export async function getAllShopProducts(): Promise<JsonProduct[]> {
   return cards.map(cardToFullProduct);
 }
 
+export async function loadSellerData(sellerIdToLoad: string | number) {
+  const cards: ProductCard[] = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
 
+  const seller: Seller = {
+    name: `Seller ${sellerIdToLoad}`,
+    collectionName: 'Featured',
+    photoUrl: '/default.jpg',
+    aboutMeText: 'Profile data not provided.',
+  };
 // ... (Funções getHomeProducts, getProductById, getSimilarProducts, etc.)
 
 
