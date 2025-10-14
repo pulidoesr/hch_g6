@@ -25,7 +25,7 @@ export interface ShippingAddress {
 // Constants (ALL EXPORTED)
 export const TAXES_RATE = 0.13; // 13% tax rate
 export const SHIPPING_COST_PAID = 15.00; // Shipping cost value
-export const FREE_SHIPPING_THRESHOLD = 200.00; // Free shipping threshold
+export const FREE_SHIPPING_THRESHOLD = 0.00; // Free shipping threshold
 export const EXPRESS_SHIPPING_COST = 15.00;
 
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
@@ -42,9 +42,12 @@ export const calculateSummary = (items: CartItem[], shippingValue: number): Summ
   const calculatedTaxes = subtotal * TAXES_RATE; 
 
   const total = subtotal + shippingValue + calculatedTaxes;
+  const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
   
-  return { subtotal, shippingValue, taxes: calculatedTaxes, total };
+  return { subtotal, shippingValue, shippingDisplay, taxes: calculatedTaxes, total };
 };
+
+
 
 /**
  * Hook to manage persistent cart state using Local Storage.

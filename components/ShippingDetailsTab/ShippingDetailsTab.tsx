@@ -1,4 +1,3 @@
-// src/components/checkout/ShippingDetailsTab.tsx
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -6,7 +5,9 @@ import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
-type ShippingOption = 'free' | 'express';
+
+
+type ShippingOption = 'free' | 'express'; 
 
 // async function (returns Promise<string[]>)
 import { getCountriesList, JsonCountry } from '@/lib/server/actions/data_bridge';
@@ -46,11 +47,14 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   );
 };
 
+
 interface ShippingDetailsTabProps {
   onNext: () => void;
   onBack: () => void;
   onSaveAddress: (addressData: ShippingAddress) => void;
   initialAddress: ShippingAddress;
+  initialShippingOption: ShippingOption; 
+  onSaveShippingOption: (option: ShippingOption) => void; 
 }
 
 export default function ShippingDetailsTab({
@@ -58,6 +62,8 @@ export default function ShippingDetailsTab({
   onBack,
   onSaveAddress,
   initialAddress,
+  initialShippingOption, 
+  onSaveShippingOption,  
 }: ShippingDetailsTabProps) {
   const router = useRouter();
   const { cartItems } = useCart();
@@ -65,10 +71,10 @@ export default function ShippingDetailsTab({
   // Countries state
   const [countriesList, setCountriesList] = useState<JsonCountry[]>([]);
   const [isLoadingCountries, setIsLoadingCountries] = useState(true);
-  // Await the Promise<string[]> and guard unmount
+  
   useEffect(() => {
     let isMounted = true;
-
+    // ... (lógica de carregamento de países inalterada)
     (async () => {
       try {
         setIsLoadingCountries(true);
@@ -100,7 +106,8 @@ export default function ShippingDetailsTab({
     phoneNumber: initialAddress.phoneNumber,
   }));
 
-  const [shippingOption, setShippingOption] = useState<ShippingOption>('free');
+  
+  const [shippingOption, setShippingOption] = useState<ShippingOption>(initialShippingOption); 
   const [showVoucher, setShowVoucher] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
@@ -111,6 +118,16 @@ export default function ShippingDetailsTab({
     }
     return EXPRESS_SHIPPING_COST;
   }, [shippingOption, cartItems]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Usamos uma chave clara para o valor do frete
+      localStorage.setItem('checkout_shipping_value', String(selectedShippingValue));
+      console.log('Valor do frete salvo no Local Storage:', selectedShippingValue);
+    }
+  }, [selectedShippingValue]);
+
+  // ... (FormField component inalterado)
 
   const FormField: React.FC<{
     id: keyof FormData;
@@ -260,12 +277,19 @@ export default function ShippingDetailsTab({
         phoneNumber: formData.phoneNumber,
       };
       
+      // 1. Salva o endereço
       onSaveAddress(addressToSave);
+
+      onSaveShippingOption(shippingOption); 
+
+      // 3. Avança
       onNext();
     } else {
       console.error('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   };
+
+  // ... (Restante do componente inalterado)
 
   return (
     <div className="max-w-7xl mx-auto py-8">
@@ -370,7 +394,8 @@ export default function ShippingDetailsTab({
                   name="shipping"
                   value="free"
                   checked={shippingOption === 'free'}
-                  onChange={() => setShippingOption('free')}
+                  
+                  onChange={() => setShippingOption('free')} 
                   className="mr-3 h-4 w-4 text-amber-800 border-gray-300 focus:ring-amber-500"
                 />
                 <label htmlFor="shipping-free" className="inline-flex flex-col cursor-pointer">

@@ -8,7 +8,7 @@ import { ShoppingCart, Truck, CreditCard, X } from 'lucide-react';
 // Assuming these imports are correct based on your file structure
 import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab';
 import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab';
-import { useShippingAddress } from '@/lib/checkout-utils';
+import { useShippingAddress, calculateSummary } from '@/lib/checkout-utils';
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
@@ -56,20 +56,14 @@ const useCart = () => {
 // --- Constants and Types ---
 
 type Tab = 'cart' | 'shipping' | 'payment';
+type ShippingOption = 'free' | 'express'; // Tipo de dado para o frete
 
 const TAXES = 13.00;
 const FREE_SHIPPING_THRESHOLD = 200.00;
-const SHIPPING_COST = 20.00;
+// ✅ CORREÇÃO: Tipando explicitamente para evitar o erro 'toFixed' does not exist on type 'never'
+const SHIPPING_COST: number = 0; 
 
 // --- Calculation Utilities ---
-const calculateSummary = (items: CartItem[]) => {
-    const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
-    const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
-    const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
-    const total = subtotal + shippingValue + TAXES;
-
-    return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
-};
 
 // --- Layout Components ---
 
@@ -131,8 +125,6 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
                     src={item.imageSrc}
                     alt={item.name}
                     fill
-                    // O atributo sizes no Image component também deve ser ajustado para ser mais responsivo,
-                    // mas w-24 equivale a 96px, o que se alinha bem com o valor original de 96px
                     sizes="(max-width: 768px) 96px, 160px"
                     className="object-cover"
                 />
@@ -168,12 +160,14 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
 };
 
 // --- Summary Component ---
+
 interface SummaryProps {
     summary: ReturnType<typeof calculateSummary>;
+    shippingDisplay: string;
 }
 
-const Summary: React.FC<SummaryProps> = ({ summary }) => {
-    const { subtotal, shippingDisplay, taxes, total } = summary;
+const Summary: React.FC<SummaryProps> = ({ summary, shippingDisplay }) => {
+    const { subtotal, taxes, total } = summary;
 
     const SummaryRow: React.FC<{ label: string; value: string | number; valueClass?: string }> = ({ label, value, valueClass = '' }) => (
         <div className="flex justify-between mb-2">
@@ -220,8 +214,22 @@ interface ShoppingCartTabProps {
 
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
 
-    const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
-
+    const summary = useMemo(() => {
+        const tempSummary = calculateSummary(cartItems, SHIPPING_COST);
+        const subtotal = tempSummary.subtotal;
+        
+        // Simulação da lógica de frete para o display do carrinho
+        const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+        const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
+        
+        return {
+            ...tempSummary,
+            // Reajustando o total para usar o shippingValue calculado, não o hardcoded.
+            total: subtotal + tempSummary.taxes + shippingValue,
+            shippingDisplay 
+        };
+    }, [cartItems]);
+    
     const handleUpdateQuantity = (id: number, newQuantity: number) => {
         setCartItems(prevItems =>
             prevItems.map(item =>
@@ -250,7 +258,8 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </section>
 
                 <section className="lg:w-1/3">
-                    <Summary summary={summary} />
+                    {/* Passando shippingDisplay para o Summary */}
+                    <Summary summary={summary} shippingDisplay={summary.shippingDisplay} />
                 </section>
             </div>
 
@@ -292,6 +301,9 @@ const CheckoutPage: React.FC = () => {
     const { cartItems, setCartItems } = useCart();
 
     const { shippingAddress, setShippingAddress } = useShippingAddress();
+    
+    // Estado que armazena a opção de envio selecionada
+    const [selectedShipping, setSelectedShipping] = useState<ShippingOption>('free');
 
     const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
         { id: 'cart', name: 'Shopping Cart', icon: ShoppingCart },
@@ -356,7 +368,7 @@ const CheckoutPage: React.FC = () => {
                                     cartItems={cartItems}
                                     setCartItems={setCartItems}
                                     onNext={handleNext}
-                                    onCancel={handleCancel} // Prop passed correctly
+                                    onCancel={handleCancel}
                                 />
                             )}
 
@@ -367,8 +379,8 @@ const CheckoutPage: React.FC = () => {
                                     onBack={handleBack}
                                     initialAddress={shippingAddress}
                                     onSaveAddress={setShippingAddress}
-                                    // You should pass onCancel to ShippingDetailsTab when implementing its buttons
-                                    // onCancel={handleCancel}
+                                    initialShippingOption={selectedShipping}
+                                    onSaveShippingOption={setSelectedShipping}
                                 />
                             )}
 

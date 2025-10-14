@@ -20,6 +20,7 @@ export type PaymentMethod = 'creditCard' | 'paypal' | 'bankTransfer';
 export interface SummaryCalculation {
     subtotal: number;
     shippingValue: number;
+    shippingDisplay: string;
     taxes: number;
     total: number;
 }

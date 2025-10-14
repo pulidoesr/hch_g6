@@ -15,9 +15,14 @@ import {
 
 } from '@/lib/repositories/products';
 
-import{
+import {
   getCollections
 }  from '@/lib/repositories/collection';
+
+// =======================================================
+// NOVO: Importação do Repositório de Orders (Necessário criar este arquivo)
+// =======================================================
+import { createOrder } from '@/lib/repositories/orders'; 
 
 // Keep your existing JSON-facing types for compatibility with callers.
 // We'll coerce DB results into these shapes.
@@ -30,12 +35,53 @@ import type {
   Seller,
 } from '@/lib/types/product-data';
 
+// =======================================================
+// NOVOS TIPOS DE DADOS PARA O CHECKOUT
+// (Exportados para uso no PaymentOptionsTab.tsx)
+// =======================================================
+
+/** Estrutura de entrada do front-end (vindo do Local Storage/Componente) */
+export interface OrderDataInput {
+    shippingValue: string | null; 
+    cartItems: string | null;
+    shippingAddress: string | null;
+    paymentMethod: string;        
+    cardData: any | null;         
+    summary: {                    
+        subtotal: number;
+        tax: number;
+        total: number;
+    }; 
+}
+
+/** Estrutura do resultado retornado ao front-end */
+export interface SaveOrderResult {
+    success: boolean;
+    orderId: string; // ID do pedido (UUID ou número)
+}
+
+/** Estrutura de dados esperada pelo Repositório/Tabela 'orders' */
+interface OrderPayloadDB {
+    buyer_id: string;
+    shipping_address: string;
+    billing_address: string;
+    status: 'pending' | 'completed' | 'shipped' | 'cancelled'; // Assumindo enum no DB
+    subtotal_cents: number;
+    shipping_cents: number;
+    tax_cents: number;
+    total_cents: number;
+    currency: string;
+}
+
+
 /* -------------------------------------------------------
    Helpers: DB → JSONish Product mapping
-   (Your v_product_card view has: id, title, price_cents, primary_image)
 --------------------------------------------------------*/
 const centsToDollars = (cents?: number | null) =>
   Math.round((cents ?? 0)) / 100;
+
+// NOVO: Função auxiliar para conversão de moeda
+const dollarsToCents = (dollars: number) => Math.round(dollars * 100); 
 
 function cardToJsonProduct(card: {
   id: string;
@@ -43,6 +89,7 @@ function cardToJsonProduct(card: {
   price_cents: number;
   primary_image: string | null;
 }): JsonProduct {
+// ... (código existente)
   return {
     id: card.id,
     name: card.title,
@@ -64,6 +111,7 @@ export interface ProductCardData {
   isFeatured?: boolean; 
 }
 function cardToFullProduct(card: ProductCardData): JsonProduct {
+// ... (código existente)
   return {
     id: card.id,
     sellerId: 0, // <-- DUMMY/VALOR PADRÃO
@@ -98,6 +146,8 @@ export async function getAllShopProducts(): Promise<JsonProduct[]> {
 }
 
 
+// ... (Funções getHomeProducts, getProductById, getSimilarProducts, etc.)
+
 
 /** Returns featured products for the home section. */
 export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
@@ -113,10 +163,6 @@ export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
     rating: 0,
   } as unknown as JsonProduct));
 }
-
-// export async function getShopProducts() : Promise<JsonProduct[]> {
-
-// }
 
 /** Loads a single product by ID with gallery, rating, reviews. */
 export async function getProductById(productId: string): Promise<JsonProduct | undefined> {
@@ -153,12 +199,80 @@ export async function getSimilarProducts(productId: string, limit = 6): Promise<
 }
 
 /* -------------------------------------------------------
+   NOVA FUNÇÃO: saveOrder (Ação do Servidor para criar o pedido)
+--------------------------------------------------------*/
+
+export async function saveOrder(orderDataInput: OrderDataInput): Promise<SaveOrderResult> {
+    
+    // 1. ANÁLISE E VALIDAÇÃO DOS DADOS
+    if (!orderDataInput.shippingAddress) {
+        return { success: false, orderId: "0" };
+    }
+    
+    let shippingAddressUUID: string;
+    try {
+        const shippingAddressData = JSON.parse(orderDataInput.shippingAddress);
+        // Assumindo que o UUID do endereço está no campo 'id' ou 'uuid' do objeto salvo.
+        shippingAddressUUID = shippingAddressData.id || shippingAddressData.uuid || 'placeholder-shipping-uuid'; 
+    } catch (e) {
+        console.error("Erro ao analisar o JSON do shippingAddress:", e);
+        return { success: false, orderId: "0" };
+    }
+
+    const summary = orderDataInput.summary;
+    
+    // 2. CONVERSÃO DE MOEDA (Dólar para Centavos)
+    const subtotalInCents = dollarsToCents(summary.subtotal);
+    const shippingInCents = dollarsToCents(parseFloat(orderDataInput.shippingValue || '0'));
+    const taxInCents = dollarsToCents(summary.tax);
+    const totalInCents = dollarsToCents(summary.total);
+    
+    // 3. CRIAÇÃO DO PAYLOAD PARA O BANCO DE DADOS
+    
+    // **IMPORTANTE:** O buyer_id DEVE ser o ID do usuário autenticado.
+    // Use seu método de autenticação para obtê-lo.
+    const BUYER_ID_PLACEHOLDER = '00000000-0000-0000-0000-000000000001'; 
+    
+    const payload: OrderPayloadDB = {
+        buyer_id: BUYER_ID_PLACEHOLDER, 
+        shipping_address: shippingAddressUUID, 
+        billing_address: shippingAddressUUID, // Assumindo que billing = shipping por padrão
+        status: 'pending', 
+        
+        // Valores em centavos (integer)
+        subtotal_cents: subtotalInCents,
+        shipping_cents: shippingInCents,
+        tax_cents: taxInCents,
+        total_cents: totalInCents,
+        currency: 'USD',
+    };
+    
+    try {
+        // 4. CHAMADA AO REPOSITÓRIO PARA SALVAR NO BANCO
+        const dbResult = await createOrder(payload);
+
+        // 5. RETORNO DE SUCESSO
+        return {
+            success: true,
+            orderId: dbResult.id // Retorna o ID gerado (string)
+        };
+
+    } catch (error) {
+        console.error("Erro fatal ao inserir pedido no DB:", error);
+        return {
+            success: false,
+            orderId: "0"
+        };
+    }
+}
+
+
+/* -------------------------------------------------------
    Categories / Countries / Shipping
-   (If you don’t have these in DB yet, return safe fallbacks)
 --------------------------------------------------------*/
 
 /** If you have collections in DB and need full JSON CategoryData,
- *  we can add a proper query here later. For now, return empty to avoid build errors.
+ * we can add a proper query here later. For now, return empty to avoid build errors.
  */
 export async function getCategoriesData(): Promise<CategoryData[]> {
   const recos = await getCollections();
