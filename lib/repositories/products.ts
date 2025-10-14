@@ -3,6 +3,8 @@ import { q } from "@/lib/db";
 import type { Product, Review } from "@/lib/types/product";
 
 /* ---------- Types used by pages/components ---------- */
+// lib/repositories/products.ts
+/* ---------- Types used by pages/components ---------- */
 export type DbProductCard = {
   id: string;
   image_url: string | null;
@@ -58,6 +60,7 @@ export async function getHomeFeaturedProducts(limit = 10) {
     isFeatured: r.priority === 1,
   }));
 }
+
 
 /* ---------- SIMPLE PRODUCT ---------- */
 export async function getProductById(id: string) {

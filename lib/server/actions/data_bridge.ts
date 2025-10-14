@@ -1,34 +1,32 @@
-// /lib/server/actions/data_bridge.ts
+// lib/server/actions/data_bridge.ts
 'use server';
 
-import {
-  fetchProductCards,
-  fetchSellerProducts,
-} from '@/lib/db';
-
+import { fetchProductCards, fetchSellerProducts, type ProductCard } from '@/lib/db';
 import {
   getHomeFeaturedProducts,
-  getProductById as repoGetProductById,
   getProductByIdWithDetails,
   getTopRatedSimilarProducts,
 } from '@/lib/repositories/products';
+import { getCollections } from '@/lib/repositories/collection';
 
-// Keep your existing JSON-facing types for compatibility with callers.
-// We'll coerce DB results into these shapes.
 import type {
   Product as JsonProduct,
   CategoryData,
   ShippingOption,
-  RawSellerProfile,
   Seller,
 } from '@/lib/types/product-data';
 
-/* -------------------------------------------------------
-   Helpers: DB → JSONish Product mapping
-   (Your v_product_card view has: id, title, price_cents, primary_image)
---------------------------------------------------------*/
-const centsToDollars = (cents?: number | null) =>
-  Math.round((cents ?? 0)) / 100;
+// ----------------- helpers -----------------
+const centsToDollars = (c?: number | null) => (c ?? 0) / 100;
+
+// Shape that matches getHomeFeaturedProducts SQL
+type HomeCardRow = {
+  id: string;
+  title: string;
+  price_cents: number;
+  primary_image: string | null;
+  is_featured: boolean;
+};
 
 function cardToJsonProduct(card: {
   id: string;
@@ -38,87 +36,126 @@ function cardToJsonProduct(card: {
 }): JsonProduct {
   return {
     id: card.id,
-    name: card.title,
-    description: '',           // v_product_card doesn’t include description
+    name: card.title || 'Untitled',
+    description: '',
     price: centsToDollars(card.price_cents),
     imageUrl: card.primary_image ?? '',
-    // The JSON schema often had these in some places:
-    imageUrls: [],             // not available from the card view
-    rating: 0,                 // aggregate rating isn’t on the card view
-  } as unknown as JsonProduct; // coerce to caller’s expected shape
+    imageUrls: [],
+    rating: 0,
+  } as unknown as JsonProduct;
 }
 
-/* -------------------------------------------------------
-   Replacements for the old JSON bridge
---------------------------------------------------------*/
+export interface ProductCardData {
+  id: string;
+  title: string;
+  price_cents: number;
+  primary_image: string | null;
+  isFeatured?: boolean;
+}
 
-/** Returns products for general listing (shop grid). */
+function cardToFullProduct(card: ProductCardData): JsonProduct {
+  return {
+    id: card.id,
+    sellerId: 0,
+    name: card.title || 'Untitled',
+    description: '',
+    price: centsToDollars(card.price_cents),
+    imageUrl: card.primary_image ?? '',
+    imageUrls: [],
+    isFeatured: !!card.isFeatured,
+    isNew: false,
+    isOnSale: false,
+    isBestSeller: false,
+    rating: 0,
+    displayOnMarketplace: true,
+  } as JsonProduct;
+}
+
+// ----------------- products -----------------
 export async function getAllProducts(): Promise<JsonProduct[]> {
   const cards = await fetchProductCards(48, 0);
   return cards.map(cardToJsonProduct);
 }
 
-/** Returns featured products for the home section. */
+export async function getAllShopProducts(): Promise<JsonProduct[]> {
+  const cards = await fetchProductCards(48, 0);
+  return cards.map(c =>
+    cardToFullProduct({
+      id: c.id,
+      title: c.title,
+      price_cents: c.price_cents,
+      primary_image: c.primary_image,
+      isFeatured: c.isFeatured,
+    })
+  );
+}
+
+// lib/server/actions/data_bridge.ts
 export async function getHomeProducts(limit = 10): Promise<JsonProduct[]> {
-  const rows = await getHomeFeaturedProducts(limit);
-  // rows have: id, imageUrl, description, price, isFeatured
+  const rows = await getHomeFeaturedProducts(limit); // <- keep the actual type
   return rows.map(r => ({
     id: r.id,
+    // there's no "title" in the returned rows, so use description as a fallback name
     name: r.description || 'Untitled',
-    description: r.description,
-    price: r.price,
-    imageUrl: r.imageUrl,
+    description: r.description || '',
+    price: r.price,            // already dollars (not cents)
+    imageUrl: r.imageUrl || '',
     imageUrls: [],
     rating: 0,
+    isFeatured: !!r.isFeatured,
   } as unknown as JsonProduct));
 }
 
-/** Loads a single product by ID with gallery, rating, reviews. */
+
+// ... (rest of file unchanged)
+
+
 export async function getProductById(productId: string): Promise<JsonProduct | undefined> {
   const p = await getProductByIdWithDetails(productId);
   if (!p) return undefined;
-
   return {
     id: p.id,
-    name: p.name,
-    description: p.description,
+    name: p.name ?? 'Untitled',
+    description: p.description ?? '',
     price: p.price,
-    imageUrl: p.imageUrl,
+    imageUrl: p.imageUrl ?? '',
     imageUrls: p.imageUrls ?? [],
     rating: p.rating ?? 0,
-    // If your JSON Product type does not include reviews, callers will ignore this.
-    // If it does, it will be present here from the DB:
-    reviews: p.reviews as any,
+    reviews: (p.reviews ?? []) as any,
   } as unknown as JsonProduct;
 }
 
-/** Returns “similar” products (same collections, top rated). */
 export async function getSimilarProducts(productId: string, limit = 6): Promise<JsonProduct[]> {
   const recos = await getTopRatedSimilarProducts(productId, limit);
   return recos.map(r => ({
     id: r.id,
-    name: r.name,
-    description: r.description,
+    name: r.name ?? 'Untitled',
+    description: r.description ?? '',
     price: r.price,
-    imageUrl: r.imageUrl,
+    imageUrl: r.imageUrl ?? '',
     imageUrls: r.imageUrls ?? [],
     rating: r.rating ?? 0,
     reviews: [],
   } as unknown as JsonProduct));
 }
 
-/* -------------------------------------------------------
-   Categories / Countries / Shipping
-   (If you don’t have these in DB yet, return safe fallbacks)
---------------------------------------------------------*/
-
-/** If you have collections in DB and need full JSON CategoryData,
- *  we can add a proper query here later. For now, return empty to avoid build errors.
- */
+// ----------------- categories/collections -----------------
 export async function getCategoriesData(): Promise<CategoryData[]> {
-  return [];
+  // DB-backed collections
+  const rows = await getCollections();
+  return rows.map(r => ({
+    id: r.id,
+    name: r.name,
+    imagePath: r.imagePath ?? '',
+    story: r.story ?? '',
+    isFeatured: !!r.isFeatured,
+    productsIds: r.productIds ?? [],
+    recomendedProducysIds: r.recommendedProductIds ?? [], 
+  } as unknown as CategoryData));
 }
 
+// ----------------- shipping/countries -----------------
+// TODO: wire these to DB tables when you have them.
 export async function getCountriesList(): Promise<string[]> {
   return [];
 }
@@ -127,17 +164,10 @@ export async function getShippingOptions(): Promise<ShippingOption[]> {
   return [];
 }
 
-/* -------------------------------------------------------
-   Seller data
-   Map to your Seller + products using seller_id on products
---------------------------------------------------------*/
-export async function loadSellerData(
-  sellerIdToLoad: number | string = 1
-): Promise<{ seller: Seller; products: JsonProduct[] }> {
-  // Products for this seller
-  const cards = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
+// ----------------- seller -----------------
+export async function loadSellerData(sellerIdToLoad: string | number) {
+  const cards: ProductCard[] = await fetchSellerProducts(String(sellerIdToLoad), 50, 0);
 
-  // Minimal seller profile 
   const seller: Seller = {
     name: `Seller ${sellerIdToLoad}`,
     collectionName: 'Featured',
@@ -145,6 +175,7 @@ export async function loadSellerData(
     aboutMeText: 'Profile data not provided.',
   };
 
-  const products = cards.map(cardToJsonProduct);
-  return { seller, products };
+ // NOTE: `products` here are ProductCard[] (fields: title, price_cents, primary_image, etc.)
+
+  return { seller, products: cards };
 }
