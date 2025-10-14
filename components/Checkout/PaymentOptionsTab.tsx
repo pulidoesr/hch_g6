@@ -268,12 +268,12 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
         </div>
 
         {/* --- NAVIGATION BUTTONS (BOTTOM) --- */}
-        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-between">
+        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center  gap-6">
             <button
                 type="button"
                 onClick={onBack}
                 className="
-                    bg-gray-200 text-gray-700 py-3 px-8 
+                    bg-gray-200 text-gray-700 h-12 w-30 
                     font-medium rounded-sm shadow-md
                     hover:bg-gray-300 transition duration-200
                 "
@@ -284,7 +284,7 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
                 type="button"
                 onClick={handleCancel}
                 className="
-                    text-red-600 py-3 px-8 
+                    text-red-600 h-12 w-30 
                     font-medium rounded-sm hover:underline
                 "
             >

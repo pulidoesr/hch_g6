@@ -509,25 +509,26 @@ export default function ShippingDetailsTab({
           </section>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-between">
-          <button
-            type="button"
-            onClick={onBack}
-            className="bg-gray-200 text-gray-700 py-3 px-8 font-medium rounded-sm shadow-md hover:bg-gray-300 transition duration-200"
-          >
-            Back
-          </button>
+        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
+
           <div className="space-x-4">
             <button
               type="button"
+              onClick={onBack}
+              className="bg-gray-200 text-gray-700 py-3 px-8 font-medium rounded-sm shadow-md hover:bg-gray-300 transition duration-200 w-24 h-12 sm:w-30"
+            >
+              Back
+            </button>
+            <button
+              type="button"
               onClick={() => router.push('/')}
-              className="text-red-600 py-3 px-8 font-medium rounded-sm hover:underline"
+              className="text-red-600 py-3 px-8 font-medium rounded-sm hover:underline w-24 h-12 sm:w-30"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-[#7B3F00] text-white py-3 px-8 font-medium rounded-sm shadow-md hover:bg-[#633300] transition duration-200"
+              className="bg-[#7B3F00] text-white py-3 px-8 font-medium rounded-sm shadow-md hover:bg-[#633300] transition duration-200 w-24 h-12 sm:w-30"
             >
               Next
             </button>

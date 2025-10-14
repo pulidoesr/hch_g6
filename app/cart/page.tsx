@@ -56,11 +56,11 @@ const useCart = () => {
 // --- Constants and Types ---
 
 type Tab = 'cart' | 'shipping' | 'payment';
-type ShippingOption = 'free' | 'express'; // Tipo de dado para o frete
+type ShippingOption = 'free' | 'express'; 
 
 const TAXES = 13.00;
 const FREE_SHIPPING_THRESHOLD = 200.00;
-// ✅ CORREÇÃO: Tipando explicitamente para evitar o erro 'toFixed' does not exist on type 'never'
+
 const SHIPPING_COST: number = 0; 
 
 // --- Calculation Utilities ---
@@ -75,9 +75,11 @@ interface QuantityControlProps {
     onChange: (newQuantity: number) => void;
 }
 
+
+
 const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange }) => {
     return (
-        <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[80px] sm:h-[44px] sm:w-[120px] bg-[#8B4513] px-2">
+        <div className="flex items-center border border-[#4D2A0C] rounded-md h-10 w-16 bg-[#8B4513]">
             <input
                 type="number"
                 value={quantity}
@@ -85,7 +87,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange })
                 onChange={(e) => onChange(Math.max(1, Number(e.target.value)))}
                 className="w-full text-center text-base font-semibold bg-transparent text-white focus:outline-none"
             />
-            <div className="flex flex-col ml-2">
+            <div className="flex flex-col ml-2 ">
                 <div
                     onClick={() => onChange(quantity + 1)}
                     className="cursor-pointer text-white"
@@ -142,13 +144,13 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
             </div>
             
             {/* Quantity Control */}
-            <div className="flex flex-col gap-6 items-center justify-end">
+            <div className="flex flex-col gap-6 items-center justify-end w-10 pr-4">
                 <button 
                     onClick={() => onRemoveItem(item.id)}
                     className="text-gray-400 hover:text-red-600 transition duration-150 p-1 rounded-full bg-white z-10"
                     aria-label={`Remove ${item.name} from cart`}
                 >
-                    <X className="w-22 h-5" />
+                    <X className="w-7 h-6" />
                 </button>
                 <QuantityControl
                     quantity={item.quantity}
@@ -218,13 +220,13 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
         const tempSummary = calculateSummary(cartItems, SHIPPING_COST);
         const subtotal = tempSummary.subtotal;
         
-        // Simulação da lógica de frete para o display do carrinho
+       
         const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
         const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
         
         return {
             ...tempSummary,
-            // Reajustando o total para usar o shippingValue calculado, não o hardcoded.
+    
             total: subtotal + tempSummary.taxes + shippingValue,
             shippingDisplay 
         };
@@ -263,10 +265,11 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </section>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-gray-200 flex space-x-4">
+            <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center sm:justify-left space-x-4">
                 <button
                     onClick={onNext}
                     className="
+                        h-12 w-30    
                         bg-[#7B3F00] text-white py-3 px-8
                         font-medium rounded-sm shadow-md
                         hover:bg-[#633300] transition duration-200
@@ -279,6 +282,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 <button
                     onClick={onCancel}
                     className="
+                        h-12 w-30  
                         bg-gray-200 text-gray-700 py-3 px-8
                         font-medium rounded-sm shadow-md
                         hover:bg-[#633300] transition duration-200
@@ -302,7 +306,6 @@ const CheckoutPage: React.FC = () => {
 
     const { shippingAddress, setShippingAddress } = useShippingAddress();
     
-    // Estado que armazena a opção de envio selecionada
     const [selectedShipping, setSelectedShipping] = useState<ShippingOption>('free');
 
     const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
