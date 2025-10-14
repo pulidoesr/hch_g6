@@ -4,7 +4,7 @@
 import {
   fetchProductCards,
   fetchSellerProducts,
-  fetchCountriesList
+  fetchCountriesList,
 } from '@/lib/db';
 
 import {
