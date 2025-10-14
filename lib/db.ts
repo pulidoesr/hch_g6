@@ -57,6 +57,9 @@ export type ProductCard = {
   currency: string;
   is_active: boolean;
   isFeatured: boolean;
+  isNew:boolean;
+  isBestSeller:boolean;
+  isOnSale:boolean;
   primary_image: string | null;
 };
 
@@ -68,6 +71,9 @@ type ProductCardRow = {
   currency: string;
   is_active: boolean | string | number;
   isFeatured: boolean | string;
+  isNew: boolean | string;
+  isBestSeller: boolean | string;
+  isOnSale: boolean | string;
   primary_image: string | null;
 };
 
@@ -79,6 +85,9 @@ const toProductCard = (r: ProductCardRow): ProductCard => ({
   currency: r.currency,
   is_active: asBool(r.is_active),
   isFeatured: asBool(r.isFeatured),
+  isBestSeller: asBool(r.isBestSeller),
+  isOnSale: asBool(r.isOnSale),
+  isNew: asBool(r.isNew),
   primary_image: r.primary_image ?? null,
 });
 
@@ -88,7 +97,7 @@ export async function fetchProductCards(
   offset = 0
 ): Promise<ProductCard[]> {
   const rows = await q<ProductCardRow>`
-    SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured"
+    SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured", isnew AS "isNew", isbestseller AS "isBestSeller", isonsale AS "isOnSale" 
     FROM public.v_product_card
     WHERE is_active = true
     ORDER BY title
@@ -159,6 +168,9 @@ export async function fetchProductBySlug(
     currency: pr.currency,
     is_active: asBool(pr.is_active),
     isFeatured: asBool(pr.isFeatured),
+    isBestSeller: asBool(pr.isBestSeller),
+    isNew: asBool(pr.isNew),
+    isOnSale: asBool(pr.isOnSale),
     primary_image: pr.primary_image ?? null,
     stock_qty: asNum(pr.stock_qty),
     images,

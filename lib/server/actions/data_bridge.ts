@@ -130,6 +130,9 @@ export interface ProductCardData {
   primary_image: string | null;
   // Assumimos que a coluna 'is_featured' foi selecionada com o alias 'isFeatured'
   isFeatured?: boolean; 
+  isNew?:boolean;
+  isBestSeller?: boolean;
+  isOnSale?:boolean;
 }
 function cardToFullProduct(card: ProductCardData): JsonProduct {
 // ... (código existente)
@@ -144,9 +147,9 @@ function cardToFullProduct(card: ProductCardData): JsonProduct {
     
     // CAMPOS BOOLEANOS E RATING
     isFeatured: card.isFeatured ?? false, 
-    isNew: false, // <-- DUMMY/VALOR PADRÃO
-    isOnSale: false, // <-- DUMMY/VALOR PADRÃO
-    isBestSeller: false, // <-- DUMMY/VALOR PADRÃO
+    isNew: card.isNew ?? false, // <-- DUMMY/VALOR PADRÃO
+    isOnSale: card.isOnSale ?? false, // <-- DUMMY/VALOR PADRÃO
+    isBestSeller: card.isBestSeller ?? false, // <-- DUMMY/VALOR PADRÃO
     rating: 0, // <-- DUMMY/VALOR PADRÃO
     displayOnMarketplace: true, // <-- DUMMY/VALOR PADRÃO
   } as JsonProduct;
@@ -158,6 +161,8 @@ function cardToFullProduct(card: ProductCardData): JsonProduct {
 /** Returns products for general listing (shop grid). */
 export async function getAllProducts(): Promise<JsonProduct[]> {
   const cards = await fetchProductCards(48, 0);
+  
+  
   return cards.map(cardToJsonProduct);
 }
 
