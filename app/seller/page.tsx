@@ -5,7 +5,7 @@ import { loadSellerData } from "@/lib/server/actions/data_bridge";
 export default async function SellerDashboardPage() {
   const session = await auth();
   const sellerId = (session?.user as any)?.sellerId;
-  
+
   if (!sellerId) {
     return (
       <div className="mx-auto max-w-4xl p-6">

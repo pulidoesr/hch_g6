@@ -2,9 +2,33 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { sql, DbUser, getUserRoles } from "@/lib/db";
+import { sql, type DbUser } from "@/lib/db";
 
-const roles = await getUserRoles();
+/* --- Module augmentation so TS knows about our custom fields --- */
+declare module "next-auth" {
+  interface User {
+    role?: string | null;
+    sellerId?: string | null;
+  }
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      role?: string | null;
+      sellerId?: string | null;
+    };
+  }
+}
+declare module "next-auth/jwt" {
+  interface JWT {
+    role?: string | null;
+    sellerId?: string | null;
+  }
+}
+
+type DbUserWithSeller = DbUser & { seller_id: string | null };
 
 export const {
   auth,
@@ -12,7 +36,7 @@ export const {
   signOut,
   handlers: { GET, POST },
 } = NextAuth({
-  trustHost: true, // <-- important on Vercel
+  trustHost: true,
 
   providers: [
     Credentials({
@@ -27,23 +51,25 @@ export const {
         if (!email || !password) return null;
 
         const rows = await sql`
-          SELECT id, name, email, image, role, password_hash
+          SELECT id, name, email, image, role, password_hash, seller_id
           FROM public.users
           WHERE lower(email) = ${email}
           LIMIT 1
         `;
-        const user = (rows as DbUser[])[0];
+        const user = (rows as DbUserWithSeller[])[0];
         if (!user?.password_hash) return null;
 
         const ok = await bcrypt.compare(password, user.password_hash);
         if (!ok) return null;
 
+        // Put sellerId on the returned user so it reaches the JWT callback.
         return {
           id: user.id,
           name: user.name ?? user.email,
           email: user.email,
           image: user.image ?? undefined,
           role: user.role ?? "buyer",
+          sellerId: user.seller_id ?? null,
         };
       },
     }),
@@ -51,21 +77,27 @@ export const {
 
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.role = (user as any).role ?? "customer";
+      // On sign-in, copy fields from the user into the token.
+      if (user) {
+        token.role = user.role ?? "customer";
+        token.sellerId = user.sellerId ?? null;
+      }
       return token;
     },
+
     async session({ session, token }) {
-      if (session.user) (session.user as any).role = token.role ?? "customer";
+      // Expose our custom fields on the session.user object.
+      if (session.user) {
+        session.user.role = token.role ?? "customer";
+        session.user.sellerId = token.sellerId ?? null;
+      }
       return session;
     },
+
     async redirect({ url, baseUrl }) {
-      // Force same-origin redirects (prevents bouncing to preview domains)
       const u = new URL(url, baseUrl);
       if (u.origin !== baseUrl) return baseUrl;
-
-      // Normalize any old/plural path
       if (u.pathname === "/profiles") u.pathname = "/profile";
-
       return u.toString();
     },
   },

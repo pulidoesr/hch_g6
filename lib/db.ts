@@ -21,6 +21,7 @@ export type DbUser = {
   image: string | null;
   role: string | null;
   password_hash: string;
+  // NOTE: we often store seller_id here in the DB; not needed in this module type
 };
 
 export function firstRow<T>(rows: unknown[]): T | null {
@@ -33,7 +34,7 @@ const asBool = (v: unknown) =>
     ? v
     : v === 't' || v === 'true' || v === 1 || v === '1';
 
-// ===== Roles (adjust if you don't have a user_role enum) =====
+// ===== Roles =====
 export async function getUserRoles(): Promise<string[]> {
   try {
     const rows = await q<{ value: string }>`
@@ -97,7 +98,9 @@ export async function fetchProductCards(
   offset = 0
 ): Promise<ProductCard[]> {
   const rows = await q<ProductCardRow>`
-    SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured", isnew AS "isNew", isbestseller AS "isBestSeller", isonsale AS "isOnSale" 
+    SELECT
+      id, slug, title, price_cents, currency, is_active,
+      primary_image, is_featured AS "isFeatured"
     FROM public.v_product_card
     WHERE is_active = true
     ORDER BY title
@@ -105,8 +108,6 @@ export async function fetchProductCards(
   `;
   return rows.map(toProductCard);
 }
-
-
 
 // ----- Product detail -----
 export type ProductImage = { url: string; position: number | null };
@@ -120,15 +121,18 @@ export type ProductDetail = ProductCard & {
 type ProductDetailRow = ProductCardRow & {
   description: string | null;
   stock_qty: number | string;
-  // primary_image also present via join
 };
 
 export async function fetchProductBySlug(
   slug: string
 ): Promise<ProductDetail | null> {
   const productRows = await q<ProductDetailRow>`
-    SELECT p.id, p.slug, p.title, p.description, p.price_cents, p.currency,
-           p.stock_qty, p.is_active, v.primary_image
+    SELECT
+      p.id, p.slug, p.title, p.description, p.price_cents, p.currency,
+      p.stock_qty, p.is_active,
+      /* make sure we select is_featured so mapping works */
+      p.is_featured AS "isFeatured",
+      v.primary_image
     FROM public.products p
     LEFT JOIN public.v_product_primary_image v ON v.product_id = p.id
     WHERE p.slug = ${slug}
@@ -145,7 +149,8 @@ export async function fetchProductBySlug(
       ORDER BY position NULLS LAST, url
     `,
     q<ProductCardRow>`
-      SELECT pc.id, pc.slug, pc.title, pc.price_cents, pc.currency, pc.is_active, pc.primary_image
+      SELECT pc.id, pc.slug, pc.title, pc.price_cents, pc.currency,
+             pc.is_active, pc.primary_image, pc.is_featured AS "isFeatured"
       FROM public.v_collection_recos r
       JOIN public.v_product_card pc ON pc.id = r.product_id
       WHERE r.product_id <> ${pr.id}
@@ -201,7 +206,6 @@ const toProductCardWithPos = (r: ProductCardWithPosRow): ProductCardWithPos => (
   position: r.position ?? null,
 });
 
-// lib/db.ts
 export async function fetchCollectionByName(name: string): Promise<CollectionDetail | null> {
   const colRows = await q<CollectionRow>`
     SELECT id, name, story, image_path, is_featured
@@ -216,7 +220,7 @@ export async function fetchCollectionByName(name: string): Promise<CollectionDet
     q<ProductCardWithPosRow>`
       SELECT
         pc.id, pc.slug, pc.title, pc.price_cents, pc.currency,
-        pc.primary_image, vci.position, pc.is_active
+        pc.primary_image, vci.position, pc.is_active, pc.is_featured AS "isFeatured"
       FROM public.v_collection_items vci
       JOIN public.v_product_card pc ON pc.id = vci.product_id
       WHERE vci.collection_id = ${col.id}
@@ -225,7 +229,7 @@ export async function fetchCollectionByName(name: string): Promise<CollectionDet
     q<ProductCardWithPosRow>`
       SELECT
         pc.id, pc.slug, pc.title, pc.price_cents, pc.currency,
-        pc.primary_image, vcr.position, pc.is_active
+        pc.primary_image, vcr.position, pc.is_active, pc.is_featured AS "isFeatured"
       FROM public.v_collection_recos vcr
       JOIN public.v_product_card pc ON pc.id = vcr.product_id
       WHERE vcr.collection_id = ${col.id}
@@ -244,7 +248,7 @@ export async function fetchCollectionByName(name: string): Promise<CollectionDet
 // ----- Search -----
 export async function searchProducts(qs: string, limit = 20): Promise<ProductCard[]> {
   const rows = await q<ProductCardRow>`
-    SELECT id, slug, title, price_cents, currency, is_active, primary_image
+    SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured"
     FROM public.v_product_card
     WHERE is_active = true
       AND (title ILIKE ${'%' + qs + '%'} OR ${qs} = '')
@@ -264,9 +268,8 @@ export async function fetchSellerProducts(
   offset = 0
 ): Promise<ProductCard[]> {
   if (!sellerId || !isUUID(sellerId)) {
-    // Fallback: no filter (or choose the first seller_id found, if you prefer)
     const rows = await q<ProductCardRow>`
-      SELECT id, slug, title, price_cents, currency, is_active, primary_image
+      SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured"
       FROM public.v_product_card
       WHERE is_active = true
       ORDER BY title
@@ -276,17 +279,19 @@ export async function fetchSellerProducts(
   }
 
   const rows = await q<ProductCardRow>`
-    SELECT id, slug, title, price_cents, currency, is_active, primary_image
-    FROM public.v_product_card
-    WHERE is_active = true
-      AND id IN (SELECT id FROM public.products WHERE seller_id = ${sellerId}::uuid)
-    ORDER BY title
+    SELECT pc.id, pc.slug, pc.title, pc.price_cents, pc.currency, pc.is_active,
+           pc.primary_image, pc.is_featured AS "isFeatured"
+    FROM public.v_product_card pc
+    JOIN public.products p ON p.id = pc.id
+    WHERE pc.is_active = true
+      AND p.seller_id = ${sellerId}::uuid
+    ORDER BY pc.title
     LIMIT ${limit} OFFSET ${offset}
   `;
   return rows.map(toProductCard);
 }
 
-
+// ----- Collections summary -----
 export type CollectionSummary = {
   id: string;
   name: string;
@@ -312,7 +317,6 @@ export async function fetchCollectionsSummary(): Promise<CollectionSummary[]> {
     WITH hero AS (
       SELECT
         c.id AS collection_id,
-        /* prefer collection's own image_path, else first product's primary image */
         COALESCE(
           c.image_path,
           (
@@ -352,31 +356,64 @@ export async function fetchCollectionsSummary(): Promise<CollectionSummary[]> {
   }));
 }
 
-// O tipo de linha que a consulta vai retornar
-type CountryRow = {
-  id: number;
+// ===== Seller =====
+export type SellerInfo = {
+  id: string;
   name: string;
+  photoUrl: string | null;
+  email: string | null;
+  role: string | null;
 };
 
-// O tipo de objeto que a função irá devolver (Correto para { id, name })
-export type Country = {
-  id: number;
-  name: string;
-};
+/** Look up the seller in `public.users` (FK target of products.seller_id). */
+export async function fetchSellerInfo(sellerId: string): Promise<SellerInfo | null> {
+  if (!isUUID(sellerId)) return null;
 
-// CORREÇÃO: Altera o tipo de retorno para Promise<Country[]>
-export async function fetchCountriesList(): Promise<Country[]> {
-  const rows = await q<CountryRow>`
-    -- CORREÇÃO: Seleciona tanto o ID quanto o NAME
-    SELECT id, name
-    FROM public.countries
-    ORDER BY name;
+  const rows = await q<{
+    id: string;
+    name: string | null;
+    image: string | null;
+    email: string | null;
+    role: string | null;
+  }>`
+    SELECT id::text AS id, name, image, email, role
+    FROM public.users
+    WHERE id = ${sellerId}::uuid
+    LIMIT 1
   `;
-  
-  // Mapeia o resultado para devolver o array de objetos 'Country'.
-  // O tipo 'rows' já é CountryRow[], então basta retornar os dados.
-  return rows.map(r => ({
+
+  const r = rows[0];
+  if (!r) return null;
+
+  return {
     id: r.id,
-    name: r.name,
-  } as Country));
+    name: r.name ?? `Seller ${sellerId}`,
+    photoUrl: r.image,
+    email: r.email,
+    role: r.role,
+  };
+}
+
+/** Convenience: fetch seller profile + their products (reuses fetchSellerProducts above). */
+export async function loadSellerData(
+  sellerId: string,
+  limit = 50,
+  offset = 0
+): Promise<{ seller: SellerInfo; products: ProductCard[] }> {
+  const [seller, products] = await Promise.all([
+    fetchSellerInfo(sellerId),
+    fetchSellerProducts(sellerId, limit, offset),
+  ]);
+
+  // Fallback when user row isn't found (keeps UI stable)
+  const safeSeller: SellerInfo =
+    seller ?? {
+      id: sellerId,
+      name: `Seller ${sellerId}`,
+      photoUrl: "/default.jpg",
+      email: null,
+      role: null,
+    };
+
+  return { seller: safeSeller, products };
 }
