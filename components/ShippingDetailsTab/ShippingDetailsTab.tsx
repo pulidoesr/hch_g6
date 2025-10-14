@@ -1,4 +1,3 @@
-// src/components/checkout/ShippingDetailsTab.tsx
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -6,10 +5,12 @@ import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
-type ShippingOption = 'free' | 'express';
+
+
+type ShippingOption = 'free' | 'express'; 
 
 // async function (returns Promise<string[]>)
-import { getCountriesList } from '@/lib/server/actions/data_bridge';
+import { getCountriesList, JsonCountry } from '@/lib/server/actions/data_bridge';
 
 import {
   useCart,
@@ -46,11 +47,14 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   );
 };
 
+
 interface ShippingDetailsTabProps {
   onNext: () => void;
   onBack: () => void;
   onSaveAddress: (addressData: ShippingAddress) => void;
   initialAddress: ShippingAddress;
+  initialShippingOption: ShippingOption; 
+  onSaveShippingOption: (option: ShippingOption) => void; 
 }
 
 export default function ShippingDetailsTab({
@@ -58,26 +62,29 @@ export default function ShippingDetailsTab({
   onBack,
   onSaveAddress,
   initialAddress,
+  initialShippingOption, 
+  onSaveShippingOption,  
 }: ShippingDetailsTabProps) {
   const router = useRouter();
   const { cartItems } = useCart();
 
   // Countries state
-  const [countriesList, setCountriesList] = useState<string[]>([]);
+  const [countriesList, setCountriesList] = useState<JsonCountry[]>([]);
   const [isLoadingCountries, setIsLoadingCountries] = useState(true);
-
-  // Await the Promise<string[]> and guard unmount
+  
   useEffect(() => {
     let isMounted = true;
-
+    // ... (lógica de carregamento de países inalterada)
     (async () => {
       try {
         setIsLoadingCountries(true);
         const countries = await getCountriesList();
         if (isMounted) setCountriesList(countries ?? []);
       } catch (error) {
-        console.error('Failed to load countries list:', error);
-        if (isMounted) setCountriesList(['Brazil', 'United States']); // fallback
+        if (isMounted) setCountriesList([
+          { id: 1, name: 'Brazil' },
+          { id: 2, name: 'United States' }
+        ]);
       } finally {
         if (isMounted) setIsLoadingCountries(false);
       }
@@ -99,7 +106,8 @@ export default function ShippingDetailsTab({
     phoneNumber: initialAddress.phoneNumber,
   }));
 
-  const [shippingOption, setShippingOption] = useState<ShippingOption>('free');
+  
+  const [shippingOption, setShippingOption] = useState<ShippingOption>(initialShippingOption); 
   const [showVoucher, setShowVoucher] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
@@ -111,6 +119,16 @@ export default function ShippingDetailsTab({
     return EXPRESS_SHIPPING_COST;
   }, [shippingOption, cartItems]);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Usamos uma chave clara para o valor do frete
+      localStorage.setItem('checkout_shipping_value', String(selectedShippingValue));
+      console.log('Valor do frete salvo no Local Storage:', selectedShippingValue);
+    }
+  }, [selectedShippingValue]);
+
+  // ... (FormField component inalterado)
+
   const FormField: React.FC<{
     id: keyof FormData;
     label: string;
@@ -118,7 +136,7 @@ export default function ShippingDetailsTab({
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    options?: string[];
+    options?: string[] | JsonCountry[]; 
     fullWidth?: boolean;
     validationError?: string;
     disabled?: boolean;
@@ -146,27 +164,37 @@ export default function ShippingDetailsTab({
 
         {isSelect ? (
           <select
-            id={id}
-            name={id}
-            value={value}
-            onChange={onChange}
-            required={id !== 'address2'}
-            disabled={disabled}
-            aria-describedby={describedById}
-            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
-              validationError ? 'border-red-500' : 'border-gray-300'
-            } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-            title={placeholder}
-          >
-            <option value="" disabled>
-              {placeholder}
-            </option>
-            {(options ?? []).map((option) => (
-              <option key={option} value={option}>
-                {option}
+          id={id}
+          name={id}
+          value={value}
+          onChange={onChange}
+          required={id !== 'address2'}
+          disabled={disabled}
+          aria-describedby={describedById}
+          className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
+            validationError ? 'border-red-500' : 'border-gray-300'
+          } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+          title={placeholder}
+        >
+          <option value="" disabled>
+            {placeholder}
+          </option>
+          {(options ?? []).map((option, index) => {
+            // Verifica se o item é um objeto JsonCountry (se tiver a propriedade 'name')
+            const isObject = typeof option === 'object' && option !== null && 'name' in option;
+            
+            // Se for objeto, usa id/name; se for string, usa o próprio valor.
+            const key = isObject ? (option as JsonCountry).id : (option as string || index);
+            const displayValue = isObject ? (option as JsonCountry).name : (option as string);
+            
+            return (
+              <option key={key} value={displayValue}>
+                {displayValue}
               </option>
-            ))}
-          </select>
+            );
+          })}
+          
+        </select>
         ) : (
           <input
             type={type}
@@ -236,8 +264,8 @@ export default function ShippingDetailsTab({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`teste forma data ${formData.lastName}`)
     if (validateForm()) {
+      
       const addressToSave: ShippingAddress = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -248,12 +276,20 @@ export default function ShippingDetailsTab({
         zipCode: formData.zipCode,
         phoneNumber: formData.phoneNumber,
       };
+      
+      // 1. Salva o endereço
       onSaveAddress(addressToSave);
+
+      onSaveShippingOption(shippingOption); 
+
+      // 3. Avança
       onNext();
     } else {
       console.error('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   };
+
+  // ... (Restante do componente inalterado)
 
   return (
     <div className="max-w-7xl mx-auto py-8">
@@ -358,7 +394,8 @@ export default function ShippingDetailsTab({
                   name="shipping"
                   value="free"
                   checked={shippingOption === 'free'}
-                  onChange={() => setShippingOption('free')}
+                  
+                  onChange={() => setShippingOption('free')} 
                   className="mr-3 h-4 w-4 text-amber-800 border-gray-300 focus:ring-amber-500"
                 />
                 <label htmlFor="shipping-free" className="inline-flex flex-col cursor-pointer">
@@ -472,25 +509,26 @@ export default function ShippingDetailsTab({
           </section>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-between">
-          <button
-            type="button"
-            onClick={onBack}
-            className="bg-gray-200 text-gray-700 py-3 px-8 font-medium rounded-sm shadow-md hover:bg-gray-300 transition duration-200"
-          >
-            Back
-          </button>
+        <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
+
           <div className="space-x-4">
             <button
               type="button"
+              onClick={onBack}
+              className="bg-gray-200 text-gray-700 py-3 px-8 font-medium rounded-sm shadow-md hover:bg-gray-300 transition duration-200 w-24 h-12 sm:w-30"
+            >
+              Back
+            </button>
+            <button
+              type="button"
               onClick={() => router.push('/')}
-              className="text-red-600 py-3 px-8 font-medium rounded-sm hover:underline"
+              className="text-red-600 py-3 px-8 font-medium rounded-sm hover:underline w-24 h-12 sm:w-30"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-[#7B3F00] text-white py-3 px-8 font-medium rounded-sm shadow-md hover:bg-[#633300] transition duration-200"
+              className="bg-[#7B3F00] text-white py-3 px-8 font-medium rounded-sm shadow-md hover:bg-[#633300] transition duration-200 w-24 h-12 sm:w-30"
             >
               Next
             </button>

@@ -6,6 +6,7 @@ import {
   getHomeFeaturedProducts,
   getProductByIdWithDetails,
   getTopRatedSimilarProducts,
+
 } from '@/lib/repositories/products';
 import { getCollections } from '@/lib/repositories/collection';
 
@@ -28,12 +29,16 @@ type HomeCardRow = {
   is_featured: boolean;
 };
 
+// NOVO: Função auxiliar para conversão de moeda
+const dollarsToCents = (dollars: number) => Math.round(dollars * 100); 
+
 function cardToJsonProduct(card: {
   id: string;
   title: string;
   price_cents: number;
   primary_image: string | null;
 }): JsonProduct {
+// ... (código existente)
   return {
     id: card.id,
     name: card.title || 'Untitled',
@@ -54,6 +59,7 @@ export interface ProductCardData {
 }
 
 function cardToFullProduct(card: ProductCardData): JsonProduct {
+// ... (código existente)
   return {
     id: card.id,
     sellerId: 0,
