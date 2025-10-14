@@ -9,14 +9,26 @@ import { useRouter } from 'next/navigation';
 // Imports logic and hooks from checkout-utils
 import { useCart, calculateSummary, useShippingAddress } from '@/lib/checkout-utils'; 
 // Imports types
-import { CreditCardData, PaymentMethod } from '@/lib/types/checkout'; 
+import { CreditCardData, PaymentMethod } from '@/lib/types/checkout';
+ 
 
 // Imports subcomponents
 import SummaryTotals from './SummaryTotals';
 import CardInput from '../Common/CardInput';
 
 
-import { saveOrder, SaveOrderResult, OrderDataInput } from '@/lib/server/actions/data_bridge'; 
+import type { SaveOrderResult, OrderDataInput } from "@/lib/shared/order-types";
+
+async function placeOrder(order: OrderDataInput): Promise<SaveOrderResult> {
+  const res = await fetch("/api/orders", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(order),
+  });
+  const out = (await res.json()) as SaveOrderResult;
+  return out;
+}
+
 
 
 // --- NEW HOOK TO READ LOCAL STORAGE (Kept) ---
@@ -101,63 +113,71 @@ export default function PaymentOptionsTab({ onNext, onBack }: PaymentOptionsTabP
 
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    if (paymentMethod === 'creditCard' && Object.values(cardData).some(v => v === '')) {
-        alert("Please fill in all credit card details.");
-        return;
+  if (paymentMethod === "creditCard" && Object.values(cardData).some(v => v === "")) {
+    alert("Please fill in all credit card details.");
+    return;
+  }
+
+  setIsProcessing(true);
+
+  try {
+    if (typeof window === "undefined") throw new Error("Local storage not available.");
+
+    // Read raw values from localStorage
+    const rawCart = localStorage.getItem("handcrafted_heaven_cart") ?? "[]";
+    const rawShippingAddr = localStorage.getItem("handcrafted_heaven_shipping_address") ?? "{}";
+    const rawShippingValue = localStorage.getItem("checkout_shipping_value") ?? "0";
+
+    // Parse and normalize to a clean OrderDataInput for the API
+    const cart = JSON.parse(rawCart) as Array<{ id: number; name: string; unitPrice: number; quantity: number }>;
+    const shippingValueNum = Number(rawShippingValue) || 0;
+
+    // If your shared OrderDataInput follows the “lines/totalCents” model:
+    const orderData: OrderDataInput = {
+      // userId: (optional) attach from session if you have it
+      currency: "USD",
+      totalCents: Math.round(summary.total * 100),
+      lines: cart.map(i => ({
+        productId: String(i.id),
+        quantity: i.quantity,
+        unitPriceCents: Math.round(i.unitPrice * 100),
+      })),
+      // You can pass extra context in notes until you model it in DB:
+      notes: JSON.stringify({
+        paymentMethod,
+        cardData: paymentMethod === "creditCard" ? cardData : null,
+        shippingAddress: JSON.parse(rawShippingAddr),
+        shippingValue: shippingValueNum,
+        uiTotals: summary, // for debugging
+      }),
+    };
+
+    const result = await placeOrder(orderData);
+
+    if (result.ok) {
+      setSuccessMessage(`Order #${result.orderId} placed successfully! Redirecting...`);
+
+      // Clear Local Storage after purchase
+      localStorage.removeItem("checkout_shipping_value");
+      localStorage.removeItem("handcrafted_heaven_cart");
+      localStorage.removeItem("handcrafted_heaven_shipping_address");
+
+      setTimeout(() => router.push("/"), 3000);
+    } else {
+      throw new Error(result.error || "Payment failed or order recording failed.");
     }
-    
-    // Starts processing
-    setIsProcessing(true); 
+  } catch (error) {
+    console.error("Error in order submission:", error);
+    setSuccessMessage(null);
+    alert("An error occurred during payment. Please try again.");
+  } finally {
+    setIsProcessing(false);
+  }
+};
 
-    try {
-        // 1. READ DATA DIRECTLY FROM LOCAL STORAGE
-        if (typeof window === 'undefined') {
-            throw new Error("Local storage not available.");
-        }
-        
-        // Use OrderDataInput (imported) to type the object.
-        // If 'tax' is not in 'summary', OrderDataInput MUST have 'tax' optional in data_bridge.ts.
-        const orderData: OrderDataInput = { 
-            shippingValue: localStorage.getItem('checkout_shipping_value'),
-            cartItems: localStorage.getItem('handcrafted_heaven_cart'),
-            shippingAddress: localStorage.getItem('handcrafted_heaven_shipping_address'),
-            paymentMethod: paymentMethod,
-            cardData: paymentMethod === 'creditCard' ? cardData : null,
-            summary: summary as any, 
-        };
-
-        
-   
-        const result: SaveOrderResult = await saveOrder(orderData); 
-        
-        if (result.success) {
-            
-            setSuccessMessage(`Order #${result.orderId} placed successfully! Redirecting...`);
-            
-            // Clear Local Storage after purchase
-            localStorage.removeItem('checkout_shipping_value');
-            localStorage.removeItem('handcrafted_heaven_cart');
-            localStorage.removeItem('handcrafted_heaven_shipping_address');
-            
-            // 4. REDIRECT AFTER 3 SECONDS
-            setTimeout(() => {
-                router.push('/'); 
-            }, 3000); 
-        } else {
-            // Payment failed or order recording failed.
-            throw new Error("Payment failed or order recording failed.");
-        }
-
-    } catch (error) {
-        console.error("Error in order submission:", error);
-        setSuccessMessage(null); 
-        alert("An error occurred during payment. Please try again.");
-        setIsProcessing(false); 
-    }
-  };
   
   const handleCancel = () => {
     router.push('/'); 
