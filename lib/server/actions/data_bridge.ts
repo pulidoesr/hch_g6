@@ -5,6 +5,7 @@ import {
   fetchProductCards,
   fetchSellerProducts,
   fetchCountriesList,
+  type ProductCard
 } from '@/lib/db';
 
 import {
