@@ -8,7 +8,7 @@ import { ShoppingCart, Truck, CreditCard, X } from 'lucide-react';
 // Assuming these imports are correct based on your file structure
 import ShippingDetailsTab from '@/components/ShippingDetailsTab/ShippingDetailsTab';
 import PaymentOptionsTab from '@/components/Checkout/PaymentOptionsTab';
-import { useShippingAddress } from '@/lib/checkout-utils';
+import { useShippingAddress, calculateSummary } from '@/lib/checkout-utils';
 
 // --- PERSISTENT HOOK SIMULATION (Replace with real import) ---
 // *************************************************************************
@@ -31,7 +31,7 @@ const useCart = () => {
     const [isInitialized, setIsInitialized] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
+        if (typeof window !== 'undefined' ) {
             const storedCart = localStorage.getItem(LOCAL_STORAGE_KEY);
             try {
                 const initialCart = storedCart ? JSON.parse(storedCart) : [];
@@ -56,20 +56,14 @@ const useCart = () => {
 // --- Constants and Types ---
 
 type Tab = 'cart' | 'shipping' | 'payment';
+type ShippingOption = 'free' | 'express'; 
 
 const TAXES = 13.00;
 const FREE_SHIPPING_THRESHOLD = 200.00;
-const SHIPPING_COST = 20.00;
+
+const SHIPPING_COST: number = 0; 
 
 // --- Calculation Utilities ---
-const calculateSummary = (items: CartItem[]) => {
-    const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
-    const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
-    const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
-    const total = subtotal + shippingValue + TAXES;
-
-    return { subtotal, shippingValue, shippingDisplay, taxes: TAXES, total };
-};
 
 // --- Layout Components ---
 
@@ -81,9 +75,11 @@ interface QuantityControlProps {
     onChange: (newQuantity: number) => void;
 }
 
+
+
 const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange }) => {
     return (
-        <div className="flex items-center border border-[#4D2A0C] rounded-md h-[44px] w-[80px] sm:h-[44px] sm:w-[120px] bg-[#8B4513] px-2">
+        <div className="flex items-center border border-[#4D2A0C] rounded-md h-10 w-16 bg-[#8B4513]">
             <input
                 type="number"
                 value={quantity}
@@ -91,7 +87,7 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ quantity, onChange })
                 onChange={(e) => onChange(Math.max(1, Number(e.target.value)))}
                 className="w-full text-center text-base font-semibold bg-transparent text-white focus:outline-none"
             />
-            <div className="flex flex-col ml-2">
+            <div className="flex flex-col ml-2 ">
                 <div
                     onClick={() => onChange(quantity + 1)}
                     className="cursor-pointer text-white"
@@ -131,8 +127,6 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
                     src={item.imageSrc}
                     alt={item.name}
                     fill
-                    // O atributo sizes no Image component também deve ser ajustado para ser mais responsivo,
-                    // mas w-24 equivale a 96px, o que se alinha bem com o valor original de 96px
                     sizes="(max-width: 768px) 96px, 160px"
                     className="object-cover"
                 />
@@ -150,13 +144,13 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
             </div>
             
             {/* Quantity Control */}
-            <div className="flex flex-col gap-6 items-center justify-end">
+            <div className="flex flex-col gap-6 items-center justify-end w-10 pr-4">
                 <button 
                     onClick={() => onRemoveItem(item.id)}
                     className="text-gray-400 hover:text-red-600 transition duration-150 p-1 rounded-full bg-white z-10"
                     aria-label={`Remove ${item.name} from cart`}
                 >
-                    <X className="w-22 h-5" />
+                    <X className="w-7 h-6" />
                 </button>
                 <QuantityControl
                     quantity={item.quantity}
@@ -168,12 +162,14 @@ const CartItemRow: React.FC<CartItemRowProps> = ({ item, onUpdateQuantity, onRem
 };
 
 // --- Summary Component ---
+
 interface SummaryProps {
     summary: ReturnType<typeof calculateSummary>;
+    shippingDisplay: string;
 }
 
-const Summary: React.FC<SummaryProps> = ({ summary }) => {
-    const { subtotal, shippingDisplay, taxes, total } = summary;
+const Summary: React.FC<SummaryProps> = ({ summary, shippingDisplay }) => {
+    const { subtotal, taxes, total } = summary;
 
     const SummaryRow: React.FC<{ label: string; value: string | number; valueClass?: string }> = ({ label, value, valueClass = '' }) => (
         <div className="flex justify-between mb-2">
@@ -220,8 +216,22 @@ interface ShoppingCartTabProps {
 
 const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartItems, onNext, onCancel }) => {
 
-    const summary = useMemo(() => calculateSummary(cartItems), [cartItems]);
-
+    const summary = useMemo(() => {
+        const tempSummary = calculateSummary(cartItems, SHIPPING_COST);
+        const subtotal = tempSummary.subtotal;
+        
+       
+        const shippingValue = subtotal > FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
+        const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
+        
+        return {
+            ...tempSummary,
+    
+            total: subtotal + tempSummary.taxes + shippingValue,
+            shippingDisplay 
+        };
+    }, [cartItems]);
+    
     const handleUpdateQuantity = (id: number, newQuantity: number) => {
         setCartItems(prevItems =>
             prevItems.map(item =>
@@ -250,14 +260,16 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 </section>
 
                 <section className="lg:w-1/3">
-                    <Summary summary={summary} />
+                    {/* Passando shippingDisplay para o Summary */}
+                    <Summary summary={summary} shippingDisplay={summary.shippingDisplay} />
                 </section>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-gray-200 flex space-x-4">
+            <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center sm:justify-left space-x-4">
                 <button
                     onClick={onNext}
                     className="
+                        h-12 w-30    
                         bg-[#7B3F00] text-white py-3 px-8
                         font-medium rounded-sm shadow-md
                         hover:bg-[#633300] transition duration-200
@@ -270,6 +282,7 @@ const ShoppingCartTab: React.FC<ShoppingCartTabProps> = ({ cartItems, setCartIte
                 <button
                     onClick={onCancel}
                     className="
+                        h-12 w-30  
                         bg-gray-200 text-gray-700 py-3 px-8
                         font-medium rounded-sm shadow-md
                         hover:bg-[#633300] transition duration-200
@@ -292,6 +305,8 @@ const CheckoutPage: React.FC = () => {
     const { cartItems, setCartItems } = useCart();
 
     const { shippingAddress, setShippingAddress } = useShippingAddress();
+    
+    const [selectedShipping, setSelectedShipping] = useState<ShippingOption>('free');
 
     const tabs: { id: Tab; name: string; icon: React.FC<any> }[] = [
         { id: 'cart', name: 'Shopping Cart', icon: ShoppingCart },
@@ -356,7 +371,7 @@ const CheckoutPage: React.FC = () => {
                                     cartItems={cartItems}
                                     setCartItems={setCartItems}
                                     onNext={handleNext}
-                                    onCancel={handleCancel} // Prop passed correctly
+                                    onCancel={handleCancel}
                                 />
                             )}
 
@@ -367,8 +382,8 @@ const CheckoutPage: React.FC = () => {
                                     onBack={handleBack}
                                     initialAddress={shippingAddress}
                                     onSaveAddress={setShippingAddress}
-                                    // You should pass onCancel to ShippingDetailsTab when implementing its buttons
-                                    // onCancel={handleCancel}
+                                    initialShippingOption={selectedShipping}
+                                    onSaveShippingOption={setSelectedShipping}
                                 />
                             )}
 

@@ -1,8 +1,8 @@
 // lib/checkout-utils.ts
 'use client'; 
 
-// Adds useEffect for persistence
-import React, { useState, useEffect } from 'react'; 
+// Adicionado useLayoutEffect para garantir o salvamento síncrono do endereço.
+import React, { useState, useEffect, useLayoutEffect } from 'react'; 
 // Assuming you have CartItem and SummaryCalculation defined in './types/checkout'
 import { CartItem, SummaryCalculation} from './types/checkout'; 
 
@@ -25,7 +25,7 @@ export interface ShippingAddress {
 // Constants (ALL EXPORTED)
 export const TAXES_RATE = 0.13; // 13% tax rate
 export const SHIPPING_COST_PAID = 15.00; // Shipping cost value
-export const FREE_SHIPPING_THRESHOLD = 200.00; // Free shipping threshold
+export const FREE_SHIPPING_THRESHOLD = 0.00; // Free shipping threshold
 export const EXPRESS_SHIPPING_COST = 15.00;
 
 const LOCAL_STORAGE_KEY = 'handcrafted_heaven_cart';
@@ -42,9 +42,12 @@ export const calculateSummary = (items: CartItem[], shippingValue: number): Summ
   const calculatedTaxes = subtotal * TAXES_RATE; 
 
   const total = subtotal + shippingValue + calculatedTaxes;
+  const shippingDisplay = shippingValue === 0 ? 'FREE' : `$${shippingValue.toFixed(2)}`;
   
-  return { subtotal, shippingValue, taxes: calculatedTaxes, total };
+  return { subtotal, shippingValue, shippingDisplay, taxes: calculatedTaxes, total };
 };
+
+
 
 /**
  * Hook to manage persistent cart state using Local Storage.
@@ -76,8 +79,7 @@ export const useCart = () => {
 };
 
 // =========================================================================
-// SHIPPING ADDRESS LOGIC WITH ROBUST INITIALIZATION (Implemented Recommendation)
-// This prevents 'Cannot read properties of undefined' errors.
+// SHIPPING ADDRESS LOGIC WITH ROBUST INITIALIZATION
 // =========================================================================
 
 /**
@@ -95,6 +97,22 @@ const getEmptyShippingAddress = (): ShippingAddress => ({
 });
 
 /**
+ * Verifica se o objeto de endereço contém apenas valores vazios.
+ * Usado para prevenir que o salvamento inicial ou resets do estado limpem os dados válidos.
+ */
+const isAddressEmpty = (address: ShippingAddress): boolean => {
+    // Verifica se os campos obrigatórios estão vazios. address2 não precisa ser checado.
+    return (
+        !address.firstName &&
+        !address.lastName &&
+        !address.address &&
+        !address.country &&
+        !address.city &&
+        !address.zipCode
+    );
+};
+
+/**
  * Hook to manage the persistent shipping address state using Local Storage.
  * It ensures the state is always initialized with a valid object.
  */
@@ -104,9 +122,15 @@ export const useShippingAddress = () => {
         
         if (typeof window !== 'undefined') {
             const storedAddress = localStorage.getItem(SHIPPING_ADDRESS_KEY);
+            
+            // Tratamento preventivo para a string literal "undefined"
+            if (storedAddress === "undefined") {
+                 localStorage.removeItem(SHIPPING_ADDRESS_KEY);
+            }
+            
             try {
                 // Robust fallback: if no data exists or JSON is invalid, return a complete empty object.
-                return storedAddress ? JSON.parse(storedAddress) : getEmptyShippingAddress();
+                return storedAddress && storedAddress !== "undefined" ? JSON.parse(storedAddress) : getEmptyShippingAddress();
             } catch (error) {
                 console.error("Error loading shipping address from Local Storage:", error);
                 // In case of a parsing error (invalid JSON), return fallback
@@ -117,10 +141,18 @@ export const useShippingAddress = () => {
         return getEmptyShippingAddress();
     });
 
-    // Effect to save the address to Local Storage whenever it changes
-    useEffect(() => {
+    
+    useLayoutEffect(() => {
         if (typeof window !== 'undefined') {
-            localStorage.setItem(SHIPPING_ADDRESS_KEY, JSON.stringify(address));
+            
+            if (isAddressEmpty(address)) {
+                  return; 
+            }
+            
+
+            const jsonToSave = JSON.stringify(address);
+
+            localStorage.setItem(SHIPPING_ADDRESS_KEY, jsonToSave);
         }
     }, [address]);
     
