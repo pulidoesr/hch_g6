@@ -1,10 +1,11 @@
 // components/ProductEditor/ProductEditor.tsx
 "use client";
-import React, { useState, useRef, useCallback,FormEvent } from 'react';
+import React, { useState, useRef, useCallback, FormEvent } from 'react';
+import toast from 'react-hot-toast'; 
 import { updateProduct } from '@/lib/server/actions/data-loader'; 
 import Button from '@/components/Button/Button';
 
-// Tipagem simplificada para o editor
+// Simplified typing for the editor
 type Product = {
     id: string;
     name: string;
@@ -22,12 +23,12 @@ type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
   
-  // 🟢 Inicializa o estado com os dados recebidos do Server Component
+  // 🟢 Initialize state with data received from the Server Component
   const [productTitle, setProductTitle] = useState(initialProduct.name || '');
   const [price, setPrice] = useState(String(initialProduct.price || ''));
   const [description, setDescription] = useState(initialProduct.description || '');
   
-  // Imagens
+  // Images
   const [images, setImages] = useState<string[]>(initialProduct.imageUrls || []);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -37,7 +38,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
   const handleSave = async (e: FormEvent) => {
     e.preventDefault();
     
-    // Coleta os dados para salvar
+    // Collect data to save
     const productDataToSave: Product = {
         id: initialProduct.id || crypto.randomUUID(), 
         name: productTitle,
@@ -45,23 +46,28 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
         description: description,
         imageUrls: images, 
     };
+    
+    const actionText = isNew ? 'Created' : 'Updated'; // Para a mensagem dinâmica
 
     try {
         await updateProduct(productDataToSave); 
-        alert(`Produto ${isNew ? 'Criado' : 'Atualizado'} com sucesso!`);
+        
+        toast.success(`Product ${actionText} successfully!`); 
+
     } catch (error) {
-        console.error("Erro ao salvar:", error);
-        alert('Erro ao salvar o produto. Verifique o console.');
+        console.error("Error saving:", error);
+        
+        toast.error('Error saving the product. Check the console.');
     }
   };
 
   const handleSaveClick = () => {
-      // Wrapper para o botão superior
+      // Wrapper for the top button
       const fakeEvent = { preventDefault: () => {} } as FormEvent;
       handleSave(fakeEvent);
   };
   
-  // ... (funções de manipulação de imagem omitidas para brevidade, elas já estavam corretas) ...
+  // ... (image manipulation functions omitted for brevity, they were already correct) ...
   
   const handleImageInsert = (e: InputChangeEvent) => {
     const files = e.target.files ? Array.from(e.target.files) : [];
@@ -100,12 +106,12 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
 
         <form onSubmit={handleSave} className="mt-20 flex flex-col gap-6">
           <h1 className="text-3xl font-bold text-gray-800">
-            {isNew ? 'Criar Novo Produto' : `Product Edit: ${productTitle}`}
+            {isNew ? 'Create New Product' : `Product Edit: ${productTitle}`}
           </h1>
 
-          {/* 🎯 CAMPOS DE EDIÇÃO ADICIONADOS AQUI: */}
+          {/* 🎯 EDIT FIELDS ADDED HERE: */}
           
-          {/* Nome do Produto */}
+          {/* Product Name */}
           <div>
             <label htmlFor="product-name" className="block text-sm font-medium text-gray-700">Product Name</label>
             <input
@@ -118,7 +124,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
             />
           </div>
 
-          {/* Preço */}
+          {/* Price */}
           <div>
             <label htmlFor="product-price" className="block text-sm font-medium text-gray-700">Price (R$)</label>
             <input
@@ -133,7 +139,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
             />
           </div>
 
-          {/* Descrição */}
+          {/* Description */}
           <div>
             <label htmlFor="product-description" className="block text-sm font-medium text-gray-700">Description</label>
             <textarea
@@ -146,7 +152,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
             />
           </div>
 
-          {/* FIM DOS CAMPOS DE EDIÇÃO */}
+          {/* END OF EDIT FIELDS */}
 
           {/* IMAGE CONTROLS */}
           <h3 className="text-xl font-semibold mt-4">Product Images</h3>

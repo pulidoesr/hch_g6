@@ -16,17 +16,16 @@ export default async function ProductsPage({
   // ✅ Next 15: searchParams is a Promise
   searchParams: Promise<SearchParams>;
 }) {
-  // ✅ await the params
   const { categoryId, filter, query } = await searchParams;
 
-  // ✅ await your data (or use Promise.all)
+
   const [allProducts, allCategories] = await Promise.all([
     getAllShopProducts(),     // Product[]
     getCategoriesData(),  // CategoryData[]
   ]);
 
   let products = allProducts;
-  // Category filter
+    // Category filter
   if (categoryId) {
     const target = allCategories.find(
       (c: CategoryData) => String(c.id) === String(categoryId)

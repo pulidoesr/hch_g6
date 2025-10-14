@@ -80,6 +80,8 @@ function cardToFullProduct(card: ProductCardData): JsonProduct {
 // ----------------- products -----------------
 export async function getAllProducts(): Promise<JsonProduct[]> {
   const cards = await fetchProductCards(48, 0);
+  
+  
   return cards.map(cardToJsonProduct);
 }
 
