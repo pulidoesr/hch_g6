@@ -1,46 +1,36 @@
 "use client";
 import React, { useState, useRef, useCallback } from 'react';
-import Head from 'next/head';
+import { createProductAction } from '@/lib/server/actions/client_action'; 
 
-// 1. Tipagem para o evento de input de arquivo (CORREÇÃO TS)
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
-// O componente deve ser um arquivo .tsx
+type ImageFile = {
+    url: string;
+    file: File;
+};
+
 const ProductEditor = () => {
   const [productTitle, setProductTitle] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  // 2. Tipagem para o estado 'images' (opcional, mas recomendado)
-  const [images, setImages] = useState<string[]>([]);
+  const [images, setImages] = useState<ImageFile[]>([]);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
   
-  // Ref to trigger the hidden file input dialog
-  // 3. Tipagem para a ref do input (opcional, mas recomendado)
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // --- Handlers ---
-
-  const handleSave = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Placeholder for save logic
-    alert('Product Saved! (Simulated)');
-    console.log({ productTitle, price, description, images });
-  };
-
-  // 4. Aplicando a tipagem InputChangeEvent para resolver o erro
   const handleImageInsert = (e: InputChangeEvent) => {
-    // Acesso seguro aos arquivos
     const files = e.target.files ? Array.from(e.target.files) : [];
     if (files.length === 0) return;
 
-    // Convert file objects to temporary URLs for immediate display
-    // O TypeScript agora reconhece que 'file' é do tipo File (que é um Blob)
-    const newImageUrls = files.map(file => URL.createObjectURL(file));
+    const newImages: ImageFile[] = files.map(file => ({
+        url: URL.createObjectURL(file),
+        file: file,
+    }));
 
-    setImages(prevImages => [...prevImages, ...newImageUrls]);
-
-    // Clear the input value
-    e.target.value = ''; // Limpar o valor com string vazia
+    setImages(prevImages => [...prevImages, ...newImages]);
+    e.target.value = '';
   };
   
   const handleImageDelete = () => {
@@ -49,41 +39,85 @@ const ProductEditor = () => {
       return;
     }
 
-    // Filter out the selected image by index
+    URL.revokeObjectURL(images[selectedImageIndex].url);
+    
     setImages(prevImages => 
       prevImages.filter((_, index) => index !== selectedImageIndex)
     );
     
-    // Reset selection after deletion
     setSelectedImageIndex(null);
   };
   
   const handleImageSelect = useCallback((index: number) => {
-    // Toggle selection: if clicked image is already selected, deselect it.
     setSelectedImageIndex(index === selectedImageIndex ? null : index);
   }, [selectedImageIndex]);
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setMessage(null);
+
+    if (!productTitle || !price || !description || images.length === 0) {
+        setMessage({ type: 'error', text: 'Todos os campos (Título, Preço, Descrição) e ao menos 1 imagem são obrigatórios.' });
+        return;
+    }
+
+    const dataToSend = {
+        title: productTitle,
+        price: parseFloat(price),
+        description: description,
+    };
+
+    setIsSaving(true);
+    
+    try {
+        const result = await createProductAction(dataToSend); 
+        
+        if (result.success) {
+            setMessage({ type: 'success', text: `🎉 Produto criado com sucesso! ${result.message}` });
+        } else {
+            setMessage({ type: 'error', text: `❌ Erro ao salvar: ${result.message}` });
+        }
+    } catch (error) {
+        console.error("Server Action Failed:", error);
+        setMessage({ type: 'error', text: '❌ Ocorreu um erro inesperado no servidor.' });
+    } finally {
+        setIsSaving(false);
+    }
+  };
 
 
   return (
     <>
-
       <div className="max-w-7xl mx-auto p-4 md:p-8 min-h-screen relative">
         {/* TOP RIGHT SAVE BUTTON */}
         <button 
-          className="absolute top-4 right-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-md" 
+          className="absolute top-4 right-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition shadow-md disabled:bg-gray-400" 
           onClick={handleSave}
+          disabled={isSaving}
         >
-          Save Product
+          {isSaving ? 'Saving...' : 'Save Product'}
         </button>
 
         <form onSubmit={handleSave} className="mt-20 flex flex-col gap-6">
           <h1 className="text-3xl font-bold text-gray-800">Create Product</h1>
+            
+            {/* Mensagens de Sucesso/Erro */}
+            {message && (
+                <div 
+                    className={`p-3 rounded-lg text-sm font-medium ${message.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}
+                    role="alert"
+                >
+                    {message.text}
+                </div>
+            )}
+
 
           {/* Product Title */}
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">Product Title</label>
             <input
               id="title"
+              name="title" 
               type="text"
               value={productTitle}
               onChange={(e) => setProductTitle(e.target.value)}
@@ -99,6 +133,7 @@ const ProductEditor = () => {
               <span className="p-3 border border-r-0 border-gray-300 bg-gray-50 rounded-l-lg text-gray-500">$</span>
               <input
                 id="price"
+                name="price_dollars"
                 type="number"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -115,6 +150,7 @@ const ProductEditor = () => {
             <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">Description</label>
             <textarea
               id="description"
+              name="description" 
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className="w-full p-3 border border-gray-300 rounded-lg min-h-[150px] focus:ring-blue-500 focus:border-blue-500 text-base"
@@ -124,13 +160,19 @@ const ProductEditor = () => {
 
           {/* IMAGE CONTROLS */}
           <h3 className="text-xl font-semibold mt-4">Product Images</h3>
+          
+          {/* Validação de Imagem na interface */}
+          {images.length === 0 && (
+             <p className="text-red-500 text-sm font-medium">⚠️ É obrigatório anexar ao menos uma imagem.</p>
+          )}
+
           <div className="flex gap-4 mb-6">
             {/* Hidden file input (the actual file selector) */}
             <input
               type="file"
               ref={fileInputRef}
               onChange={handleImageInsert}
-              accept="image/*" /* Only images allowed */
+              accept="image/*"
               multiple
               className="hidden"
             />
@@ -138,13 +180,13 @@ const ProductEditor = () => {
             {/* Insert Image Button (triggers the hidden input) */}
             <button
               type="button"
-              onClick={() => fileInputRef.current?.click()} // Uso de optional chaining na ref
+              onClick={() => fileInputRef.current?.click()}
               className="w-40 h-10 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition shadow-md flex items-center justify-center"
             >
               Insert Image
             </button>
 
-            {/* Delete Image Button (same size, different color, disabled if no selection) */}
+            {/* Delete Image Button */}
             <button
               type="button"
               onClick={handleImageDelete}
@@ -160,7 +202,7 @@ const ProductEditor = () => {
             {images.length === 0 ? (
               <p className="text-gray-500">No images added yet. Click 'Insert Image' to upload.</p>
             ) : (
-              images.map((url, index) => (
+              images.map((img, index) => (
                 <div
                   key={index}
                   onClick={() => handleImageSelect(index)}
@@ -173,7 +215,7 @@ const ProductEditor = () => {
                   `}
                 >
                   <img
-                    src={url}
+                    src={img.url}
                     alt={`Product Image ${index + 1}`}
                     className="w-full h-full object-cover"
                   />

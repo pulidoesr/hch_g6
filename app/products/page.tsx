@@ -24,6 +24,7 @@ export default async function ProductsPage({
     getCategoriesData(),  // CategoryData[]
   ]);
 
+
   let products = allProducts;
     // Category filter
   if (categoryId) {
@@ -32,7 +33,7 @@ export default async function ProductsPage({
     );
     
     if (target) {
-
+      console.log("Target Category:", target)
       // CORREÇÃO APLICADA AQUI: Usando os nomes exatos do objeto target
       const ids = Array.from(
         new Set([

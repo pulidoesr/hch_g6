@@ -1,21 +1,74 @@
-import { notFound } from "next/navigation";
-import ProductEditor from "@/components/ProductEditor/ProductEditor";
-import { getProductById } from "@/lib/server/actions/data_bridge";
+import ProductList from "@/components/ProductList/ProductList";
+import type { Product, CategoryData } from "@/lib/types/product-data";
+import { getAllShopProducts, getCategoriesData } from "@/lib/server/actions/data_bridge";
 
-// Next 15: params is a Promise
-type PageProps = { params: Promise<{ id: string }> };
+interface SearchParams {
+  categoryId?: string;
+  filter?: string;
+  query?: string;
+}
 
-export default async function SellerProductPage({ params }: PageProps) {
-  const { id } = await params;              // ✅ await params
-  const product = await getProductById(id); // ✅ await the product
+export const revalidate = 60; // optional
 
-  if (!product) return notFound();
+export default async function ProductsPage({
+  searchParams,
+}: {
+  // ✅ Next 15: searchParams is a Promise
+  searchParams: Promise<SearchParams>;
+}) {
+  const { categoryId, filter, query } = await searchParams;
+
+
+  const [allProducts, allCategories] = await Promise.all([
+    getAllShopProducts(),     // Product[]
+    getCategoriesData(),  // CategoryData[]
+  ]);
+
+  let products = allProducts;
+    // Category filter
+  if (categoryId) {
+    const target = allCategories.find(
+      (c: CategoryData) => String(c.id) === String(categoryId)
+    );
+    console.log("Target category:", target);
+    if (target) {
+
+      // CORREÇÃO APLICADA AQUI: Usando os nomes exatos do objeto target
+      const ids = Array.from(
+        new Set([
+          ...(target.productIds ?? []),            // Adicionado 's' ao productsIds
+          ...(target.recommendedProductIds ?? [])  // Usado o nome com o typo
+        ])
+      );
+      
+      products = products.filter((p) => ids.includes(p.id));
+    } else {
+      products = [];
+    }
+  }
+
+  // State filter (if your Product type doesn’t include these flags, cast or extend types)
+  if (filter) {
+    const f = filter.toLowerCase();
+    if (f === "sale") products = products.filter((p: any) => p.isOnSale === true);
+    if (f === "new") products = products.filter((p: any) => p.isNew === true);
+    if (f === "bestseller") products = products.filter((p: any) => p.isBestSeller === true);
+  }
+  // Text search
+  if (query) {
+    
+    const q = query.toLowerCase();
+    products = products.filter(
+      (p) =>
+        (p.name || "").toLowerCase().includes(q) ||
+        (p.description || "").toLowerCase().includes(q)
+    );
+  }
 
   return (
-    <ProductEditor
-      key={id}                 // ✅ use the route param, not product.id
-      initialProduct={product}
-      isNew={false}
-    />
+    <div className="mx-auto max-w-6xl px-4 mt-10">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Product Offers</h1>
+      <ProductList products={products} />
+    </div>
   );
 }

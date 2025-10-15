@@ -98,9 +98,7 @@ export async function fetchProductCards(
   offset = 0
 ): Promise<ProductCard[]> {
   const rows = await q<ProductCardRow>`
-    SELECT
-      id, slug, title, price_cents, currency, is_active,
-      primary_image, is_featured AS "isFeatured"
+    SELECT id, slug, title, price_cents, currency, is_active, primary_image, is_featured AS "isFeatured", isnew AS "isNew", isbestseller AS "isBestSeller", isonsale AS "isOnSale" 
     FROM public.v_product_card
     WHERE is_active = true
     ORDER BY title
@@ -416,4 +414,85 @@ export async function loadSellerData(
     };
 
   return { seller: safeSeller, products };
+}
+
+type CountryRow = {
+  id: number;
+  name: string;
+};
+export type Country = {
+  id: number;
+  name: string;
+};
+export async function fetchCountriesList(): Promise<Country[]> {
+  const rows = await q<CountryRow>`
+    -- CORREÇÃO: Seleciona tanto o ID quanto o NAME
+    SELECT id, name
+    FROM public.countries
+    ORDER BY name;
+  `;
+  
+  // Mapeia o resultado para devolver o array de objetos 'Country'.
+  // O tipo 'rows' já é CountryRow[], então basta retornar os dados.
+  return rows.map(r => ({
+    id: r.id,
+    name: r.name,
+  } as Country));
+}
+
+function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, '_')   // Substitui espaços por underline
+        .replace(/[^\w-]+/g, '') // Remove todos os caracteres não-palavra
+        .replace(/--+/g, '_');  // Substitui múltiplos underlines por um único
+}
+
+export async function createProduct(formData: FormData) {
+    // 1. EXTRAÇÃO E CONVERSÃO DOS DADOS DO FORMULÁRIO
+    const sellerId = formData.get('seller_id') as string;
+    const title = formData.get('title') as string;
+    const description = formData.get('description') as string;
+    const priceDollars = formData.get('price_dollars') as string;
+    
+    // 2. VALIDAÇÃO E CONVERSÃO
+    if (!sellerId || !title || !priceDollars) {
+        throw new Error('Missing required form fields: seller_id, title, and price_dollars.');
+    }
+
+    // Validação de UUID
+    if (!isUUID(sellerId)) { // Reutilizando a função isUUID já definida no seu código
+        throw new Error('Invalid seller_id format.');
+    }
+
+    // Geração do Slug
+    const slug = slugify(title);
+    
+    // Conversão de preço (de string decimal para integer em centavos)
+    const priceCents = Math.round(parseFloat(priceDollars) * 100);
+
+    // 3. EXECUÇÃO DA QUERY SQL
+    try {
+        // CORREÇÃO AQUI: Usando 'q' para a query tipada e 'Template Literal'
+        const rows = await q<{ id: string }>`
+            INSERT INTO public.products 
+                (seller_id, title, slug, description, price_cents, stock_qty, is_active)
+            VALUES 
+                (${sellerId}::uuid, ${title}, ${slug}, ${description}, ${priceCents}, 1, TRUE)
+            RETURNING id;
+        `;
+        
+        const productId = rows[0]?.id;
+        if (!productId) {
+             throw new Error("Insert failed, no ID returned.");
+        }
+
+        // Retorna o ID gerado
+        return { success: true, productId };
+
+    } catch (error) {
+        console.error("Database insertion failed:", error);
+        return { success: false, error: 'Failed to create product in database.' };
+    }
 }
