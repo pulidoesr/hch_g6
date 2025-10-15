@@ -1,19 +1,28 @@
-import RandomCategoryGallery from '@/components/RandomCategoryGallery/RandomCategoryGallery';
+import RandomCategoryGallery from "@/components/RandomCategoryGallery/RandomCategoryGallery";
+import { getCategoriesData } from "@/lib/server/actions/data_bridge";
+import type { CategoryData } from "@/lib/types/product-data";
 
-// 1) Import the data loading function from our Data Bridge
-import { getCategoriesData } from '@/lib/server/actions/data_bridge';
-
-// 2) Import the CategoryData type
-import type { CategoryData } from '@/lib/types/product-data';
-
-/**
- * Server component responsible for fetching category data
- * and passing it to the client component.
- */
 export default async function RandomCategoryGalleryServer() {
-  // getCategoriesData returns a Promise<CategoryData[]>, so await it
-  const categories: CategoryData[] = await getCategoriesData();
+  try {
+    const categories: CategoryData[] = await getCategoriesData();
 
-  // Pass the data to the Client Component
-  return <RandomCategoryGallery allCategories={categories} />;
+    if (!categories || categories.length === 0) {
+      return (
+        <section className="py-8">
+          <h2 className="text-2xl font-bold mb-3">Categories</h2>
+          <p className="text-sm text-gray-500">No categories found.</p>
+        </section>
+      );
+    }
+
+    return <RandomCategoryGallery allCategories={categories} />;
+  } catch (err) {
+    console.error("getCategoriesData failed:", err);
+    return (
+      <section className="py-8">
+        <h2 className="text-2xl font-bold mb-3">Categories</h2>
+        <p className="text-sm text-red-600">Failed to load categories.</p>
+      </section>
+    );
+  }
 }

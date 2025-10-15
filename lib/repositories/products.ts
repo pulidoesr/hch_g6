@@ -305,3 +305,25 @@ export async function getTopRatedSimilarProducts(idOrSlug: string, limit = 6): P
     };
   });
 }
+
+/* ---------- PRODUCTS BY CATEGORY ID ---------- */
+// lib/repositories/products.ts
+export async function getProductsByCategoryId(categoryId: string) {
+  if (!isUUID(categoryId)) return [];
+
+  // Change table names/joins to match your schema: collection_products vs product_categories
+  return q<{
+    id: string; title: string|null; description: string|null;
+    price_cents: number|null; currency: string|null; slug: string|null;
+    primary_image: string|null;
+  }>`
+    SELECT p.id::text, p.title, p.description, p.price_cents, p.currency, p.slug,
+           v.primary_image
+    FROM product_categories pc
+    JOIN products p ON p.id = pc.product_id
+    LEFT JOIN v_product_primary_image v ON v.product_id = p.id
+    WHERE pc.category_id = ${categoryId}::uuid
+    ORDER BY p.created_at DESC
+    LIMIT 48;
+  `;
+}
