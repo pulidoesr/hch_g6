@@ -1,10 +1,7 @@
-// app/product_detail/[id]/page.tsx
+// app/product_detail/[id]/page.tsx (Server Component)
 import { notFound } from "next/navigation";
 import ProductClient from "./ProductClient";
-import {
-  getProductByIdWithDetails,
-  getTopRatedSimilarProducts,
-} from "@/lib/repositories/products";
+import { getProductByIdWithDetails, getTopRatedSimilarProducts } from "@/lib/repositories/products";
 
 export const revalidate = 60;
 
@@ -13,16 +10,14 @@ type MaybePromise<T> = T | Promise<T>;
 type PageProps = { params: MaybePromise<Params> };
 
 export default async function ProductPage({ params }: PageProps) {
-  // ✅ Works on Next 14 (sync params) and Next 15 (async params)
   const { id } = await Promise.resolve(params);
 
-  const [product, similarProducts] = await Promise.all([
-    getProductByIdWithDetails(id),
-    getTopRatedSimilarProducts(id, 6),
-  ]);
-
+  const product = await getProductByIdWithDetails(id);
   if (!product) return notFound();
 
+  // IMPORTANT: use the resolved UUID for similars
+  const similarProducts = await getTopRatedSimilarProducts(product.id, 6);
+
+  // ✅ Only pass plain data props
   return <ProductClient product={product} similarProducts={similarProducts} />;
 }
-
