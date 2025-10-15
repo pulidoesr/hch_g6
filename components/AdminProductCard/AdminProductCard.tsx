@@ -8,7 +8,7 @@ import Button from '@/components/Button/Button';
 interface AdminProductCardProps {
   product: Product;
 }
-
+const placeholderImage = "/collections/images/canvas_&_brush/abstract_art.png"
 export default function AdminProductCard({ product }: AdminProductCardProps) {
   
   // 🎯 Define a URL de destino dinâmica
@@ -21,7 +21,7 @@ export default function AdminProductCard({ product }: AdminProductCardProps) {
       {/* Imagem do Produto */}
       <div className="relative w-full h-48 mb-3">
         <Image
-          src={product.imageUrl}
+          src={product.imageUrl || placeholderImage}
           alt={product.name}
           fill={true}
           sizes="(min-width: 1280px) 16vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
