@@ -1,3 +1,4 @@
+// app/components/checkout/ShippingDetailsTab.tsx (updated)
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
@@ -6,11 +7,13 @@ import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { CartItem, FormData } from '@/lib/types/checkout';
 
+type ShippingOption = 'free' | 'express';
 
-type ShippingOption = 'free' | 'express'; 
+// Removed server action import:
+// import { getCountriesList, JsonCountry } from '@/lib/server/actions/data_bridge';
 
-// async function (returns Promise<string[]>)
-import { getCountriesList, JsonCountry } from '@/lib/server/actions/data_bridge';
+// Local type to keep your FormField logic unchanged
+type JsonCountry = { id: number; name: string };
 
 import {
   useCart,
@@ -21,7 +24,6 @@ import {
   TAXES_RATE,
   ShippingAddress,
 } from '@/lib/checkout-utils';
-
 
 const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   const itemTotal = item.unitPrice * item.quantity;
@@ -47,14 +49,13 @@ const SummaryProductItem: React.FC<{ item: CartItem }> = ({ item }) => {
   );
 };
 
-
 interface ShippingDetailsTabProps {
   onNext: () => void;
   onBack: () => void;
   onSaveAddress: (addressData: ShippingAddress) => void;
   initialAddress: ShippingAddress;
-  initialShippingOption: ShippingOption; 
-  onSaveShippingOption: (option: ShippingOption) => void; 
+  initialShippingOption: ShippingOption;
+  onSaveShippingOption: (option: ShippingOption) => void;
 }
 
 export default function ShippingDetailsTab({
@@ -62,36 +63,41 @@ export default function ShippingDetailsTab({
   onBack,
   onSaveAddress,
   initialAddress,
-  initialShippingOption, 
-  onSaveShippingOption,  
+  initialShippingOption,
+  onSaveShippingOption,
 }: ShippingDetailsTabProps) {
   const router = useRouter();
   const { cartItems } = useCart();
 
-  // Countries state
+  // Countries from /public/countries.json
   const [countriesList, setCountriesList] = useState<JsonCountry[]>([]);
   const [isLoadingCountries, setIsLoadingCountries] = useState(true);
-  
+
   useEffect(() => {
-    let isMounted = true;
-    // ... (lógica de carregamento de países inalterada)
+    let mounted = true;
+
     (async () => {
       try {
         setIsLoadingCountries(true);
-        const countries = await getCountriesList();
-        if (isMounted) setCountriesList(countries ?? []);
-      } catch (error) {
-        if (isMounted) setCountriesList([
-          { id: 1, name: 'Brazil' },
-          { id: 2, name: 'United States' }
-        ]);
+        // countries.json should be placed at /public/countries.json
+        const res = await fetch('/countries.json', { cache: 'force-cache' });
+        // Expecting an array of strings: ["Brazil", "Peru", ...]
+        const data = (await res.json()) as string[];
+        const mapped: JsonCountry[] = (data ?? []).map((name, i) => ({ id: i + 1, name }));
+        if (mounted) setCountriesList(mapped);
+      } catch {
+        if (mounted)
+          setCountriesList([
+            { id: 1, name: 'Brazil' },
+            { id: 2, name: 'United States' },
+          ]);
       } finally {
-        if (isMounted) setIsLoadingCountries(false);
+        if (mounted) setIsLoadingCountries(false);
       }
     })();
 
     return () => {
-      isMounted = false;
+      mounted = false;
     };
   }, []);
 
@@ -106,8 +112,7 @@ export default function ShippingDetailsTab({
     phoneNumber: initialAddress.phoneNumber,
   }));
 
-  
-  const [shippingOption, setShippingOption] = useState<ShippingOption>(initialShippingOption); 
+  const [shippingOption, setShippingOption] = useState<ShippingOption>(initialShippingOption);
   const [showVoucher, setShowVoucher] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
@@ -121,13 +126,10 @@ export default function ShippingDetailsTab({
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Usamos uma chave clara para o valor do frete
       localStorage.setItem('checkout_shipping_value', String(selectedShippingValue));
-      console.log('Valor do frete salvo no Local Storage:', selectedShippingValue);
+      // console.log('Shipping saved to Local Storage:', selectedShippingValue);
     }
   }, [selectedShippingValue]);
-
-  // ... (FormField component inalterado)
 
   const FormField: React.FC<{
     id: keyof FormData;
@@ -136,7 +138,7 @@ export default function ShippingDetailsTab({
     placeholder: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    options?: string[] | JsonCountry[]; 
+    options?: string[] | JsonCountry[];
     fullWidth?: boolean;
     validationError?: string;
     disabled?: boolean;
@@ -164,37 +166,33 @@ export default function ShippingDetailsTab({
 
         {isSelect ? (
           <select
-          id={id}
-          name={id}
-          value={value}
-          onChange={onChange}
-          required={id !== 'address2'}
-          disabled={disabled}
-          aria-describedby={describedById}
-          className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
-            validationError ? 'border-red-500' : 'border-gray-300'
-          } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
-          title={placeholder}
-        >
-          <option value="" disabled>
-            {placeholder}
-          </option>
-          {(options ?? []).map((option, index) => {
-            // Verifica se o item é um objeto JsonCountry (se tiver a propriedade 'name')
-            const isObject = typeof option === 'object' && option !== null && 'name' in option;
-            
-            // Se for objeto, usa id/name; se for string, usa o próprio valor.
-            const key = isObject ? (option as JsonCountry).id : (option as string || index);
-            const displayValue = isObject ? (option as JsonCountry).name : (option as string);
-            
-            return (
-              <option key={key} value={displayValue}>
-                {displayValue}
-              </option>
-            );
-          })}
-          
-        </select>
+            id={id}
+            name={id}
+            value={value}
+            onChange={onChange}
+            required={id !== 'address2'}
+            disabled={disabled}
+            aria-describedby={describedById}
+            className={`w-full px-4 py-2 border rounded-lg focus:ring-amber-500 focus:border-amber-500 ${
+              validationError ? 'border-red-500' : 'border-gray-300'
+            } ${disabled ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+            title={placeholder}
+          >
+            <option value="" disabled>
+              {placeholder}
+            </option>
+            {(options ?? []).map((option, index) => {
+              const isObject = typeof option === 'object' && option !== null && 'name' in option;
+              const key = isObject ? (option as JsonCountry).id : (option as string) || index;
+              const displayValue = isObject ? (option as JsonCountry).name : (option as string);
+
+              return (
+                <option key={key} value={displayValue}>
+                  {displayValue}
+                </option>
+              );
+            })}
+          </select>
         ) : (
           <input
             type={type}
@@ -265,7 +263,6 @@ export default function ShippingDetailsTab({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      
       const addressToSave: ShippingAddress = {
         firstName: formData.firstName,
         lastName: formData.lastName,
@@ -276,20 +273,14 @@ export default function ShippingDetailsTab({
         zipCode: formData.zipCode,
         phoneNumber: formData.phoneNumber,
       };
-      
-      // 1. Salva o endereço
+
       onSaveAddress(addressToSave);
-
-      onSaveShippingOption(shippingOption); 
-
-      // 3. Avança
+      onSaveShippingOption(shippingOption);
       onNext();
     } else {
       console.error('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   };
-
-  // ... (Restante do componente inalterado)
 
   return (
     <div className="max-w-7xl mx-auto py-8">
@@ -346,7 +337,7 @@ export default function ShippingDetailsTab({
                 onChange={handleChange}
                 validationError={errors.country}
                 disabled={isLoadingCountries}
-  />
+              />
               <FormField
                 id="city"
                 label="City"
@@ -394,8 +385,7 @@ export default function ShippingDetailsTab({
                   name="shipping"
                   value="free"
                   checked={shippingOption === 'free'}
-                  
-                  onChange={() => setShippingOption('free')} 
+                  onChange={() => setShippingOption('free')}
                   className="mr-3 h-4 w-4 text-amber-800 border-gray-300 focus:ring-amber-500"
                 />
                 <label htmlFor="shipping-free" className="inline-flex flex-col cursor-pointer">
@@ -450,7 +440,6 @@ export default function ShippingDetailsTab({
                 type="button"
                 onClick={() => setShowVoucher(!showVoucher)}
                 className="flex justify-between items-center w-full text-gray-700 hover:text-gray-900 font-medium py-2"
-                // aria-expanded={showVoucher}
                 aria-controls="voucher-panel"
               >
                 <span>Have a Voucher?</span>
@@ -510,7 +499,6 @@ export default function ShippingDetailsTab({
         </div>
 
         <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
-
           <div className="space-x-4">
             <button
               type="button"
