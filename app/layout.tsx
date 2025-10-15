@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer"
 import PageFrame from "@/components/PageFrame"
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import ToasterProvider from './ToasterProvider';
 
 
 export const dynamic = "force-dynamic";
@@ -15,6 +16,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className="min-h-dvh flex flex-col bg-[#E9E7F6]">
+        <ToasterProvider />
         <SessionProvider session={session}>
           <Header />
           <PageFrame>{children}</PageFrame>

@@ -1,9 +1,10 @@
 // components/ProductEditor/ProductEditor.tsx
 "use client";
 import React, { useState, useRef, useCallback, FormEvent } from 'react';
-import toast from 'react-hot-toast'; 
+import { toast } from 'react-hot-toast';
 import { updateProduct } from '@/lib/server/actions/data-loader'; 
 import Button from '@/components/Button/Button';
+
 
 // Simplified typing for the editor
 type Product = {
@@ -109,7 +110,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
             {isNew ? 'Create New Product' : `Product Edit: ${productTitle}`}
           </h1>
 
-          {/* 🎯 EDIT FIELDS ADDED HERE: */}
+          {/* EDIT FIELDS ADDED HERE: */}
           
           {/* Product Name */}
           <div>
@@ -164,6 +165,7 @@ const ProductEditor = ({ initialProduct, isNew }: ProductEditorProps) => {
               accept="image/*" 
               multiple
               className="hidden"
+              title="Product title"  
             />
 
             <Button

@@ -38,16 +38,21 @@ const SimilarProducts = ({ products }: { products: Product[] }) => {
     <div className="mt-12">
       <h3 className="text-2xl font-bold text-gray-800 mb-4">Similar Products</h3>
       <div className="flex space-x-4 overflow-x-auto pb-4">
-        {products.map((p) => (
-          <div key={p.id} className="min-w-[200px] p-4 border rounded-lg shadow-sm bg-white">
-            <p className="font-semibold text-gray-700 truncate">{p.name}</p>
-            <p className="text-sm text-gray-500 mt-1">$ {p.price.toFixed(2)}</p>
-          </div>
-        ))}
+        {products.map((p, i) => {
+          // never rely on a numeric computation; coerce to string with fallbacks
+          const key = String(p.id ?? p.name ?? `similar-${i}`);
+          return (
+            <div key={key} className="min-w-[200px] p-4 border rounded-lg shadow-sm bg-white">
+              <p className="font-semibold text-gray-700 truncate">{p.name}</p>
+              <p className="text-sm text-gray-500 mt-1">$ {Number(p.price ?? 0).toFixed(2)}</p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
+
 
 /* ---------------- Cart Hook ---------------- */
 const LOCAL_STORAGE_KEY = "handcrafted_heaven_cart";
