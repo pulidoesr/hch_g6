@@ -117,8 +117,7 @@ export async function getProductByIdWithDetails(idOrSlug: string): Promise<Produ
     ? await q<Row>`
         WITH gallery AS (
           SELECT pi.product_id,
-                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at)
-                 AS image_urls
+                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at) AS image_urls
           FROM product_images pi
           GROUP BY pi.product_id
         ),
@@ -128,28 +127,27 @@ export async function getProductByIdWithDetails(idOrSlug: string): Promise<Produ
           GROUP BY r.product_id
         )
         SELECT
-          p.id::text              AS id,
-          p.title                 AS name,
+          p.id::text AS id,
+          p.title     AS name,
           p.title,
           p.description,
           p.slug,
           p.price_cents,
           p.currency,
-          vpi.primary_image       AS primary_url,
+          vpi.primary_image AS primary_url,
           g.image_urls,
           COALESCE(rt.avg_rating, 0) AS avg_rating
         FROM products p
         LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
         LEFT JOIN gallery g ON g.product_id = p.id
-        LEFT JOIN rated  rt ON rt.product_id = p.id
+        LEFT JOIN rated   rt ON rt.product_id = p.id
         WHERE p.id = ${idOrSlug}::uuid
         LIMIT 1;
       `
     : await q<Row>`
         WITH gallery AS (
           SELECT pi.product_id,
-                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at)
-                 AS image_urls
+                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at) AS image_urls
           FROM product_images pi
           GROUP BY pi.product_id
         ),
@@ -159,20 +157,20 @@ export async function getProductByIdWithDetails(idOrSlug: string): Promise<Produ
           GROUP BY r.product_id
         )
         SELECT
-          p.id::text              AS id,
-          p.title                 AS name,
+          p.id::text AS id,
+          p.title     AS name,
           p.title,
           p.description,
           p.slug,
           p.price_cents,
           p.currency,
-          vpi.primary_image       AS primary_url,
+          vpi.primary_image AS primary_url,
           g.image_urls,
           COALESCE(rt.avg_rating, 0) AS avg_rating
         FROM products p
         LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
         LEFT JOIN gallery g ON g.product_id = p.id
-        LEFT JOIN rated  rt ON rt.product_id = p.id
+        LEFT JOIN rated   rt ON rt.product_id = p.id
         WHERE p.slug = ${idOrSlug}
         LIMIT 1;
       `;
@@ -222,20 +220,15 @@ export async function getProductByIdWithDetails(idOrSlug: string): Promise<Produ
   };
 }
 
-
 /* ---------- SIMILAR (same collections, top rated) ---------- */
 // lib/repositories/products.ts
-export async function getTopRatedSimilarProducts(
-  idOrSlug: string,
-  limit = 6
-): Promise<Product[]> {
-  // resolve to UUID if needed
+export async function getTopRatedSimilarProducts(idOrSlug: string, limit = 6): Promise<Product[]> {
   let productUuid = idOrSlug;
   if (!isUUID(idOrSlug)) {
     const idRows = await q<{ id: string }>`
       SELECT id::text AS id FROM products WHERE slug = ${idOrSlug} LIMIT 1;
     `;
-    if (!idRows[0]) return []; // unknown slug → no similars
+    if (!idRows[0]) return [];
     productUuid = idRows[0].id;
   }
 
@@ -297,7 +290,7 @@ export async function getTopRatedSimilarProducts(
     LIMIT ${limit};
   `;
 
-  return rows.map((row) => {
+  return rows.map(row => {
     const gallery = row.image_urls ?? [];
     const primary = row.primary_url ?? gallery[0] ?? "";
     return {
