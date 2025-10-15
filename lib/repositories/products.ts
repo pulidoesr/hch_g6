@@ -2,8 +2,10 @@
 import { q } from "@/lib/db";
 import type { Product, Review } from "@/lib/types/product";
 
-/* ---------- Types used by pages/components ---------- */
-// lib/repositories/products.ts
+/* ---------- utils ---------- */
+const isUUID = (s: string) =>
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(s);
+
 /* ---------- Types used by pages/components ---------- */
 export type DbProductCard = {
   id: string;
@@ -56,13 +58,12 @@ export async function getHomeFeaturedProducts(limit = 10) {
     id: r.id,
     imageUrl: r.image_url ?? "",
     description: r.description ?? r.title ?? "",
-    price: Math.round((r.price_cents ?? 0)) / 100,
+    price: Math.round(r.price_cents ?? 0) / 100,
     isFeatured: r.priority === 1,
   }));
 }
 
-
-/* ---------- SIMPLE PRODUCT ---------- */
+/* ---------- SIMPLE PRODUCT (by id) ---------- */
 export async function getProductById(id: string) {
   const rows = await q<{
     id: string;
@@ -79,7 +80,7 @@ export async function getProductById(id: string) {
       vpi.primary_image AS image_url
     FROM products p
     LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
-    WHERE p.id = ${id}
+    WHERE p.id = ${id}::uuid
     LIMIT 1;
   `;
 
@@ -95,57 +96,91 @@ export async function getProductById(id: string) {
   };
 }
 
-/* ---------- PRODUCT DETAIL WITH GALLERY + REVIEWS ---------- */
-export async function getProductByIdWithDetails(id: string): Promise<Product | null> {
-  const rows = await q<{
+/* ---------- PRODUCT DETAIL WITH GALLERY + REVIEWS (UUID OR SLUG) ---------- */
+export async function getProductByIdWithDetails(idOrSlug: string): Promise<Product | null> {
+  type Row = {
     id: string;
     name: string | null;
     title: string | null;
     description: string | null;
+    slug: string | null;
     price_cents: number | null;
+    currency: string | null;
     primary_url: string | null;
     image_urls: string[] | null;
     avg_rating: number | null;
-  }>`
-    WITH gallery AS (
-      SELECT
-        pi.product_id,
-        ARRAY_AGG(
-          pi.url
-          ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at
-        ) AS image_urls
-      FROM product_images pi
-      WHERE pi.product_id = ${id}
-      GROUP BY pi.product_id
-    ),
-    rating AS (
-      SELECT r.product_id, AVG(r.rating)::float AS avg_rating
-      FROM reviews r
-      WHERE r.product_id = ${id}
-      GROUP BY r.product_id
-    )
-    SELECT
-      p.id::text AS id,
-      p.title,
-      p.title AS name,
-      p.description,
-      p.price_cents,
-      vpi.primary_image AS primary_url,
-      g.image_urls,
-      rt.avg_rating
-    FROM products p
-    LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
-    LEFT JOIN gallery g ON g.product_id = p.id
-    LEFT JOIN rating rt ON rt.product_id = p.id
-    WHERE p.id = ${id}
-    LIMIT 1;
-  `;
+  };
+
+  const byId = isUUID(idOrSlug);
+
+  const rows = byId
+    ? await q<Row>`
+        WITH gallery AS (
+          SELECT pi.product_id,
+                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at)
+                 AS image_urls
+          FROM product_images pi
+          GROUP BY pi.product_id
+        ),
+        rated AS (
+          SELECT r.product_id, AVG(r.rating)::float AS avg_rating
+          FROM reviews r
+          GROUP BY r.product_id
+        )
+        SELECT
+          p.id::text              AS id,
+          p.title                 AS name,
+          p.title,
+          p.description,
+          p.slug,
+          p.price_cents,
+          p.currency,
+          vpi.primary_image       AS primary_url,
+          g.image_urls,
+          COALESCE(rt.avg_rating, 0) AS avg_rating
+        FROM products p
+        LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
+        LEFT JOIN gallery g ON g.product_id = p.id
+        LEFT JOIN rated  rt ON rt.product_id = p.id
+        WHERE p.id = ${idOrSlug}::uuid
+        LIMIT 1;
+      `
+    : await q<Row>`
+        WITH gallery AS (
+          SELECT pi.product_id,
+                 ARRAY_AGG(pi.url ORDER BY COALESCE(pi.position, pi.sort_order, 999999), pi.created_at)
+                 AS image_urls
+          FROM product_images pi
+          GROUP BY pi.product_id
+        ),
+        rated AS (
+          SELECT r.product_id, AVG(r.rating)::float AS avg_rating
+          FROM reviews r
+          GROUP BY r.product_id
+        )
+        SELECT
+          p.id::text              AS id,
+          p.title                 AS name,
+          p.title,
+          p.description,
+          p.slug,
+          p.price_cents,
+          p.currency,
+          vpi.primary_image       AS primary_url,
+          g.image_urls,
+          COALESCE(rt.avg_rating, 0) AS avg_rating
+        FROM products p
+        LEFT JOIN v_product_primary_image vpi ON vpi.product_id = p.id
+        LEFT JOIN gallery g ON g.product_id = p.id
+        LEFT JOIN rated  rt ON rt.product_id = p.id
+        WHERE p.slug = ${idOrSlug}
+        LIMIT 1;
+      `;
 
   const row = rows[0];
   if (!row) return null;
 
-  // ✅ UPDATED: include customer_name & customer_image_url (with user fallbacks)
-  const reviews = await q<{
+  const reviewsRows = await q<{
     customer_name: string | null;
     customer_image_url: string | null;
     rating: number;
@@ -153,14 +188,14 @@ export async function getProductByIdWithDetails(id: string): Promise<Product | n
     comment: string;
   }>`
     SELECT
-      COALESCE(r.customer_name, u.name, 'Anonymous')      AS customer_name,
-      COALESCE(r.customer_image_url, u.image, '')         AS customer_image_url,
+      COALESCE(r.customer_name, u.name, 'Anonymous') AS customer_name,
+      COALESCE(r.customer_image_url, u.image, '')    AS customer_image_url,
       r.rating,
       r.created_at,
       COALESCE(NULLIF(r.body, ''), NULLIF(r.title, ''), '') AS comment
     FROM public.reviews r
     LEFT JOIN public.users u ON u.id = r.user_id
-    WHERE r.product_id = ${id}
+    WHERE r.product_id = ${row.id}::uuid
     ORDER BY r.created_at DESC
     LIMIT 20;
   `;
@@ -177,18 +212,33 @@ export async function getProductByIdWithDetails(id: string): Promise<Product | n
     imageUrls: gallery,
     price: Math.round(priceCents) / 100,
     rating: row.avg_rating ?? 0,
-    reviews: reviews.map((r) => ({
+    reviews: reviewsRows.map(r => ({
       customerName: r.customer_name ?? "Anonymous",
       customerImage: r.customer_image_url ?? "",
       rating: r.rating,
       date: new Date(r.created_at).toISOString().slice(0, 10),
       comment: r.comment,
-    })) as Review[],
+    })),
   };
 }
 
+
 /* ---------- SIMILAR (same collections, top rated) ---------- */
-export async function getTopRatedSimilarProducts(productId: string, limit = 6): Promise<Product[]> {
+// lib/repositories/products.ts
+export async function getTopRatedSimilarProducts(
+  idOrSlug: string,
+  limit = 6
+): Promise<Product[]> {
+  // resolve to UUID if needed
+  let productUuid = idOrSlug;
+  if (!isUUID(idOrSlug)) {
+    const idRows = await q<{ id: string }>`
+      SELECT id::text AS id FROM products WHERE slug = ${idOrSlug} LIMIT 1;
+    `;
+    if (!idRows[0]) return []; // unknown slug → no similars
+    productUuid = idRows[0].id;
+  }
+
   const rows = await q<{
     id: string;
     name: string | null;
@@ -202,14 +252,14 @@ export async function getTopRatedSimilarProducts(productId: string, limit = 6): 
     WITH target AS (
       SELECT DISTINCT cp.collection_id
       FROM collection_products cp
-      WHERE cp.product_id = ${productId}
+      WHERE cp.product_id = ${productUuid}::uuid
     ),
     candidates AS (
       SELECT p.id, p.title, p.description, p.price_cents
       FROM collection_products cp
       JOIN target t ON t.collection_id = cp.collection_id
       JOIN products p ON p.id = cp.product_id
-      WHERE p.id <> ${productId}
+      WHERE p.id <> ${productUuid}::uuid
     ),
     rated AS (
       SELECT
@@ -258,7 +308,7 @@ export async function getTopRatedSimilarProducts(productId: string, limit = 6): 
       imageUrls: gallery,
       price: Math.round(row.price_cents ?? 0) / 100,
       rating: row.rating ?? 0,
-      reviews: [] as Review[],
+      reviews: [],
     };
   });
 }
