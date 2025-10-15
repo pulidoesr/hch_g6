@@ -4,30 +4,22 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { getHomeFeaturedProducts } from "@/lib/repositories/products";
 import InspirationSection from "@/components/InspirationSection/InspirationSection";
-import RandomCategoryGallery from "@/components/RandomCategoryGallery/RandomCategoryGallery";
-import { getAllProducts, getCategoriesData } from "@/lib/server/actions/data_bridge";
+// ✅ use the server wrapper (it maps data to the client shape)
+import RandomCategoryGalleryServer from "@/components/RandomCategoryGallery/RandonCategoryGalleryServer";
+import { getAllProducts } from "@/lib/server/actions/data_bridge";
 
 export const revalidate = 60;
 
 export default async function Page() {
   // Fetch data on the server
-  const [featuredProducts, products, categoriesRaw] = await Promise.all([
+  const [featuredProducts, products] = await Promise.all([
     getHomeFeaturedProducts(10),
     getAllProducts(),
-    getCategoriesData(),
   ]);
 
   // Featured splits used below
   const primaryProducts = featuredProducts.slice(0, 3);
   const secondaryProducts = featuredProducts.slice(3, 10);
-
-  // Map categories to the shape RandomCategoryGallery expects
-  // (CategoryItem: { id: number; name: string; imagePath: string })
-  const categories = (categoriesRaw ?? []).map((c: any) => ({
-    id: Number(c.id ?? c.collectionId ?? 0),
-    name: c.name ?? c.title ?? "Untitled",
-    imagePath: c.image_path ?? c.imagePath ?? "/placeholder-category.jpg",
-  }));
 
   return (
     <div className="mx-auto max-w-7xl px-[10px] w-[100vw]">
@@ -105,12 +97,12 @@ export default async function Page() {
 
       <hr className="my-8 border-brand-900" />
 
-      {/* Categories (client component; props must be serializable) */}
-      <RandomCategoryGallery allCategories={categories} />
+      {/* ✅ Categories (server component feeds the client one with the right shape) */}
+      <RandomCategoryGalleryServer />
 
       <hr className="my-8 border-brand-900" />
 
-      {/* Inspiration section expects an array (make sure products is awaited above) */}
+      {/* Inspiration section expects an array (products awaited above) */}
       <InspirationSection products={products} />
     </div>
   );
