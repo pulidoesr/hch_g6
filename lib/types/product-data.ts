@@ -27,7 +27,7 @@ export interface Collection {
 
 
 export interface CategoryData { 
-    id: number;
+    id: string;
     name: string;
     isFeatured: boolean;
     story: string;

@@ -1,6 +1,9 @@
+// components/RandomCategoryGallery/RandonCategoryGalleryServer.tsx
 import RandomCategoryGallery from "@/components/RandomCategoryGallery/RandomCategoryGallery";
 import { getCategoriesData } from "@/lib/server/actions/data_bridge";
 import type { CategoryData } from "@/lib/types/product-data";
+
+export const revalidate = 60;
 
 export default async function RandomCategoryGalleryServer() {
   try {
@@ -15,6 +18,7 @@ export default async function RandomCategoryGalleryServer() {
       );
     }
 
+    // ✅ send CategoryData[] directly
     return <RandomCategoryGallery allCategories={categories} />;
   } catch (err) {
     console.error("getCategoriesData failed:", err);
